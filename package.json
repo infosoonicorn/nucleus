@@ -1,0 +1,28 @@
+{
+  "name": "nucleus-advisors-platform",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Nucleus Advisors website and future client/team platform.",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "image-lab": "pnpm --filter ai-image-lab dev"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 100,
+    "tabWidth": 2
+  }
+}

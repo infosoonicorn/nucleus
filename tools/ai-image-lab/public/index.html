@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Image Lab</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <aside class="panel">
+          <div class="brand">
+            <h1>AI Image Lab</h1>
+            <p id="status">Checking API status...</p>
+          </div>
+
+          <form id="form" class="form">
+            <label>
+              Asset type
+              <select name="assetType">
+                <option value="article">Article thumbnail</option>
+                <option value="milestone">Milestone card</option>
+                <option value="story">Inspired story card</option>
+              </select>
+            </label>
+
+            <label>
+              Title
+              <input name="title" placeholder="5 ways to build healthy routines" required />
+            </label>
+
+            <label>
+              Summary / context
+              <textarea name="summary" rows="5" placeholder="Short context for the image..."></textarea>
+            </label>
+
+            <label>
+              Theme
+              <input name="theme" placeholder="warm, hopeful, family wellness" />
+            </label>
+
+            <label>
+              Audience
+              <input name="audience" placeholder="parents, caregivers, app users" />
+            </label>
+
+            <label>
+              Style direction
+              <input name="style" placeholder="premium editorial illustration, soft cinematic light" />
+            </label>
+
+            <div class="grid2">
+              <label>
+                Variants
+                <select name="variants">
+                  <option>1</option>
+                  <option selected>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </label>
+              <label>
+                Size
+                <select name="size">
+                  <option selected>1024x1024</option>
+                  <option>1536x1024</option>
+                  <option>1024x1536</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Model
+              <input name="model" value="gpt-image-1" />
+            </label>
+
+            <label>
+              Optional reference image
+              <input name="reference" type="file" accept="image/*" />
+            </label>
+
+            <button type="submit" id="generate">Generate</button>
+          </form>
+        </aside>
+
+        <section class="results">
+          <div class="toolbar">
+            <div>
+              <h2>Generated Variants</h2>
+              <p>Use this sandbox until the style is ready for the main admin panel.</p>
+            </div>
+            <button id="clear" type="button">Clear</button>
+          </div>
+
+          <div id="message" class="message">No images generated yet.</div>
+          <div id="gallery" class="gallery"></div>
+
+          <details class="promptBox">
+            <summary>Last prompt</summary>
+            <pre id="prompt"></pre>
+          </details>
+        </section>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
