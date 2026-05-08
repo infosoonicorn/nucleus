@@ -5,6 +5,7 @@ build/
 .vercel/
 .codex/
 Nucleus/
+Nucleus_Data For Reference/
 .env
 .env.local
 .env.*.local
