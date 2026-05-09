@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Nucleus Advisors',
-  description:
-    'Strategic finance, compliance, transaction, and advisory support for founders, funds, and growing businesses.',
+  title: 'Nucleus Advisors | Website Under Rebuild',
+  description: 'Nucleus Advisors is rebuilding its website and will be back soon.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

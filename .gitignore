@@ -4,6 +4,7 @@ dist/
 build/
 .vercel/
 .codex/
+.claude/
 Nucleus/
 Nucleus_Data For Reference/
 .env
@@ -14,3 +15,6 @@ uploads/
 .DS_Store
 **/.DS_Store
 *.tsbuildinfo
+playwright-report/
+test-results/
+.vercel

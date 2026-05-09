@@ -12,9 +12,15 @@
     "build": "pnpm -r build",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:report": "playwright show-report",
     "image-lab": "pnpm --filter ai-image-lab dev"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.6",
     "prettier": "^3.3.3",
     "typescript": "^5.6.3"
   },
