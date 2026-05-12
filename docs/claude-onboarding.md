@@ -7,9 +7,10 @@ Read in this order:
 1. `CLAUDE.md`
 2. `HANDOFF.md`
 3. `docs/architecture.md`
-4. `docs/content-master.md`
-5. `docs/content-platform.md`
-6. `docs/testing.md`
+4. `docs/project-tracker.md`
+5. `docs/content-master.md`
+6. `docs/content-platform.md`
+7. `docs/testing.md`
 
 ## Project Goal
 
@@ -52,6 +53,7 @@ Content strategy:
 - `docs/content-master.md` is the canonical content blueprint.
 - `docs/content-platform.md` is the CMS/content/lead/AI platform blueprint.
 - `docs/architecture.md` is the phased architecture plan.
+- `docs/project-tracker.md` is the mandatory live checklist for what is built, blocked, pending, and complete.
 - `outputs/nucleus-strategy-one-pager.pdf` is the internal one-page summary for team feedback, but `outputs/` is ignored and not source of truth.
 
 ## Phase Plan
@@ -238,9 +240,18 @@ During work:
 - keep edits scoped;
 - do not revert unrelated changes;
 - update `HANDOFF.md` for non-trivial work;
+- update `docs/project-tracker.md` whenever a meaningful task is completed, blocked, newly discovered, or intentionally deferred;
 - prefer structured content/data files over scattered hardcoded JSX;
 - avoid fake testimonials, fake clients, fake team members, fake live data;
 - make every visible action real or clearly marked as future/placeholder.
+
+Tracker protocol:
+
+- read `docs/project-tracker.md` before choosing work;
+- do not mark a task `[x]` until its acceptance criteria are satisfied;
+- use `[!]` when user/team input is required;
+- add discovered gaps as new tasks instead of leaving them only in conversation;
+- remember the visual dashboard at `/project-tracker` renders from this Markdown file.
 
 Before saying done for visible work:
 

@@ -51,3 +51,5 @@ See `docs/testing.md` for the verification workflow we will use before marking v
 ## Agent Workflow
 
 Claude, Codex, and future agents should read `CLAUDE.md` before working. Claude should then read `docs/claude-onboarding.md` for the current sanitized project brief. Keep `HANDOFF.md` current during non-trivial tasks so another agent can resume cleanly.
+
+Use `docs/project-tracker.md` as the detailed build tracker. Update it whenever a meaningful task is completed, blocked, or intentionally deferred.

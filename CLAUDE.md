@@ -4,6 +4,8 @@ These rules apply to Claude, Codex, and any other coding agent working on this r
 
 Claude-specific start point: read `docs/claude-onboarding.md` after this file and before making edits. It summarizes what is already decided, what is completed, and what boundaries must be respected.
 
+Project tracking: `docs/project-tracker.md` is the living checklist for what is built and what remains. Update it whenever meaningful work is completed, blocked, or deferred.
+
 ## 1. Cross-reference every change
 
 Before changing a component, route, text string, schema, environment variable, API contract, or shared package:
@@ -136,6 +138,8 @@ For public website and content work:
 
 Keep `HANDOFF.md` updated during non-trivial work so another agent can resume without guesswork.
 
+`docs/project-tracker.md` is mandatory. Every agent must read it before starting work and update it when a meaningful task is completed, blocked, newly discovered, or intentionally deferred.
+
 At task start, record:
 
 - goal;
@@ -148,6 +152,14 @@ During work, record:
 - commands run and whether they passed;
 - any running servers or deployment status;
 - next step.
+
+During tracker updates:
+
+- mark tasks complete only when their acceptance criteria are satisfied;
+- add blockers with `[!]` when work cannot proceed without user/team input;
+- add new tasks when a gap is discovered instead of keeping it only in chat;
+- keep the visual tracker route `/project-tracker` aligned by updating the Markdown source;
+- update `HANDOFF.md` in the same change for non-trivial tracker updates.
 
 When the task is fully done, clear the active task section back to “No active task.”
 
