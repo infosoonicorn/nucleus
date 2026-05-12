@@ -6,53 +6,54 @@ No active task.
 
 ## Last Action
 
-Started Phase 1 static premium website build. Replaced the maintenance homepage with a structured public website backed by reusable local content and shared components.
+Redesigned the homepage end-to-end with a motion-driven design system. The rest of the site (services, about, careers, insights, contact) is intentionally untouched — that pass is queued next.
 
 Completed in this pass:
 
-- Structured content source: `apps/web/src/content/site.ts`
-- Shared public site components: header, footer, section headers, proof bar, service cards, CTA bands, lead magnet block, service detail layout
-- Routes: `/`, `/about`, `/services`, `/services/[slug]`, `/careers`, `/careers/life-at-nucleus`, `/careers/alumni`, `/insights`, `/insights/live-updates`, `/downloads`, `/contact`
-- All nine service pages through the shared service detail layout
-- Sitemap expanded for Phase 1 routes
-- E2E smoke checks updated for route navigation and key Phase 1 content
-- Tracker updated for completed Phase 1 local build items
-- `/project-tracker` redesigned into an HTML-style dashboard with executive cards, Next Up cards, open input cards, sticky track navigation, and page-style task sections grouped by phase/track
-- Homepage hero revised again into a calmer advisory positioning layout after Vijay noted the home page felt ill-crafted, oversized, and out of order
-- Homepage redesigned again with a polished advisory board hero, compact proof strip, softer section pacing, entrance animation, hover polish, and mobile-specific proof-strip layout after Vijay asked for stronger design quality and mobile friendliness
-- About, Careers, and Insights pages expanded beyond shells with leadership/advisory areas, career learning tracks/process, and content-engine guardrails
+- Installed `framer-motion`, `lenis`, `lottie-react`, `clsx`, `tailwind-merge`, `tailwindcss-animate`.
+- Wired Tailwind v4 brand tokens and the animate plugin in `apps/web/src/app/globals.css` (`@theme`, `@plugin "tailwindcss-animate"`).
+- Added the `cn()` helper at `apps/web/src/lib/utils.ts`.
+- Added a Lenis smooth-scroll provider (`apps/web/src/components/lenis-provider.tsx`) and mounted it at the root layout. Respects `prefers-reduced-motion`.
+- Built reusable motion primitives at `apps/web/src/components/motion-primitives.tsx`: `Reveal`, `Stagger`, `CountUp`, `WordReveal`, `Magnetic`, `FadeIn`.
+- Built a `LottieSlot` (`apps/web/src/components/lottie-slot.tsx`) that lazily loads a JSON file from `/lottie/...` and silently no-ops when the file is missing. Hero already references `/lottie/nucleus-hero.json`; see `docs/home-hero-lottie-spec.md` for the asset spec.
+- Composed the homepage from focused client islands under `apps/web/src/components/home/`: `hero`, `proof-strip`, `lifecycle`, `services-universe`, `moments-marquee`, `depth`, `industries`, `teaser-row`, `closing-cta`.
+- Rebuilt the homepage at `apps/web/src/app/page.tsx` as a thin server component composing those islands.
+- Added a scoped `.home-v3` design system to `globals.css` (warm paper background, dark navy services section, dark closing CTA, marquee for decisive moments, count-up proof grid). Removed the now-orphaned `.home-hero-v2`, `.hero-v2-*`, `.hero-advisory-board`, `.board-*`, `.home-proof-strip`, `.home-section`, `softRise`, `pulseStep` rules.
+- Updated `tests/e2e/home.spec.ts` for the new lifecycle heading ("The moments where outside judgement matters.").
+- Stripped `html { scroll-behavior: smooth }` (Lenis handles it) and added `position: relative` to body so framer-motion scroll utilities are happy.
 
 ## Next Step
 
-Review the Phase 1 visual direction with Vijay/team, audit approved brand/team/culture assets, then run the deployed quality gate after pushing/deploying.
+1. Source the hero Lottie per `docs/home-hero-lottie-spec.md` and drop it at `apps/web/public/lottie/nucleus-hero.json`.
+2. Apply the new motion / spacing language to About, Services, Service Detail, Careers, Insights, Contact in a follow-up pass — without redesigning each from scratch.
+3. Push the branch and run the deployed quality gate (`PLAYWRIGHT_BASE_URL=https://nucleus-bay.vercel.app pnpm test:e2e`).
 
 ## Changed Files In Current Work
 
-- `CLAUDE.md`
+Homepage redesign pass:
+
 - `HANDOFF.md`
-- `docs/architecture.md`
-- `docs/content-platform.md`
-- `docs/content-master.md`
-- `docs/claude-onboarding.md`
-- `docs/project-tracker.md`
-- `apps/web/src/app/project-tracker/page.tsx`
-- `apps/web/src/content/site.ts`
-- `apps/web/src/components/site-chrome.tsx`
-- `apps/web/src/components/sections.tsx`
-- `apps/web/src/components/service-detail.tsx`
+- `docs/home-hero-lottie-spec.md` (new)
+- `apps/web/package.json`, `pnpm-lock.yaml`
+- `apps/web/src/app/layout.tsx`
 - `apps/web/src/app/page.tsx`
-- `apps/web/src/app/about/page.tsx`
-- `apps/web/src/app/services/page.tsx`
-- `apps/web/src/app/services/[slug]/page.tsx`
-- `apps/web/src/app/careers/page.tsx`
-- `apps/web/src/app/careers/life-at-nucleus/page.tsx`
-- `apps/web/src/app/careers/alumni/page.tsx`
-- `apps/web/src/app/insights/page.tsx`
-- `apps/web/src/app/insights/live-updates/page.tsx`
-- `apps/web/src/app/downloads/page.tsx`
-- `apps/web/src/app/contact/page.tsx`
-- `apps/web/src/app/sitemap.ts`
+- `apps/web/src/app/globals.css`
+- `apps/web/src/lib/utils.ts` (new)
+- `apps/web/src/components/lenis-provider.tsx` (new)
+- `apps/web/src/components/motion-primitives.tsx` (new)
+- `apps/web/src/components/lottie-slot.tsx` (new)
+- `apps/web/src/components/home/hero.tsx` (new)
+- `apps/web/src/components/home/proof-strip.tsx` (new)
+- `apps/web/src/components/home/lifecycle.tsx` (new)
+- `apps/web/src/components/home/services-universe.tsx` (new)
+- `apps/web/src/components/home/moments-marquee.tsx` (new)
+- `apps/web/src/components/home/depth.tsx` (new)
+- `apps/web/src/components/home/industries.tsx` (new)
+- `apps/web/src/components/home/teaser-row.tsx` (new)
+- `apps/web/src/components/home/closing-cta.tsx` (new)
 - `tests/e2e/home.spec.ts`
+- `tests/screenshots-home-v3.mjs` (new helper)
+- `tests/screenshots-home-sections.mjs` (new helper)
 
 Previous verification setup also changed:
 
@@ -102,7 +103,9 @@ Previous verification setup also changed:
 - Latest calmer homepage screenshots captured locally: `outputs/home-reordered-calm-desktop.png`, `outputs/home-reordered-calm-mobile-v2.png`.
 - Latest polished homepage gate: `pnpm lint && pnpm typecheck`, `pnpm build`, and `PLAYWRIGHT_BASE_URL=http://127.0.0.1:3000 pnpm test:e2e` passed.
 - Latest polished homepage screenshots captured locally: `outputs/home-polished-v3-desktop-final.png`, `outputs/home-polished-v3-mobile-final.png`.
+- Latest gate after motion redesign: `pnpm --filter web lint`, `pnpm --filter web typecheck`, `pnpm --filter web build`, and `pnpm test:e2e` all passed.
+- Motion redesign screenshots captured locally: `outputs/home-v3-desktop-fold.png`, `outputs/home-v3-desktop-full.png`, `outputs/home-v3-mobile-fold.png`, `outputs/home-v3-mobile-full.png`, plus per-section shots `outputs/section-*.png`.
 
 ## In-flight Processes
 
-Local dev server running via `pnpm --filter web dev` at `http://localhost:3000`.
+None. Dev server was stopped after capture.

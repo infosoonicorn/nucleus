@@ -16,7 +16,7 @@ test.describe('Nucleus public website smoke checks', () => {
 
     await expect(
       page.locator('#business-lifecycle').getByRole('heading', {
-        name: 'From incorporation to listing readiness.',
+        name: 'The moments where outside judgement matters.',
       }),
     ).toBeVisible();
     await expect(page.getByRole('heading', { name: 'A connected advisory universe.' })).toBeVisible();

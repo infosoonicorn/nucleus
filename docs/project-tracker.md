@@ -42,13 +42,14 @@ Update rules:
 
 ## Current Snapshot
 
-Last updated: 2026-05-09
+Last updated: 2026-05-12
 
-Current branch: `main`
+Current branch: `main` (also `claude/sleepy-kirch-f73f38` worktree).
 
 Current commit baseline:
 
-- `cfeb58a Set Nucleus website strategy foundation`
+- `867763a chore(web): add framer-motion, lenis, lottie-react, clsx, tailwind-merge, tailwindcss-animate`
+- Homepage motion redesign committed on top of the above (this pass).
 
 Current deployed preview:
 
@@ -169,6 +170,12 @@ Launch a premium, credible, fast public website with structured content. It shou
   - Acceptance: no fake client logos, fake testimonials, fake team members, or fake live data.
 - [x] Add motion carefully.
   - Acceptance: animations add premium feel without blocking readability or mobile performance.
+- [x] Homepage motion redesign (Lenis + framer-motion + Lottie slot).
+  - Acceptance: homepage uses Lenis smooth scroll, reusable motion primitives, scoped `.home-v3` design system; reduced-motion respected; lint/typecheck/build/e2e green; Lottie spec captured in `docs/home-hero-lottie-spec.md` (asset itself pending).
+- [ ] Source hero Lottie animation.
+  - Acceptance: a brand-tinted Lottie JSON sourced from LottieFiles or in-house motion artist is placed at `apps/web/public/lottie/nucleus-hero.json`. Spec: `docs/home-hero-lottie-spec.md`.
+- [ ] Apply motion / spacing language to remaining public pages.
+  - Acceptance: About, Services overview, Service detail, Careers, Insights, Contact inherit the home-v3 typography rhythm and tasteful motion without a full per-page redesign.
 - [x] Add service-specific proof blocks.
   - Acceptance: firm-wide counters stay on homepage; service pages use service-specific proof/counter placeholders where verified numbers are pending.
 
@@ -361,6 +368,8 @@ Reuse the same backend APIs for mobile when web portal workflows are stable.
   - Needed for: AIF & Fund Management page.
 - [ ] Confirm privacy/terms/disclaimer wording.
   - Needed for: forms, insights, downloads.
+- [ ] Source hero Lottie file.
+  - Needed for: hero "Advisory coverage" canvas accent (`apps/web/public/lottie/nucleus-hero.json`). Spec in `docs/home-hero-lottie-spec.md`.
 
 ## Parking Lot
 
