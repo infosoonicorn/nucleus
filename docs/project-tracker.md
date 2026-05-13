@@ -42,7 +42,7 @@ Update rules:
 
 ## Current Snapshot
 
-Last updated: 2026-05-13 — home page polish pass (nav blur, moments rail grid, hero counters derived from data, single source of truth for proof + `proofAsOf`, lifecycle scroll trimmed)
+Last updated: 2026-05-13 — home polish pass landed (nav blur, moments rail grid, hero counters derived, proof single-source, lifecycle scroll trimmed). Home spine/thread refinement intentionally deferred; next active task is bringing About / Services / Careers / Insights / Contact up to the home-v3 motion + typography baseline.
 
 Current branch: `main` (also `claude/sleepy-kirch-f73f38` worktree).
 
@@ -174,10 +174,15 @@ Launch a premium, credible, fast public website with structured content. It shou
   - Acceptance: homepage uses Lenis smooth scroll, reusable motion primitives, scoped `.home-v3` design system; reduced-motion respected; lint/typecheck/build/e2e green; Lottie spec captured in `docs/home-hero-lottie-spec.md` (asset itself pending).
 - [ ] Source hero Lottie animation.
   - Acceptance: a brand-tinted Lottie JSON sourced from LottieFiles or in-house motion artist is placed at `apps/web/public/lottie/nucleus-hero.json`. Spec: `docs/home-hero-lottie-spec.md`.
-- [ ] Apply motion / spacing language to remaining public pages.
+- [~] Apply motion / spacing language to remaining public pages.
   - Acceptance: About, Services overview, Service detail, Careers, Insights, Contact inherit the home-v3 typography rhythm and tasteful motion without a full per-page redesign.
+  - Status (2026-05-13): queued as the next active task. Home refinement intentionally paused until other pages reach the same baseline.
 - [x] Add service-specific proof blocks.
   - Acceptance: firm-wide counters stay on homepage; service pages use service-specific proof/counter placeholders where verified numbers are pending.
+- [ ] Home page — page-wide unifying spine/thread.
+  - Acceptance: a single visual element (recommended: left-edge numbered spine with red→navy gradient fill tied to scroll, reusing the `§NN` numbering vocabulary; alternatives B/C documented in chat) connects all home sections so the page reads as one journey rather than nine chapters.
+  - Status (2026-05-13): deferred. To revisit after About / Services / Careers / Insights / Contact are at parity.
+  - Note: design options documented in the 2026-05-13 conversation; option A (spine rail) recommended. Decisions still open: spine position (left vs right), label always-on vs hover.
 
 ## Phase 1.5: Lightweight Backend
 

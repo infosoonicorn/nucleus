@@ -2,7 +2,9 @@
 
 ## Active Task
 
-No active task.
+Bring About / Services overview / Service detail / Careers / Insights / Contact up to the home-v3 motion + typography baseline. Not a per-page redesign — inherit the rhythm.
+
+Deferred (intentional, queued for after the above): home page page-wide unifying spine/thread. Decision document is the 2026-05-13 chat exchange; recommended approach is a left-edge numbered spine with red→navy gradient fill tied to scroll, reusing the `§NN` numbering vocabulary already present in hero flow chips, lifecycle stages, proof cells, and archetype cards. Two open decisions before building: spine position (left vs right) and label visibility (always-on vs hover).
 
 ## Last Action
 
