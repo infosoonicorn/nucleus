@@ -3,18 +3,23 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, GraduationCap, Newspaper, Sparkles } from 'lucide-react';
-import { insightCategories } from '@/content/site';
+import { ArrowUpRight, GraduationCap, Newspaper } from 'lucide-react';
 import { Reveal } from '@/components/motion-primitives';
 
+// Short, comparable labels so both panels read with the same density.
 const careerTracks = [
   'CA articleship',
-  'CA / MBA hires',
-  'Graduate analyst',
+  'CA / MBA',
+  'Graduate',
   'Experienced',
 ];
 
-const insightTags = insightCategories.slice(0, 4);
+const insightTracks = [
+  'Deals & M&A',
+  'Risk & IFC',
+  'GST & Tax',
+  'Assurance',
+];
 
 type Panel = 'careers' | 'insights';
 
@@ -35,23 +40,25 @@ export function HomeTeaserRow() {
           onMouseEnter={() => setActive('careers')}
         >
           <CareersCanvas />
-          <header>
-            <span className="home-v3-teaser-eyebrow">Careers</span>
-            <h3>Career paths across real business work.</h3>
-            <p>
-              CA articles, CAs, MBAs, graduates and analysts build judgement across audit,
-              tax, risk, deals, finance operations and compliance.
-            </p>
-          </header>
-          <ul className="home-v3-teaser-chips">
-            {careerTracks.map((track) => (
-              <li key={track}>{track}</li>
-            ))}
-          </ul>
-          <Link className="home-v3-teaser-link" href="/careers">
-            Explore careers
-            <ArrowUpRight aria-hidden="true" size={16} />
-          </Link>
+          <div className="home-v3-teaser-body">
+            <header>
+              <span className="home-v3-teaser-eyebrow">Careers</span>
+              <h3>Career paths across real business work.</h3>
+              <p>
+                CA articles, CAs, MBAs, graduates and analysts build judgement across audit,
+                tax, risk, deals, finance operations and compliance.
+              </p>
+            </header>
+            <ul className="home-v3-teaser-chips" aria-label="Career tracks">
+              {careerTracks.map((track) => (
+                <li key={track}>{track}</li>
+              ))}
+            </ul>
+            <Link className="home-v3-teaser-link" href="/careers">
+              Explore careers
+              <ArrowUpRight aria-hidden="true" size={16} />
+            </Link>
+          </div>
         </article>
 
         <article
@@ -61,30 +68,34 @@ export function HomeTeaserRow() {
           onMouseEnter={() => setActive('insights')}
         >
           <InsightsCanvas />
-          <header>
-            <span className="home-v3-teaser-eyebrow">Insights</span>
-            <h3>Knowledge built around services, not noise.</h3>
-            <p>
-              Insights and checklists map to services, official sources and reviewer approval
-              before publication.
-            </p>
-          </header>
-          <ul className="home-v3-teaser-chips">
-            {insightTags.map((category) => (
-              <li key={category}>{category}</li>
-            ))}
-          </ul>
-          <Link className="home-v3-teaser-link" href="/insights">
-            Read insights
-            <ArrowUpRight aria-hidden="true" size={16} />
-          </Link>
+          <div className="home-v3-teaser-body">
+            <header>
+              <span className="home-v3-teaser-eyebrow">Insights</span>
+              <h3>Knowledge built around services, not noise.</h3>
+              <p>
+                Insights and checklists map to services, official sources and reviewer approval
+                before publication.
+              </p>
+            </header>
+            <ul className="home-v3-teaser-chips" aria-label="Insight tracks">
+              {insightTracks.map((track) => (
+                <li key={track}>{track}</li>
+              ))}
+            </ul>
+            <Link className="home-v3-teaser-link" href="/insights">
+              Read insights
+              <ArrowUpRight aria-hidden="true" size={16} />
+            </Link>
+          </div>
         </article>
       </Reveal>
     </section>
   );
 }
 
-// --- Abstract canvases (used in place of photography we don't yet have approved) ---
+// --- Abstract canvases. Both share the same warm-paper foundation with a
+// brand-color accent and a single iconic mark, so the two panels feel like
+// siblings instead of stylistic opposites. ---
 
 function CareersCanvas() {
   return (
@@ -93,16 +104,19 @@ function CareersCanvas() {
       <span className="home-v3-teaser-canvas-grid" />
       <motion.span
         className="home-v3-teaser-canvas-orb home-v3-teaser-canvas-orb-a"
-        animate={{ y: [-10, 10, -10] }}
+        animate={{ y: [-12, 10, -12] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.span
         className="home-v3-teaser-canvas-orb home-v3-teaser-canvas-orb-b"
         animate={{ y: [10, -8, 10] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
       />
       <span className="home-v3-teaser-canvas-mark" aria-hidden="true">
-        <GraduationCap size={24} />
+        <GraduationCap size={20} />
+      </span>
+      <span className="home-v3-teaser-canvas-corner" aria-hidden="true">
+        Talent
       </span>
     </span>
   );
@@ -112,17 +126,22 @@ function InsightsCanvas() {
   return (
     <span className="home-v3-teaser-canvas home-v3-teaser-canvas-insights" aria-hidden="true">
       <span className="home-v3-teaser-canvas-gradient" />
-      <span className="home-v3-teaser-canvas-lines" />
+      <span className="home-v3-teaser-canvas-grid" />
       <motion.span
-        className="home-v3-teaser-canvas-orb home-v3-teaser-canvas-orb-c"
-        animate={{ y: [-8, 12, -8] }}
+        className="home-v3-teaser-canvas-orb home-v3-teaser-canvas-orb-a"
+        animate={{ y: [-10, 12, -10] }}
+        transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.span
+        className="home-v3-teaser-canvas-orb home-v3-teaser-canvas-orb-b"
+        animate={{ y: [12, -6, 12] }}
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
       />
-      <span className="home-v3-teaser-canvas-mark home-v3-teaser-canvas-mark-paper" aria-hidden="true">
-        <Newspaper size={22} />
+      <span className="home-v3-teaser-canvas-mark" aria-hidden="true">
+        <Newspaper size={20} />
       </span>
-      <span className="home-v3-teaser-canvas-mark home-v3-teaser-canvas-mark-spark" aria-hidden="true">
-        <Sparkles size={16} />
+      <span className="home-v3-teaser-canvas-corner" aria-hidden="true">
+        Editorial
       </span>
     </span>
   );
