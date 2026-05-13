@@ -1,72 +1,54 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import {
   motion,
   useMotionValue,
+  useScroll,
   useSpring,
   useTransform,
   useReducedMotion,
   type MotionValue,
 } from 'framer-motion';
-import {
-  ArrowRight,
-  ArrowUpRight,
-  FileCheck2,
-  Landmark,
-  LineChart,
-  ShieldCheck,
-} from 'lucide-react';
-import { FadeIn, Magnetic, Reveal, WordReveal } from '@/components/motion-primitives';
-import { LottieSlot } from '@/components/lottie-slot';
-import { services, site } from '@/content/site';
-
-const coverage = [
-  { label: 'Transactions', icon: Landmark, line: 'Capital, M&A, restructuring' },
-  { label: 'Controls', icon: ShieldCheck, line: 'IFC, internal audit, risk' },
-  { label: 'Valuations', icon: LineChart, line: 'ESOP, FDI, transaction' },
-  { label: 'Reporting', icon: FileCheck2, line: 'Assurance, Ind AS, MIS' },
-];
-
-const flow = ['Incorporate', 'Operate', 'Raise', 'Control', 'Transact', 'Report'];
+import { ArrowRight, ArrowUp, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { FadeIn, Magnetic, WordReveal } from '@/components/motion-primitives';
 
 const TRACK_SPRING = { stiffness: 90, damping: 18, mass: 0.6 };
+const PARTICLE_COUNT = 28;
 
 export function HomeHero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const canvasRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
 
-  // Normalized cursor (-1..1) within the hero section
+  // Cursor parallax (atmosphere layers)
   const normX = useMotionValue(0);
   const normY = useMotionValue(0);
-  // Raw pixel cursor for the section-level spotlight
   const pointerX = useMotionValue(-9999);
   const pointerY = useMotionValue(-9999);
-  // Raw pixel cursor relative to the canvas for its inner spotlight
-  const canvasPointerX = useMotionValue(-9999);
-  const canvasPointerY = useMotionValue(-9999);
-  // Spotlight visibility
   const spotlightOpacity = useMotionValue(0);
-  const canvasSpotlightOpacity = useMotionValue(0);
 
-  // Spring smoothing for parallax + tilt
   const smoothX = useSpring(normX, TRACK_SPRING);
   const smoothY = useSpring(normY, TRACK_SPRING);
 
-  // Layer translations + tilt mappings
-  const auroraRedX = useTransform(smoothX, [-1, 1], [-50, 50]);
-  const auroraRedY = useTransform(smoothY, [-1, 1], [-30, 30]);
+  const auroraRedX = useTransform(smoothX, [-1, 1], [-60, 60]);
+  const auroraRedY = useTransform(smoothY, [-1, 1], [-40, 40]);
   const auroraNavyX = useTransform(smoothX, [-1, 1], [40, -40]);
   const auroraNavyY = useTransform(smoothY, [-1, 1], [30, -30]);
-  const gridShiftX = useTransform(smoothX, [-1, 1], [-12, 12]);
-  const gridShiftY = useTransform(smoothY, [-1, 1], [-8, 8]);
-  const copyX = useTransform(smoothX, [-1, 1], [-8, 8]);
-  const copyY = useTransform(smoothY, [-1, 1], [-6, 6]);
-  const flowX = useTransform(smoothX, [-1, 1], [-12, 12]);
-  const canvasRotateY = useTransform(smoothX, [-1, 1], [-10, 10]);
-  const canvasRotateX = useTransform(smoothY, [-1, 1], [7, -7]);
+  const gridShiftX = useTransform(smoothX, [-1, 1], [-10, 10]);
+  const gridShiftY = useTransform(smoothY, [-1, 1], [-6, 6]);
+
+  // Scroll-driven exit — content lifts + fades; auroras drift further as user
+  // scrolls out, creating a "tunneling into the next section" feel.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -140]);
+  const contentScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 0.5, 0]);
+  const shapesY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
 
   function handleMove(event: React.MouseEvent<HTMLElement>) {
     if (reduceMotion) return;
@@ -80,18 +62,6 @@ export function HomeHero() {
     normX.set((localX / rect.width) * 2 - 1);
     normY.set((localY / rect.height) * 2 - 1);
     spotlightOpacity.set(1);
-
-    const canvas = canvasRef.current;
-    if (canvas) {
-      const cRect = canvas.getBoundingClientRect();
-      const cx = event.clientX - cRect.left;
-      const cy = event.clientY - cRect.top;
-      canvasPointerX.set(cx);
-      canvasPointerY.set(cy);
-      const inside =
-        cx >= 0 && cx <= cRect.width && cy >= 0 && cy <= cRect.height;
-      canvasSpotlightOpacity.set(inside ? 1 : 0);
-    }
   }
 
   function handleLeave() {
@@ -99,13 +69,12 @@ export function HomeHero() {
     normX.set(0);
     normY.set(0);
     spotlightOpacity.set(0);
-    canvasSpotlightOpacity.set(0);
   }
 
   return (
     <section
       ref={sectionRef}
-      className="home-v3-hero"
+      className="home-v3-hero home-v3-hero-dark home-v3-hero-fullscreen"
       aria-label="Nucleus Advisors lifecycle positioning"
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
@@ -122,140 +91,203 @@ export function HomeHero() {
         spotlightOpacity={spotlightOpacity}
       />
 
-      <div className="home-v3-hero-grid">
-        <motion.div
-          className="home-v3-hero-copy"
-          style={{ x: copyX, y: copyY }}
-        >
-          <FadeIn duration={0.7}>
-            <p className="home-v3-eyebrow">
-              <span aria-hidden="true" />
-              Full-spectrum advisory firm
-            </p>
-          </FadeIn>
+      <ElegantShapes reduceMotion={!!reduceMotion} shapesY={shapesY} />
+      <ParticleStream reduceMotion={!!reduceMotion} />
 
-          <h1 className="home-v3-headline">
-            <span className="home-v3-sr-only">From incorporation to listing readiness.</span>
-            <span className="home-v3-headline-row" aria-hidden="true">
-              <WordReveal text="From incorporation" />
-            </span>
-            <span
-              className="home-v3-headline-row home-v3-headline-row-em"
-              aria-hidden="true"
-            >
-              <WordReveal text="to listing readiness." delay={0.35} />
-            </span>
-          </h1>
+      <motion.div
+        className="home-v3-hero-stage"
+        style={{ y: contentY, scale: contentScale, opacity: contentOpacity }}
+      >
+        <FadeIn duration={0.55}>
+          <p className="home-v3-hero-tag">
+            <ArrowUp size={14} aria-hidden="true" strokeWidth={2.5} />
+            Always upward
+          </p>
+        </FadeIn>
 
-          <FadeIn delay={0.95} duration={0.9}>
-            <p className="home-v3-lede">
-              Nucleus Advisors helps founders, boards, investors, promoters and finance teams
-              move through capital, controls, compliance, reporting and transaction decisions
-              with clarity.
-            </p>
-          </FadeIn>
+        <FadeIn duration={0.65} delay={0.18}>
+          <p className="home-v3-eyebrow home-v3-eyebrow-on-dark">
+            <span aria-hidden="true" />
+            Full-spectrum advisory firm
+          </p>
+        </FadeIn>
 
-          <FadeIn delay={1.15} duration={0.7}>
-            <div className="home-v3-cta-row">
-              <Magnetic strength={0.18}>
-                <Link className="home-v3-button home-v3-button-primary" href="/contact">
-                  Start a conversation
-                  <ArrowRight aria-hidden="true" size={18} />
-                </Link>
-              </Magnetic>
-              <Link className="home-v3-button home-v3-button-ghost" href="/services">
-                Explore services
-                <ArrowUpRight aria-hidden="true" size={18} />
+        <h1 className="home-v3-headline home-v3-headline-display">
+          <span className="home-v3-sr-only">From incorporation to listing readiness.</span>
+          <span className="home-v3-headline-row" aria-hidden="true">
+            <WordReveal text="From incorporation" />
+          </span>
+          <span
+            className="home-v3-headline-row home-v3-headline-row-em-light"
+            aria-hidden="true"
+          >
+            <WordReveal text="to listing readiness." delay={0.35} />
+          </span>
+        </h1>
+
+        <FadeIn delay={0.95} duration={0.9}>
+          <p className="home-v3-lede home-v3-lede-on-dark">
+            Nucleus Advisors helps founders, boards, investors, promoters and finance teams
+            move through capital, controls, compliance, reporting and transaction decisions
+            with clarity.
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={1.2} duration={0.7}>
+          <div className="home-v3-cta-row home-v3-hero-cta-row">
+            <Magnetic strength={0.18}>
+              <Link className="home-v3-button home-v3-button-primary" href="/contact">
+                Start a conversation
+                <ArrowRight aria-hidden="true" size={18} />
               </Link>
-            </div>
-          </FadeIn>
-
-          <Reveal delay={1.35} y={20}>
-            <motion.div
-              className="home-v3-hero-flow"
-              role="list"
-              aria-label="Lifecycle stages"
-              style={{ x: flowX }}
-            >
-              {flow.map((step, index) => (
-                <span key={step} role="listitem" style={{ animationDelay: `${index * 140}ms` }}>
-                  <em aria-hidden="true">{String(index + 1).padStart(2, '0')}</em>
-                  {step}
-                </span>
-              ))}
-            </motion.div>
-          </Reveal>
-        </motion.div>
-
-        <motion.div
-          ref={canvasRef}
-          className="home-v3-hero-canvas-wrap"
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-          style={{
-            rotateX: canvasRotateX,
-            rotateY: canvasRotateY,
-            transformPerspective: 1200,
-            transformStyle: 'preserve-3d',
-          }}
-        >
-          <div className="home-v3-canvas-shell">
-            <motion.div
-              className="home-v3-canvas-spotlight"
-              style={{
-                x: canvasPointerX,
-                y: canvasPointerY,
-                opacity: canvasSpotlightOpacity,
-              }}
-              aria-hidden="true"
-            />
-            <div className="home-v3-canvas-frame" aria-hidden="true">
-              <LottieSlot
-                src="/lottie/nucleus-hero.json"
-                className="home-v3-canvas-lottie"
-                ariaLabel="Nucleus advisory motion accent"
-              />
-            </div>
-            <header className="home-v3-canvas-header">
-              <span>Advisory coverage</span>
-              <strong>Setup → Scale → Listing</strong>
-            </header>
-            <ul className="home-v3-canvas-grid">
-              {coverage.map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <motion.li
-                    key={item.label}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.22, 1, 0.36, 1],
-                      delay: 0.6 + index * 0.08,
-                    }}
-                    style={{ transform: `translateZ(${24 + index * 4}px)` }}
-                  >
-                    <span className="home-v3-canvas-icon">
-                      <Icon aria-hidden="true" size={18} />
-                    </span>
-                    <div>
-                      <strong>{item.label}</strong>
-                      <em>{item.line}</em>
-                    </div>
-                  </motion.li>
-                );
-              })}
-            </ul>
-            <footer className="home-v3-canvas-footer">
-              <span className="home-v3-canvas-pulse" aria-hidden="true" />
-              Live across {site.locations.length} offices · {services.length} service lines
-            </footer>
+            </Magnetic>
+            <Link className="home-v3-button home-v3-button-ghost-light" href="/services">
+              Explore services
+              <ArrowUpRight aria-hidden="true" size={18} />
+            </Link>
           </div>
-        </motion.div>
-      </div>
+        </FadeIn>
+      </motion.div>
+
+      <ScrollCue opacity={cueOpacity} reduceMotion={!!reduceMotion} />
     </section>
+  );
+}
+
+// ----- background layers -----
+
+function ElegantShapes({
+  reduceMotion,
+  shapesY,
+}: Readonly<{ reduceMotion: boolean; shapesY: MotionValue<number> }>) {
+  // Five rotated capsule shapes drift gently, layered behind content. Each
+  // shape bobs on its own loop; the whole group also parallaxes on scroll.
+  const shapes = [
+    { className: 'home-v3-hero-shape-1', range: [-14, 18], rotate: 12, duration: 13 },
+    { className: 'home-v3-hero-shape-2', range: [16, -10], rotate: -15, duration: 11 },
+    { className: 'home-v3-hero-shape-3', range: [-10, 14], rotate: -8, duration: 14 },
+    { className: 'home-v3-hero-shape-4', range: [12, -8], rotate: 20, duration: 9 },
+    { className: 'home-v3-hero-shape-5', range: [-8, 12], rotate: -22, duration: 10 },
+  ];
+
+  return (
+    <motion.div
+      className="home-v3-hero-shapes"
+      style={{ y: shapesY }}
+      aria-hidden="true"
+    >
+      {shapes.map((shape) => (
+        <motion.span
+          key={shape.className}
+          className={`home-v3-hero-shape ${shape.className}`}
+          initial={reduceMotion ? undefined : { opacity: 0, y: -120, rotate: shape.rotate - 12 }}
+          animate={
+            reduceMotion
+              ? { opacity: 0.7 }
+              : {
+                  opacity: 0.85,
+                  rotate: shape.rotate,
+                  y: shape.range,
+                }
+          }
+          transition={
+            reduceMotion
+              ? { duration: 0 }
+              : {
+                  opacity: { duration: 1.6, ease: [0.22, 1, 0.36, 1] },
+                  rotate: { duration: 1.6, ease: [0.22, 1, 0.36, 1] },
+                  y: {
+                    duration: shape.duration,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: 1.4,
+                  },
+                }
+          }
+        />
+      ))}
+    </motion.div>
+  );
+}
+
+type Particle = {
+  id: number;
+  left: number;
+  size: number;
+  delay: number;
+  duration: number;
+  rise: number;
+  tone: 'red' | 'cream';
+};
+
+function ParticleStream({ reduceMotion }: Readonly<{ reduceMotion: boolean }>) {
+  const particles = useMemo<Particle[]>(() => {
+    return Array.from({ length: PARTICLE_COUNT }).map((_, index) => {
+      const seed = (index * 9301 + 49297) % 233280;
+      const r = seed / 233280;
+      const r2 = ((index * 17) % 13) / 13;
+      const r3 = ((index * 31) % 7) / 7;
+      // Spread across the full hero width
+      const left = 4 + r * 92;
+      const size = 1.4 + r2 * 2.8;
+      const duration = 5 + r3 * 4;
+      const delay = (index / PARTICLE_COUNT) * duration;
+      // Particles rise nearly the full hero height
+      const rise = 620 + r * 160;
+      const tone: Particle['tone'] = index % 5 === 0 ? 'red' : 'cream';
+      return { id: index, left, size, delay, duration, rise, tone };
+    });
+  }, []);
+
+  if (reduceMotion) return null;
+
+  return (
+    <ul className="home-v3-hero-particles" aria-hidden="true">
+      {particles.map((p) => (
+        <motion.li
+          key={p.id}
+          className={`home-v3-hero-particle home-v3-hero-particle-${p.tone}`}
+          style={{ left: `${p.left}%`, width: p.size, height: p.size * 1.6 }}
+          initial={{ y: 0, opacity: 0 }}
+          animate={{
+            y: -p.rise,
+            opacity: [0, 0.75, 0.75, 0],
+          }}
+          transition={{
+            duration: p.duration,
+            delay: p.delay,
+            repeat: Infinity,
+            ease: 'easeOut',
+            times: [0, 0.15, 0.8, 1],
+          }}
+        />
+      ))}
+    </ul>
+  );
+}
+
+function ScrollCue({
+  opacity,
+  reduceMotion,
+}: Readonly<{ opacity: MotionValue<number>; reduceMotion: boolean }>) {
+  return (
+    <motion.div
+      className="home-v3-hero-scrollcue"
+      style={{ opacity }}
+      initial={{ y: -8, opacity: 0 }}
+      animate={{ y: 0, opacity: 0.65 }}
+      transition={{ duration: 0.7, delay: 1.9, ease: [0.22, 1, 0.36, 1] }}
+      aria-hidden="true"
+    >
+      <motion.span
+        className="home-v3-hero-scrollcue-chev"
+        animate={reduceMotion ? undefined : { y: [0, 6, 0] }}
+        transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <ChevronDown size={20} strokeWidth={2.2} aria-hidden="true" />
+      </motion.span>
+      <span>Scroll to see how we organise</span>
+    </motion.div>
   );
 }
 
