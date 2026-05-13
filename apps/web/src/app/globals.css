@@ -1940,19 +1940,98 @@ html.lenis body {
 .home-v3-hero {
   background: var(--v3-paper);
   border-bottom: 1px solid var(--v3-line);
+  isolation: isolate;
   overflow: hidden;
   padding: clamp(3rem, 6vw, 5.5rem) clamp(1rem, 4vw, 3rem)
     clamp(2.5rem, 5vw, 4.2rem);
   position: relative;
 }
 
-.home-v3-hero-glow {
-  background:
-    radial-gradient(circle at 92% 8%, rgba(221, 16, 23, 0.13), transparent 36rem),
-    radial-gradient(circle at 5% 90%, rgba(55, 90, 158, 0.14), transparent 32rem);
+.home-v3-hero-atmosphere {
   inset: 0;
   pointer-events: none;
   position: absolute;
+  z-index: 0;
+}
+
+.home-v3-hero-svg-grid {
+  color: rgba(21, 34, 73, 0.08);
+  inset: -8% -6%;
+  position: absolute;
+}
+
+.home-v3-hero-svg-grid svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.home-v3-hero-aurora {
+  border-radius: 999px;
+  filter: blur(72px);
+  height: 38rem;
+  pointer-events: none;
+  position: absolute;
+  width: 38rem;
+}
+
+.home-v3-hero-aurora-red {
+  background: radial-gradient(circle, rgba(221, 16, 23, 0.32), transparent 70%);
+  right: -10%;
+  top: -15%;
+}
+
+.home-v3-hero-aurora-navy {
+  background: radial-gradient(circle, rgba(55, 90, 158, 0.32), transparent 70%);
+  bottom: -18%;
+  height: 34rem;
+  left: -8%;
+  width: 34rem;
+}
+
+.home-v3-hero-spotlight {
+  background: radial-gradient(circle, rgba(221, 16, 23, 0.16), transparent 60%);
+  border-radius: 999px;
+  filter: blur(20px);
+  height: 22rem;
+  left: 0;
+  margin-left: -11rem;
+  margin-top: -11rem;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: opacity 320ms ease;
+  width: 22rem;
+  will-change: transform, opacity;
+  mix-blend-mode: multiply;
+}
+
+.home-v3-hero-corner {
+  background: rgba(221, 16, 23, 0.32);
+  border-radius: 999px;
+  height: 6px;
+  position: absolute;
+  width: 6px;
+}
+
+.home-v3-hero-corner-tl {
+  left: clamp(1.2rem, 3vw, 2.4rem);
+  top: clamp(1.2rem, 3vw, 2.4rem);
+}
+
+.home-v3-hero-corner-tr {
+  right: clamp(1.2rem, 3vw, 2.4rem);
+  top: clamp(1.2rem, 3vw, 2.4rem);
+}
+
+.home-v3-hero-corner-bl {
+  bottom: clamp(1.2rem, 3vw, 2.4rem);
+  left: clamp(1.2rem, 3vw, 2.4rem);
+}
+
+.home-v3-hero-corner-br {
+  bottom: clamp(1.2rem, 3vw, 2.4rem);
+  right: clamp(1.2rem, 3vw, 2.4rem);
 }
 
 .home-v3-hero-grid {
@@ -2065,8 +2144,11 @@ html.lenis body {
   }
 }
 
-.home-v3-hero-canvas {
+.home-v3-hero-canvas,
+.home-v3-hero-canvas-wrap {
   position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .home-v3-canvas-shell {
@@ -2078,6 +2160,33 @@ html.lenis body {
     0 6px 14px -6px rgba(21, 34, 73, 0.12);
   overflow: hidden;
   position: relative;
+  transform-style: preserve-3d;
+}
+
+.home-v3-canvas-spotlight {
+  background: radial-gradient(circle, rgba(221, 16, 23, 0.3), transparent 65%);
+  border-radius: 999px;
+  filter: blur(28px);
+  height: 16rem;
+  left: 0;
+  margin-left: -8rem;
+  margin-top: -8rem;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: opacity 320ms ease;
+  width: 16rem;
+  z-index: 0;
+  will-change: transform, opacity;
+}
+
+.home-v3-canvas-shell > .home-v3-canvas-frame,
+.home-v3-canvas-shell > .home-v3-canvas-header,
+.home-v3-canvas-shell > .home-v3-canvas-grid,
+.home-v3-canvas-shell > .home-v3-canvas-footer {
+  position: relative;
+  z-index: 1;
 }
 
 .home-v3-canvas-frame {
@@ -3859,5 +3968,12 @@ html.lenis body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .home-v3-hero-aurora,
+  .home-v3-hero-svg-grid,
+  .home-v3-hero-spotlight,
+  .home-v3-canvas-spotlight {
+    transform: none !important;
   }
 }
