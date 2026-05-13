@@ -3,7 +3,7 @@ import { HomeHero } from '@/components/home/hero';
 import { HomeOrbitalServices } from '@/components/home/orbital-services';
 import { HomeProofStrip } from '@/components/home/proof-strip';
 import { HomeLifecycle } from '@/components/home/lifecycle';
-import { HomeServicesUniverse } from '@/components/home/services-universe';
+import { HomeDeliverables } from '@/components/home/deliverables';
 import { HomeMomentsMarquee } from '@/components/home/moments-marquee';
 import { HomeDepth } from '@/components/home/depth';
 import { HomeBuiltFor } from '@/components/home/archetypes';
@@ -19,7 +19,7 @@ export default function Home() {
         <HomeOrbitalServices />
         <HomeProofStrip />
         <HomeLifecycle />
-        <HomeServicesUniverse />
+        <HomeDeliverables />
         <HomeMomentsMarquee />
         <HomeDepth />
         <HomeBuiltFor />

@@ -19,9 +19,9 @@ test.describe('Nucleus public website smoke checks', () => {
         name: 'The moments where outside judgement matters.',
       }),
     ).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'A connected advisory universe.' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'The common moments where Nucleus becomes useful.' })).toBeVisible();
-    await expect(page.getByText('Investment Manager to Soonicorn Angel Trust-I')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Sample deliverables across nine practices.' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'The decision moments where Nucleus becomes useful.' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Soonicorn Angel Trust-I' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Career paths across real business work.' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Knowledge built around services, not noise.' })).toBeVisible();
     await expect(page.getByRole('link', { name: /Start a conversation/ }).first()).toBeVisible();
