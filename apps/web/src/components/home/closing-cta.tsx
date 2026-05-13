@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Mail } from 'lucide-react';
 import { site } from '@/content/site';
 import { Magnetic, Reveal } from '@/components/motion-primitives';
@@ -11,12 +12,23 @@ const decisionPrompts = [
   'an acquisition',
   'an audit',
   'a valuation',
-  'a controls review',
+  'an IFC review',
   'an AIF setup',
 ];
 
+const ROTATOR_INTERVAL_MS = 2400;
+
 export function HomeClosingCta() {
   const reduceMotion = useReducedMotion();
+  const [promptIndex, setPromptIndex] = useState(0);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const timer = setInterval(() => {
+      setPromptIndex((i) => (i + 1) % decisionPrompts.length);
+    }, ROTATOR_INTERVAL_MS);
+    return () => clearInterval(timer);
+  }, [reduceMotion]);
 
   return (
     <section className="home-v3-closing" aria-label="Contact Nucleus Advisors">
@@ -27,47 +39,38 @@ export function HomeClosingCta() {
           Start the conversation
         </span>
         <h2 className="home-v3-closing-headline">
-          When the decision is{' '}
-          <span className="home-v3-closing-rotator" aria-live="polite">
-            {decisionPrompts.map((prompt, index) => (
-              <motion.span
-                key={prompt}
-                className="home-v3-closing-rotator-word"
-                initial={{ y: '100%', opacity: 0 }}
-                animate={{
-                  y: ['100%', '0%', '0%', '-100%'],
-                  opacity: [0, 1, 1, 0],
-                }}
-                transition={{
-                  duration: decisionPrompts.length * 2.2,
-                  repeat: Infinity,
-                  times: [
-                    index / decisionPrompts.length,
-                    (index + 0.15) / decisionPrompts.length,
-                    (index + 0.85) / decisionPrompts.length,
-                    (index + 1) / decisionPrompts.length,
-                  ],
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-              >
-                {prompt}
-              </motion.span>
-            ))}
-            <span aria-hidden="true" className="home-v3-closing-rotator-cursor" />
+          <span className="home-v3-closing-headline-row">When the decision is</span>
+          <span className="home-v3-closing-rotator-row">
+            <span className="home-v3-closing-rotator" aria-live="polite">
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.span
+                  key={promptIndex}
+                  className="home-v3-closing-rotator-word"
+                  initial={{ y: '110%', opacity: 0 }}
+                  animate={{ y: '0%', opacity: 1 }}
+                  exit={{ y: '-110%', opacity: 0 }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {decisionPrompts[promptIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
           </span>
-          ,<br />
-          bring it to a partner who has seen it before.
+          <span className="home-v3-closing-headline-row">
+            bring it to a partner who has seen it before.
+          </span>
         </h2>
         <p>
           One brief, one practitioner, one workplan. Tell us what you are working through and a
           partner will respond within one working day.
         </p>
         <div className="home-v3-closing-actions">
-          <Magnetic strength={0.22}>
+          <Magnetic strength={0.24}>
             <Link className="home-v3-button home-v3-button-primary home-v3-closing-cta" href="/contact">
-              <span>Start a conversation</span>
-              <ArrowRight aria-hidden="true" size={18} />
+              <span className="home-v3-closing-cta-label">Start a conversation</span>
+              <ArrowRight aria-hidden="true" size={18} className="home-v3-closing-cta-arrow" />
               <span className="home-v3-closing-cta-shine" aria-hidden="true" />
+              <span className="home-v3-closing-cta-pulse" aria-hidden="true" />
             </Link>
           </Magnetic>
           <a className="home-v3-button home-v3-button-ghost-light" href={`mailto:${site.email}`}>
