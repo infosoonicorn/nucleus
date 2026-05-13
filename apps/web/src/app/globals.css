@@ -2771,68 +2771,299 @@ html.lenis body {
   text-transform: uppercase;
 }
 
-/* ---------- lifecycle ---------- */
+/* ---------- lifecycle (journey: scroll-driven horizontal stacking on desktop, stack on mobile) ---------- */
 
 .home-v3-lifecycle {
   background: var(--v3-paper);
-  padding: clamp(3.5rem, 6vw, 6rem) clamp(1rem, 4vw, 3rem);
+  padding: clamp(3.5rem, 6vw, 6rem) 0 0;
   position: relative;
 }
 
-.home-v3-lifecycle-grid {
-  display: grid;
-  gap: 1.1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  list-style: none;
-  margin: 0 auto;
-  max-width: 1280px;
-  padding: 0;
+.home-v3-lifecycle .home-v3-section-header {
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  padding: 0 clamp(1rem, 4vw, 3rem);
 }
 
-.home-v3-lifecycle-card {
-  background: var(--v3-panel);
-  border: 1px solid var(--v3-line);
-  border-radius: 16px;
-  padding: 1.8rem 1.6rem 1.6rem;
-  position: relative;
-  transition: transform 360ms var(--ease-out-soft, ease), box-shadow 360ms var(--ease-out-soft, ease);
-}
-
-.home-v3-lifecycle-card:hover {
-  box-shadow: 0 18px 40px -20px rgba(21, 34, 73, 0.22);
-  transform: translateY(-3px);
-}
-
+/* shared step + body type */
 .home-v3-lifecycle-step {
   color: var(--v3-red);
   font-feature-settings: "tnum" 1;
   font-size: 0.78rem;
   font-weight: 860;
   letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-.home-v3-lifecycle-card h3 {
+/* mobile / SSR stack */
+.home-v3-lifecycle-stack {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 0 auto clamp(3rem, 5vw, 5rem);
+  max-width: 1280px;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.home-v3-lifecycle-stack-card {
+  background: var(--v3-panel);
+  border: 1px solid var(--v3-line);
+  border-radius: 16px;
+  display: grid;
+  gap: 0.65rem;
+  padding: 1.6rem 1.5rem 1.55rem;
+  position: relative;
+}
+
+.home-v3-lifecycle-stack-card h3 {
   color: var(--v3-ink);
   font-size: 1.18rem;
   font-weight: 720;
   letter-spacing: -0.005em;
   line-height: 1.25;
-  margin: 0.6rem 0 0.6rem;
+  margin: 0;
 }
 
-.home-v3-lifecycle-card p {
+.home-v3-lifecycle-stack-card p {
   color: var(--v3-muted);
   font-size: 0.96rem;
   line-height: 1.55;
   margin: 0;
 }
 
-.home-v3-lifecycle-rule {
-  background: linear-gradient(90deg, var(--v3-red) 0%, transparent 60%);
-  display: block;
-  height: 2px;
-  margin-top: 1.4rem;
+/* desktop scroll-driven journey */
+.home-v3-lifecycle-scroll {
+  min-height: 280vh;
+  position: relative;
+}
+
+.home-v3-lifecycle-sticky {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  height: 100vh;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4rem 0 3rem;
+  position: sticky;
+  top: 0;
   width: 100%;
+}
+
+.home-v3-lifecycle-track {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 460px;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  padding-left: clamp(2rem, 6vw, 5rem);
+}
+
+.home-v3-lifecycle-card {
+  background: var(--v3-panel);
+  border: 1px solid var(--v3-line);
+  border-radius: 22px;
+  box-shadow:
+    0 24px 60px -28px rgba(21, 34, 73, 0.32),
+    0 4px 12px -6px rgba(21, 34, 73, 0.1);
+  display: grid;
+  flex: 0 0 auto;
+  gap: 1.05rem;
+  grid-template-rows: auto auto 1fr auto;
+  height: 100%;
+  margin-right: -100%;
+  overflow: hidden;
+  padding: 2rem 2rem 1.8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.home-v3-lifecycle-card::before {
+  background: radial-gradient(circle at 100% 0%, rgba(221, 16, 23, 0.12), transparent 18rem);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.home-v3-lifecycle-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-v3-lifecycle-card-head {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.home-v3-lifecycle-card-step {
+  color: var(--v3-red);
+  font-feature-settings: "tnum" 1;
+  font-size: 0.74rem;
+  font-weight: 860;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.home-v3-lifecycle-card-meter {
+  background: var(--v3-line);
+  border-radius: 999px;
+  flex: 1;
+  height: 4px;
+  margin-left: 1rem;
+  max-width: 180px;
+  overflow: hidden;
+}
+
+.home-v3-lifecycle-card-meter span {
+  background: linear-gradient(90deg, var(--v3-red), #ff6b71);
+  border-radius: 999px;
+  display: block;
+  height: 100%;
+}
+
+.home-v3-lifecycle-card h3 {
+  color: var(--v3-ink);
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.15;
+  margin: 0;
+  max-width: 92%;
+}
+
+.home-v3-lifecycle-card p {
+  color: var(--v3-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 92%;
+}
+
+.home-v3-lifecycle-card-footer {
+  align-items: center;
+  border-top: 1px solid var(--v3-line);
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: 1fr;
+  padding-top: 1rem;
+}
+
+.home-v3-lifecycle-card-footer-label {
+  color: var(--v3-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-v3-lifecycle-card-footer > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.home-v3-lifecycle-card-pill {
+  align-items: center;
+  background: var(--v3-paper);
+  border: 1px solid var(--v3-line);
+  border-radius: 999px;
+  color: var(--v3-ink-2);
+  display: inline-flex;
+  font-size: 0.8rem;
+  font-weight: 720;
+  gap: 0.32rem;
+  padding: 0.4rem 0.8rem;
+  transition:
+    background 220ms var(--ease-out-soft, ease),
+    border-color 220ms var(--ease-out-soft, ease),
+    color 220ms var(--ease-out-soft, ease);
+}
+
+.home-v3-lifecycle-card-pill:hover,
+.home-v3-lifecycle-card-pill:focus-visible {
+  background: var(--v3-navy);
+  border-color: var(--v3-navy);
+  color: #fff;
+  outline: none;
+}
+
+/* progress rail under the sticky journey */
+.home-v3-lifecycle-rail {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0 auto;
+  max-width: 1240px;
+  padding: 0 clamp(2rem, 6vw, 5rem);
+  width: 100%;
+}
+
+.home-v3-lifecycle-rail-track {
+  background: var(--v3-line);
+  border-radius: 999px;
+  height: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.home-v3-lifecycle-rail-fill {
+  background: linear-gradient(90deg, var(--v3-red), var(--v3-navy));
+  display: block;
+  height: 100%;
+}
+
+.home-v3-lifecycle-rail-ticks {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home-v3-lifecycle-rail-ticks li {
+  color: var(--v3-muted);
+  font-feature-settings: "tnum" 1;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-v3-lifecycle-scroll {
+    min-height: auto;
+  }
+
+  .home-v3-lifecycle-sticky {
+    height: auto;
+    overflow: visible;
+    padding: 0;
+    position: static;
+  }
+
+  .home-v3-lifecycle-track {
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: auto;
+    padding-left: clamp(1rem, 4vw, 3rem);
+    padding-right: clamp(1rem, 4vw, 3rem);
+  }
+
+  .home-v3-lifecycle-card {
+    margin-right: 0;
+    position: relative;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  .home-v3-lifecycle-rail {
+    display: none;
+  }
 }
 
 /* ---------- services universe (dark) ---------- */
