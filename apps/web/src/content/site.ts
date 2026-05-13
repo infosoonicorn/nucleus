@@ -417,6 +417,30 @@ export const industries = [
   'Companies preparing for audit, transaction or listing readiness',
 ];
 
+export type Testimonial = {
+  quote: string;
+  authorName: string;
+  authorRole: string;
+  authorCompany?: string;
+  companyLogo?: string;
+  authorPhoto?: string;
+  consentNote?: string;
+  featured?: boolean;
+};
+
+/*
+ * Real, consented testimonials only.
+ *
+ * Workflow before adding an entry here:
+ *   1. Get written consent from the client to attribute the quote on the public site.
+ *   2. Capture the consent context in `consentNote` (e.g. "Approved by signatory on 2026-04-12").
+ *   3. Confirm with the relevant partner that the client logo/photo can be used externally.
+ *
+ * When the array is empty, the homepage testimonial section auto-hides in production
+ * and shows a clearly-marked "awaiting consented quotes" placeholder in dev.
+ */
+export const testimonials: Testimonial[] = [];
+
 export const insightCategories = [
   'Deals and Investment Banking',
   'M&A and Restructuring',

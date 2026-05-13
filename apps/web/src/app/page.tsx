@@ -8,6 +8,7 @@ import { HomeMomentsMarquee } from '@/components/home/moments-marquee';
 import { HomeDepth } from '@/components/home/depth';
 import { HomeIndustries } from '@/components/home/industries';
 import { HomeTeaserRow } from '@/components/home/teaser-row';
+import { HomeTestimonials } from '@/components/home/testimonials';
 import { HomeClosingCta } from '@/components/home/closing-cta';
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
         <HomeDepth />
         <HomeIndustries />
         <HomeTeaserRow />
+        <HomeTestimonials />
         <HomeClosingCta />
       </main>
     </PageShell>
