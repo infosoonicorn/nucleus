@@ -38,7 +38,7 @@ await shot('.home-v3-lifecycle', 'lifecycle');
 await shot('.home-v3-services', 'services');
 await shot('.home-v3-moments', 'moments');
 await shot('.home-v3-depth', 'depth');
-await shot('.home-v3-industries', 'industries');
+await shot('.home-v3-builtfor', 'builtfor');
 await shot('.home-v3-teaser', 'teaser');
 await shot('.home-v3-closing', 'closing');
 

@@ -3,9 +3,13 @@ import {
   BriefcaseBusiness,
   Building2,
   ClipboardCheck,
+  Coins,
+  Crown,
+  Factory,
   FileCheck2,
   Landmark,
   LineChart,
+  Rocket,
   Scale,
   ShieldCheck,
 } from 'lucide-react';
@@ -408,13 +412,56 @@ export const services: Service[] = [
   },
 ];
 
-export const industries = [
-  'Startups and funded companies',
-  'Founder-led and family businesses',
-  'Investor-backed growth companies',
-  'Funds, family offices and investment networks',
-  'Manufacturing, services and digital-first businesses',
-  'Companies preparing for audit, transaction or listing readiness',
+export type ClientArchetype = {
+  slug: string;
+  name: string;
+  valueLine: string;
+  icon: LucideIcon;
+  accent?: 'red' | 'navy';
+};
+
+/**
+ * The five operating contexts the Nucleus bench is configured for.
+ * Replaces the older flat `industries` list; the about page and homepage both
+ * render from this single source.
+ */
+export const clientArchetypes: ClientArchetype[] = [
+  {
+    slug: 'manufacturing',
+    name: 'Manufacturing',
+    valueLine:
+      'Capital intensity, working capital, plant accounting and audit complexity.',
+    icon: Factory,
+    accent: 'red',
+  },
+  {
+    slug: 'services',
+    name: 'Services',
+    valueLine:
+      'Revenue recognition, contract economics, MIS and people-cost discipline.',
+    icon: BriefcaseBusiness,
+  },
+  {
+    slug: 'funded-tech',
+    name: 'Funded tech',
+    valueLine:
+      'Fundraise readiness, runway, valuation, board reporting and ESOP.',
+    icon: Rocket,
+  },
+  {
+    slug: 'family-business',
+    name: 'Family business',
+    valueLine:
+      'Governance, succession, restructuring and quiet professional rigour.',
+    icon: Crown,
+  },
+  {
+    slug: 'funds-and-investors',
+    name: 'Funds & investors',
+    valueLine:
+      'AIF setup, fund operations, portfolio diligence and reporting.',
+    icon: Coins,
+  },
 ];
 
 export type Testimonial = {

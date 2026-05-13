@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ContactBand, ProofBar, SectionHeader } from '@/components/sections';
 import { PageShell } from '@/components/site-chrome';
-import { industries, site } from '@/content/site';
+import { clientArchetypes, site } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'About Nucleus Advisors | Full-Spectrum Consulting Firm in India',
@@ -103,10 +103,10 @@ export default function AboutPage() {
           </div>
         </section>
         <section className="section">
-          <SectionHeader eyebrow="Sector experience" title="Where Nucleus is designed to help." />
+          <SectionHeader eyebrow="Built for" title="Where Nucleus is designed to help." />
           <div className="pill-grid">
-            {industries.map((industry) => (
-              <span key={industry}>{industry}</span>
+            {clientArchetypes.map((archetype) => (
+              <span key={archetype.slug}>{archetype.name}</span>
             ))}
           </div>
         </section>
