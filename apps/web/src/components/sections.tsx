@@ -25,8 +25,11 @@ export function ProofBar() {
     <div className="proof-bar" aria-label="Firm proof">
       {proof.map((item) => (
         <div key={item.label}>
-          <strong>{item.value}</strong>
-          <span>{item.label}</span>
+          <strong>
+            {item.value}
+            {item.suffix}
+          </strong>
+          <span>{item.label.toLowerCase()}</span>
         </div>
       ))}
     </div>

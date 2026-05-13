@@ -46,14 +46,24 @@ export const navigation = [
   { label: 'Contact', href: '/contact' },
 ];
 
-export const proof = [
-  { value: '8', label: 'partners' },
-  { value: '90+', label: 'team members' },
-  { value: '130+', label: 'clients' },
-  { value: '50+', label: 'deals' },
-  { value: '5', label: 'offices' },
-  { value: '100+', label: 'years combined experience' },
+export type ProofPoint = {
+  value: number;
+  suffix: string;
+  label: string;
+};
+
+export const proof: ProofPoint[] = [
+  { value: 8, suffix: '', label: 'Partners' },
+  { value: 90, suffix: '+', label: 'Team members' },
+  { value: 130, suffix: '+', label: 'Clients served' },
+  { value: 50, suffix: '+', label: 'Deals closed' },
+  { value: 5, suffix: '', label: 'Offices' },
+  { value: 100, suffix: '+', label: 'Years combined experience' },
 ];
+
+// Manual review date for proof figures. Bump when the headcount/deals/offices
+// numbers above are re-validated by partners. Surfaced on the proof strip.
+export const proofAsOf = { iso: '2026-05', label: 'May 2026' } as const;
 
 export const lifecycle = [
   {

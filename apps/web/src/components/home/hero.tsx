@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { FadeIn, Magnetic, Reveal, WordReveal } from '@/components/motion-primitives';
 import { LottieSlot } from '@/components/lottie-slot';
+import { services, site } from '@/content/site';
 
 const coverage = [
   { label: 'Transactions', icon: Landmark, line: 'Capital, M&A, restructuring' },
@@ -249,7 +250,7 @@ export function HomeHero() {
             </ul>
             <footer className="home-v3-canvas-footer">
               <span className="home-v3-canvas-pulse" aria-hidden="true" />
-              Live across 5 offices · 9 service lines
+              Live across {site.locations.length} offices · {services.length} service lines
             </footer>
           </div>
         </motion.div>

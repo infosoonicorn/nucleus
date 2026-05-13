@@ -7,6 +7,8 @@ import { ArrowUpRight, GraduationCap, Newspaper } from 'lucide-react';
 import { Reveal } from '@/components/motion-primitives';
 
 // Short, comparable labels so both panels read with the same density.
+// Insight tracks here are a condensed view of `insightCategories` from
+// `site.ts` (which has 8 entries); keep both in sync when editing.
 const careerTracks = [
   'CA articleship',
   'CA / MBA',

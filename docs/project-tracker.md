@@ -42,7 +42,7 @@ Update rules:
 
 ## Current Snapshot
 
-Last updated: 2026-05-12
+Last updated: 2026-05-13 — home page polish pass (nav blur, moments rail grid, hero counters derived from data, single source of truth for proof + `proofAsOf`, lifecycle scroll trimmed)
 
 Current branch: `main` (also `claude/sleepy-kirch-f73f38` worktree).
 

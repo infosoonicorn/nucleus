@@ -6,7 +6,25 @@ No active task.
 
 ## Last Action
 
-Redesigned the homepage end-to-end with a motion-driven design system. The rest of the site (services, about, careers, insights, contact) is intentionally untouched — that pass is queued next.
+Home page polish pass — six fixes from a section-by-section audit (desktop + mobile + seam screenshots, see `outputs/sec-*.png` and `outputs/seam2-*.png`).
+
+Changes:
+
+- **Sticky nav now has backdrop blur.** `.site-header` in `apps/web/src/app/globals.css` dropped to `background: rgba(247,245,239,0.78)` plus `backdrop-filter: blur(14px) saturate(1.05)` (with a `@supports` fallback to 0.96 opacity for browsers without backdrop-filter). Fixes content (e.g., proof-strip headings) faintly bleeding under the nav.
+- **Moments decision rail wraps evenly.** `.home-v3-moments-rail` switched from `flex-wrap` to `grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr))`. Seven pills now lay out 4+3 instead of 3+3+1 with an orphan.
+- **Hero "Live across N offices · M service lines" derives from data.** `apps/web/src/components/home/hero.tsx` now imports `site` and `services` from `@/content/site` instead of hard-coding `5` and `9`.
+- **`proof` array is now a single source of truth.** Reshaped `proof` in `apps/web/src/content/site.ts` to `{ value: number, suffix: string, label: string }` and added `proofAsOf`. `proof-strip.tsx` imports both; the local duplicate is gone. `ProofBar` in `apps/web/src/components/sections.tsx` (used on About) updated to render `value + suffix` and lowercase the label inline.
+- **`AS_AT` no longer hard-coded.** Pulled from `proofAsOf` in `site.ts` so the date has a single owner.
+- **Lifecycle scroll height trimmed.** `.home-v3-lifecycle-scroll` `min-height: 280vh → 220vh`. Cut ~540px of trailing cream after the cards finish stacking without breaking the journey pacing.
+- Added an inline comment in `teaser-row.tsx` noting that its 4 insight tracks are a condensed view of the 8-entry `insightCategories` in `site.ts`.
+
+Skipped (intentional, not bugs):
+
+- Section heading alignment mix (left for content-dense sections, centered for stage sections) — pattern reads as intentional rhythm.
+- Orbital → proof hard seam — design choice (dark navy → cream cut, not a defect).
+- Testimonials hidden in production — correct per CLAUDE.md ("no fake live content"); shows EmptyState in dev only.
+
+Previous: homepage redesign end-to-end with motion-driven design system (see prior handoffs).
 
 Completed in this pass:
 
@@ -27,6 +45,7 @@ Completed in this pass:
 1. Source the hero Lottie per `docs/home-hero-lottie-spec.md` and drop it at `apps/web/public/lottie/nucleus-hero.json`.
 2. Apply the new motion / spacing language to About, Services, Service Detail, Careers, Insights, Contact in a follow-up pass — without redesigning each from scratch.
 3. Push the branch and run the deployed quality gate (`PLAYWRIGHT_BASE_URL=https://nucleus-bay.vercel.app pnpm test:e2e`).
+4. Bump `proofAsOf` in `apps/web/src/content/site.ts` when partners re-validate the headcount/clients/deals figures.
 
 ## Changed Files In Current Work
 

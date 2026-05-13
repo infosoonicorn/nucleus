@@ -1115,7 +1115,9 @@ body {
 
 .site-header {
   align-items: center;
-  background: rgba(247, 245, 239, 0.92);
+  background: rgba(247, 245, 239, 0.78);
+  -webkit-backdrop-filter: blur(14px) saturate(1.05);
+  backdrop-filter: blur(14px) saturate(1.05);
   border-bottom: 1px solid var(--site-line);
   display: flex;
   gap: 1rem;
@@ -1125,6 +1127,12 @@ body {
   position: sticky;
   top: 0;
   z-index: 20;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header {
+    background: rgba(247, 245, 239, 0.96);
+  }
 }
 
 .brand {
@@ -3021,7 +3029,7 @@ html.lenis body {
 
 /* desktop scroll-driven journey */
 .home-v3-lifecycle-scroll {
-  min-height: 280vh;
+  min-height: 220vh;
   position: relative;
 }
 
@@ -3701,14 +3709,23 @@ html.lenis body {
 }
 
 .home-v3-moments-rail {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 0.5rem;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
   list-style: none;
   margin: clamp(1.5rem, 3vw, 2.2rem) auto 0;
   max-width: 1080px;
   padding: 0;
+}
+
+.home-v3-moments-rail > li {
+  display: flex;
+}
+
+.home-v3-moments-rail .home-v3-moments-pill {
+  flex: 1 1 auto;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .home-v3-moments-pill {

@@ -3,17 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { CountUp, Reveal } from '@/components/motion-primitives';
-
-const proof = [
-  { value: 8, suffix: '', label: 'Partners' },
-  { value: 90, suffix: '+', label: 'Team members' },
-  { value: 130, suffix: '+', label: 'Clients served' },
-  { value: 50, suffix: '+', label: 'Deals closed' },
-  { value: 5, suffix: '', label: 'Offices' },
-  { value: 100, suffix: '+', label: 'Years combined experience' },
-];
-
-const AS_AT = 'May 2026';
+import { proof, proofAsOf } from '@/content/site';
 
 export function HomeProofStrip() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -36,7 +26,7 @@ export function HomeProofStrip() {
             <span className="home-v3-proof-eyebrow">By the numbers</span>
             <span className="home-v3-proof-asof">
               <span aria-hidden="true" className="home-v3-proof-asof-dot" />
-              As at <time dateTime="2026-05">{AS_AT}</time>
+              As at <time dateTime={proofAsOf.iso}>{proofAsOf.label}</time>
             </span>
           </div>
           <h2>The depth behind the advisory.</h2>
