@@ -153,6 +153,7 @@ export function FundraiseStages() {
                       dotRefs.current[index] = el;
                     }}
                     type="button"
+                    aria-label={s.name}
                     aria-selected={index === active}
                     aria-controls="fundraise-panel"
                     tabIndex={index === active ? 0 : -1}

@@ -5,7 +5,6 @@ import { services } from '@/content/site';
 import { ServiceHero } from '@/components/services/service-hero';
 import { WhenToEngage } from '@/components/services/when-to-engage';
 import { HowWeHelp } from '@/components/services/how-we-help';
-import { Deliverables } from '@/components/services/deliverables';
 import { ServiceInsights } from '@/components/services/service-insights';
 import { Process } from '@/components/services/process';
 import { Proof } from '@/components/services/proof';
@@ -15,7 +14,6 @@ import { LeadMagnet } from '@/components/services/lead-magnet';
 import { RelatedServices } from '@/components/services/related-services';
 import { ContactBand } from '@/components/services/contact-band';
 import { FundraiseStages } from '@/components/services/investment-banking/fundraise-stages';
-import { ArtefactStack } from '@/components/services/investment-banking/artefact-stack';
 import { SoonicornCallout } from '@/components/services/investment-banking/soonicorn-callout';
 
 const SERVICE_SLUG = 'investment-banking';
@@ -37,9 +35,7 @@ export default function InvestmentBankingPage() {
         <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
         <FundraiseStages />
         <HowWeHelp service={service} />
-        <ArtefactStack />
         <SoonicornCallout service={service} />
-        <Deliverables service={service} />
         <ServiceInsights service={service} />
         <Process service={service} />
         <Proof service={service} />
