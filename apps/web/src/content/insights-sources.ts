@@ -2,13 +2,13 @@ export type ServiceInsightSourceKind =
   | 'SEBI'
   | 'RBI'
   | 'MCA'
-  | 'IncomeTax'
+  | 'CBDT'
   | 'DPIIT'
   | 'IBBI'
   | 'ICAI'
   | 'CBIC';
 
-export type ServiceInsightSource = {
+type ServiceInsightSourceBase = {
   id: string;
   source: ServiceInsightSourceKind;
   title: string;
@@ -16,10 +16,20 @@ export type ServiceInsightSource = {
   url: string; // external
   whyItMatters: string; // one short sentence
   serviceSlugs: string[]; // e.g. ['investment-banking']
-  reviewerStatus: 'pending' | 'approved';
-  reviewerApprovedAt?: string;
 };
 
+export type ServiceInsightSource =
+  | (ServiceInsightSourceBase & {
+      reviewerStatus: 'approved';
+      reviewerApprovedAt: string;
+    })
+  | (ServiceInsightSourceBase & {
+      reviewerStatus: 'pending';
+      reviewerApprovedAt?: never;
+    });
+
+/** A category we plan to publish content under. Renders as a 'coming soon' card
+ * in <ServiceInsights> until real articles land in a future Phase 2 CMS pass. */
 export type PlannedKnowledgeCategory = {
   serviceSlug: string;
   title: string;
@@ -36,7 +46,8 @@ export const insightSources: ServiceInsightSource[] = [
     title: 'SEBI Master Circular for Alternative Investment Funds',
     publishedOn: '2025-05-07',
     url: 'https://www.sebi.gov.in/legal/master-circulars/may-2025/master-circular-for-alternative-investment-funds_94177.html',
-    whyItMatters: 'Consolidated AIF rules — relevant context for founders evaluating fund-routed capital.',
+    whyItMatters:
+      'Consolidated AIF rules — relevant context for founders evaluating fund-routed capital.',
     serviceSlugs: ['investment-banking', 'aif-fund-management'],
     reviewerStatus: 'pending',
   },
@@ -45,6 +56,7 @@ export const insightSources: ServiceInsightSource[] = [
     source: 'RBI',
     title: 'RBI Master Direction — Foreign Investment in India (FEMA)',
     publishedOn: '2024-08-12',
+    // note: landing page URL; reviewer to replace with the specific FEMA FDI master direction before approval.
     url: 'https://rbi.org.in/Scripts/BS_ViewMasDirections.aspx',
     whyItMatters:
       'Governs how non-resident investors can put capital into Indian companies — directly affects round structuring.',
@@ -64,7 +76,7 @@ export const insightSources: ServiceInsightSource[] = [
   },
   {
     id: 'incometax-angel-tax-rules',
-    source: 'IncomeTax',
+    source: 'CBDT',
     title: 'CBDT notification on angel tax valuation rules',
     publishedOn: '2023-09-25',
     url: 'https://incometaxindia.gov.in/communications/notification/notification-no-81-2023.pdf',
