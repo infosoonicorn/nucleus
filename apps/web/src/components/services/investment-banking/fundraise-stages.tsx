@@ -63,6 +63,7 @@ export function FundraiseStages() {
     return Math.floor(clamped * STAGES.length);
   });
   const [active, setActive] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   useEffect(() => {
     if (reduceMotion) return;
     return stageIndex.on('change', (v) =>
@@ -73,10 +74,18 @@ export function FundraiseStages() {
   function handleKey(event: React.KeyboardEvent<HTMLDivElement>) {
     if (event.key === 'ArrowRight') {
       event.preventDefault();
-      setActive((i) => Math.min(STAGES.length - 1, i + 1));
+      setActive((i) => {
+        const next = Math.min(STAGES.length - 1, i + 1);
+        tabRefs.current[next]?.focus();
+        return next;
+      });
     } else if (event.key === 'ArrowLeft') {
       event.preventDefault();
-      setActive((i) => Math.max(0, i - 1));
+      setActive((i) => {
+        const next = Math.max(0, i - 1);
+        tabRefs.current[next]?.focus();
+        return next;
+      });
     }
   }
 
@@ -122,6 +131,9 @@ export function FundraiseStages() {
               <button
                 role="tab"
                 key={stage.ordinal}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
                 type="button"
                 aria-selected={index === active}
                 tabIndex={index === active ? 0 : -1}
