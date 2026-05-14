@@ -52,6 +52,7 @@ export function LeadMagnet({ service }: Readonly<{ service: Service }>) {
           type="submit"
           className="home-v3-button home-v3-button-primary"
           disabled={status === 'submitting' || status === 'ok'}
+          aria-busy={status === 'submitting'}
         >
           {status === 'ok' ? 'Received' : 'Request resource'}
         </button>
