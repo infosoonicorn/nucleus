@@ -15,6 +15,20 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
+export type ServiceCrossLink = {
+  kind: 'in-house-fund' | 'partner' | 'related-firm';
+  brand: string;
+  logoPath: string;          // path under /public, e.g. '/brand/soonicorn-ventures.png'
+  eyebrow: string;
+  title: string;
+  body: string;
+  ctaLabel: string;
+  href: string;              // external URL
+  disclaimer: string;
+  reviewerStatus: 'pending' | 'approved';
+  reviewerApprovedAt?: string;
+};
+
 export type Service = {
   title: string;
   slug: string;
@@ -29,6 +43,12 @@ export type Service = {
   cta: string;
   proof?: string[];
   icon: LucideIcon;
+  // New fields added by Task 1:
+  ordinal: string;                          // '01' through '09'. Required.
+  displayHeadline?: string;                 // 3-word punchier hero headline; falls back to title.
+  whenToEngage?: string[];                  // 4 bullets; falls back to generic four if absent.
+  faq?: { q: string; a: string }[];         // 4 questions; missing answers render 'Updating soon'.
+  crossLink?: ServiceCrossLink;             // Optional cross-link panel data.
 };
 
 export const site = {
@@ -135,6 +155,21 @@ export const services: Service[] = [
     leadMagnet: 'Fundraise Readiness Checklist',
     cta: 'Discuss your fundraise',
     icon: Landmark,
+    ordinal: '01',
+    displayHeadline: 'Prepare. Position. Close.',
+    crossLink: {
+      kind: 'in-house-fund',
+      brand: 'Soonicorn Ventures',
+      logoPath: '/brand/soonicorn-ventures.png',
+      eyebrow: '§ In-house capital alongside advisory',
+      title: 'Soonicorn Ventures',
+      body: "Nucleus is Investment Manager to Soonicorn Angel Trust-I, an early-stage fund focused on seed and pre-Series A startups raising up to US $1M. If your round fits the fund's mandate, you can also explore Soonicorn Ventures directly.",
+      ctaLabel: 'Visit Soonicorn Ventures',
+      href: 'https://soonicornventures.com/',
+      disclaimer: 'This is not an offer or solicitation to invest in or raise from any fund or security. Any engagement with Soonicorn Ventures is subject to its fund mandate, stage and sector fit, and independent diligence.',
+      reviewerStatus: 'approved',
+      reviewerApprovedAt: '2026-05-14',
+    },
   },
   {
     title: 'M&A Advisory',
@@ -174,6 +209,7 @@ export const services: Service[] = [
     leadMagnet: 'M&A Readiness Checklist',
     cta: 'Evaluate a transaction',
     icon: BriefcaseBusiness,
+    ordinal: '02',
   },
   {
     title: 'Risk Advisory',
@@ -207,6 +243,7 @@ export const services: Service[] = [
     leadMagnet: 'Internal Controls Health Check',
     cta: 'Review your control environment',
     icon: ShieldCheck,
+    ordinal: '03',
   },
   {
     title: 'Tax & Regulatory',
@@ -240,6 +277,7 @@ export const services: Service[] = [
     leadMagnet: 'GST and Tax Compliance Calendar',
     cta: 'Review tax and compliance exposure',
     icon: Scale,
+    ordinal: '04',
   },
   {
     title: 'Assurance',
@@ -274,6 +312,7 @@ export const services: Service[] = [
     leadMagnet: 'Audit Readiness Checklist',
     cta: 'Prepare for audit readiness',
     icon: FileCheck2,
+    ordinal: '05',
   },
   {
     title: 'Valuations',
@@ -307,6 +346,7 @@ export const services: Service[] = [
     leadMagnet: 'Valuation Readiness Checklist',
     cta: 'Start a valuation discussion',
     icon: LineChart,
+    ordinal: '06',
   },
   {
     title: 'Finance Outsourcing',
@@ -343,6 +383,7 @@ export const services: Service[] = [
     leadMagnet: 'Monthly MIS Template for Founders',
     cta: 'Strengthen finance operations',
     icon: BarChart3,
+    ordinal: '07',
   },
   {
     title: 'Corporate Secretarial',
@@ -377,6 +418,7 @@ export const services: Service[] = [
     leadMagnet: 'Corporate Compliance Calendar',
     cta: 'Review corporate compliance status',
     icon: ClipboardCheck,
+    ordinal: '08',
   },
   {
     title: 'AIF & Fund Management',
@@ -419,6 +461,7 @@ export const services: Service[] = [
       'Proof is shown as operating experience, not as investment solicitation or performance promotion.',
     ],
     icon: Building2,
+    ordinal: '09',
   },
 ];
 
