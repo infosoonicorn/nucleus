@@ -243,7 +243,7 @@ function DocPreview({ stage }: Readonly<{ stage: Stage }>) {
   // document, not a random skeleton. Seed from ordinal so each stage is distinct.
   const lines = useMemo(() => {
     const seed = parseInt(stage.ordinal, 10);
-    return Array.from({ length: 9 }).map((_, i) => {
+    return Array.from({ length: 6 }).map((_, i) => {
       const base = ((seed * 53 + i * 17) % 35) + 55; // 55–90% widths
       return base;
     });
