@@ -5733,71 +5733,365 @@ html.lenis body {
   border-radius: 12px;
 }
 
-/* Fundraise stages — pinned (desktop) */
-.service-v1-stages-pinned-host { height: 600vh; position: relative; }
-.service-v1-stages-sticky {
+/* =============================================================
+   Fundraise stages — editorial scroll story (IB centerpiece).
+   Scroll-pinned host (600vh tall) + sticky 100vh viewport. Inside:
+   • Headline + eyebrow at top
+   • Horizontal stage track with dots and red fill rail
+   • Active-stage panel (text on left, document mockup on right)
+   ============================================================= */
+
+.service-v1-fundraise-host { height: 600vh; position: relative; }
+.service-v1-fundraise-sticky {
   position: sticky;
   top: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
 }
-.service-v1-stages-tablist {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 8px 0;
-  margin: 16px 0 24px;
+
+.service-v1-fundraise {
+  width: 100%;
+  background: var(--service-band-cream);
 }
-.service-v1-stages-tab {
-  border: 1px solid var(--service-divider);
-  background: #fff;
-  border-radius: 999px;
-  padding: 8px 14px;
+
+/* Header (eyebrow + headline) */
+.service-v1-fundraise-header { margin-bottom: 36px; }
+.service-v1-fundraise-eyebrow {
   display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--service-accent-red);
+  font: 500 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.service-v1-fundraise-eyebrow-rule {
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+.service-v1-fundraise-headline {
+  font-family: var(--font-serif, "Newsreader", Georgia, serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: -0.012em;
+  color: #141828;
+  margin: 14px 0 0;
+  max-width: 920px;
+}
+.service-v1-fundraise-headline em {
+  font-style: italic;
+  color: var(--service-accent-red);
+}
+
+/* Track */
+.service-v1-fundraise-track-wrap {
+  position: relative;
+  margin: 24px 0 8px;
+  padding: 8px 0 32px;
+}
+.service-v1-fundraise-track-line {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 19px;
+  height: 1px;
+  background: rgba(20, 24, 40, 0.16);
+  pointer-events: none;
+}
+.service-v1-fundraise-track-fill {
+  display: block;
+  height: 100%;
+  background: var(--service-accent-red);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service-v1-fundraise-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+.service-v1-fundraise-dot {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  transition: background .2s ease, border-color .2s ease;
+  font: inherit;
+  color: inherit;
 }
-.service-v1-stages-tab.is-active {
-  background: var(--service-accent-red);
-  border-color: var(--service-accent-red);
-  color: #fff;
-}
-.service-v1-stages-tab:focus-visible {
+.service-v1-fundraise-dot:focus-visible {
   outline: 2px solid var(--service-accent-red);
-  outline-offset: 2px;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
-.service-v1-stage-ordinal {
-  font-variant-numeric: tabular-nums;
+.service-v1-fundraise-dot-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--service-band-cream);
+  border: 1.5px solid rgba(20, 24, 40, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.service-v1-fundraise-dot-inner {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(20, 24, 40, 0.2);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.service-v1-fundraise-dot.is-past .service-v1-fundraise-dot-mark {
+  border-color: var(--service-accent-red);
+}
+.service-v1-fundraise-dot.is-past .service-v1-fundraise-dot-inner {
+  background: var(--service-accent-red);
+}
+.service-v1-fundraise-dot.is-active .service-v1-fundraise-dot-mark {
+  border-color: var(--service-accent-red);
+  transform: scale(1.18);
+  box-shadow: 0 0 0 4px rgba(122, 31, 31, 0.12);
+}
+.service-v1-fundraise-dot.is-active .service-v1-fundraise-dot-inner {
+  background: var(--service-accent-red);
+  transform: scale(1.15);
+}
+.service-v1-fundraise-dot-ord {
+  font: 500 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+  color: rgba(20, 24, 40, 0.55);
+}
+.service-v1-fundraise-dot.is-active .service-v1-fundraise-dot-ord,
+.service-v1-fundraise-dot.is-past .service-v1-fundraise-dot-ord {
+  color: var(--service-accent-red);
+}
+.service-v1-fundraise-dot-name {
+  font-size: 0.86rem;
+  color: rgba(20, 24, 40, 0.55);
+  transition: color 0.25s ease;
+}
+.service-v1-fundraise-dot.is-active .service-v1-fundraise-dot-name {
+  color: #141828;
   font-weight: 600;
 }
-.service-v1-stages-panel {
-  background: #fff;
-  border: 1px solid var(--service-divider);
-  border-radius: 14px;
-  padding: 24px;
-  max-width: 760px;
+.service-v1-fundraise-dot.is-past .service-v1-fundraise-dot-name {
+  color: rgba(20, 24, 40, 0.7);
 }
-.service-v1-stage-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
+
+/* Divider rule under the track */
+.service-v1-fundraise-rule {
+  height: 1px;
+  background: rgba(20, 24, 40, 0.1);
+  margin: 8px 0 24px;
+}
+
+/* Active-stage panel */
+.service-v1-fundraise-panel {
+  display: block;
+}
+.service-v1-fundraise-panel-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+.service-v1-fundraise-panel-text { display: flex; flex-direction: column; gap: 18px; }
+.service-v1-fundraise-panel-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  justify-content: space-between;
+}
+.service-v1-fundraise-panel-head h3 {
+  margin: 0;
+  font-family: var(--font-serif, "Newsreader", Georgia, serif);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.08;
+  color: #141828;
+}
+.service-v1-fundraise-ordinal {
+  font: 500 0.85em/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.04em;
+  color: var(--service-accent-red);
+  vertical-align: 0.18em;
+}
+.service-v1-fundraise-panel-name { font-style: normal; }
+.service-v1-fundraise-weeks {
+  font: 500 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(20, 24, 40, 0.55);
-  margin-top: 12px;
+  color: rgba(20, 24, 40, 0.5);
+  white-space: nowrap;
 }
-.service-v1-stages-reduced .service-v1-stages-grid {
+.service-v1-fundraise-panel-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 540px;
+}
+.service-v1-fundraise-label {
+  font: 500 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.5);
+  margin: 0 0 6px;
+}
+.service-v1-fundraise-body {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: rgba(20, 24, 40, 0.86);
+}
+.service-v1-fundraise-deliverable {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #141828;
+}
+.service-v1-fundraise-deliverable span[aria-hidden] { color: var(--service-accent-red); }
+
+/* Document mockup (right side of the panel) */
+.service-v1-fundraise-doc-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  justify-self: end;
+}
+.service-v1-fundraise-doc {
+  position: absolute;
+  inset: 0;
+  background: #fafaf5;
+  border: 1px solid rgba(20, 24, 40, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 14px 40px rgba(20, 24, 40, 0.08);
+}
+.service-v1-fundraise-doc-back-1 {
+  transform: translate(-12px, 12px) rotate(-1.4deg);
+  background: #f3f0e8;
+  opacity: 0.85;
+}
+.service-v1-fundraise-doc-back-2 {
+  transform: translate(-24px, 22px) rotate(-2.6deg);
+  background: #ece8de;
+  opacity: 0.6;
+}
+.service-v1-fundraise-doc-front {
+  padding: 26px 26px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #fefdf8;
+}
+/* Corner fold */
+.service-v1-fundraise-doc-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(225deg, transparent 50%, rgba(20, 24, 40, 0.08) 50%);
+  border-bottom-left-radius: 4px;
+  border-left: 1px solid rgba(20, 24, 40, 0.06);
+  border-bottom: 1px solid rgba(20, 24, 40, 0.06);
+}
+.service-v1-fundraise-doc-eyebrow {
+  margin: 0;
+  font: 500 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.5);
+}
+.service-v1-fundraise-doc-title {
+  margin: 0;
+  font-family: var(--font-serif, "Newsreader", Georgia, serif);
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  color: #141828;
+}
+.service-v1-fundraise-doc-meta {
+  margin: 0;
+  font: 500 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--service-accent-red);
+}
+.service-v1-fundraise-doc-rule {
+  height: 1px;
+  background: rgba(20, 24, 40, 0.12);
+  margin: 2px 0;
+}
+.service-v1-fundraise-doc-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
+.service-v1-fundraise-doc-line {
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(20, 24, 40, 0.1);
+}
+.service-v1-fundraise-doc-sig {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+.service-v1-fundraise-doc-sig-line {
+  height: 1px;
+  width: 60%;
+  background: rgba(20, 24, 40, 0.4);
+}
+.service-v1-fundraise-doc-sig-lab {
+  font: 500 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.45);
+}
+
+/* Reduced-motion fallback: flat six-card grid */
+.service-v1-fundraise-reduced .service-v1-fundraise-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  margin-top: 24px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
 }
-.service-v1-stages-reduced article {
-  padding: 16px;
+.service-v1-fundraise-reduced .service-v1-fundraise-grid > li {
+  padding: 20px;
   background: #fff;
   border: 1px solid var(--service-divider);
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.service-v1-fundraise-grid-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.service-v1-fundraise-grid-head h3 {
+  margin: 0;
+  font-family: var(--font-serif, "Newsreader", Georgia, serif);
+  font-weight: 500;
+  font-size: 1.35rem;
+  flex: 1;
 }
 
 /* Artefact stack */
@@ -5885,12 +6179,13 @@ html.lenis body {
   .service-v1-faq-grid { grid-template-columns: 1fr; }
   .service-v1-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service-v1-insights-grid { grid-template-columns: 1fr; }
-  .service-v1-stages-pinned-host { height: auto; position: static; }
-  .service-v1-stages-sticky { position: static; height: auto; display: block; }
-  /* Keep tablist visible on mobile — overflow-x: auto contains horizontal scroll
-     within the element itself; the page body scrollbar is not affected. */
-  .service-v1-stages-tablist { flex-wrap: nowrap; }
-  .service-v1-stages-panel { max-width: none; }
+  /* Fundraise: drop the scroll-pin and stack panel content. */
+  .service-v1-fundraise-host { height: auto; position: static; }
+  .service-v1-fundraise-sticky { position: static; min-height: 0; display: block; }
+  .service-v1-fundraise-track { grid-template-columns: repeat(6, minmax(60px, 1fr)); }
+  .service-v1-fundraise-track-wrap { overflow-x: auto; }
+  .service-v1-fundraise-panel-inner { grid-template-columns: 1fr; gap: 32px; }
+  .service-v1-fundraise-doc-wrap { max-width: 320px; justify-self: start; }
   .service-v1-artefact-fan { display: none; }
   .service-v1-soonicorn-card { grid-template-columns: 1fr; }
 }
@@ -5900,19 +6195,14 @@ html.lenis body {
   .service-v1-timeline { grid-template-columns: 1fr; }
   .service-v1-related-grid { grid-template-columns: 1fr; }
   .service-v1-leadmagnet-form { flex-direction: column; }
+  .service-v1-fundraise-dot-name { display: none; }
+  .service-v1-fundraise-panel-head { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 
-/* Reduced motion — CSS-driven path replaces the JS useReducedMotion flash.
-   The JS-driven flash described in the spec's deferred follow-ups can be
-   addressed by hiding the JS-pinned variant and showing the flat grid via
-   media query — but the JS path already early-returns a different DOM
-   subtree for reduced-motion users, so the CSS path below is a defense in
-   depth, not the primary handler. */
+/* Reduced motion — defense in depth alongside the JS useReducedMotion path. */
 @media (prefers-reduced-motion: reduce) {
-  .service-v1-stages-pinned-host { height: auto; position: static; }
-  .service-v1-stages-sticky { position: static; height: auto; display: block; }
-  /* JS already renders a different DOM subtree for reduced-motion users (flat grid,
-     no tablist), so the CSS path below is defense-in-depth only. */
+  .service-v1-fundraise-host { height: auto; position: static; }
+  .service-v1-fundraise-sticky { position: static; min-height: 0; display: block; }
   .service-v1-artefact-fan { display: none; }
 }
 
