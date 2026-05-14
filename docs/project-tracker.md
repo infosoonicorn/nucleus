@@ -176,13 +176,43 @@ Launch a premium, credible, fast public website with structured content. It shou
   - Acceptance: a brand-tinted Lottie JSON sourced from LottieFiles or in-house motion artist is placed at `apps/web/public/lottie/nucleus-hero.json`. Spec: `docs/home-hero-lottie-spec.md`.
 - [~] Apply motion / spacing language to remaining public pages.
   - Acceptance: About, Services overview, Service detail, Careers, Insights, Contact inherit the home-v3 typography rhythm and tasteful motion without a full per-page redesign.
-  - Status (2026-05-13): queued as the next active task. Home refinement intentionally paused until other pages reach the same baseline.
+  - Status (2026-05-14): Services slice landed for Investment Banking (bespoke composition with FundraiseStages, ArtefactStack, SoonicornCallout, ServiceInsights primitives) and elevated default composition for the other 8 service pages. Section primitives in `apps/web/src/components/services/` ready for About / Careers / Insights / Contact slices.
 - [x] Add service-specific proof blocks.
   - Acceptance: firm-wide counters stay on homepage; service pages use service-specific proof/counter placeholders where verified numbers are pending.
 - [ ] Home page — page-wide unifying spine/thread.
   - Acceptance: a single visual element (recommended: left-edge numbered spine with red→navy gradient fill tied to scroll, reusing the `§NN` numbering vocabulary; alternatives B/C documented in chat) connects all home sections so the page reads as one journey rather than nine chapters.
   - Status (2026-05-13): deferred. To revisit after About / Services / Careers / Insights / Contact are at parity.
   - Note: design options documented in the 2026-05-13 conversation; option A (spine rail) recommended. Decisions still open: spine position (left vs right), label always-on vs hover.
+- [x] Investment Banking service page — bespoke composition.
+  - Acceptance: `/services/investment-banking` renders the bespoke composition with FundraiseStages, ArtefactStack, SoonicornCallout, ServiceInsights; lint, typecheck, build, e2e pass; manual browser verification clean.
+- [ ] Bespoke centerpieces for remaining 8 service pages.
+  - Acceptance: each service line gets its own brainstorm + spec + bespoke centerpiece, modelled on the IB pattern. Currently rendering elevated default composition.
+- [ ] Rename `.home-v3` CSS scope to a neutral name (e.g. `.np-base`).
+  - Acceptance: mechanical find-replace across `globals.css` and all home components, builds clean.
+- [ ] Deep-linkable fundraise stages (`?stage=outreach`).
+  - Acceptance: URL param highlights a specific centerpiece stage on load. Partner-side feature (cherry-pick E2 deferred from IB build).
+- [ ] Sector strip on service pages.
+  - Acceptance: single row of covered sectors below hero. Needs approved sector list. (Cherry-pick E3 deferred from IB build.)
+- [ ] Service-tinted hero atmosphere per service.
+  - Acceptance: each service hero gets its own aurora/atmosphere variant. (Cherry-pick E4 deferred from IB build.)
+- [ ] Source SVG of Soonicorn Ventures wordmark (currently PNG).
+  - Acceptance: `apps/web/public/brand/soonicorn-ventures.svg` exists, page references SVG.
+- [ ] IB-specific FAQ content (4 Q+A pairs).
+  - Acceptance: `services[].faq` populated for Investment Banking, partner-approved.
+- [ ] Quarterly review cadence for `insightSources`.
+  - Acceptance: documented review schedule and partner ownership; pending items flipped to approved as confirmed.
+- [ ] Soonicorn callout copy re-approval cycle.
+  - Acceptance: documented re-review cadence; `reviewerApprovedAt` re-stamped on each pass.
+- [ ] ArtefactStack mobile reduced-motion fallback consolidation.
+  - Acceptance: revisit `<ArtefactStack>` so both fan and list paths are unified — currently the motion-on path renders both and toggles via CSS, which works but duplicates the data render.
+- [ ] FundraiseStages reduced-motion hydration flash.
+  - Acceptance: a user with `prefers-reduced-motion` may see a brief flash on first render before the JS `useReducedMotion` hook resolves; address via CSS media-query-driven rendering rather than JS branching.
+- [ ] Phase 1.5 lead-magnet email validation.
+  - Acceptance: when `/api/lead-magnet-stub` is replaced with the real Supabase write, swap `email.includes('@')` for a proper validator (zod schema or RFC-compliant regex).
+- [ ] Lead-magnet stub edge-case tests.
+  - Acceptance: add Playwright tests for empty-string email and malformed-but-present email (currently covered only for missing field).
+- [ ] Pre-existing home.spec.ts nav flake.
+  - Acceptance: investigate and fix the intermittent failure where clicking the "Services" nav link on `/` doesn't navigate. Separate investigation already underway.
 
 ## Phase 1.5: Lightweight Backend
 
@@ -375,6 +405,8 @@ Reuse the same backend APIs for mobile when web portal workflows are stable.
   - Needed for: forms, insights, downloads.
 - [ ] Source hero Lottie file.
   - Needed for: hero "Advisory coverage" canvas accent (`apps/web/public/lottie/nucleus-hero.json`). Spec in `docs/home-hero-lottie-spec.md`.
+- [!] Three reviewer-approved entries in `apps/web/src/content/insights-sources.ts` for Investment Banking.
+  - Needed for: visible "Regulatory updates we're tracking" panel on the IB page. Component currently shows a friendly empty-state message until at least one item flips to approved.
 
 ## Parking Lot
 
