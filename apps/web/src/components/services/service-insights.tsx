@@ -9,16 +9,6 @@ import type { Service } from '@/content/site';
 
 const MAX_SOURCES = 6;
 
-function approvedSourcesFor(slug: string): ServiceInsightSource[] {
-  const filtered = insightSources.filter(
-    (s) => s.serviceSlugs.includes(slug) && s.reviewerStatus === 'approved',
-  );
-  // Sort by publishedOn descending; cap at MAX_SOURCES.
-  return [...filtered]
-    .sort((a, b) => (a.publishedOn < b.publishedOn ? 1 : -1))
-    .slice(0, MAX_SOURCES);
-}
-
 function plannedFor(slug: string) {
   return plannedCategories.filter((c) => c.serviceSlug === slug).slice(0, 4);
 }
@@ -34,9 +24,18 @@ function assertNoPendingInProduction(items: ServiceInsightSource[]) {
 }
 
 export function ServiceInsights({ service }: Readonly<{ service: Service }>) {
+  // Check the full slug-matched slice BEFORE the approved filter so the
+  // safety guard can actually see any pending items.
+  const allForSlug = insightSources.filter((s) => s.serviceSlugs.includes(service.slug));
+  assertNoPendingInProduction(allForSlug);
+  const sources = allForSlug
+    .filter((s): s is Extract<ServiceInsightSource, { reviewerStatus: 'approved' }> =>
+      s.reviewerStatus === 'approved',
+    )
+    .sort((a, b) => b.publishedOn.localeCompare(a.publishedOn))
+    .slice(0, MAX_SOURCES);
+
   const planned = plannedFor(service.slug);
-  const sources = approvedSourcesFor(service.slug);
-  assertNoPendingInProduction(sources);
   if (planned.length === 0 && sources.length === 0) return null;
 
   return (
@@ -95,6 +94,9 @@ export function ServiceInsights({ service }: Readonly<{ service: Service }>) {
   );
 }
 
+// Relies on full-ICU at runtime. Vercel's default Node runtime ships full-ICU
+// (Node 22+). If we ever move to a small-ICU build, the en-IN locale falls back
+// to en-US and produces a hydration mismatch — switch to a deterministic format then.
 function formatDate(iso: string): string {
   const d = new Date(`${iso}T00:00:00Z`);
   return d.toLocaleDateString('en-IN', {
