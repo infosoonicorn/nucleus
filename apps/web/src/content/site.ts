@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
-export type ServiceCrossLink = {
+type ServiceCrossLinkBase = {
   kind: 'in-house-fund' | 'partner' | 'related-firm';
   brand: string;
   logoPath: string;          // path under /public, e.g. '/brand/soonicorn-ventures.png'
@@ -25,9 +25,11 @@ export type ServiceCrossLink = {
   ctaLabel: string;
   href: string;              // external URL
   disclaimer: string;
-  reviewerStatus: 'pending' | 'approved';
-  reviewerApprovedAt?: string;
 };
+
+export type ServiceCrossLink =
+  | (ServiceCrossLinkBase & { reviewerStatus: 'approved'; reviewerApprovedAt: string })
+  | (ServiceCrossLinkBase & { reviewerStatus: 'pending'; reviewerApprovedAt?: never });
 
 export type Service = {
   title: string;
@@ -43,11 +45,11 @@ export type Service = {
   cta: string;
   proof?: string[];
   icon: LucideIcon;
-  // New fields added by Task 1:
-  ordinal: string;                          // '01' through '09'. Required.
+  /** Two-digit ordinal: '01' through '09'. Drives the §NN eyebrow on service pages. */
+  ordinal: string;
   displayHeadline?: string;                 // 3-word punchier hero headline; falls back to title.
   whenToEngage?: string[];                  // 4 bullets; falls back to generic four if absent.
-  faq?: { q: string; a: string }[];         // 4 questions; missing answers render 'Updating soon'.
+  faq?: { q: string; a?: string }[];        // a falls back to 'Updating soon' when absent.
   crossLink?: ServiceCrossLink;             // Optional cross-link panel data.
 };
 

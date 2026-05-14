@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Services data model — Task 1', () => {
-  test('every service has a two-digit ordinal', async ({ page }) => {
+  test('every service slug returns a 2xx response', async ({ page }) => {
     // Visit each service page; the ordinal appears in the page eyebrow once
     // <ServiceHero> is wired up. Until then, this asserts the data layer by
     // hitting the services overview where ordinals will be rendered in card meta.
@@ -22,11 +22,12 @@ test.describe('Services data model — Task 1', () => {
     }
   });
 
-  test('investment banking carries a Soonicorn cross-link in approved status', async ({ page }) => {
-    await page.goto('/services/investment-banking');
-    // Asserted directly once <SoonicornCallout> exists (Task 10). For Task 1
-    // we only need the data shape; this test will start passing once the
-    // component is wired in Task 10. Keep skipped for now.
-    test.skip();
-  });
+  test.fixme(
+    'investment banking carries a Soonicorn cross-link in approved status',
+    async ({ page }) => {
+      await page.goto('/services/investment-banking');
+      await expect(page.getByRole('link', { name: /Visit Soonicorn Ventures/ })).toBeVisible();
+      await expect(page.getByText(/This is not an offer or solicitation/)).toBeVisible();
+    },
+  );
 });
