@@ -50,19 +50,20 @@ export const insightSources: ServiceInsightSource[] = [
     whyItMatters:
       'Consolidated AIF rules — relevant context for founders evaluating fund-routed capital.',
     serviceSlugs: ['investment-banking', 'aif-fund-management'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-14',
   },
   {
     id: 'rbi-fema-fdi-master',
     source: 'RBI',
     title: 'RBI Master Direction — Foreign Investment in India (FEMA)',
     publishedOn: '2024-08-12',
-    // note: landing page URL; reviewer to replace with the specific FEMA FDI master direction before approval.
-    url: 'https://rbi.org.in/Scripts/BS_ViewMasDirections.aspx',
+    url: 'https://www.rbi.org.in/commonman/english/scripts/Notification.aspx?Id=856',
     whyItMatters:
       'Governs how non-resident investors can put capital into Indian companies — directly affects round structuring.',
     serviceSlugs: ['investment-banking'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-14',
   },
   {
     id: 'dpiit-startup-recognition',
@@ -73,7 +74,8 @@ export const insightSources: ServiceInsightSource[] = [
     whyItMatters:
       'Recognition unlocks tax holiday and angel-tax exemption — material to fundraise economics.',
     serviceSlugs: ['investment-banking'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-14',
   },
   {
     id: 'incometax-angel-tax-rules',
@@ -84,7 +86,8 @@ export const insightSources: ServiceInsightSource[] = [
     whyItMatters:
       'Sets the valuation methodology and exemptions that determine angel-tax exposure on share issuance.',
     serviceSlugs: ['investment-banking'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-14',
   },
 ];
 
