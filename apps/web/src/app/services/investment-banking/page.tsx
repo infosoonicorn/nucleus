@@ -34,7 +34,11 @@ export default function InvestmentBankingPage() {
         <ServiceHero service={service} />
         <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
         <FundraiseStages />
-        <HowWeHelp service={service} />
+        <HowWeHelp
+          ordinal={service.ordinal}
+          flat={service.howWeHelp}
+          detailed={service.howWeHelpDetailed}
+        />
         <SoonicornCallout service={service} />
         <ServiceInsights service={service} />
         <Process service={service} />

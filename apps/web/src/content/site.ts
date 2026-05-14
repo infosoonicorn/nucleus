@@ -31,6 +31,14 @@ export type ServiceCrossLink =
   | (ServiceCrossLinkBase & { reviewerStatus: 'approved'; reviewerApprovedAt: string })
   | (ServiceCrossLinkBase & { reviewerStatus: 'pending'; reviewerApprovedAt?: never });
 
+export type HelpItem = {
+  title: string;
+  summary: string;                          // one-line meta for small cards (dot-separated etc.)
+  body: string;                             // longer paragraph for the flagship card
+  bullets: string[];                        // detail bullets shown in the flagship card
+  badge?: string;                           // optional eyebrow on the flagship card, e.g. 'Flagship mandate'
+};
+
 export type Service = {
   title: string;
   slug: string;
@@ -38,7 +46,8 @@ export type Service = {
   promise: string;
   seoTitle: string;
   metaDescription: string;
-  howWeHelp: string[];
+  howWeHelp: string[];                      // legacy flat list; used by default composition
+  howWeHelpDetailed?: HelpItem[];           // rich bento payload; when present, used instead
   deliverables: string[];
   experts: string[];
   leadMagnet: string;
@@ -143,6 +152,86 @@ export const services: Service[] = [
       'Financial due diligence preparation.',
       'Term sheet and transaction support.',
       'Post-investment monitoring support for funds and family offices.',
+    ],
+    howWeHelpDetailed: [
+      {
+        badge: 'Flagship mandate',
+        title: 'Fundraising readiness',
+        summary: 'Readiness assessment · governance · data-room scoping',
+        body: 'The work that decides whether a round happens — a clean readiness assessment, governance review, and a data-room scoped to investor expectations before outreach begins.',
+        bullets: [
+          'Readiness assessment',
+          'Governance & cap-table review',
+          'Data-room scoping',
+          'Founder & board briefings',
+        ],
+      },
+      {
+        title: 'Financial modelling',
+        summary: 'Operating models · scenarios · cap-table walks',
+        body: '3-statement model with sensitivity tabs and base/bull/bear scenarios. Cap-table walks for primary and secondary stress-tested for what investors actually probe.',
+        bullets: [
+          '3-statement model',
+          'Base / bull / bear scenarios',
+          'Sensitivity tabs',
+          'Cap-table walks',
+        ],
+      },
+      {
+        title: 'Investor narrative',
+        summary: 'Pitch deck · information memorandum · investor FAQ',
+        body: 'Narrative-first deck, IM, and reactive FAQ pack — sector-tuned, decision-grade, and built around the questions investors actually open first.',
+        bullets: [
+          'Pitch deck',
+          'Information memorandum',
+          'Investor FAQ pack',
+          'Sector framing',
+        ],
+      },
+      {
+        title: 'Investor outreach',
+        summary: 'Curated targeting · warm intros · banker management',
+        body: 'Investor mapping by stage and sector, intro coordination, and the outreach cadence we run for you or alongside your team.',
+        bullets: [
+          'Investor mapping',
+          'Target list build',
+          'Intro coordination',
+          'Outreach cadence',
+        ],
+      },
+      {
+        title: 'Diligence preparation',
+        summary: 'Vendor DD · Q&A management · technical & commercial reviews',
+        body: 'Pre-emptive DD pack, Q&A workflow with named owners, and technical / commercial reviews that get ahead of investor questions.',
+        bullets: [
+          'Vendor DD pack',
+          'Q&A management',
+          'Technical reviews',
+          'Commercial reviews',
+        ],
+      },
+      {
+        title: 'Transaction support',
+        summary: 'Termsheet · SHA negotiation · closing mechanics',
+        body: 'Term sheet line-by-line review, SHA negotiation alongside legal counsel, and signing / closing coordination through to wire.',
+        bullets: [
+          'Termsheet review',
+          'SHA negotiation',
+          'Closing mechanics',
+          'Workplan & milestones',
+        ],
+      },
+      {
+        title: 'Portfolio stewardship',
+        summary: 'Post-investment monitoring for funds & family offices',
+        body: 'Post-close governance: investor reporting cadence, board-pack quality, and covenant tracking for funds and family offices.',
+        bullets: [
+          'Investor reporting cadence',
+          'Board-pack quality',
+          'Covenant tracking',
+          'Portfolio MIS',
+        ],
+      },
     ],
     deliverables: [
       'Fundraise readiness report.',

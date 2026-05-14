@@ -17,7 +17,11 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
     <main className="home-v3 service-v1">
       <ServiceHero service={service} />
       <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
-      <HowWeHelp service={service} />
+      <HowWeHelp
+        ordinal={service.ordinal}
+        flat={service.howWeHelp}
+        detailed={service.howWeHelpDetailed}
+      />
       <Deliverables service={service} />
       <ServiceInsights service={service} />
       <Process service={service} />
