@@ -5747,16 +5747,18 @@ html.lenis body {
   top: 0;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 5vh;
 }
 
 .service-v1-fundraise {
   width: 100%;
   background: var(--service-band-cream);
+  padding-block: 24px;
 }
 
 /* Header (eyebrow + headline) */
-.service-v1-fundraise-header { margin-bottom: 36px; }
+.service-v1-fundraise-header { margin-bottom: 24px; }
 .service-v1-fundraise-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -5777,11 +5779,11 @@ html.lenis body {
 .service-v1-fundraise-headline {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 680;
-  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
-  line-height: 1.04;
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  line-height: 1.06;
   letter-spacing: -0.022em;
   color: #141828;
-  margin: 14px 0 0;
+  margin: 10px 0 0;
   max-width: 920px;
 }
 .service-v1-fundraise-headline em {
@@ -5793,8 +5795,8 @@ html.lenis body {
 /* Track */
 .service-v1-fundraise-track-wrap {
   position: relative;
-  margin: 24px 0 8px;
-  padding: 8px 0 32px;
+  margin: 16px 0 4px;
+  padding: 8px 0 20px;
 }
 .service-v1-fundraise-track-line {
   position: absolute;
@@ -5893,7 +5895,7 @@ html.lenis body {
 .service-v1-fundraise-rule {
   height: 1px;
   background: rgba(20, 24, 40, 0.1);
-  margin: 8px 0 24px;
+  margin: 8px 0 18px;
 }
 
 /* Active-stage panel */
@@ -5967,8 +5969,8 @@ html.lenis body {
 .service-v1-fundraise-doc-wrap {
   position: relative;
   width: 100%;
-  max-width: 300px;
-  aspect-ratio: 4 / 5;
+  max-width: 240px;
+  aspect-ratio: 1 / 1;
   justify-self: end;
 }
 .service-v1-fundraise-doc {
@@ -5990,10 +5992,10 @@ html.lenis body {
   opacity: 0.6;
 }
 .service-v1-fundraise-doc-front {
-  padding: 22px 22px 24px;
+  padding: 16px 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   background: #fefdf8;
 }
 /* Corner fold */
@@ -6019,7 +6021,7 @@ html.lenis body {
   margin: 0;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 650;
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   line-height: 1.2;
   letter-spacing: -0.012em;
   color: #141828;
@@ -6039,19 +6041,20 @@ html.lenis body {
 .service-v1-fundraise-doc-lines {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 7px;
   flex: 1;
+  min-height: 0;
 }
 .service-v1-fundraise-doc-line {
-  height: 6px;
+  height: 4px;
   border-radius: 2px;
   background: rgba(20, 24, 40, 0.1);
 }
 .service-v1-fundraise-doc-sig {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 6px;
+  gap: 4px;
+  margin-top: 2px;
 }
 .service-v1-fundraise-doc-sig-line {
   height: 1px;
