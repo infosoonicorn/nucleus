@@ -230,6 +230,24 @@ export const services: Service[] = [
     cta: 'Evaluate a transaction',
     icon: BriefcaseBusiness,
     ordinal: '02',
+    whenToEngage: [
+      {
+        if: 'Receiving informal interest from a strategic acquirer and need to decide whether to engage.',
+        then: 'We run a feasibility note covering valuation range, deal structure options, and the diligence you would be put through.',
+      },
+      {
+        if: 'Considering a buy-side acquisition to consolidate a market or buy capability.',
+        then: 'We screen targets, model the synergies, manage diligence, and structure the deal documentation.',
+      },
+      {
+        if: 'Family or co-founder restructuring forces a demerger, share transfer, or buyout.',
+        then: 'We work alongside legal and secretarial teams to engineer the restructuring, valuation defense, and tax-efficient execution.',
+      },
+      {
+        if: 'Heading into a closing call with a price gap that needs to be defended.',
+        then: 'We build the negotiation pack, walk into the room with you, and translate price into deal value.',
+      },
+    ],
   },
   {
     title: 'Risk Advisory',
@@ -264,6 +282,24 @@ export const services: Service[] = [
     cta: 'Review your control environment',
     icon: ShieldCheck,
     ordinal: '03',
+    whenToEngage: [
+      {
+        if: 'Audit committee wants a formal internal audit calendar across business units this year.',
+        then: 'We design the audit universe, prioritise by risk, and deliver an issue-tracker the committee can review quarterly.',
+      },
+      {
+        if: 'IFC and ICFR controls are out of date and the statutory auditor flagged design gaps.',
+        then: 'We rebuild the risk-control matrix, test operating effectiveness, and close design gaps before the next audit cycle.',
+      },
+      {
+        if: 'Revenue leakage suspected — distributors, branch network, or e-commerce returns feel out of pattern.',
+        then: 'We run a revenue audit, surface leakage and override patterns, and design controls to stop the recurrence.',
+      },
+      {
+        if: 'A fraud or whistleblower complaint needs an independent investigation.',
+        then: 'We scope a forensic review, secure evidence, and report findings with disciplinary and recovery recommendations.',
+      },
+    ],
   },
   {
     title: 'Tax & Regulatory',
@@ -298,6 +334,24 @@ export const services: Service[] = [
     cta: 'Review tax and compliance exposure',
     icon: Scale,
     ordinal: '04',
+    whenToEngage: [
+      {
+        if: 'Cross-border transaction on the table and tax structure can swing the post-tax outcome.',
+        then: 'We structure under DTAA, GAAR, and transfer-pricing rules, and document the position with substance evidence.',
+      },
+      {
+        if: 'GST notices arriving — assessments, mismatch reports, refund delays.',
+        then: 'We respond to notices, reconcile filings, and recover blocked refunds while you keep operating.',
+      },
+      {
+        if: 'Group restructuring or related-party transactions need a transfer pricing position before year-end.',
+        then: 'We benchmark, document, and defend the position in the format assessing officers expect.',
+      },
+      {
+        if: 'Leadership wants a one-page view of every statutory exposure and filing risk.',
+        then: 'We build the compliance calendar with named owners, dates, and impact — one dashboard, no surprises.',
+      },
+    ],
   },
   {
     title: 'Assurance',
@@ -333,6 +387,24 @@ export const services: Service[] = [
     cta: 'Prepare for audit readiness',
     icon: FileCheck2,
     ordinal: '05',
+    whenToEngage: [
+      {
+        if: 'First-time Ind AS conversion this year and books need to hold up under closer review.',
+        then: 'We re-state, document Ind AS impact notes, and prepare the audit-ready supporting schedules.',
+      },
+      {
+        if: "Statutory auditor's queries are piling up and management is firefighting at year-end.",
+        then: 'We run audit readiness — close the open items, package the responses, and shorten the audit cycle.',
+      },
+      {
+        if: 'Bank or lender requires a special audit or utilisation certificate before disbursement.',
+        then: 'We scope the review, deliver the certificate, and document the assumptions the bank will sign off on.',
+      },
+      {
+        if: 'Material restatement may be required after an accounting position change or regulatory observation.',
+        then: 'We work through the restatement, build the disclosure language, and brief the audit committee on impact.',
+      },
+    ],
   },
   {
     title: 'Valuations',
@@ -367,6 +439,24 @@ export const services: Service[] = [
     cta: 'Start a valuation discussion',
     icon: LineChart,
     ordinal: '06',
+    whenToEngage: [
+      {
+        if: 'Issuing ESOPs and need a defensible Rule 11UA valuation before the grant.',
+        then: 'We build the valuation under the right method, document the cap-table assumptions, and prepare the supporting schedules.',
+      },
+      {
+        if: 'Investor coming in from offshore — FDI valuation required at fair market value.',
+        then: 'We prepare the FEMA-compliant valuation, defend the methodology, and coordinate the FC-GPR filings.',
+      },
+      {
+        if: 'Board is taking a strategic decision — divestment, joint venture, or rights issue — and needs an independent number.',
+        then: 'We deliver the valuation with scenario analysis, assumption pack, and a board-ready summary.',
+      },
+      {
+        if: 'IFRS or Ind AS impairment testing on goodwill, intangibles, or PPE is required this close.',
+        then: 'We run the value-in-use model, build the disclosure language, and walk the auditor through assumptions.',
+      },
+    ],
   },
   {
     title: 'Finance Outsourcing',
@@ -404,6 +494,24 @@ export const services: Service[] = [
     cta: 'Strengthen finance operations',
     icon: BarChart3,
     ordinal: '07',
+    whenToEngage: [
+      {
+        if: "Founder-led finance team can't keep up — close is slipping and the board is asking for cleaner numbers.",
+        then: 'We take the books, run the close calendar, and deliver a monthly MIS pack the board can read in 10 minutes.',
+      },
+      {
+        if: 'Payroll has become a recurring headache — statutory misses, late TDS, employee complaints.',
+        then: 'We run payroll end-to-end with the compliance tracker — PF, ESI, TDS — and surface exceptions before they become disputes.',
+      },
+      {
+        if: 'Need a vCFO for cashflow planning, banker conversations, and investor reporting — but not a full-time hire yet.',
+        then: 'Our vCFO bench plugs in part-time, builds the operating cadence, and grows into a full mandate when you are ready.',
+      },
+      {
+        if: "Fixed assets and inventory ledgers haven't been physically reconciled in years.",
+        then: 'We run physical verification, rebuild the fixed asset register, and design the SOP so it stays clean going forward.',
+      },
+    ],
   },
   {
     title: 'Corporate Secretarial',
@@ -439,6 +547,24 @@ export const services: Service[] = [
     cta: 'Review corporate compliance status',
     icon: ClipboardCheck,
     ordinal: '08',
+    whenToEngage: [
+      {
+        if: 'Incorporating a new entity — Pvt Ltd, LLP, or AIF — and want the structure right from day one.',
+        then: 'We run incorporation end-to-end, draft MoA and AoA, and coordinate first-board, statutory registers, and bank account setup.',
+      },
+      {
+        if: 'Annual ROC filings and statutory registers are running behind and the next due date is uncomfortably close.',
+        then: 'We catch up the registers, file the lagging returns, and rebuild the compliance calendar so it stays current.',
+      },
+      {
+        if: 'Investor diligence ahead and corporate records need to be inspection-ready.',
+        then: 'We run secretarial due diligence, gap-fix the records, and prepare the document index investors will request.',
+      },
+      {
+        if: 'Board approvals, special resolutions, charge filings need to move alongside a transaction.',
+        then: 'We sequence the corporate actions, draft the documentation, and file with ROC in step with the deal calendar.',
+      },
+    ],
   },
   {
     title: 'AIF & Fund Management',
@@ -482,6 +608,24 @@ export const services: Service[] = [
     ],
     icon: Building2,
     ordinal: '09',
+    whenToEngage: [
+      {
+        if: 'Setting up a new AIF and need the structure, sponsor, trustee, and investment manager arrangements aligned with SEBI.',
+        then: 'We build the AIF setup workplan, coordinate registrations and service providers, and prepare the compliance calendar.',
+      },
+      {
+        if: 'Fund is live but investor onboarding, KYC, and drawdown processes are ad-hoc and slowing capital calls.',
+        then: 'We design the onboarding workflow, drawdown tracker, and unit certificate process — turning the operating layer into a discipline.',
+      },
+      {
+        if: 'Quarterly investor reporting and regulatory filings are eating up partner bandwidth.',
+        then: 'We take the reporting calendar — investor updates, portfolio MIS, regulatory filings — off the partners’ desks.',
+      },
+      {
+        if: 'Considering a fund extension, new scheme, or restructure and need SEBI-aligned coordination.',
+        then: 'We work with trustee, custodian, legal, and SEBI counsel to package the change and execute the filings.',
+      },
+    ],
   },
 ];
 
