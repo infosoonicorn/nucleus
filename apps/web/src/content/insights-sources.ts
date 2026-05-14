@@ -37,8 +37,9 @@ export type PlannedKnowledgeCategory = {
 };
 
 // Seed items for Investment Banking. ALL start as 'pending'. Vijay or a partner
-// flips to 'approved' before merge. Component refuses to render pending items
-// in production builds — see <ServiceInsights> in a later task.
+// flips to 'approved' before merge. <ServiceInsights> uses a discriminated-union
+// narrowing predicate so the TypeScript compiler guarantees only the 'approved'
+// branch can reach render.
 export const insightSources: ServiceInsightSource[] = [
   {
     id: 'sebi-aif-master-circular',

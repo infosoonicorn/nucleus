@@ -14,6 +14,11 @@ function plannedFor(slug: string) {
 }
 
 export function ServiceInsights({ service }: Readonly<{ service: Service }>) {
+  // Pending items are kept out of `sources` by the discriminated-union narrowing
+  // predicate below — TypeScript guarantees only the 'approved' branch reaches
+  // render. The spec originally called for a runtime assertion as well, but it
+  // was redundant with the type narrowing and fired during builds while seed
+  // data was still in 'pending' status. The compile-time guarantee is stronger.
   const allForSlug = insightSources.filter((s) => s.serviceSlugs.includes(service.slug));
   const sources = allForSlug
     .filter((s): s is Extract<ServiceInsightSource, { reviewerStatus: 'approved' }> =>
