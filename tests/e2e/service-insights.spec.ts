@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('ServiceInsights component — Task 6', () => {
-  test.fixme(
+  test(
     'hides pending items in production-equivalent rendering',
     async ({ page }) => {
       // Re-enabled in Task 11 when IB page composes <ServiceInsights>.
@@ -12,13 +12,16 @@ test.describe('ServiceInsights component — Task 6', () => {
     },
   );
 
-  test.fixme(
+  test(
     'renders planned categories for investment-banking once composed',
     async ({ page }) => {
       await page.goto('/services/investment-banking');
-      await expect(page.getByText('Planned knowledge bank')).toBeVisible();
-      await expect(page.getByText('Fundraise readiness')).toBeVisible();
-      await expect(page.getByText('Investor mapping')).toBeVisible();
+      // Scope to the insights section to avoid matching identically-named
+      // headings in FundraiseStages (which also renders 'Fundraise readiness').
+      const insightsSection = page.locator('.service-v1-insights');
+      await expect(insightsSection.getByText('Planned knowledge bank')).toBeVisible();
+      await expect(insightsSection.getByRole('heading', { name: 'Fundraise readiness', exact: true })).toBeVisible();
+      await expect(insightsSection.getByRole('heading', { name: 'Investor mapping', exact: true })).toBeVisible();
     },
   );
 });

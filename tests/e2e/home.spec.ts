@@ -38,7 +38,8 @@ test.describe('Nucleus public website smoke checks', () => {
 
     await page.getByRole('link', { name: /Investment Banking/ }).first().click();
     await expect(page).toHaveURL(/\/services\/investment-banking$/);
-    await expect(page.getByRole('heading', { name: 'Investment Banking', exact: true })).toBeVisible();
+    // IB page uses displayHeadline 'Prepare. Position. Close.' in the h1.
+    await expect(page.getByRole('heading', { name: 'Prepare. Position. Close.', exact: true })).toBeVisible();
 
     await primaryNav.getByRole('link', { name: 'Careers' }).click();
     await expect(page).toHaveURL(/\/careers$/);

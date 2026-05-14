@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Investment Banking page — bespoke composition', () => {
-  test.fixme('renders all six fundraise stages', async ({ page }) => {
+  test('renders all six fundraise stages', async ({ page }) => {
     await page.goto('/services/investment-banking');
     const stages = ['Readiness', 'Modelling', 'Storytelling', 'Outreach', 'Diligence', 'Close'];
     for (const stage of stages) {
@@ -9,6 +9,7 @@ test.describe('Investment Banking page — bespoke composition', () => {
     }
   });
 
+  // Blocked on Task 12 CSS: mobile reduced-motion styles not yet landed.
   test.fixme('mobile renders stages without horizontal scroll', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 800 });
     await page.goto('/services/investment-banking');
@@ -19,7 +20,7 @@ test.describe('Investment Banking page — bespoke composition', () => {
 });
 
 test.describe('Soonicorn callout — Task 10', () => {
-  test.fixme(
+  test(
     'renders with approved copy, working outbound link, and persistent disclaimer',
     async ({ page }) => {
       await page.goto('/services/investment-banking');
@@ -32,7 +33,7 @@ test.describe('Soonicorn callout — Task 10', () => {
     },
   );
 
-  test.fixme('does not render on non-IB service pages', async ({ page }) => {
+  test('does not render on non-IB service pages', async ({ page }) => {
     await page.goto('/services/ma-advisory');
     await expect(page.getByText('Soonicorn Ventures')).toHaveCount(0);
   });
