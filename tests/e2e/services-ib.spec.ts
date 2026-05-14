@@ -9,8 +9,7 @@ test.describe('Investment Banking page — bespoke composition', () => {
     }
   });
 
-  // Blocked on Task 12 CSS: mobile reduced-motion styles not yet landed.
-  test.fixme('mobile renders stages without horizontal scroll', async ({ page }) => {
+  test('mobile renders stages without horizontal scroll', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 800 });
     await page.goto('/services/investment-banking');
     const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);

@@ -5471,3 +5471,447 @@ html.lenis body {
     display: none;
   }
 }
+
+/* =============================================================
+   .service-v1 — service-page design scope.
+   Wraps every service page (default and bespoke). Inherits .home-v3
+   typography and primitive styles via dual class on <main>. Adds
+   service-only overrides and the bespoke IB modules.
+   ============================================================= */
+
+.service-v1 {
+  --service-band-cream: var(--np-cream, #faf6ef);
+  --service-band-alt:   #f3ede2;
+  --service-accent-red: var(--np-red, #7a1f1f);
+  --service-divider:    rgba(20, 24, 40, 0.08);
+}
+
+/* Hero */
+.service-v1-hero {
+  padding: 80px 24px 48px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.service-v1-hero-stage { display: flex; flex-direction: column; gap: 18px; }
+.service-v1-headline { margin: 8px 0 12px; }
+.service-v1-lede {
+  max-width: 720px;
+  color: rgba(20, 24, 40, 0.8);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+/* Generic section + bands */
+.service-v1-section { padding: 64px 24px; max-width: 1180px; margin: 0 auto; }
+.service-v1-section-alt {
+  background: var(--service-band-alt);
+  max-width: none;
+  padding-inline: max(24px, calc((100vw - 1180px) / 2));
+}
+.service-v1-section-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.service-v1-section-proof { background: rgba(20, 24, 40, 0.03); }
+
+/* List / grids */
+.service-v1-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.service-v1-list-grid > div {
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 12px;
+  padding: 16px 18px;
+  font-size: 0.95rem;
+}
+
+/* Timeline */
+.service-v1-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.service-v1-timeline > div {
+  position: relative;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 12px;
+}
+.service-v1-timeline span {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  color: var(--service-accent-red);
+  font-weight: 600;
+}
+.service-v1-timeline h3 { margin: 6px 0 4px; font-size: 1.05rem; }
+
+/* Checklist */
+.service-v1-checklist { display: grid; gap: 12px; margin-top: 16px; }
+.service-v1-checklist p { display: flex; gap: 10px; align-items: flex-start; }
+.service-v1-checklist svg {
+  color: var(--service-accent-red);
+  margin-top: 3px;
+  flex: 0 0 auto;
+}
+
+/* Mini panel + FAQ */
+.service-v1-mini-panel {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 12px;
+}
+.service-v1-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.service-v1-faq-grid details {
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.service-v1-faq-grid summary { cursor: pointer; font-weight: 600; }
+.service-v1-pending-pill {
+  display: inline-block;
+  background: rgba(122, 31, 31, 0.08);
+  color: var(--service-accent-red);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* Lead magnet */
+.service-v1-section-leadmagnet {
+  background: var(--service-band-alt);
+  max-width: none;
+  padding-inline: max(24px, calc((100vw - 1180px) / 2));
+}
+.service-v1-leadmagnet-form {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  max-width: 520px;
+}
+.service-v1-leadmagnet-form input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid var(--service-divider);
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+.service-v1-leadmagnet-status { margin-top: 12px; color: rgba(20, 24, 40, 0.7); }
+.service-v1-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Related services */
+.service-v1-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.service-v1-related-card {
+  display: block;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.service-v1-related-card:hover,
+.service-v1-related-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(20, 24, 40, 0.06);
+}
+.service-v1-card-link {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 8px;
+  color: var(--service-accent-red);
+  font-weight: 500;
+}
+
+/* Contact band */
+.service-v1-contact-band {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 32px;
+  margin: 48px auto 96px;
+  max-width: 1120px;
+  background: #141828;
+  color: #fff;
+  border-radius: 18px;
+}
+
+/* Insights */
+.service-v1-insights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 24px;
+}
+.service-v1-insights-planned ul,
+.service-v1-insights-sources ul {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+  margin-top: 12px;
+}
+.service-v1-insights-planned li,
+.service-v1-insights-sources li {
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 12px;
+}
+.service-v1-insights-sources li a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.service-v1-source-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(20, 24, 40, 0.06);
+  color: rgba(20, 24, 40, 0.8);
+  margin-bottom: 6px;
+}
+.service-v1-source-sebi    { background: rgba(0, 86, 179, 0.1);  color: #0056b3; }
+.service-v1-source-rbi     { background: rgba(0, 119, 70, 0.1);  color: #007746; }
+.service-v1-source-mca     { background: rgba(122, 31, 31, 0.1); color: var(--service-accent-red); }
+.service-v1-source-cbdt    { background: rgba(184, 84, 0, 0.1);  color: #b85400; }
+.service-v1-source-dpiit,
+.service-v1-source-ibbi,
+.service-v1-source-icai,
+.service-v1-source-cbic {
+  background: rgba(20, 24, 40, 0.08);
+  color: rgba(20, 24, 40, 0.8);
+}
+.service-v1-source-meta {
+  font-size: 0.78rem;
+  color: rgba(20, 24, 40, 0.6);
+  margin: 4px 0 6px;
+}
+.service-v1-insights-empty {
+  color: rgba(20, 24, 40, 0.6);
+  padding: 16px;
+  border: 1px dashed var(--service-divider);
+  border-radius: 12px;
+}
+
+/* Fundraise stages — pinned (desktop) */
+.service-v1-stages-pinned-host { height: 600vh; position: relative; }
+.service-v1-stages-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.service-v1-stages-tablist {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0;
+  margin: 16px 0 24px;
+}
+.service-v1-stages-tab {
+  border: 1px solid var(--service-divider);
+  background: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+.service-v1-stages-tab.is-active {
+  background: var(--service-accent-red);
+  border-color: var(--service-accent-red);
+  color: #fff;
+}
+.service-v1-stages-tab:focus-visible {
+  outline: 2px solid var(--service-accent-red);
+  outline-offset: 2px;
+}
+.service-v1-stage-ordinal {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.service-v1-stages-panel {
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 14px;
+  padding: 24px;
+  max-width: 760px;
+}
+.service-v1-stage-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.55);
+  margin-top: 12px;
+}
+.service-v1-stages-reduced .service-v1-stages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.service-v1-stages-reduced article {
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 12px;
+}
+
+/* Artefact stack */
+.service-v1-artefact-fan {
+  position: relative;
+  height: 320px;
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.service-v1-artefact-card {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(20, 24, 40, 0.08);
+  cursor: pointer;
+}
+.service-v1-artefact-card.is-active {
+  border-color: var(--service-accent-red);
+  box-shadow: 0 16px 40px rgba(122, 31, 31, 0.18);
+}
+.service-v1-artefact-card:focus-visible {
+  outline: 2px solid var(--service-accent-red);
+  outline-offset: 2px;
+}
+.service-v1-artefact-list {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+  margin-top: 24px;
+}
+.service-v1-artefact-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 12px;
+}
+
+/* Soonicorn callout */
+.service-v1-soonicorn-card {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 18px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.service-v1-soonicorn-brand img { display: block; max-width: 220px; height: auto; }
+.service-v1-soonicorn-brand h2 { margin: 6px 0 0; font-size: 1.5rem; }
+.service-v1-soonicorn-body p { margin-bottom: 16px; }
+.service-v1-soonicorn-disclaimer {
+  font-size: 0.78rem;
+  color: rgba(20, 24, 40, 0.55);
+  margin-top: 16px;
+  line-height: 1.55;
+}
+.service-v1-soonicorn-devbanner {
+  background: #fff3cd;
+  color: #5b4a00;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 0.78rem;
+}
+
+/* Tablet + below */
+@media (max-width: 1023px) {
+  .service-v1-section-split { grid-template-columns: 1fr; }
+  .service-v1-list-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-v1-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-v1-faq-grid { grid-template-columns: 1fr; }
+  .service-v1-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-v1-insights-grid { grid-template-columns: 1fr; }
+  .service-v1-stages-pinned-host { height: auto; position: static; }
+  .service-v1-stages-sticky { position: static; height: auto; display: block; }
+  /* Keep tablist visible on mobile — overflow-x: auto contains horizontal scroll
+     within the element itself; the page body scrollbar is not affected. */
+  .service-v1-stages-tablist { flex-wrap: nowrap; }
+  .service-v1-stages-panel { max-width: none; }
+  .service-v1-artefact-fan { display: none; }
+  .service-v1-soonicorn-card { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 639px) {
+  .service-v1-list-grid { grid-template-columns: 1fr; }
+  .service-v1-timeline { grid-template-columns: 1fr; }
+  .service-v1-related-grid { grid-template-columns: 1fr; }
+  .service-v1-leadmagnet-form { flex-direction: column; }
+}
+
+/* Reduced motion — CSS-driven path replaces the JS useReducedMotion flash.
+   The JS-driven flash described in the spec's deferred follow-ups can be
+   addressed by hiding the JS-pinned variant and showing the flat grid via
+   media query — but the JS path already early-returns a different DOM
+   subtree for reduced-motion users, so the CSS path below is a defense in
+   depth, not the primary handler. */
+@media (prefers-reduced-motion: reduce) {
+  .service-v1-stages-pinned-host { height: auto; position: static; }
+  .service-v1-stages-sticky { position: static; height: auto; display: block; }
+  /* JS already renders a different DOM subtree for reduced-motion users (flat grid,
+     no tablist), so the CSS path below is defense-in-depth only. */
+  .service-v1-artefact-fan { display: none; }
+}
