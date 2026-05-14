@@ -17,3 +17,23 @@ test.describe('Investment Banking page — bespoke composition', () => {
     expect(scrollWidth).toBeLessThanOrEqual(viewport + 1);
   });
 });
+
+test.describe('Soonicorn callout — Task 10', () => {
+  test.fixme(
+    'renders with approved copy, working outbound link, and persistent disclaimer',
+    async ({ page }) => {
+      await page.goto('/services/investment-banking');
+      const link = page.getByRole('link', { name: /Visit Soonicorn Ventures/ });
+      await expect(link).toBeVisible();
+      await expect(link).toHaveAttribute('href', 'https://soonicornventures.com/');
+      await expect(link).toHaveAttribute('target', '_blank');
+      await expect(link).toHaveAttribute('rel', /noopener/);
+      await expect(page.getByText(/This is not an offer or solicitation/)).toBeVisible();
+    },
+  );
+
+  test.fixme('does not render on non-IB service pages', async ({ page }) => {
+    await page.goto('/services/ma-advisory');
+    await expect(page.getByText('Soonicorn Ventures')).toHaveCount(0);
+  });
+});
