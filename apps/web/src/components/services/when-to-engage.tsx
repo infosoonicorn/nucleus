@@ -17,13 +17,11 @@ const GENERIC_BULLETS = [
   'Management needs clear deliverables, issue trackers and next-step visibility.',
 ];
 
-const PAIR_STAGGER = 0.18;
-
+// Per-pair whileInView triggers the stagger; children of a pair animate
+// in sequence once it enters the viewport.
 const pairVariants: Variants = {
   hidden: {},
-  visible: (i: number) => ({
-    transition: { delayChildren: i * PAIR_STAGGER, staggerChildren: 0.12 },
-  }),
+  visible: { transition: { staggerChildren: 0.12 } },
 };
 
 const thenVariants: Variants = {
@@ -62,14 +60,13 @@ export function WhenToEngage({ ordinal, moments }: WhenToEngageProps) {
       <SectionHeader
         eyebrow={`§${ordinal} / When to engage`}
         title="The moments where outside judgement earns its keep."
-        text="Four scenarios where founders and boards bring us in."
+        text="Specific scenarios where founders and boards bring us in."
       />
       <dl className="service-v1-when-list" aria-label="When to engage Nucleus">
         {moments.map((m, i) => (
           <motion.div
             key={m.if}
             className="service-v1-when-pair"
-            custom={i}
             variants={pairVariants}
             initial={reduceMotion ? false : 'hidden'}
             whileInView={reduceMotion ? undefined : 'visible'}

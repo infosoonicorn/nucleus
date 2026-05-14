@@ -176,6 +176,14 @@ export const services: Service[] = [
         if: 'Considering a strategic exit and need a defensible valuation.',
         then: 'We build the valuation defense pack — DCF, comps, transaction precedents — and rehearse the negotiation.',
       },
+      {
+        if: 'Investor map needs to go beyond a few warm intros — actively reaching out to fit-stage funds and family offices.',
+        then: 'We segment the universe, build the target list with intros, and run the outreach calendar for you.',
+      },
+      {
+        if: 'Post-investment governance pressure — investor reporting cadence, board pack quality, covenant tracking.',
+        then: 'We design the investor-MIS pack, set the cadence, and surface variances before the next board call.',
+      },
     ],
     crossLink: {
       kind: 'in-house-fund',
@@ -247,6 +255,14 @@ export const services: Service[] = [
         if: 'Heading into a closing call with a price gap that needs to be defended.',
         then: 'We build the negotiation pack, walk into the room with you, and translate price into deal value.',
       },
+      {
+        if: 'Running a sell-side process — preparing the company for a structured auction with multiple acquirers.',
+        then: 'We build the teaser, IM, deal model, and run the data room and Q&A workflow through diligence and signing.',
+      },
+      {
+        if: 'Internal pre-deal valuation needed to anchor the ask before approaching counterparties.',
+        then: 'We model the value bridge — DCF, comps, precedents — and stress-test what a hostile diligence would push back on.',
+      },
     ],
   },
   {
@@ -299,6 +315,14 @@ export const services: Service[] = [
         if: 'A fraud or whistleblower complaint needs an independent investigation.',
         then: 'We scope a forensic review, secure evidence, and report findings with disciplinary and recovery recommendations.',
       },
+      {
+        if: 'Concurrent audit needed at branches or warehouses to keep daily exceptions in check.',
+        then: 'We deploy concurrent audit teams, design daily exception reporting, and escalate breakdowns the same week.',
+      },
+      {
+        if: 'Process bottleneck — order-to-cash or procure-to-pay cycles are slow and error-prone.',
+        then: 'We map the as-is process, design the to-be flow, and rebuild the controls to scale with volume.',
+      },
     ],
   },
   {
@@ -350,6 +374,14 @@ export const services: Service[] = [
       {
         if: 'Leadership wants a one-page view of every statutory exposure and filing risk.',
         then: 'We build the compliance calendar with named owners, dates, and impact — one dashboard, no surprises.',
+      },
+      {
+        if: 'Income-tax assessment or notice of demand needs a defensible response under deadline.',
+        then: 'We prepare the response, marshal evidence, and represent before assessing officers and appellate forums.',
+      },
+      {
+        if: 'Royalty, ESOP cross-charge, or service-fee structure with a foreign parent or subsidiary needs a tax opinion.',
+        then: 'We deliver the opinion under domestic tax and treaty rules, with the documentation an assessing officer can verify.',
       },
     ],
   },
@@ -404,6 +436,14 @@ export const services: Service[] = [
         if: 'Material restatement may be required after an accounting position change or regulatory observation.',
         then: 'We work through the restatement, build the disclosure language, and brief the audit committee on impact.',
       },
+      {
+        if: 'RBI inspection or FEMA-related external audit is upcoming.',
+        then: 'We run the readiness review, build the response documentation, and walk the inspection team through evidence.',
+      },
+      {
+        if: 'Controllership team needs an experienced bench to manage the statutory audit alongside year-end close.',
+        then: "We embed audit support — query closure, schedule preparation, evidence trail — so the close and audit don't compete for the same people.",
+      },
     ],
   },
   {
@@ -455,6 +495,14 @@ export const services: Service[] = [
       {
         if: 'IFRS or Ind AS impairment testing on goodwill, intangibles, or PPE is required this close.',
         then: 'We run the value-in-use model, build the disclosure language, and walk the auditor through assumptions.',
+      },
+      {
+        if: 'Need a fairness opinion or transaction valuation for a related-party deal or court-approved scheme.',
+        then: 'We deliver an independent valuation with method justification and the documentation regulators and courts expect.',
+      },
+      {
+        if: 'Brand or intangible asset valuation needed for licensing, IP transfer, or asset reorganisation.',
+        then: 'We benchmark, build the royalty-relief or relief-from-royalty model, and document the assumption set.',
       },
     ],
   },
@@ -511,6 +559,14 @@ export const services: Service[] = [
         if: "Fixed assets and inventory ledgers haven't been physically reconciled in years.",
         then: 'We run physical verification, rebuild the fixed asset register, and design the SOP so it stays clean going forward.',
       },
+      {
+        if: 'Expense or vendor billing trust gaps — leakage, duplicate payments, missing documents at month-end.',
+        then: 'We run expense verification with sample-and-100% checks, surface leakage, and tighten the approval matrix.',
+      },
+      {
+        if: 'Finance SOPs are tribal knowledge — single-point dependencies, no documented close calendar.',
+        then: 'We document SOPs, train the team, and hand back a finance function that runs without a single owner.',
+      },
     ],
   },
   {
@@ -563,6 +619,14 @@ export const services: Service[] = [
       {
         if: 'Board approvals, special resolutions, charge filings need to move alongside a transaction.',
         then: 'We sequence the corporate actions, draft the documentation, and file with ROC in step with the deal calendar.',
+      },
+      {
+        if: 'Charge creation, satisfaction, or modification is pending and lender or auditor is asking for proof.',
+        then: 'We file the charges with ROC, track satisfaction, and rebuild the security register so lenders and auditors get a clean trail.',
+      },
+      {
+        if: 'AIF or fund vehicle needs ongoing secretarial discipline — registers, filings, trustee coordination.',
+        then: 'We run the AIF secretarial calendar, file with ROC and SEBI in step, and keep the fund records audit-ready.',
       },
     ],
   },
@@ -624,6 +688,14 @@ export const services: Service[] = [
       {
         if: 'Considering a fund extension, new scheme, or restructure and need SEBI-aligned coordination.',
         then: 'We work with trustee, custodian, legal, and SEBI counsel to package the change and execute the filings.',
+      },
+      {
+        if: 'Portfolio monitoring is informal — drawdowns, milestones, valuations not tracked on a consistent cadence.',
+        then: 'We build the portfolio MIS, set the valuation policy, and design the IC and update cadence.',
+      },
+      {
+        if: 'Investor coming in for due diligence — questions on track record, processes, governance, compliance.',
+        then: 'We package the fund DD pack — IC minutes, valuation policy, regulatory filings, audit trail — and walk diligence teams through it.',
       },
     ],
   },
