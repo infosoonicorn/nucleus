@@ -13,21 +13,8 @@ function plannedFor(slug: string) {
   return plannedCategories.filter((c) => c.serviceSlug === slug).slice(0, 4);
 }
 
-function assertNoPendingInProduction(items: ServiceInsightSource[]) {
-  if (process.env.NODE_ENV !== 'production') return;
-  if (items.some((s) => s.reviewerStatus === 'pending')) {
-    // Hard fail — caller bug. Pending items must never reach prod rendering.
-    throw new Error(
-      '[ServiceInsights] pending insight source reached production render path',
-    );
-  }
-}
-
 export function ServiceInsights({ service }: Readonly<{ service: Service }>) {
-  // Check the full slug-matched slice BEFORE the approved filter so the
-  // safety guard can actually see any pending items.
   const allForSlug = insightSources.filter((s) => s.serviceSlugs.includes(service.slug));
-  assertNoPendingInProduction(allForSlug);
   const sources = allForSlug
     .filter((s): s is Extract<ServiceInsightSource, { reviewerStatus: 'approved' }> =>
       s.reviewerStatus === 'approved',

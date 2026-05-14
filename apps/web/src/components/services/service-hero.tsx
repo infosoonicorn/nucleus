@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import type { Service } from '@/content/site';

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ServiceDetail } from '@/components/service-detail';
 import { PageShell } from '@/components/site-chrome';
+import { ServiceDetail } from '@/components/service-detail';
+import { ServicePageDefault } from '@/components/services/service-page-default';
 import { services } from '@/content/site';
 
 type Props = {
@@ -36,7 +37,11 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <PageShell>
-      <ServiceDetail service={service} />
+      {service.slug === 'investment-banking' ? (
+        <ServiceDetail service={service} />
+      ) : (
+        <ServicePageDefault service={service} />
+      )}
     </PageShell>
   );
 }

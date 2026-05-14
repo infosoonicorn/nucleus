@@ -31,3 +31,25 @@ test.describe('Services data model — Task 1', () => {
     },
   );
 });
+
+test.describe('Default service-page composition — Task 7', () => {
+  const NON_IB = [
+    'ma-advisory',
+    'risk-advisory',
+    'tax-regulatory',
+    'assurance',
+    'valuations',
+    'finance-outsourcing',
+    'corporate-secretarial',
+    'aif-fund-management',
+  ];
+
+  for (const slug of NON_IB) {
+    test(`${slug} renders the elevated default composition`, async ({ page }) => {
+      await page.goto(`/services/${slug}`);
+      await expect(page.locator('.service-v1-hero')).toBeVisible();
+      await expect(page.getByRole('heading', { name: /A clear engagement path/ })).toBeVisible();
+      await expect(page.locator('.subpage-hero')).toHaveCount(0);
+    });
+  }
+});

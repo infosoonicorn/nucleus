@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import type { Service } from '@/content/site';
 import { SectionHeader } from '@/components/sections';
 
-export function LeadMagnet({ service }: Readonly<{ service: Service }>) {
+type LeadMagnetProps = Readonly<{ slug: string; leadMagnet: string }>;
+
+export function LeadMagnet({ slug, leadMagnet }: LeadMagnetProps) {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'ok' | 'error'>('idle');
   const [message, setMessage] = useState<string>('');
 
@@ -17,7 +18,7 @@ export function LeadMagnet({ service }: Readonly<{ service: Service }>) {
       const response = await fetch('/api/lead-magnet-stub', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ email, kind: 'lead-magnet', serviceSlug: service.slug }),
+        body: JSON.stringify({ email, kind: 'lead-magnet', serviceSlug: slug }),
       });
       const body = (await response.json()) as { ok: boolean; message: string };
       if (response.ok && body.ok) {
@@ -35,7 +36,7 @@ export function LeadMagnet({ service }: Readonly<{ service: Service }>) {
 
   return (
     <section className="service-v1-section service-v1-section-leadmagnet">
-      <SectionHeader eyebrow="Resource" title={service.leadMagnet} />
+      <SectionHeader eyebrow="Resource" title={leadMagnet} />
       <form className="service-v1-leadmagnet-form" onSubmit={handleSubmit}>
         <label htmlFor="lead-email" className="service-v1-sr-only">
           Work email
