@@ -48,7 +48,7 @@ export type Service = {
   /** Two-digit ordinal: '01' through '09'. Drives the §NN eyebrow on service pages. */
   ordinal: string;
   displayHeadline?: string;                 // 3-word punchier hero headline; falls back to title.
-  whenToEngage?: string[];                  // 4 bullets; falls back to generic four if absent.
+  whenToEngage?: { if: string; then: string }[]; // 4 IF/THEN scenario pairs; fallback shows generic checklist if absent.
   faq?: { q: string; a?: string }[];        // a falls back to 'Updating soon' when absent.
   crossLink?: ServiceCrossLink;             // Optional cross-link panel data.
 };
@@ -159,6 +159,24 @@ export const services: Service[] = [
     icon: Landmark,
     ordinal: '01',
     displayHeadline: 'Prepare. Position. Close.',
+    whenToEngage: [
+      {
+        if: 'Raising your next round and the model needs to hold up to investor diligence.',
+        then: 'We pressure-test the model, build the storyline, and package what investors actually open first.',
+      },
+      {
+        if: 'Term sheet on the table — clauses and dilution math need a second pair of eyes.',
+        then: 'We translate the term sheet line by line and benchmark against current market.',
+      },
+      {
+        if: 'Board pushing fundraise readiness in a 60–90 day window.',
+        then: 'We compress the 12-week fundraise into a workplan with named owners.',
+      },
+      {
+        if: 'Considering a strategic exit and need a defensible valuation.',
+        then: 'We build the valuation defense pack — DCF, comps, transaction precedents — and rehearse the negotiation.',
+      },
+    ],
     crossLink: {
       kind: 'in-house-fund',
       brand: 'Soonicorn Ventures',

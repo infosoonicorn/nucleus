@@ -5924,3 +5924,106 @@ html.lenis body {
 @media (max-width: 1023px) {
   .service-v1-artefact-stack-mobile { display: block; }
 }
+
+/* =============================================================
+   When to engage — IF / THEN animated stack.
+   Used when a service entry carries `whenToEngage: { if, then }[]`.
+   Services without curated content render the legacy checklist
+   from the same component file.
+   ============================================================= */
+
+.service-v1-when-list {
+  display: grid;
+  gap: 28px;
+  margin: 32px 0 0;
+  padding: 0;
+}
+
+.service-v1-when-pair {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.service-v1-when-if,
+.service-v1-when-then {
+  margin: 0;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.service-v1-when-then {
+  margin-left: 48px;
+}
+
+.service-v1-when-if p,
+.service-v1-when-then p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  flex: 1;
+  padding-top: 6px;
+}
+
+.service-v1-when-then p {
+  color: rgba(20, 24, 40, 0.78);
+}
+
+.service-v1-when-chip {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.service-v1-when-chip-if {
+  background: #141828;
+  color: #fff;
+}
+
+.service-v1-when-chip-then {
+  background: transparent;
+  color: var(--service-accent-red);
+  border: 1.5px solid var(--service-accent-red);
+}
+
+.service-v1-when-ordinal {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+  font-weight: 600;
+}
+
+/* Subtle visual rule connecting an IF to its THEN — implies the consequence. */
+.service-v1-when-pair {
+  position: relative;
+}
+.service-v1-when-pair::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 36px;
+  bottom: 14px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 24, 40, 0.18) 0%,
+    rgba(122, 31, 31, 0.32) 100%
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .service-v1-when-then { margin-left: 20px; }
+  .service-v1-when-if p,
+  .service-v1-when-then p { font-size: 0.95rem; }
+  .service-v1-when-pair::before { left: 18px; }
+}
