@@ -47,6 +47,22 @@ const ARTEFACTS: Artefact[] = [
 
 const DEFAULT_ACTIVE = 1; // Investor deck — richest visual default per spec.
 
+function FlatList() {
+  return (
+    <ul className="service-v1-artefact-list">
+      {ARTEFACTS.map((a) => (
+        <li key={a.name}>
+          <a.Icon aria-hidden="true" size={20} />
+          <div>
+            <h3>{a.name}</h3>
+            <p>{a.oneLiner}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function ArtefactStack() {
   const reduceMotion = useReducedMotion();
   const [active, setActive] = useState(DEFAULT_ACTIVE);
@@ -58,21 +74,14 @@ export function ArtefactStack() {
           eyebrow="Artefacts"
           title="The documents that come out of a Nucleus fundraise."
         />
-        <ul className="service-v1-artefact-list">
-          {ARTEFACTS.map((a) => (
-            <li key={a.name}>
-              <a.Icon aria-hidden="true" size={20} />
-              <div>
-                <h3>{a.name}</h3>
-                <p>{a.oneLiner}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <FlatList />
       </section>
     );
   }
 
+  // Render BOTH the fan and the flat list. CSS hides the fan on mobile and the
+  // list on desktop — keeps a working layout regardless of viewport without
+  // requiring a viewport-aware JS hook.
   return (
     <section className="service-v1-section service-v1-artefact-stack">
       <SectionHeader
@@ -104,6 +113,9 @@ export function ArtefactStack() {
             </motion.button>
           );
         })}
+      </div>
+      <div className="service-v1-artefact-stack-mobile">
+        <FlatList />
       </div>
     </section>
   );

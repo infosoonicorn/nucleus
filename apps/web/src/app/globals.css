@@ -5915,3 +5915,12 @@ html.lenis body {
      no tablist), so the CSS path below is defense-in-depth only. */
   .service-v1-artefact-fan { display: none; }
 }
+
+/* Artefact stack viewport fallback. The motion-on variant renders BOTH a fanned
+   card layout and a flat list. CSS shows only the appropriate one based on
+   viewport so mobile users (with motion enabled) see the list — not an empty
+   section where the fan is display:none'd by the tablet media query. */
+.service-v1-artefact-stack-mobile { display: none; }
+@media (max-width: 1023px) {
+  .service-v1-artefact-stack-mobile { display: block; }
+}
