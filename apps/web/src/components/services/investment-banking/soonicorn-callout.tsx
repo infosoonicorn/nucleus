@@ -6,18 +6,18 @@ import type { Service } from '@/content/site';
 // Mix across mobility, energy, AI, climate, edtech, fintech. Highlight one as
 // "live commitment" on each ring (the `highlight` flag) — pure stylistic accent.
 const INNER = [
-  { name: 'Brainwired',   src: '/brand/portfolio/Brainwired.png',  highlight: false },
-  { name: 'Kredily',      src: '/brand/portfolio/Kredily.png',     highlight: true  },
-  { name: 'Limechat',     src: '/brand/portfolio/Limechat.png',    highlight: false },
-  { name: 'Cusmat',       src: '/brand/portfolio/Cusmat.png',      highlight: false },
-  { name: 'DaveAI',       src: '/brand/portfolio/DaveAI.png',      highlight: false },
+  { name: 'Burger Singh',  src: '/brand/portfolio/burger-singh.png', highlight: false },
+  { name: 'Kredily',       src: '/brand/portfolio/Kredily.png',      highlight: true  },
+  { name: 'Limechat',      src: '/brand/portfolio/Limechat.png',     highlight: false },
+  { name: 'Cusmat',        src: '/brand/portfolio/Cusmat.png',       highlight: false },
+  { name: 'Wherehouse',    src: '/brand/portfolio/wherehouse.jpg',   highlight: false },
 ];
 
 const OUTER = [
   { name: 'Zypp Electric', src: '/brand/portfolio/zypp.png',         highlight: true  },
   { name: 'Geekster',      src: '/brand/portfolio/Geekster.png',     highlight: false },
   { name: 'Adiabatic',     src: '/brand/portfolio/Adiabatic.png',    highlight: false },
-  { name: 'Sheru',         src: '/brand/portfolio/Sheru.png',        highlight: false },
+  { name: 'Zingbus',       src: '/brand/portfolio/zingbus.png',      highlight: false },
   { name: 'TSAW',          src: '/brand/portfolio/TSAW.jpg',         highlight: true  },
   { name: 'Pickmywork',    src: '/brand/portfolio/pickmywork.png',   highlight: false },
   { name: 'Skyeair',       src: '/brand/portfolio/skyeair.jpg',      highlight: false },
@@ -128,15 +128,15 @@ export function SoonicornCallout({ service }: Readonly<{ service: Service }>) {
           <div className="service-v1-soonicorn-plate-foot">
             <div>
               <p className="service-v1-soonicorn-plate-val">
-                Pre-seed <em>&amp;</em> seed
+                <em>60+</em> companies
               </p>
-              <p className="service-v1-soonicorn-plate-lab">Stage focus</p>
+              <p className="service-v1-soonicorn-plate-lab">Portfolio</p>
             </div>
             <div>
               <p className="service-v1-soonicorn-plate-val">
-                Up to <em>$1M</em>
+                <em>18+</em> sectors
               </p>
-              <p className="service-v1-soonicorn-plate-lab">Cheque size</p>
+              <p className="service-v1-soonicorn-plate-lab">Coverage</p>
             </div>
           </div>
         </div>
@@ -158,7 +158,7 @@ export function SoonicornCallout({ service }: Readonly<{ service: Service }>) {
           <div className="service-v1-soonicorn-specs">
             <div>
               <p className="service-v1-soonicorn-spec-lab">Stage</p>
-              <p className="service-v1-soonicorn-spec-val">Seed · pre-A</p>
+              <p className="service-v1-soonicorn-spec-val">Seed to Series A</p>
             </div>
             <div>
               <p className="service-v1-soonicorn-spec-lab">Cheque</p>
