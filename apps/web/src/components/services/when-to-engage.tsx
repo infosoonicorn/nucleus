@@ -1,7 +1,8 @@
 'use client';
 
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
-import { CheckCircle2 } from 'lucide-react';
+import { useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion, type Variants } from 'framer-motion';
+import { CheckCircle2, ChevronDown } from 'lucide-react';
 import { FadeIn, WordReveal } from '@/components/motion-primitives';
 import { SectionHeader } from '@/components/sections';
 
@@ -24,13 +25,21 @@ const pairVariants: Variants = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
-const thenVariants: Variants = {
-  hidden: { opacity: 0, x: -24 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-};
-
 export function WhenToEngage({ ordinal, moments }: WhenToEngageProps) {
   const reduceMotion = useReducedMotion();
+  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set());
+
+  function toggle(i: number) {
+    setOpenIndices((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) {
+        next.delete(i);
+      } else {
+        next.add(i);
+      }
+      return next;
+    });
+  }
 
   // Fallback: generic checklist for services without curated IF/THEN scenarios.
   // Other 8 services hit this branch until their content is written.
@@ -63,42 +72,70 @@ export function WhenToEngage({ ordinal, moments }: WhenToEngageProps) {
         text="Specific scenarios where founders and boards bring us in."
       />
       <dl className="service-v1-when-list" aria-label="When to engage Nucleus">
-        {moments.map((m, i) => (
-          <motion.div
-            key={m.if}
-            className="service-v1-when-pair"
-            variants={pairVariants}
-            initial={reduceMotion ? false : 'hidden'}
-            whileInView={reduceMotion ? undefined : 'visible'}
-            viewport={{ once: true, margin: '-80px' }}
-          >
-            <dt className="service-v1-when-if">
-              <span className="service-v1-when-chip service-v1-when-chip-if">
-                <span className="service-v1-when-ordinal">
-                  §{String(i + 1).padStart(2, '0')}
-                </span>
-                IF
-              </span>
-              <p>
-                {reduceMotion ? (
-                  m.if
-                ) : (
-                  <span aria-hidden="true">
-                    <WordReveal text={m.if} />
-                  </span>
-                )}
-                {reduceMotion ? null : <span className="service-v1-sr-only">{m.if}</span>}
-              </p>
-            </dt>
-            <motion.dd
-              className="service-v1-when-then"
-              variants={reduceMotion ? undefined : thenVariants}
+        {moments.map((m, i) => {
+          const isOpen = openIndices.has(i);
+          const thenId = `when-then-${ordinal}-${i}`;
+          return (
+            <motion.div
+              key={m.if}
+              className={`service-v1-when-pair ${isOpen ? 'is-open' : ''}`}
+              variants={pairVariants}
+              initial={reduceMotion ? false : 'hidden'}
+              whileInView={reduceMotion ? undefined : 'visible'}
+              viewport={{ once: true, margin: '-80px' }}
             >
-              <span className="service-v1-when-chip service-v1-when-chip-then">THEN</span>
-              <p>{m.then}</p>
-            </motion.dd>
-          </motion.div>
-        ))}
+              <dt>
+                <button
+                  type="button"
+                  onClick={() => toggle(i)}
+                  aria-expanded={isOpen}
+                  aria-controls={thenId}
+                  className="service-v1-when-if"
+                >
+                  <span className="service-v1-when-chip service-v1-when-chip-if">
+                    <span className="service-v1-when-ordinal">
+                      §{String(i + 1).padStart(2, '0')}
+                    </span>
+                    IF
+                  </span>
+                  <p>
+                    {reduceMotion ? (
+                      m.if
+                    ) : (
+                      <span aria-hidden="true">
+                        <WordReveal text={m.if} />
+                      </span>
+                    )}
+                    {reduceMotion ? null : <span className="service-v1-sr-only">{m.if}</span>}
+                  </p>
+                  <ChevronDown
+                    aria-hidden="true"
+                    size={18}
+                    className="service-v1-when-chev"
+                  />
+                </button>
+              </dt>
+              <AnimatePresence initial={false}>
+                {isOpen ? (
+                  <motion.dd
+                    id={thenId}
+                    className="service-v1-when-then"
+                    initial={reduceMotion ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={reduceMotion ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
+                    transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <div className="service-v1-when-then-inner">
+                      <span className="service-v1-when-chip service-v1-when-chip-then">THEN</span>
+                      <p>{m.then}</p>
+                    </div>
+                  </motion.dd>
+                ) : null}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
       </dl>
     </section>
   );

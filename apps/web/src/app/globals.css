@@ -5934,47 +5934,89 @@ html.lenis body {
 
 .service-v1-when-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px 48px;
+  gap: 16px;
   margin: 32px 0 0;
   padding: 0;
-}
-
-@media (max-width: 1023px) {
-  .service-v1-when-list {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
+  max-width: 920px;
 }
 
 .service-v1-when-pair {
-  display: grid;
-  gap: 12px;
+  margin: 0;
+  border-bottom: 1px solid var(--service-divider);
+}
+.service-v1-when-pair:first-child {
+  border-top: 1px solid var(--service-divider);
+}
+
+.service-v1-when-pair dt {
   margin: 0;
 }
 
-.service-v1-when-if,
-.service-v1-when-then {
-  margin: 0;
+.service-v1-when-if {
   display: flex;
   gap: 16px;
   align-items: flex-start;
+  width: 100%;
+  padding: 18px 4px;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: color 0.2s ease;
 }
 
-.service-v1-when-then {
-  margin-left: 48px;
+.service-v1-when-if:hover,
+.service-v1-when-if:focus-visible {
+  color: var(--service-accent-red);
 }
 
-.service-v1-when-if p,
-.service-v1-when-then p {
+.service-v1-when-if:focus-visible {
+  outline: 2px solid var(--service-accent-red);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.service-v1-when-if p {
   margin: 0;
   font-size: 1.02rem;
   line-height: 1.55;
   flex: 1;
   padding-top: 6px;
+  color: rgba(20, 24, 40, 0.92);
 }
 
-.service-v1-when-then p {
+.service-v1-when-chev {
+  flex: 0 0 auto;
+  color: rgba(20, 24, 40, 0.4);
+  margin-top: 8px;
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
+.service-v1-when-pair.is-open .service-v1-when-chev {
+  transform: rotate(180deg);
+  color: var(--service-accent-red);
+}
+
+.service-v1-when-then {
+  margin: 0;
+}
+
+.service-v1-when-then-inner {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-left: 64px;
+  padding: 4px 4px 22px;
+}
+
+.service-v1-when-then-inner p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  flex: 1;
+  padding-top: 6px;
   color: rgba(20, 24, 40, 0.78);
 }
 
@@ -6010,28 +6052,8 @@ html.lenis body {
   font-weight: 600;
 }
 
-/* Subtle visual rule connecting an IF to its THEN — implies the consequence. */
-.service-v1-when-pair {
-  position: relative;
-}
-.service-v1-when-pair::before {
-  content: '';
-  position: absolute;
-  left: 28px;
-  top: 36px;
-  bottom: 14px;
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    rgba(20, 24, 40, 0.18) 0%,
-    rgba(122, 31, 31, 0.32) 100%
-  );
-  pointer-events: none;
-}
-
 @media (max-width: 639px) {
-  .service-v1-when-then { margin-left: 20px; }
+  .service-v1-when-then-inner { margin-left: 28px; }
   .service-v1-when-if p,
-  .service-v1-when-then p { font-size: 0.95rem; }
-  .service-v1-when-pair::before { left: 18px; }
+  .service-v1-when-then-inner p { font-size: 0.95rem; }
 }
