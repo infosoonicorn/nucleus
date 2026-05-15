@@ -69,7 +69,7 @@ export default function InvestmentBankingPage() {
         <IndustryReports ordinal={service.ordinal} serviceSlug={service.slug} />
 
         {/* 10. Objection handling */}
-        <Faq service={service} />
+        <Faq ordinal={service.ordinal} serviceTitle={service.title} faq={service.faq} />
 
         {/* 11. Direct capture */}
         <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />

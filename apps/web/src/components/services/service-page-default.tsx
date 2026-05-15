@@ -33,7 +33,7 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
       />
       <Proof service={service} />
       <IndustryReports ordinal={service.ordinal} serviceSlug={service.slug} />
-      <Faq service={service} />
+      <Faq ordinal={service.ordinal} serviceTitle={service.title} faq={service.faq} />
       <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />
       <RelatedServices service={service} />
       <ContactBand service={service} />
