@@ -31,6 +31,30 @@ export type ServiceCrossLink =
   | (ServiceCrossLinkBase & { reviewerStatus: 'approved'; reviewerApprovedAt: string })
   | (ServiceCrossLinkBase & { reviewerStatus: 'pending'; reviewerApprovedAt?: never });
 
+export type ProcessDossierPhase = {
+  ordinal: string;            // e.g. '§01'
+  name: string;                // e.g. 'Mandate & scope'
+  weeks: string;               // e.g. 'Weeks 1-2'
+  date: string;                // e.g. '14 Apr 2026' — illustrative milestone date
+  desc: string;                // longer paragraph shown when phase is active
+  items: string[];             // bullets shown when phase is active
+  deliv: string;               // deliverable label
+  stampLine: string;           // italic line on the wax/ink stamp once phase is signed off
+};
+
+export type ProcessDossier = {
+  fileLabel: string;           // 'N · Engagement File / 042 — 2026'
+  fileBadge: string;           // 'File 042-2026 · In progress'
+  projectName: string;         // 'Anonymised mandate' or similar — italic serif
+  engagementType: string;      // 'Sell-side · Primary fundraise'
+  partnerLabel: string;        // 'Lead: V. S. Rathore, Partner'
+  partnerSignature: string;    // 'V. S. Rathore' — renders in Caveat (cursive)
+  partnerCaption: string;      // 'Partner sign-off'
+  footerLine: string;          // 'Nucleus Advisors · Gurugram · Bengaluru · Jaipur'
+  footerNote: string;          // 'Issued under partnership letter dated 12 Apr 2026'
+  phases: ProcessDossierPhase[]; // 4 phases
+};
+
 export type HelpItem = {
   title: string;
   summary: string;                          // one-line meta for small cards (dot-separated etc.)
@@ -60,6 +84,7 @@ export type Service = {
   whenToEngage?: { if: string; then: string }[]; // 4 IF/THEN scenario pairs; fallback shows generic checklist if absent.
   process?: { name: string; text: string }[]; // Custom engagement phases; falls back to generic 4-phase if absent.
   processTitle?: string;                       // Optional custom section title for Process; falls back to "A clear engagement path for {service.title}."
+  processDossier?: ProcessDossier;             // Rich "engagement file" dossier rendering. When present, replaces the simple timeline.
   faq?: { q: string; a?: string }[];        // a falls back to 'Updating soon' when absent.
   crossLink?: ServiceCrossLink;             // Optional cross-link panel data.
 };
@@ -276,7 +301,7 @@ export const services: Service[] = [
         then: 'We design the investor-MIS pack, set the cadence, and surface variances before the next board call.',
       },
     ],
-    processTitle: 'How a Nucleus IB engagement runs, from mandate to wire.',
+    processTitle: 'From mandate, to wire.',
     process: [
       {
         name: 'Mandate & scope',
@@ -295,6 +320,59 @@ export const services: Service[] = [
         text: 'Term sheet review, SHA negotiation alongside legal, signing and wire coordination, then investor-reporting cadence handed back to the team.',
       },
     ],
+    processDossier: {
+      fileLabel: 'N · Engagement File / 042 — 2026',
+      fileBadge: 'File 042 · 2026 — illustrative',
+      projectName: 'Anonymised mandate',
+      engagementType: 'Sell-side · Primary fundraise',
+      partnerLabel: 'Lead: V. S. Rathore, Partner',
+      partnerSignature: 'V. S. Rathore',
+      partnerCaption: 'Partner sign-off',
+      footerLine: 'Nucleus Advisors · Gurugram · Bengaluru · Jaipur',
+      footerNote: 'Issued under partnership letter — illustrative example',
+      phases: [
+        {
+          ordinal: '§01',
+          name: 'Mandate & scope',
+          weeks: 'Weeks 1–2',
+          date: '14 Apr 2026',
+          desc: 'Define what a successful round looks like, agree the workplan, set fees, timeline, and named owners on both sides.',
+          items: ['Success criteria', 'Workplan & owners', 'Fees & timeline'],
+          deliv: 'Engagement letter',
+          stampLine: 'Aligned',
+        },
+        {
+          ordinal: '§02',
+          name: 'Build & pressure-test',
+          weeks: 'Weeks 3–6',
+          date: '06 May 2026',
+          desc: 'Model, deck, IM. Every assumption stress-tested as if hostile investor diligence is already running.',
+          items: ['Operating model', 'Pitch deck', 'Information memo'],
+          deliv: 'Investor-ready pack',
+          stampLine: 'Stress-tested',
+        },
+        {
+          ordinal: '§03',
+          name: 'Market & manage',
+          weeks: 'Weeks 7–12',
+          date: '21 Jun 2026',
+          desc: 'Investor mapping, outreach calendar, intro coordination, and Q&A management. We run the campaign so you can run the company.',
+          items: ['Investor map', 'Outreach calendar', 'Q&A management'],
+          deliv: 'Live process + warm intros',
+          stampLine: 'In market',
+        },
+        {
+          ordinal: '§04',
+          name: 'Close & transition',
+          weeks: 'Weeks 13–16',
+          date: '29 Jul 2026',
+          desc: 'Term sheet review, SHA negotiation alongside legal, signing and wire coordination, then investor-reporting cadence handed back to the team.',
+          items: ['Term sheet review', 'SHA negotiation', 'Signing & wire'],
+          deliv: 'Closed round + reporting cadence',
+          stampLine: 'Wired',
+        },
+      ],
+    },
     crossLink: {
       kind: 'in-house-fund',
       brand: 'Soonicorn Ventures',

@@ -41,7 +41,13 @@ export default function InvestmentBankingPage() {
         />
         <SoonicornCallout service={service} />
         <ServiceInsights service={service} />
-        <Process service={service} />
+        <Process
+          serviceTitle={service.title}
+          ordinal={service.ordinal}
+          title={service.processTitle}
+          phases={service.process}
+          dossier={service.processDossier}
+        />
         <Proof service={service} />
         <KnowledgeBank service={service} />
         <Faq service={service} />
