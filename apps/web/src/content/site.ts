@@ -398,6 +398,48 @@ export const services: Service[] = [
       reviewerStatus: 'approved',
       reviewerApprovedAt: '2026-05-14',
     },
+    faq: [
+      {
+        q: 'When should we engage a banker versus raising on our own network?',
+        a: "Most founders start on their own network — and that works for the first cheque or two. The case for bringing in a banker is usually one of three things. First, the round has grown past your circle: you need a wider investor map than your existing intros, run a proper process, and protect yourself from a single-source negotiation. Second, the work has grown beyond a side-of-desk effort: model, deck, IM, diligence pack, Q&A — that's a full-time job for several weeks and pulls a founder off the company at the worst possible moment. Third, you've been told the cap-table or valuation needs to be defended, and you'd rather have someone whose only job is to defend it. If none of those are true, hold off. If two are true, talk to us.",
+      },
+      {
+        q: 'What does "investor diligence ready" actually mean?',
+        a: "Most founders think it means a clean deck and a working model. It actually means everything an investor will ask in the next 60 days is already in the data room, labelled and version-controlled. That's the model — three statements, base / bull / bear, sensitivity tabs, and a cap-table walk including ESOP top-ups. It's the IM that anticipates the FAQ pack. It's a clean board-resolution trail, signed shareholder agreements, audited financials for the last three years, a tax position note, and a one-page summary of every material contract. It's the answers to the awkward questions — customer concentration, key-person risk, related-party transactions — written down before they're asked. Being ready means the diligence call ends faster than it started.",
+      },
+      {
+        q: 'How is Nucleus compensated — retainer or success-fee?',
+        a: 'Both, structured to keep our interests on the same side as yours. A monthly retainer covers the working time we put in regardless of round outcome — model, deck, IM, partner hours, project management. A success fee, structured as a percentage of the round closed, recognises that fundraising is binary and our job is to actually get it done. The retainer is typically modest and the success fee is the larger number. Exact terms depend on round size, complexity, geography of investors, and whether we are running a process end-to-end or supporting one your team already started. We share a fee proposal after the first one-hour scoping call — no obligation, no surprise.',
+      },
+      {
+        q: 'What is a typical fundraise timeline with Nucleus?',
+        a: "For a primary Series A or B in India, plan on 14 to 18 weeks from engagement letter to wire — assuming readiness work is done in parallel and there are no governance or audit issues to fix first. Roughly: weeks 1–2 are scope and workplan. Weeks 3–6 are build — model, deck, IM, diligence pack. Weeks 7–12 are market — investor outreach, intro coordination, term sheet conversations. Weeks 13–18 are close — term sheet selection, diligence, SHA negotiation, signing, wire. Outliers go faster (a hot round with pre-emptive interest can close in 8 weeks) or slower (a complex carve-out or strategic process can take 6–9 months). We tell you what the realistic range looks like in the first scoping call, not after we've signed you up.",
+      },
+      {
+        q: 'Do you sign an NDA before our first meeting?',
+        a: "Yes — happy to. Most first meetings are exploratory enough that an NDA isn't strictly needed, but if you'd prefer to share specific numbers, customer names, or deal context, we sign a standard mutual NDA before you do. Our template is one page and we are happy to mark up yours instead. Either way, anything you share stays inside Nucleus and is not shared with other clients or with portfolio companies of Soonicorn Ventures unless you have explicitly consented to a specific introduction.",
+      },
+      {
+        q: 'How are you different from a boutique IB or a Big-4 corporate finance team?',
+        a: "Three differences in practice. First — staffing. The partner you meet is the partner who does the work. There is no junior pool dropped on you after the engagement letter is signed. Second — scope flexibility. Boutiques tend to want a full-process mandate or nothing. Big-4 corporate finance teams are billed by the hour and incentivised to expand scope. We can run end-to-end or plug in to a specific part of an in-flight process — readiness audit, investor map, term sheet review — without forcing a full-stack engagement. Third — the in-house fund. Soonicorn Ventures, our sister entity, gives us a working view of what investors look at because we ARE investors. Most banker shops describe diligence; we live it from the other side every week.",
+      },
+      {
+        q: 'Will you work alongside our legal counsel during the deal?',
+        a: 'Yes — and we strongly recommend you keep your own counsel rather than using one we suggest. Our role on the legal side is commercial translation, not legal advice. We read the term sheet line by line with you, flag the clauses that materially shift dilution, governance, or downside protection, and brief your lawyer on what the round actually needs. Your lawyer drafts and negotiates the SHA and other definitive documents. We sit in the room with both sides during the negotiation and make sure the commercial intent does not get lost in the legal language. That division of labour keeps you faster and protected.',
+      },
+      {
+        q: 'What happens after the round closes — does the engagement end?',
+        a: 'The fundraise engagement does, but the relationship usually does not. The last two weeks of our mandate are spent on transition — investor-reporting cadence handed back to your team, board-pack template handed over, covenant tracker set up, the first quarterly update drafted alongside your CFO. Beyond that, most founders we work with come back for the next round, an M&A conversation, or a valuation when a secondary or ESOP event comes up. Some retain us on a low-volume basis for ongoing board prep and investor relations. We do not lock you into anything — every continuation is a fresh, smaller engagement scoped at the time.',
+      },
+      {
+        q: 'Can you also raise from Soonicorn Ventures, your in-house fund?',
+        a: 'In theory yes, in practice rarely the headline. Soonicorn Ventures is a SEBI-registered Category I AIF run by Nucleus that backs seed and pre-Series A startups raising up to US $1M. If your round fits the fund mandate, Soonicorn may participate alongside other investors. Two things to know. First, the fund cannot lead a round we are advising on — that would be a conflict of interest, and the SEBI AIF regulations are clear on it. We disclose any participation up front, get your written acknowledgement, and price the cheque on the same terms as the rest of the round. Second, most Nucleus IB mandates are larger than Soonicorn writes — Series A and beyond. For those, Soonicorn is not in the conversation.',
+      },
+      {
+        q: 'What size of round do you take mandates for?',
+        a: 'Practically, US $3M and up. The economics of running a full process — partner-led staffing, model, deck, IM, diligence, term sheet negotiation, close — only work above that threshold. Below it, the right move is usually a lighter readiness audit and an investor map, not a full mandate. We are happy to do that smaller piece of work for founders we like. At the other end, the largest round we have been involved in to date is just over US $50M; we have run multi-strategy buy-side mandates above that in M&A, but for primary fundraises that is roughly the upper bound for an India-anchored mid-market bench.',
+      },
+    ],
     industryReports: [
       {
         slug: 'fundraise-readiness-benchmark-india-2026',
