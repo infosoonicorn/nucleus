@@ -8021,3 +8021,235 @@ html.lenis body {
   color: rgba(20, 24, 40, 0.62);
 }
 .article-page-foot a { color: var(--service-accent-red); text-decoration: underline; }
+
+/* =============================================================
+   IB page polish layer — applied via `.service-v1` scope so the
+   8 other service pages inherit the same tightened rhythm.
+
+   What this layer does:
+   1. Unified section vertical rhythm (88px top/bottom on desktop,
+      56px on tablet, 40px on mobile).
+   2. Hairline section separators so chapters read distinctly.
+   3. One consistent header treatment for every section's eyebrow
+      and title — same mono, same letter-spacing, same Inter weight
+      for headlines, italic-red emphasis pattern.
+   4. Container width pinned at 1200px for content rail consistency.
+   5. Slightly tighter card paddings + gap rhythms.
+
+   Bespoke sections that need their own width (FundraiseStages
+   scroll-pinned, Process dossier) keep their structural padding;
+   only their interior header treatments are normalised.
+   ============================================================= */
+
+/* --- Section frame --- */
+.service-v1 > main > section,
+.service-v1 > section,
+main.service-v1 > section,
+main.service-v1 > div > section {
+  /* defensive: every direct-child section sits on the same baseline */
+  scroll-margin-top: 80px;
+}
+
+.service-v1 .service-v1-section {
+  padding-block: clamp(56px, 7vw, 88px);
+  padding-inline: clamp(20px, 3vw, 32px);
+  max-width: 1200px;
+}
+
+/* Section hairline rules — quiet 1px line between sections, except
+   where the section already has its own dark plate or alt-band. */
+.service-v1 .service-v1-section + .service-v1-section,
+.service-v1 .service-v1-fundraise + .service-v1-section,
+.service-v1 .service-v1-soonicorn + .service-v1-section,
+.service-v1 .service-v1-dossier + .service-v1-section,
+.service-v1 .service-v1-section + .service-v1-fundraise,
+.service-v1 .service-v1-section + .service-v1-soonicorn,
+.service-v1 .service-v1-section + .service-v1-dossier {
+  border-top: 1px solid rgba(20, 24, 40, 0.07);
+}
+
+/* --- Unified header treatment ---
+   Apply identical eyebrow + title typography to every section's
+   header, regardless of which bespoke class wraps them.
+*/
+.service-v1 .service-v1-when-eyebrow,
+.service-v1 .service-v1-fundraise-eyebrow,
+.service-v1 .service-v1-help-eyebrow,
+.service-v1 .service-v1-soonicorn-eyebrow,
+.service-v1 .service-v1-soonicorn-body-eyebrow,
+.service-v1 .service-v1-dossier-eyebrow,
+.service-v1 .service-v1-reports .eyebrow,
+.service-v1 .service-v1-articles .eyebrow,
+.service-v1 .eyebrow {
+  font: 500 0.74rem/1 ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: rgba(20, 24, 40, 0.55) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.service-v1 .service-v1-when-eyebrow > span:first-child,
+.service-v1 .service-v1-fundraise-eyebrow > span:first-child,
+.service-v1 .service-v1-help-eyebrow > span:first-child,
+.service-v1 .service-v1-soonicorn-eyebrow > span:first-child,
+.service-v1 .service-v1-dossier-eyebrow > span:first-child,
+.service-v1 .service-v1-eyebrow-num,
+.service-v1 .service-v1-when-eyebrow .service-v1-eyebrow-num,
+.service-v1 .service-v1-fundraise-eyebrow .service-v1-eyebrow-num,
+.service-v1 .service-v1-soonicorn-eyebrow-num,
+.service-v1 .service-v1-dossier-eyebrow-num,
+.service-v1 .eyebrow .num {
+  color: var(--service-accent-red) !important;
+}
+
+.service-v1 .service-v1-when-eyebrow-rule,
+.service-v1 .service-v1-fundraise-eyebrow-rule,
+.service-v1 .service-v1-help-eyebrow-rule,
+.service-v1 .service-v1-soonicorn-eyebrow-bar,
+.service-v1 .service-v1-dossier-eyebrow-bar,
+.service-v1 .eyebrow .bar {
+  display: inline-block !important;
+  width: 32px !important;
+  height: 1px !important;
+  background: rgba(20, 24, 40, 0.25) !important;
+}
+
+/* Section titles — unified Inter weight + italic-red emphasis */
+.service-v1 .service-v1-section .section-header h2,
+.service-v1 .service-v1-when-list ~ * h2,
+.service-v1 .service-v1-help-headline,
+.service-v1 .service-v1-fundraise-headline,
+.service-v1 .service-v1-soonicorn-title,
+.service-v1 .service-v1-dossier-title {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight: 680 !important;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.022em !important;
+  color: #141828 !important;
+}
+
+.service-v1 .service-v1-help-headline em,
+.service-v1 .service-v1-fundraise-headline em,
+.service-v1 .service-v1-soonicorn-title em,
+.service-v1 .service-v1-dossier-title em {
+  font-style: italic;
+  font-weight: 680 !important;
+  color: var(--service-accent-red) !important;
+}
+
+/* Lede paragraph normalisation */
+.service-v1 .service-v1-section .section-header p,
+.service-v1 .service-v1-dossier-lede,
+.service-v1 .service-v1-soonicorn-lede {
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+  color: rgba(20, 24, 40, 0.7) !important;
+  max-width: 640px !important;
+}
+
+/* Standard header-to-body gap inside each section */
+.service-v1 .service-v1-section .section-header,
+.service-v1 .service-v1-when-header,
+.service-v1 .service-v1-help-header,
+.service-v1 .service-v1-fundraise-header,
+.service-v1 .service-v1-dossier-head {
+  margin-bottom: 32px;
+}
+
+/* --- Card density normalisation --- */
+
+/* IF/THEN cards — slight inner padding bump for breathing room */
+.service-v1 .service-v1-when-pair {
+  border-radius: 14px;
+}
+.service-v1 .service-v1-when-if {
+  padding: 22px 22px;
+}
+
+/* HowWeHelp cards — uniform padding across flagship + tiles */
+.service-v1 .service-v1-help-card {
+  padding: 26px;
+  border-radius: 14px;
+}
+
+/* Article cards */
+.service-v1 .service-v1-articles-card {
+  padding: 24px;
+}
+
+/* Report cards */
+.service-v1 .service-v1-reports-card {
+  padding: 22px;
+}
+
+/* FAQ details */
+.service-v1 .service-v1-faq-grid details {
+  padding: 18px 20px;
+  border-radius: 12px;
+}
+
+/* --- Soonicorn polish ---
+   The plate (left) keeps its dark navy; right body gets matched
+   to the same vertical rhythm.
+*/
+.service-v1 .service-v1-soonicorn { padding-block: clamp(56px, 7vw, 88px); }
+
+/* --- Process dossier polish --- */
+.service-v1 .service-v1-dossier {
+  padding-block: clamp(56px, 7vw, 88px);
+  padding-inline: clamp(20px, 3vw, 32px);
+  max-width: 1200px;
+}
+
+/* --- Fundraise centerpiece tightening ---
+   Restore proper padding around the scroll-pinned host so it
+   reads as a section, not a full-bleed canvas.
+*/
+.service-v1 .service-v1-fundraise {
+  padding-block: clamp(40px, 5vw, 64px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Container max-width sweep ---
+   Pin to 1200px content rail. Override the older 1180px and 1320px
+   exceptions so everything reads on the same vertical grid.
+*/
+.service-v1 .service-v1-help,
+.service-v1 .service-v1-reports,
+.service-v1 .service-v1-articles,
+.service-v1 .service-v1-soonicorn-head,
+.service-v1 .service-v1-soonicorn-card {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- ContactBand tighten --- */
+.service-v1 .service-v1-contact-band {
+  margin: 40px auto 96px;
+  max-width: 1200px;
+  padding: 36px 40px;
+  border-radius: 16px;
+}
+
+/* --- Reduce decorative noise --- */
+/* Soft-mute the section-band-proof which can pick up against tightly
+   spaced sections. */
+.service-v1 .service-v1-section-proof { background: rgba(20, 24, 40, 0.025); }
+
+/* Mobile: tighter rhythm */
+@media (max-width: 639px) {
+  .service-v1 .service-v1-section { padding-inline: 18px; }
+  .service-v1 .service-v1-when-if { padding: 18px 18px; }
+  .service-v1 .service-v1-help-card { padding: 20px; border-radius: 12px; }
+  .service-v1 .service-v1-articles-card { padding: 20px; }
+  .service-v1 .service-v1-reports-card { padding: 18px; }
+  .service-v1 .service-v1-contact-band {
+    padding: 26px;
+    margin: 32px 18px 64px;
+  }
+}
