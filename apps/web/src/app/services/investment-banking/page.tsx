@@ -31,16 +31,23 @@ export default function InvestmentBankingPage() {
   return (
     <PageShell>
       <main className="home-v3 service-v1">
+        {/* 1. Identity */}
         <ServiceHero service={service} />
+
+        {/* 2. Recognition — "is this for me?" */}
         <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
-        <FundraiseStages />
+
+        {/* 3. What we deliver — capabilities */}
         <HowWeHelp
           ordinal={service.ordinal}
           flat={service.howWeHelp}
           detailed={service.howWeHelpDetailed}
         />
-        <SoonicornCallout service={service} />
-        <ServiceInsights service={service} />
+
+        {/* 4. What unfolds — the six-step fundraise journey */}
+        <FundraiseStages />
+
+        {/* 5. How we engage — partner-led mandate dossier */}
         <Process
           serviceTitle={service.title}
           ordinal={service.ordinal}
@@ -48,11 +55,29 @@ export default function InvestmentBankingPage() {
           phases={service.process}
           dossier={service.processDossier}
         />
+
+        {/* 6. Differentiator — in-house Soonicorn fund */}
+        <SoonicornCallout service={service} />
+
+        {/* 7. Evidence */}
         <Proof service={service} />
+
+        {/* 8. Read deeper — editorial */}
+        <ServiceInsights service={service} />
+
+        {/* 9. Research — published reports */}
         <IndustryReports ordinal={service.ordinal} serviceSlug={service.slug} />
+
+        {/* 10. Objection handling */}
         <Faq service={service} />
+
+        {/* 11. Direct capture */}
         <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />
+
+        {/* 12. Cross-sell */}
         <RelatedServices service={service} />
+
+        {/* 13. Final CTA */}
         <ContactBand service={service} />
       </main>
     </PageShell>
