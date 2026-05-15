@@ -5741,24 +5741,18 @@ html.lenis body {
    • Active-stage panel (text on left, document mockup on right)
    ============================================================= */
 
-.service-v1-fundraise-host { height: 600vh; position: relative; }
-.service-v1-fundraise-sticky {
-  position: sticky;
-  top: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  padding-top: 5vh;
-}
+/* Legacy scroll-pinned wrappers — now neutralised. FundraiseStages renders
+   as a normal block section with timer-driven autoplay (no scroll-jacking). */
+.service-v1-fundraise-host { position: static; height: auto; }
+.service-v1-fundraise-sticky { position: static; min-height: 0; padding: 0; display: block; }
 
 .service-v1-fundraise {
   width: 100%;
   background: var(--service-band-cream);
-  padding-block: 24px;
 }
 
 /* Header (eyebrow + headline) */
-.service-v1-fundraise-header { margin-bottom: 24px; }
+.service-v1-fundraise-header { margin-bottom: 20px; }
 .service-v1-fundraise-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -5795,8 +5789,8 @@ html.lenis body {
 /* Track */
 .service-v1-fundraise-track-wrap {
   position: relative;
-  margin: 16px 0 4px;
-  padding: 8px 0 20px;
+  margin: 8px 0 16px;
+  padding: 6px 0 14px;
 }
 .service-v1-fundraise-track-line {
   position: absolute;
@@ -5895,18 +5889,68 @@ html.lenis body {
 .service-v1-fundraise-rule {
   height: 1px;
   background: rgba(20, 24, 40, 0.1);
-  margin: 8px 0 18px;
+  margin: 4px 0 14px;
 }
 
 /* Active-stage panel */
 .service-v1-fundraise-panel {
   display: block;
+  margin-top: 6px;
 }
 .service-v1-fundraise-panel-inner {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 56px;
-  align-items: start;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Autoplay controls (mirrors dossier controls visual language) */
+.service-v1-fundraise-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(20, 24, 40, 0.08);
+}
+.service-v1-fundraise-now {
+  margin: 0;
+  font: 500 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.55);
+}
+.service-v1-fundraise-now span {
+  color: #141828;
+  letter-spacing: 0.04em;
+}
+.service-v1-fundraise-btns {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.service-v1-fundraise-btn {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(20, 24, 40, 0.18);
+  border-radius: 999px;
+  color: #141828;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.service-v1-fundraise-btn:hover {
+  background: #141828;
+  border-color: #141828;
+  color: #fefdf8;
+}
+.service-v1-fundraise-btn:focus-visible {
+  outline: 2px solid var(--service-accent-red);
+  outline-offset: 2px;
 }
 .service-v1-fundraise-panel-text { display: flex; flex-direction: column; gap: 18px; }
 .service-v1-fundraise-panel-head {

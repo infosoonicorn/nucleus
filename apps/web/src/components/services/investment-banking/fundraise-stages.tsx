@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 
 type Stage = {
   ordinal: string;
@@ -56,44 +57,50 @@ const STAGES: Stage[] = [
   },
 ];
 
+const AUTOPLAY_MS = 4200;
+const RESUME_AFTER_USER_MS = 8000;
+
 export function FundraiseStages() {
   const reduceMotion = useReducedMotion();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-  const stageIndex = useTransform(scrollYProgress, (v) => {
-    const clamped = Math.max(0, Math.min(0.9999, v));
-    return Math.floor(clamped * STAGES.length);
-  });
   const [active, setActive] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dotRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  useEffect(() => {
-    if (reduceMotion) return;
-    return stageIndex.on('change', (v) =>
-      setActive(Math.max(0, Math.min(STAGES.length - 1, v))),
-    );
-  }, [reduceMotion, stageIndex]);
+  const advance = useCallback(() => {
+    setActive((i) => (i + 1) % STAGES.length);
+  }, []);
 
-  function jumpTo(next: number, focus = true) {
-    const safe = Math.max(0, Math.min(STAGES.length - 1, next));
+  useEffect(() => {
+    if (reduceMotion || !playing) return;
+    const id = setInterval(advance, AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [reduceMotion, playing, advance]);
+
+  useEffect(() => () => {
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+  }, []);
+
+  function userJump(next: number, focus = false) {
+    const safe = ((next % STAGES.length) + STAGES.length) % STAGES.length;
     setActive(safe);
+    setPlaying(false);
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(() => setPlaying(true), RESUME_AFTER_USER_MS);
     if (focus) dotRefs.current[safe]?.focus();
   }
 
   function handleKey(event: React.KeyboardEvent<HTMLDivElement>) {
     if (event.key === 'ArrowRight') {
       event.preventDefault();
-      jumpTo(active + 1);
+      userJump(active + 1, true);
     } else if (event.key === 'ArrowLeft') {
       event.preventDefault();
-      jumpTo(active - 1);
+      userJump(active - 1, true);
     }
   }
 
-  // Reduced-motion / no-scroll fallback: flat six-card grid (same as before).
+  // Reduced-motion fallback: flat six-card grid (no autoplay, no animation).
   if (reduceMotion) {
     return (
       <section className="service-v1-section service-v1-fundraise service-v1-fundraise-reduced">
@@ -124,100 +131,126 @@ export function FundraiseStages() {
   const stage = STAGES[active];
 
   return (
-    <div ref={containerRef} className="service-v1-fundraise-host">
-      <div className="service-v1-fundraise-sticky">
-        <section className="service-v1-section service-v1-fundraise">
-          <FundraiseHeader />
+    <section className="service-v1-section service-v1-fundraise">
+      <FundraiseHeader />
 
-          <div className="service-v1-fundraise-track-wrap">
-            <div className="service-v1-fundraise-track-line" aria-hidden="true">
-              <span
-                className="service-v1-fundraise-track-fill"
-                style={{ width: `${fillPct}%` }}
-              />
-            </div>
-            <div
-              role="tablist"
-              aria-label="Fundraise stages"
-              className="service-v1-fundraise-track"
-              onKeyDown={handleKey}
-            >
-              {STAGES.map((s, index) => {
-                const state =
-                  index < active ? 'is-past' : index === active ? 'is-active' : 'is-future';
-                return (
-                  <button
-                    role="tab"
-                    key={s.ordinal}
-                    ref={(el) => {
-                      dotRefs.current[index] = el;
-                    }}
-                    type="button"
-                    aria-label={s.name}
-                    aria-selected={index === active}
-                    aria-controls="fundraise-panel"
-                    tabIndex={index === active ? 0 : -1}
-                    onClick={() => jumpTo(index, false)}
-                    className={`service-v1-fundraise-dot ${state}`}
-                  >
-                    <span className="service-v1-fundraise-dot-mark" aria-hidden="true">
-                      <span className="service-v1-fundraise-dot-inner" />
-                    </span>
-                    <span className="service-v1-fundraise-dot-ord">{s.ordinal}</span>
-                    <span className="service-v1-fundraise-dot-name">{s.name}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="service-v1-fundraise-rule" aria-hidden="true" />
-
-          <div
-            role="tabpanel"
-            id="fundraise-panel"
-            aria-live="polite"
-            className="service-v1-fundraise-panel"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={stage.ordinal}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                className="service-v1-fundraise-panel-inner"
+      <div className="service-v1-fundraise-track-wrap">
+        <div className="service-v1-fundraise-track-line" aria-hidden="true">
+          <span
+            className="service-v1-fundraise-track-fill"
+            style={{ width: `${fillPct}%` }}
+          />
+        </div>
+        <div
+          role="tablist"
+          aria-label="Fundraise stages"
+          className="service-v1-fundraise-track"
+          onKeyDown={handleKey}
+        >
+          {STAGES.map((s, index) => {
+            const state =
+              index < active ? 'is-past' : index === active ? 'is-active' : 'is-future';
+            return (
+              <button
+                role="tab"
+                key={s.ordinal}
+                ref={(el) => {
+                  dotRefs.current[index] = el;
+                }}
+                type="button"
+                aria-label={s.name}
+                aria-selected={index === active}
+                aria-controls="fundraise-panel"
+                tabIndex={index === active ? 0 : -1}
+                onClick={() => userJump(index, false)}
+                className={`service-v1-fundraise-dot ${state}`}
               >
-                <div className="service-v1-fundraise-panel-text">
-                  <div className="service-v1-fundraise-panel-head">
-                    <h3>
-                      <span className="service-v1-fundraise-ordinal">{stage.ordinal}</span>{' '}
-                      <span className="service-v1-fundraise-panel-name">{stage.name}</span>
-                    </h3>
-                    <span className="service-v1-fundraise-weeks">{stage.weeks}</span>
-                  </div>
-                  <div className="service-v1-fundraise-panel-grid">
-                    <div>
-                      <p className="service-v1-fundraise-label">What Nucleus does</p>
-                      <p className="service-v1-fundraise-body">{stage.nucleusDoes}</p>
-                    </div>
-                    <div>
-                      <p className="service-v1-fundraise-label">Deliverable</p>
-                      <p className="service-v1-fundraise-deliverable">
-                        <span aria-hidden="true">→ </span>
-                        {stage.deliverable}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <DocPreview stage={stage} />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </section>
+                <span className="service-v1-fundraise-dot-mark" aria-hidden="true">
+                  <span className="service-v1-fundraise-dot-inner" />
+                </span>
+                <span className="service-v1-fundraise-dot-ord">{s.ordinal}</span>
+                <span className="service-v1-fundraise-dot-name">{s.name}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
-    </div>
+
+      <div
+        role="tabpanel"
+        id="fundraise-panel"
+        aria-live="polite"
+        className="service-v1-fundraise-panel"
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={stage.ordinal}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            className="service-v1-fundraise-panel-inner"
+          >
+            <div className="service-v1-fundraise-panel-text">
+              <div className="service-v1-fundraise-panel-head">
+                <h3>
+                  <span className="service-v1-fundraise-ordinal">{stage.ordinal}</span>{' '}
+                  <span className="service-v1-fundraise-panel-name">{stage.name}</span>
+                </h3>
+                <span className="service-v1-fundraise-weeks">{stage.weeks}</span>
+              </div>
+              <div className="service-v1-fundraise-panel-grid">
+                <div>
+                  <p className="service-v1-fundraise-label">What Nucleus does</p>
+                  <p className="service-v1-fundraise-body">{stage.nucleusDoes}</p>
+                </div>
+                <div>
+                  <p className="service-v1-fundraise-label">Deliverable</p>
+                  <p className="service-v1-fundraise-deliverable">
+                    <span aria-hidden="true">→ </span>
+                    {stage.deliverable}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <DocPreview stage={stage} />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <div className="service-v1-fundraise-controls">
+        <p className="service-v1-fundraise-now">
+          Now: <span>{stage.ordinal} — {stage.name}</span>
+        </p>
+        <div className="service-v1-fundraise-btns">
+          <button
+            type="button"
+            className="service-v1-fundraise-btn"
+            aria-label="Previous stage"
+            onClick={() => userJump(active - 1)}
+          >
+            <ChevronLeft size={14} />
+          </button>
+          <button
+            type="button"
+            className="service-v1-fundraise-btn"
+            aria-label={playing ? 'Pause autoplay' : 'Resume autoplay'}
+            onClick={() => setPlaying((p) => !p)}
+          >
+            {playing ? <Pause size={12} /> : <Play size={12} />}
+          </button>
+          <button
+            type="button"
+            className="service-v1-fundraise-btn"
+            aria-label="Next stage"
+            onClick={() => userJump(active + 1)}
+          >
+            <ChevronRight size={14} />
+          </button>
+        </div>
+      </div>
+    </section>
   );
 }
 
