@@ -2,32 +2,65 @@
 
 ## Active task
 
-**Services elevation slice — Investment Banking landed.**
+**Investment Banking page — section-by-section visual polish landed on top of the IB slice.**
 
-- Spec: `docs/superpowers/specs/2026-05-14-services-ib-design.md`
-- Plan: `docs/superpowers/plans/2026-05-14-services-ib.md`
-- Status: implementation complete locally. All 13 plan tasks landed across ~17 commits between 2026-05-14 and 2026-05-14. Awaiting Vijay's review and deploy decision.
-- Implementation summary:
-  - `apps/web/src/components/services/` now contains 13 section primitives (12 shared + ServiceHero) plus the three IB-bespoke modules under `investment-banking/` (FundraiseStages, ArtefactStack, SoonicornCallout).
-  - `apps/web/src/app/services/investment-banking/page.tsx` is the bespoke IB route. `app/services/[slug]/page.tsx` renders the elevated default composition for the other 8 services.
-  - `apps/web/src/content/insights-sources.ts` carries reviewer-gated official-source data (currently 4 pending entries for IB).
-  - `apps/web/src/app/api/lead-magnet-stub/route.ts` is an inert stub that returns a friendly confirmation; will be replaced by Supabase writes in Phase 1.5.
-  - `apps/web/public/brand/soonicorn-ventures.png` is the Soonicorn wordmark used by the IB cross-link callout.
-  - `apps/web/src/app/globals.css` now carries a `.service-v1` design scope appended to the existing `.home-v3` styles (~441 lines added).
-  - Service type extended in `site.ts` with `ordinal`, `displayHeadline?`, `whenToEngage?`, `faq?`, `crossLink?`. `crossLink` and the insights-source types are discriminated unions on `reviewerStatus`.
-- Tests added: `tests/e2e/services-data.spec.ts`, `tests/e2e/services-ib.spec.ts`, `tests/e2e/service-insights.spec.ts`, `tests/e2e/lead-magnet-stub.spec.ts`.
-- Local quality gate: `pnpm lint && pnpm typecheck && pnpm build && pnpm test:e2e` passes on the IB and services-data specs. The `home.spec.ts` "Services nav" test is intermittently flaky — separate investigation underway.
-- Origin not pushed. `origin/main` is wired to production at `nucleusadvisors.in` (currently "coming soon"); pushing waits for Vijay's explicit go-ahead.
-- Open dependencies before merge to production:
-  - At least 3 `insightSources` entries flipped from `pending` to `approved` for Investment Banking (the IB page's regulatory-updates panel currently renders an empty-state message).
-  - Optional: IB-specific FAQ content (4 Q+A pairs).
-  - Pre-existing `home.spec.ts` flake resolved before public launch.
+- Slice spec: `docs/superpowers/specs/2026-05-14-services-ib-design.md`
+- Slice plan: `docs/superpowers/plans/2026-05-14-services-ib.md`
+- Status: full IB page is shippable. ~16 follow-up commits added on top of the IB slice between 2026-05-14 and 2026-05-15 reworked individual sections based on Vijay's live feedback. Awaiting deploy decision.
+
+**What's on the IB page right now** (12 sections, top to bottom):
+
+1. `<ServiceHero>` — eyebrow + WordReveal headline ("Prepare. Position. Close.") + magnetic CTA.
+2. `<WhenToEngage>` — 6 IF/THEN scenario cards in a 3-row × 2-column desktop grid, single column on mobile. Click any card to reveal the THEN response inline. All 9 services have content; IB shows "Raising your next round → We pressure-test the model…" etc.
+3. `<FundraiseStages>` — bespoke editorial centerpiece. §01 / FUNDRAISE eyebrow + "From idea to *closed round,* in *six deliberate steps*." headline. Horizontal scroll-pinned track with 6 dots and a red fill rail (Readiness → Modelling → Storytelling → Outreach → Diligence → Close). Two-column active panel with "What Nucleus does" + "Deliverable →" text plus a paper-document mockup on the right (Confidential header, title swapping per stage, signature line). All Inter, no Newsreader.
+4. `<HowWeHelp>` — asymmetric bento. Left flagship card (dark navy, cream text, with badge + ordinal + serif-italic title + body + bullets) and 6 cream tile cards in a 2-column grid. Click any tile and it flies into the flagship slot with a 0.55s cubic ease, the previous flagship returns to the click position. Layout managed via CSS grid + framer-motion `layout` prop.
+5. `<SoonicornCallout>` — orbital portfolio constellation. Dark navy plate on the left with the real Soonicorn unicorn icon at the center, 5-satellite inner ring (24s clockwise) + 7-satellite outer ring (38s counter-clockwise) using real portfolio logos (Burger Singh, Kredily, Limechat, Cusmat, Wherehouse, Zypp Electric, Geekster, Adiabatic, Zingbus, TSAW, Pickmywork, Skyeair). 3 of 12 highlighted with red glow as "live commitment." Plate foot shows portfolio breadth (60+ companies / 18+ sectors). Right paper panel: §04 eyebrow, "Capital that moves *with the advice*" headline, body from approved `service.crossLink`, 3-column spec strip (Stage: Seed to Series A · Cheque: Up to $1M · Geography: India-first), dark-pill CTA with red-sweep hover, persistent disclaimer.
+6. `<ServiceInsights>` — two-column. Left: 4 planned-knowledge categories (Fundraise readiness, Investor mapping, Term sheets, Sector deep dives) marked "Updating soon." Right: 4 reviewer-approved regulatory updates (SEBI AIF Master Circular, RBI FEMA Master Direction, DPIIT Startup India, CBDT angel tax).
+7. `<Process>` — generic 4-phase block (Diagnose → Structure → Execute → Report).
+8. `<Proof>` — hidden for IB (no `service.proof`).
+9. `<KnowledgeBank>` — experts list.
+10. `<Faq>` — 4 generic placeholders ("Updating soon" answer slots). **TBD content.**
+11. `<LeadMagnet>` — inert form → `/api/lead-magnet-stub`.
+12. `<RelatedServices>` + `<ContactBand>`.
+
+**Sections removed from IB page** (still in codebase, used by other 8 services or other pages):
+
+- `<ArtefactStack>` cut — FundraiseStages' per-stage doc preview made it redundant.
+- `<Deliverables>` cut — same reason (FundraiseStages lists each deliverable inline with its stage).
+
+**Other 8 service pages** (M&A, Risk, Tax, Assurance, Valuations, Finance Outsourcing, Corp Sec, AIF) continue to render via `[slug]/page.tsx` → `<ServicePageDefault>`. They get the new `WhenToEngage` IF/THEN treatment (all have content), plus the `HowWeHelp` falls back to the legacy list-grid (only IB has `howWeHelpDetailed`). No regressions on those pages.
+
+**Compliance gates intact:**
+
+- `<SoonicornCallout>` still gated on `crossLink.reviewerStatus === 'approved'` (production gate).
+- `<ServiceInsights>` still gated on `insightSources` items having `reviewerStatus: 'approved'` (compile-time discriminated union).
+- Disclaimer copy unchanged from Vijay's 2026-05-14 approval.
+- Lead-magnet stub still writes only to `console.warn` — no third-party calls, no DB writes.
+
+**Origin not pushed.** `origin/main` is wired to Vercel production at `nucleusadvisors.in` (currently "coming soon"); pushing waits for Vijay's explicit go-ahead.
+
+**Open dependencies before merge to production:**
+
+- IB-specific FAQ content (4 Q+A pairs). Currently renders "Updating soon" placeholders. Optional but feels thin.
+- Pre-existing `home.spec.ts` "Services nav" test flake. Separate investigation already underway (spawned task earlier).
+- Soonicorn wordmark PNG → SVG (currently `apps/web/public/brand/soonicorn-ventures.png` at 62KB). Tracker item; non-blocking.
 
 **Next slice (queued):** apply the same primitives to About / Careers / Insights / Contact via separate brainstorm + spec.
 
 ## Last Action
 
-Task 13 — project cleanup and docs update. Legacy `apps/web/src/components/service-detail.tsx` (no longer imported anywhere) deleted. `docs/project-tracker.md` updated to reflect the IB slice landing, deferred follow-ups, and open inputs. `docs/superpowers/specs/2026-05-14-services-ib-design.md` and `docs/superpowers/plans/2026-05-14-services-ib.md` committed for historical reference. Final quality gate passed (except the documented `home.spec.ts` nav flake).
+Approved all 4 IB `insightSources` entries (SEBI AIF, RBI FEMA, DPIIT, CBDT angel tax) — flipped from `reviewerStatus: 'pending'` to `'approved'` with `reviewerApprovedAt: '2026-05-14'`. Replaced the RBI URL from the generic master-directions listing page to the specific FEMA notification (`https://www.rbi.org.in/commonman/english/scripts/Notification.aspx?Id=856`) per Vijay's correction. The right column of the IB Insights section now shows all 4 regulatory citations with source badges, publication dates, and "why it matters" lines. Single commit `d0bbc11`. Closes the "≥3 reviewer-approved entries" open dependency from the earlier handoff.
+
+Previous (in reverse chronological order, all 2026-05-14 and 2026-05-15):
+
+- **Soonicorn callout content fix.** Swapped 3 portfolio logos that read poorly at satellite scale (Brainwired → Burger Singh, Sheru → Zingbus, DaveAI → Wherehouse). Plate foot stopped duplicating the right-side spec strip (Stage / Cheque) — now shows portfolio breadth (60+ companies / 18+ sectors) sourced from soonicornventures.com. Stage corrected from "Seed · pre-A" to "Seed to Series A." Commit `cd16699`.
+- **Soonicorn callout redesigned with orbital portfolio constellation.** Replaced the earlier static logo + text panel with the design from the Claude Design handoff bundle (`Soonicorn Block.html`). Real Soonicorn icon at the orbital core, 12 real portfolio logos as satellites on two counter-rotating rings, 4s core-breathe glow, livedot pulse, hover sweep on CTA. Inter font throughout (no Newsreader). Compliance copy + reviewer-gated render preserved from the existing `service.crossLink` contract. Commit `09ffab4`.
+- **HowWeHelp asymmetric bento — final motion fix.** Unified all 7 cards under a single `motion.button` element type with stable `key={item.title}` so framer-motion's `layout` prop animates the position swap properly. Replaced the spring (which felt like bouncing in place) with a 0.55s cubic-bezier ease. Clicked tile now glides into the flagship slot; the old flagship glides into the freed grid position. Commits `126b451` (initial bento) + `add78e2` (motion fix).
+- **IB page composition trimmed.** Cut `<ArtefactStack>` and `<Deliverables>` from the IB route — both duplicated what FundraiseStages already shows with more visual care. Process kept as the meta 4-phase abstraction. Components stay in codebase for default composition. Commit `771ccdc`.
+- **FundraiseStages — typography + sizing fixes.** Newsreader serif font wasn't actually loaded; replaced with Inter at weight 680 (matching `.home-v3-headline-display`). Doc card dimensions reduced (240×240, 4 mock-content lines, tighter padding) so the full document including the "Prepared by Nucleus" signature line fits within the 100vh sticky pane on standard laptop viewports. Commits `da7b5c2` + `5a4f509`.
+- **FundraiseStages — editorial track redesign.** Replaced the earlier pill-tablist + plain panel with the design from the Claude Design handoff bundle (`A — Horizontal track + deliverable mock`). Big serif-style headline, horizontal track with bullseye dots and red fill rail, scroll-pinned active panel with two-column text + paper-document mockup. Scroll-pin and ARIA tablist semantics preserved from the earlier version; keyboard arrow nav still moves focus. Commit `3f4d1fb`.
+- **WhenToEngage — final structure.** 6 IF/THEN cards in a 3×2 desktop grid (single column on mobile). Click any card to reveal the THEN answer inline via framer-motion height animation. Chevron rotates 180° when open. All 9 services have content; the section reads as a service-specific FAQ rather than a generic list. Series of commits: `5ca2407` (initial IF/THEN for IB), `600bf33` (content for 8 services), `5b63ed0` (2-col 6 scenarios), `e6b2351` (single-column click-to-reveal), `9190e97` (final 2-col 3-row card grid).
+- Task 13 — project cleanup. Legacy `apps/web/src/components/service-detail.tsx` deleted. `docs/project-tracker.md` updated with the slice landing + deferred follow-ups. Spec + plan committed for historical reference.
 
 Previous: Home page polish pass — six fixes from a section-by-section audit (desktop + mobile + seam screenshots, see `outputs/sec-*.png` and `outputs/seam2-*.png`).
 
@@ -49,20 +82,22 @@ Skipped (intentional, not bugs):
 
 ## Next Step
 
-1. Vijay reviews `/services/investment-banking` in browser and approves or requests changes.
-2. Flip at least 3 `insightSources` entries for IB from `pending` to `approved` — the regulatory-updates panel will then show real content.
-3. Push to origin when Vijay gives explicit go-ahead, then run deployed quality gate (`PLAYWRIGHT_BASE_URL=https://nucleus-bay.vercel.app pnpm test:e2e`).
-4. Begin next slice: About / Careers / Insights / Contact elevated via same primitives.
-5. Source the hero Lottie per `docs/home-hero-lottie-spec.md` and drop it at `apps/web/public/lottie/nucleus-hero.json`.
-6. Bump `proofAsOf` in `apps/web/src/content/site.ts` when partners re-validate the headcount/clients/deals figures.
+1. Optional but recommended: write 4 IB-specific FAQ pairs and add them to `services[0].faq` in `apps/web/src/content/site.ts`. Once present the `<Faq>` component renders real Q+A instead of "Updating soon" placeholders.
+2. Begin next slice: About / Careers / Insights / Contact elevated via the same `service-v1` primitives. Each gets its own brainstorm + bespoke moments where warranted.
+3. Push to origin when Vijay gives explicit go-ahead — origin is wired to live production. Run deployed quality gate (`PLAYWRIGHT_BASE_URL=https://nucleus-bay.vercel.app pnpm test:e2e`) on the preview before flipping the production switch.
+4. Source the hero Lottie per `docs/home-hero-lottie-spec.md` and drop it at `apps/web/public/lottie/nucleus-hero.json`.
+5. Bump `proofAsOf` in `apps/web/src/content/site.ts` when partners re-validate the headcount/clients/deals figures.
+6. Source SVG of the Soonicorn Ventures wordmark (currently PNG at `apps/web/public/brand/soonicorn-ventures.png`).
+7. Resolve the pre-existing `home.spec.ts` "Services nav" Playwright flake (separate investigation task already spawned).
 
-## Changed Files In Current Work (IB Slice)
+## Changed Files In Current Work (IB Slice + Post-Slice Iteration)
 
-- `HANDOFF.md`
-- `docs/project-tracker.md`
+**IB slice — initial 13-task delivery:**
+
+- `HANDOFF.md`, `docs/project-tracker.md`
 - `docs/superpowers/specs/2026-05-14-services-ib-design.md` (new)
 - `docs/superpowers/plans/2026-05-14-services-ib.md` (new)
-- `apps/web/src/content/site.ts` (service type extended)
+- `apps/web/src/content/site.ts` (Service type extended)
 - `apps/web/src/content/insights-sources.ts` (new)
 - `apps/web/src/app/globals.css` (`.service-v1` scope added)
 - `apps/web/src/app/services/investment-banking/page.tsx` (new bespoke route)
@@ -71,11 +106,23 @@ Skipped (intentional, not bugs):
 - `apps/web/src/components/services/` (13 section primitives, new directory)
 - `apps/web/src/components/services/investment-banking/` (3 bespoke modules, new directory)
 - `apps/web/public/brand/soonicorn-ventures.png` (new asset)
-- `tests/e2e/services-data.spec.ts` (new)
-- `tests/e2e/services-ib.spec.ts` (new)
-- `tests/e2e/service-insights.spec.ts` (new)
-- `tests/e2e/lead-magnet-stub.spec.ts` (new)
+- `tests/e2e/services-data.spec.ts`, `tests/e2e/services-ib.spec.ts`, `tests/e2e/service-insights.spec.ts`, `tests/e2e/lead-magnet-stub.spec.ts` (new)
 - `apps/web/src/components/service-detail.tsx` (deleted — legacy, was unreferenced)
+
+**Post-slice iteration (2026-05-14 → 2026-05-15, ~16 commits):**
+
+- `apps/web/src/content/site.ts` (`HelpItem` type + `howWeHelpDetailed` for IB; per-service `whenToEngage` IF/THEN content for all 9 services; IB `whenToEngage` expanded to 6 scenarios)
+- `apps/web/src/content/insights-sources.ts` (all 4 IB entries flipped to `'approved'` with `reviewerApprovedAt`; RBI URL corrected)
+- `apps/web/src/components/services/when-to-engage.tsx` (full rewrite — IF/THEN bento with click-to-reveal disclosure)
+- `apps/web/src/components/services/how-we-help.tsx` (full rewrite — asymmetric bento with click-to-swap flagship)
+- `apps/web/src/components/services/investment-banking/fundraise-stages.tsx` (full rewrite — editorial track with paper-document mockup)
+- `apps/web/src/components/services/investment-banking/soonicorn-callout.tsx` (full rewrite — orbital portfolio constellation)
+- `apps/web/src/components/services/service-page-default.tsx` (prop-shape updates for the new client components)
+- `apps/web/src/app/services/investment-banking/page.tsx` (ArtefactStack + Deliverables removed from composition; prop-shape updates)
+- `apps/web/src/app/globals.css` (extensive — replaced `.service-v1-stages-*` with `.service-v1-fundraise-*`; added `.service-v1-when-*`, `.service-v1-help-*`; rebuilt `.service-v1-soonicorn-*` with orbital system)
+- `apps/web/public/brand/soonicorn-icon.png` (new — Soonicorn unicorn icon for the orbital core)
+- `apps/web/public/brand/portfolio/` (new directory — 12 portfolio logos: Adiabatic, Burger Singh, Cusmat, Geekster, Kredily, Limechat, Pickmywork, Skyeair, TSAW, Wherehouse, Zingbus, Zypp)
+- `.claude/launch.json` (new — Claude Preview launch config, gitignored)
 
 Previous homepage redesign pass also changed:
 
@@ -101,6 +148,10 @@ Previous homepage redesign pass also changed:
 
 ## Verification
 
+- Latest local gate after insight-source approvals (2026-05-15, commit `d0bbc11`): `pnpm lint`, `pnpm typecheck`, `pnpm build` all pass. `pnpm test:e2e tests/e2e/services-ib.spec.ts` — 8 passed.
+- Local gate after Soonicorn redesign + content fixes (commits `09ffab4` + `cd16699`): all four gates pass; e2e IB tests 8/8 pass.
+- Local gate after HowWeHelp + WhenToEngage rework (commits `add78e2`, `e6b2351`, `9190e97`): all four gates pass.
+- Local gate after FundraiseStages redesign (commit `3f4d1fb`): all four gates pass; 26 IB + services-data tests pass.
 - Latest local gate after IB slice Task 13: `pnpm lint && pnpm typecheck && pnpm build && pnpm test:e2e` passes (except the documented intermittent `home.spec.ts` "Services nav" flake — separate investigation underway).
 - `pnpm lint` passed
 - `pnpm typecheck` passed
