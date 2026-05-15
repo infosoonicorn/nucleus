@@ -1,110 +1,200 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { ContactBand, SectionHeader } from '@/components/sections';
+import { ArrowUpRight, Clock } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
-import { insightCategories } from '@/content/site';
+import { articles } from '@/content/articles';
+import { services } from '@/content/site';
 
 export const metadata: Metadata = {
-  title: 'Insights | Nucleus Advisors',
+  title: 'Insights — Nucleus Advisors',
   description:
-    'Nucleus Advisors insight shell for knowledge bank categories, live updates, newsletters and lead magnets.',
+    'Long-form writing from Nucleus partners on fundraises, term sheets, M&A, valuations, risk and tax — searchable by service line.',
 };
 
-const editorialModules = [
-  {
-    title: 'Official-source updates',
-    text: 'Income Tax, MCA, GST/CBIC, RBI, SEBI, IBBI, ICAI and relevant government scheme updates.',
-  },
-  {
-    title: 'Service knowledge banks',
-    text: 'Articles, FAQs, checklists and explainers mapped to service pages and reviewer ownership.',
-  },
-  {
-    title: 'Lead magnets',
-    text: 'Readiness checklists, templates and starter guides connected to future gated capture.',
-  },
-  {
-    title: 'Newsletter distribution',
-    text: 'Approved website content can later be packaged into newsletters and LinkedIn drafts.',
-  },
-];
+type SearchParams = Promise<{
+  service?: string | string[];
+  tag?: string | string[];
+}>;
 
-const guardrails = [
-  'No AI-generated tax, legal or regulatory content publishes without human approval.',
-  'Each article should store source URL, retrieval date, service mapping and reviewer.',
-  'Prepared-by and reviewed-by lines should be added once partner approval is configured.',
-  'No fake live updates or copied competitor commentary.',
-];
+function pickFirst(value: string | string[] | undefined): string | undefined {
+  if (Array.isArray(value)) return value[0];
+  return value;
+}
 
-export default function InsightsPage() {
+export default async function InsightsHubPage({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const raw = await searchParams;
+  const serviceFilter = pickFirst(raw.service);
+  const tagFilter = pickFirst(raw.tag);
+
+  const allowDrafts = process.env.NODE_ENV !== 'production';
+
+  const visible = articles
+    .filter((a) => (allowDrafts ? true : a.reviewerStatus === 'approved'))
+    .sort((a, b) => b.publishedOn.localeCompare(a.publishedOn));
+
+  const filtered = visible
+    .filter((a) => (serviceFilter ? a.serviceSlugs.includes(serviceFilter) : true))
+    .filter((a) => (tagFilter ? a.tag === tagFilter : true));
+
+  // Filter chips — only show services that have at least one article, and tags
+  // present in the currently-visible set.
+  const serviceCounts = countByMulti(visible, (a) => a.serviceSlugs);
+  const tagsForService = serviceFilter
+    ? Array.from(new Set(visible.filter((a) => a.serviceSlugs.includes(serviceFilter)).map((a) => a.tag)))
+    : Array.from(new Set(visible.map((a) => a.tag)));
+
+  const serviceTitleBySlug = new Map(services.map((s) => [s.slug, s.title]));
+
   return (
     <PageShell>
-      <main>
-        <section className="subpage-hero">
-          <div>
-            <p className="eyebrow">Insights</p>
-            <h1>Knowledge bank, newsletters and official-source updates.</h1>
-            <p>
-              Phase 1 introduces the editorial structure without fake live content. AI-assisted
-              drafting remains future/internal and human-reviewed before publishing.
-            </p>
+      <main className="home-v3 service-v1">
+        <section className="hub-hero">
+          <p className="hub-eyebrow">Insights</p>
+          <h1 className="hub-title">
+            Notes from the <em>desk.</em>
+          </h1>
+          <p className="hub-lede">
+            Long-form writing from Nucleus partners — fundraise mechanics, term sheets, M&amp;A,
+            valuations, risk and tax. Filter by service line or tag.
+          </p>
+        </section>
+
+        <section className="hub-filters" aria-label="Filter insights">
+          <div className="hub-filter-row">
+            <span className="hub-filter-label">Service —</span>
+            <FilterChip
+              href="/insights"
+              active={!serviceFilter}
+              label={`All · ${visible.length}`}
+            />
+            {Array.from(serviceCounts.entries())
+              .sort((a, b) => b[1] - a[1])
+              .map(([slug, count]) => {
+                const title = serviceTitleBySlug.get(slug) ?? slug;
+                const href = `/insights?service=${slug}`;
+                return (
+                  <FilterChip
+                    key={slug}
+                    href={href}
+                    active={serviceFilter === slug}
+                    label={`${title} · ${count}`}
+                  />
+                );
+              })}
           </div>
+
+          {tagsForService.length > 0 ? (
+            <div className="hub-filter-row">
+              <span className="hub-filter-label">Tag —</span>
+              <FilterChip
+                href={serviceFilter ? `/insights?service=${serviceFilter}` : '/insights'}
+                active={!tagFilter}
+                label="All"
+              />
+              {tagsForService.map((tag) => {
+                const params = new URLSearchParams();
+                if (serviceFilter) params.set('service', serviceFilter);
+                params.set('tag', tag);
+                return (
+                  <FilterChip
+                    key={tag}
+                    href={`/insights?${params.toString()}`}
+                    active={tagFilter === tag}
+                    label={tag}
+                  />
+                );
+              })}
+            </div>
+          ) : null}
         </section>
-        <section className="section">
-          <SectionHeader
-            eyebrow="Categories"
-            title="Service-wise knowledge modules for future publishing."
-          />
-          <div className="pill-grid">
-            {insightCategories.map((category) => (
-              <span key={category}>{category}</span>
-            ))}
-          </div>
+
+        <section className="hub-grid-section">
+          {filtered.length === 0 ? (
+            <div className="hub-empty">
+              <p>No insights match these filters yet.</p>
+              <Link href="/insights" className="hub-empty-reset">
+                Clear filters
+              </Link>
+            </div>
+          ) : (
+            <div className="service-v1-articles-grid hub-articles-grid">
+              {filtered.map((article) => {
+                const isDraft = article.reviewerStatus !== 'approved';
+                return (
+                  <Link
+                    key={article.slug}
+                    href={`/insights/${article.slug}`}
+                    className="service-v1-articles-card"
+                  >
+                    <div className="service-v1-articles-meta">
+                      <span className="service-v1-articles-tag">{article.tag}</span>
+                      {isDraft ? (
+                        <span
+                          className="service-v1-articles-draft"
+                          title="Draft — visible in dev only"
+                        >
+                          Draft
+                        </span>
+                      ) : null}
+                    </div>
+                    <h3 className="service-v1-articles-title">{article.title}</h3>
+                    <p className="service-v1-articles-excerpt">{article.excerpt}</p>
+                    <div className="service-v1-articles-foot">
+                      <span className="service-v1-articles-author">
+                        <span className="service-v1-articles-avatar" aria-hidden="true">
+                          {article.author.initials}
+                        </span>
+                        <span>
+                          {article.author.name}
+                          <span className="service-v1-articles-role"> · {article.author.role}</span>
+                        </span>
+                      </span>
+                      <span className="service-v1-articles-time">
+                        <Clock size={12} aria-hidden="true" />
+                        {article.readMinutes} min
+                      </span>
+                    </div>
+                    <span className="service-v1-articles-read" aria-hidden="true">
+                      Read
+                      <ArrowUpRight size={14} />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </section>
-        <section className="section alt-section">
-          <SectionHeader
-            eyebrow="Content engine"
-            title="From advisory work to reviewed public knowledge."
-          />
-          <div className="people-grid">
-            {editorialModules.map((module) => (
-              <article key={module.title}>
-                <span>Module</span>
-                <h3>{module.title}</h3>
-                <p>{module.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-        <section className="section split-section">
-          <SectionHeader
-            eyebrow="Editorial workflow"
-            title="AI can assist drafts. Nucleus reviewers approve what gets published."
-            text="Future articles should track source URLs, retrieval dates, related services, reviewer and distribution notes."
-          />
-          <Link className="mini-panel linked-panel" href="/insights/live-updates">
-            <h3>Live updates shell</h3>
-            <p>Official-source monitoring route for Phase 2.</p>
-            <span className="text-link">
-              Open shell
-              <ArrowRight aria-hidden="true" size={16} />
-            </span>
-          </Link>
-        </section>
-        <section className="section">
-          <SectionHeader eyebrow="Publishing guardrails" title="Trust before speed." />
-          <div className="list-grid">
-            {guardrails.map((item) => (
-              <div key={item}>{item}</div>
-            ))}
-          </div>
-        </section>
-        <ContactBand
-          title="Want a Nucleus checklist or advisory note?"
-          text="Downloads and newsletter capture will be connected once Phase 1.5 backend storage is active."
-        />
       </main>
     </PageShell>
   );
+}
+
+function FilterChip({
+  href,
+  active,
+  label,
+}: Readonly<{ href: string; active: boolean; label: string }>) {
+  return (
+    <Link
+      href={href}
+      className={`hub-chip ${active ? 'is-active' : ''}`}
+      aria-current={active ? 'page' : undefined}
+    >
+      {label}
+    </Link>
+  );
+}
+
+function countByMulti<T>(items: T[], getKeys: (item: T) => string[]): Map<string, number> {
+  const map = new Map<string, number>();
+  for (const it of items) {
+    for (const k of getKeys(it)) {
+      map.set(k, (map.get(k) ?? 0) + 1);
+    }
+  }
+  return map;
 }

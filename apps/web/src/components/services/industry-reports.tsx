@@ -1,12 +1,14 @@
 import Link from 'next/link';
-import { ArrowUpRight, FileText } from 'lucide-react';
-import type { IndustryReport } from '@/content/site';
+import { ArrowRight, ArrowUpRight, FileText } from 'lucide-react';
 import { SectionHeader } from '@/components/sections';
+import { getReportsForService } from '@/content/reports';
 
 type IndustryReportsProps = Readonly<{
   ordinal: string;
-  reports?: IndustryReport[];
+  serviceSlug: string;
 }>;
+
+const PREVIEW_COUNT = 4;
 
 const TYPE_BADGE_COLORS: Record<string, string> = {
   'Sector report': 'service-v1-reports-badge-sector',
@@ -15,8 +17,12 @@ const TYPE_BADGE_COLORS: Record<string, string> = {
   'Data sheet': 'service-v1-reports-badge-data',
 };
 
-export function IndustryReports({ ordinal, reports }: IndustryReportsProps) {
-  if (!reports || reports.length === 0) return null;
+export function IndustryReports({ ordinal, serviceSlug }: IndustryReportsProps) {
+  const all = getReportsForService(serviceSlug);
+  if (all.length === 0) return null;
+
+  const preview = all.slice(0, PREVIEW_COUNT);
+  const hasMore = all.length > PREVIEW_COUNT;
 
   return (
     <section className="service-v1-section service-v1-reports">
@@ -26,7 +32,7 @@ export function IndustryReports({ ordinal, reports }: IndustryReportsProps) {
         text="Anonymised benchmarks, working papers, and advisory notes. Request a copy if you would like the full PDF."
       />
       <div className="service-v1-reports-grid">
-        {reports.map((report) => (
+        {preview.map((report) => (
           <article key={report.slug} className="service-v1-reports-card">
             <div className="service-v1-reports-cover" aria-hidden="true">
               <FileText size={28} />
@@ -61,6 +67,16 @@ export function IndustryReports({ ordinal, reports }: IndustryReportsProps) {
             </div>
           </article>
         ))}
+      </div>
+
+      <div className="service-v1-section-foot">
+        <Link
+          href={`/reports?service=${serviceSlug}`}
+          className="service-v1-section-foot-cta"
+        >
+          {hasMore ? `See all ${all.length} reports` : 'Browse all reports'}
+          <ArrowRight size={14} aria-hidden="true" />
+        </Link>
       </div>
     </section>
   );

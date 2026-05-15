@@ -1,16 +1,18 @@
 import Link from 'next/link';
-import { ArrowUpRight, Clock } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Clock } from 'lucide-react';
 import { SectionHeader } from '@/components/sections';
 import { getArticlesForService } from '@/content/articles';
 import type { Service } from '@/content/site';
 
-const MAX_CARDS = 6;
+const PREVIEW_COUNT = 4;
 
 export function ServiceInsights({ service }: Readonly<{ service: Service }>) {
   // In development, surface drafts so partners can review unreviewed articles
   // on the page. In production, only `reviewerStatus: 'approved'` items render.
   const allowDrafts = process.env.NODE_ENV !== 'production';
-  const articles = getArticlesForService(service.slug, { allowDrafts }).slice(0, MAX_CARDS);
+  const allArticles = getArticlesForService(service.slug, { allowDrafts });
+  const articles = allArticles.slice(0, PREVIEW_COUNT);
+  const hasMore = allArticles.length > PREVIEW_COUNT;
 
   if (articles.length === 0) {
     return null;
@@ -65,6 +67,16 @@ export function ServiceInsights({ service }: Readonly<{ service: Service }>) {
             </Link>
           );
         })}
+      </div>
+
+      <div className="service-v1-section-foot">
+        <Link
+          href={`/insights?service=${service.slug}`}
+          className="service-v1-section-foot-cta"
+        >
+          {hasMore ? `See all ${allArticles.length} insights` : 'Browse all insights'}
+          <ArrowRight size={14} aria-hidden="true" />
+        </Link>
       </div>
     </section>
   );

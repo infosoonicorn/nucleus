@@ -96,7 +96,7 @@ export type Service = {
   process?: { name: string; text: string }[]; // Custom engagement phases; falls back to generic 4-phase if absent.
   processTitle?: string;                       // Optional custom section title for Process; falls back to "A clear engagement path for {service.title}."
   processDossier?: ProcessDossier;             // Rich "engagement file" dossier rendering. When present, replaces the simple timeline.
-  industryReports?: IndustryReport[];          // Replaces the legacy "Knowledge Bank" experts list with downloadable research/data sheets.
+  // industryReports moved to `apps/web/src/content/reports.ts` (centralised across services).
   faq?: { q: string; a?: string }[];        // a falls back to 'Updating soon' when absent.
   crossLink?: ServiceCrossLink;             // Optional cross-link panel data.
 };
@@ -440,48 +440,8 @@ export const services: Service[] = [
         a: 'Practically, US $3M and up. The economics of running a full process — partner-led staffing, model, deck, IM, diligence, term sheet negotiation, close — only work above that threshold. Below it, the right move is usually a lighter readiness audit and an investor map, not a full mandate. We are happy to do that smaller piece of work for founders we like. At the other end, the largest round we have been involved in to date is just over US $50M; we have run multi-strategy buy-side mandates above that in M&A, but for primary fundraises that is roughly the upper bound for an India-anchored mid-market bench.',
       },
     ],
-    industryReports: [
-      {
-        slug: 'fundraise-readiness-benchmark-india-2026',
-        title: 'Fundraise readiness benchmark: Series A in India, 2026',
-        abstract: 'Where founders typically stand on model, deck, IM, and data room when they think they are ready — and what investors actually look for in the first 90 minutes.',
-        reportType: 'Sector report',
-        pages: 28,
-        publishedOn: '2026-03-12',
-        tags: ['Fundraise', 'Series A', 'India'],
-        status: 'available',
-      },
-      {
-        slug: 'term-sheet-economics-dilution',
-        title: 'Term sheet economics: what dilution actually means over 18 months',
-        abstract: 'A working-paper walk-through of liquidation preferences, anti-dilution, and ESOP top-ups — modelled across a $5M Series A and a follow-on round.',
-        reportType: 'Working paper',
-        pages: 16,
-        publishedOn: '2026-02-04',
-        tags: ['Term sheet', 'Dilution', 'Cap table'],
-        status: 'available',
-      },
-      {
-        slug: 'valuation-defense-pack-diligence-stress',
-        title: 'The valuation defense pack: what investors stress in diligence',
-        abstract: 'The seven model lines that get pulled apart in every Series B diligence, with the documentation and back-up files we build to hold them together.',
-        reportType: 'Advisory note',
-        pages: 22,
-        publishedOn: '2026-01-22',
-        tags: ['Valuation', 'Diligence'],
-        status: 'available',
-      },
-      {
-        slug: 'investor-cap-table-archetypes',
-        title: 'Investor cap-table archetypes — by stage, by sector',
-        abstract: 'Anonymised cap tables across 40+ recent Indian rounds. Patterns by stage, sector, and round size — what looks normal, what looks expensive, what looks misaligned.',
-        reportType: 'Data sheet',
-        pages: 34,
-        publishedOn: '2025-12-08',
-        tags: ['Cap table', 'Benchmarks'],
-        status: 'available',
-      },
-    ],
+    // Industry reports now centralised in `apps/web/src/content/reports.ts`
+    // and queried via `getReportsForService('investment-banking')`.
   },
   {
     title: 'M&A Advisory',

@@ -49,7 +49,7 @@ export default function InvestmentBankingPage() {
           dossier={service.processDossier}
         />
         <Proof service={service} />
-        <IndustryReports ordinal={service.ordinal} reports={service.industryReports} />
+        <IndustryReports ordinal={service.ordinal} serviceSlug={service.slug} />
         <Faq service={service} />
         <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />
         <RelatedServices service={service} />
