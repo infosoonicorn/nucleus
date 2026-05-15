@@ -58,6 +58,8 @@ export type Service = {
   ordinal: string;
   displayHeadline?: string;                 // 3-word punchier hero headline; falls back to title.
   whenToEngage?: { if: string; then: string }[]; // 4 IF/THEN scenario pairs; fallback shows generic checklist if absent.
+  process?: { name: string; text: string }[]; // Custom engagement phases; falls back to generic 4-phase if absent.
+  processTitle?: string;                       // Optional custom section title for Process; falls back to "A clear engagement path for {service.title}."
   faq?: { q: string; a?: string }[];        // a falls back to 'Updating soon' when absent.
   crossLink?: ServiceCrossLink;             // Optional cross-link panel data.
 };
@@ -272,6 +274,25 @@ export const services: Service[] = [
       {
         if: 'Post-investment governance pressure — investor reporting cadence, board pack quality, covenant tracking.',
         then: 'We design the investor-MIS pack, set the cadence, and surface variances before the next board call.',
+      },
+    ],
+    processTitle: 'How a Nucleus IB engagement runs, from mandate to wire.',
+    process: [
+      {
+        name: 'Mandate & scope',
+        text: 'Define what a successful round looks like, agree the workplan, set fees, timeline, and named owners on both sides.',
+      },
+      {
+        name: 'Build & pressure-test',
+        text: 'Model, deck, IM. Every assumption stress-tested as if hostile investor diligence is already running.',
+      },
+      {
+        name: 'Market & manage',
+        text: 'Investor mapping, outreach calendar, intro coordination, and Q&A management. We run the campaign so you can run the company.',
+      },
+      {
+        name: 'Close & transition',
+        text: 'Term sheet review, SHA negotiation alongside legal, signing and wire coordination, then investor-reporting cadence handed back to the team.',
       },
     ],
     crossLink: {

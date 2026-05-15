@@ -1,7 +1,7 @@
 import type { Service } from '@/content/site';
 import { SectionHeader } from '@/components/sections';
 
-const PHASES = [
+const GENERIC_PHASES = [
   { name: 'Diagnose', text: 'Scope the issue, identify decision owners, agree the workplan.' },
   { name: 'Structure', text: 'Build the model, assemble evidence, sequence the workstream.' },
   { name: 'Execute', text: 'Run the workstream, manage information, track issues to closure.' },
@@ -9,14 +9,15 @@ const PHASES = [
 ];
 
 export function Process({ service }: Readonly<{ service: Service }>) {
+  const phases = service.process ?? GENERIC_PHASES;
+  const title =
+    service.processTitle ?? `A clear engagement path for ${service.title}.`;
+
   return (
     <section className="service-v1-section service-v1-section-alt">
-      <SectionHeader
-        eyebrow="Process"
-        title={`A clear engagement path for ${service.title}.`}
-      />
+      <SectionHeader eyebrow="Process" title={title} />
       <div className="service-v1-timeline">
-        {PHASES.map((phase, index) => (
+        {phases.map((phase, index) => (
           <div key={phase.name}>
             <span>{String(index + 1).padStart(2, '0')}</span>
             <h3>{phase.name}</h3>
