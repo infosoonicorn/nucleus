@@ -8,7 +8,7 @@ import { HowWeHelp } from '@/components/services/how-we-help';
 import { ServiceInsights } from '@/components/services/service-insights';
 import { Process } from '@/components/services/process';
 import { Proof } from '@/components/services/proof';
-import { KnowledgeBank } from '@/components/services/knowledge-bank';
+import { IndustryReports } from '@/components/services/industry-reports';
 import { Faq } from '@/components/services/faq';
 import { LeadMagnet } from '@/components/services/lead-magnet';
 import { RelatedServices } from '@/components/services/related-services';
@@ -49,7 +49,7 @@ export default function InvestmentBankingPage() {
           dossier={service.processDossier}
         />
         <Proof service={service} />
-        <KnowledgeBank service={service} />
+        <IndustryReports ordinal={service.ordinal} reports={service.industryReports} />
         <Faq service={service} />
         <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />
         <RelatedServices service={service} />

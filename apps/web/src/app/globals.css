@@ -7673,3 +7673,125 @@ html.lenis body {
     transition-duration: 0s !important;
   }
 }
+
+/* =============================================================
+   Industry Reports (replaces legacy "Knowledge bank")
+   ============================================================= */
+.service-v1-reports-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+.service-v1-reports-card {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 20px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--service-divider);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease;
+}
+.service-v1-reports-card:hover {
+  border-color: rgba(122, 31, 31, 0.25);
+  box-shadow: 0 12px 28px rgba(20, 24, 40, 0.06);
+}
+.service-v1-reports-cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 8px;
+  background: linear-gradient(160deg, #fafaf3 0%, #f1ead8 100%);
+  border: 1px solid rgba(20, 24, 40, 0.08);
+  border-radius: 6px;
+  color: rgba(20, 24, 40, 0.55);
+}
+.service-v1-reports-cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(225deg, transparent 50%, rgba(20, 24, 40, 0.08) 50%);
+  border-bottom-left-radius: 2px;
+}
+.service-v1-reports-cover-meta {
+  font: 500 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.service-v1-reports-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.service-v1-reports-badge {
+  align-self: flex-start;
+  font: 500 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(20, 24, 40, 0.08);
+  color: rgba(20, 24, 40, 0.7);
+}
+.service-v1-reports-badge-sector   { background: rgba(122, 31, 31, 0.1);  color: var(--service-accent-red); }
+.service-v1-reports-badge-working  { background: rgba(0, 86, 179, 0.1);   color: #0056b3; }
+.service-v1-reports-badge-advisory { background: rgba(0, 119, 70, 0.1);   color: #007746; }
+.service-v1-reports-badge-data     { background: rgba(184, 84, 0, 0.1);   color: #b85400; }
+.service-v1-reports-title {
+  margin: 4px 0 0;
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  color: #141828;
+}
+.service-v1-reports-abstract {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(20, 24, 40, 0.68);
+}
+.service-v1-reports-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.service-v1-reports-tag {
+  font: 500 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid rgba(20, 24, 40, 0.12);
+  border-radius: 3px;
+  color: rgba(20, 24, 40, 0.55);
+}
+.service-v1-reports-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--service-accent-red);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+.service-v1-reports-cta:hover { gap: 10px; }
+
+@media (max-width: 1023px) {
+  .service-v1-reports-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 639px) {
+  .service-v1-reports-card { grid-template-columns: 1fr; gap: 16px; }
+  .service-v1-reports-cover { aspect-ratio: 2 / 1; padding: 20px; }
+}

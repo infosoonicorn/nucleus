@@ -6,7 +6,7 @@ import { Deliverables } from './deliverables';
 import { ServiceInsights } from './service-insights';
 import { Process } from './process';
 import { Proof } from './proof';
-import { KnowledgeBank } from './knowledge-bank';
+import { IndustryReports } from './industry-reports';
 import { Faq } from './faq';
 import { LeadMagnet } from './lead-magnet';
 import { RelatedServices } from './related-services';
@@ -32,7 +32,7 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
         dossier={service.processDossier}
       />
       <Proof service={service} />
-      <KnowledgeBank service={service} />
+      <IndustryReports ordinal={service.ordinal} reports={service.industryReports} />
       <Faq service={service} />
       <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />
       <RelatedServices service={service} />
