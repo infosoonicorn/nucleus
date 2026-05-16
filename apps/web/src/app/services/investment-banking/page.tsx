@@ -40,6 +40,7 @@ const SECTION_ORDINAL = {
   insights: '07',
   resources: '08',
   faq: '09',
+  contact: '10',
 } as const;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -123,8 +124,14 @@ export default function InvestmentBankingPage() {
           {/* 12. Cross-sell */}
           <RelatedServices currentSlug={service.slug} />
 
-          {/* 13. Final CTA */}
-          <ContactBand service={service} />
+          {/* §10 Final CTA */}
+          <ContactBand
+            ordinal={SECTION_ORDINAL.contact}
+            serviceTitle={service.title}
+            promise={service.promise}
+            cta={service.cta}
+            team={team}
+          />
         </ServicePageShell>
       </main>
     </PageShell>

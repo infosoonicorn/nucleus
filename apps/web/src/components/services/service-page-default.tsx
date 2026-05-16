@@ -1,5 +1,6 @@
 import type { Service } from '@/content/site';
 import { getClientsForService } from '@/content/clients';
+import { getTeamForService } from '@/content/team';
 import { ServiceHero } from './service-hero';
 import { WhenToEngage } from './when-to-engage';
 import { ClientLogos } from './client-logos';
@@ -41,7 +42,13 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
       <Faq ordinal={service.ordinal} serviceTitle={service.title} faq={service.faq} />
       <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />
       <RelatedServices currentSlug={service.slug} />
-      <ContactBand service={service} />
+      <ContactBand
+        ordinal={service.ordinal}
+        serviceTitle={service.title}
+        promise={service.promise}
+        cta={service.cta}
+        team={getTeamForService(service.slug)}
+      />
     </main>
   );
 }
