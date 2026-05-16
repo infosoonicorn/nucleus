@@ -5491,7 +5491,7 @@ html.lenis body {
 
 /* Hero */
 .service-v1-hero {
-  padding: 80px 24px 48px;
+  padding: 56px 24px 36px;
   max-width: 1180px;
   margin: 0 auto;
 }
@@ -6367,7 +6367,7 @@ html.lenis body {
 
 .service-v1-help { max-width: 1180px; margin: 0 auto; padding: 64px 24px; }
 
-.service-v1-help-header { margin-bottom: 32px; }
+.service-v1-help-header { margin-bottom: 22px; }
 .service-v1-help-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -8345,7 +8345,7 @@ main.service-v1 > div > section {
 }
 
 .service-v1 .service-v1-section {
-  padding-block: clamp(56px, 7vw, 88px);
+  padding-block: clamp(36px, 5vw, 60px);
   padding-inline: clamp(20px, 3vw, 32px);
   max-width: 1200px;
 }
@@ -8386,7 +8386,7 @@ main.service-v1 > div > section {
 .service-v1 .service-v1-help-header,
 .service-v1 .service-v1-fundraise-header,
 .service-v1 .service-v1-dossier-head {
-  margin-bottom: 32px;
+  margin-bottom: 22px;
 }
 
 /* --- Card density normalisation --- */
@@ -8425,11 +8425,11 @@ main.service-v1 > div > section {
    The plate (left) keeps its dark navy; right body gets matched
    to the same vertical rhythm.
 */
-.service-v1 .service-v1-soonicorn { padding-block: clamp(56px, 7vw, 88px); }
+.service-v1 .service-v1-soonicorn { padding-block: clamp(36px, 5vw, 60px); }
 
 /* --- Process dossier polish --- */
 .service-v1 .service-v1-dossier {
-  padding-block: clamp(56px, 7vw, 88px);
+  padding-block: clamp(36px, 5vw, 60px);
   padding-inline: clamp(20px, 3vw, 32px);
   max-width: 1200px;
 }
@@ -8606,8 +8606,8 @@ main.service-v1 > div > section {
 .service-v1-section-foot {
   display: flex;
   justify-content: flex-end;
-  margin-top: 28px;
-  padding-top: 18px;
+  margin-top: 18px;
+  padding-top: 12px;
   border-top: 1px solid rgba(20, 24, 40, 0.08);
 }
 .service-v1-section-foot-cta {
@@ -9114,11 +9114,11 @@ main.service-v1 > div > section {
 .resource-deck-head {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: clamp(28px, 4vw, 48px);
+  gap: clamp(24px, 3vw, 36px);
   align-items: end;
-  padding-bottom: 22px;
+  padding-bottom: 14px;
   border-bottom: 1px solid rgba(20, 24, 40, 0.12);
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 .resource-deck-eyebrow {
   display: inline-flex;
@@ -10090,8 +10090,8 @@ main.service-v1 > div > section {
   isolation: isolate;
   overflow: hidden;
   max-width: 1200px;
-  margin: 56px auto 96px;
-  padding: 52px clamp(28px, 4vw, 60px);
+  margin: 36px auto 56px;
+  padding: 40px clamp(24px, 3.5vw, 52px);
   background:
     linear-gradient(180deg, #14182a 0%, #0a0e1f 100%);
   color: #fefdf8;
