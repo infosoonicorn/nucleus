@@ -228,6 +228,8 @@ Launch a premium, credible, fast public website with structured content. It shou
   - Acceptance: Vijay reads each entry in `apps/web/src/content/articles.ts`, edits as needed, and flips each `reviewerStatus: 'pending'` to `'approved'` with `reviewerApprovedAt: 'YYYY-MM-DD'`. Until then, articles surface only in dev (the production gate hides drafts).
 - [ ] Vijay content review of 10 IB FAQ answers.
   - Acceptance: Vijay reads each entry in `services[].faq` for Investment Banking. Currently surfaced without a per-answer reviewer stamp — discuss whether to extend the FAQ data model to track `reviewerApprovedAt` per Q or stamp at the service-level.
+- [ ] Vijay curation of client logos for IB (and other services).
+  - Acceptance: review the 12 entries in `apps/web/src/content/clients.ts` — some are Soonicorn portfolio companies (the same 12 logos also appear in the SoonicornCallout block), so partner needs to decide which belong on the IB "Founders we've worked with" strip vs only on the Soonicorn proof block. Add/remove entries; the marquee adapts automatically. Also extend `serviceSlugs` per logo to surface them on other service pages where relevant.
 - [ ] Vijay content review of 4 IB industry reports + 1 lead-magnet checklist.
   - Acceptance: review each entry in `apps/web/src/content/reports.ts` and `apps/web/src/content/resources.ts` (downloadables block). Need actual PDFs to back each title before flipping any to "available" in production — currently the API returns success copy that promises an email, but no PDF delivery exists yet (Phase 1.5).
 - [ ] Pre-fill / acknowledge `report` query param on `/contact`.
