@@ -5911,7 +5911,7 @@ html.lenis body {
 .service-v1-fundraise-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;     /* was space-between when "Now:" lived here */
   gap: 16px;
   margin-top: 20px;
   padding-top: 14px;

@@ -225,9 +225,8 @@ export function FundraiseStages({ ordinal = '01' }: FundraiseStagesProps = {}) {
       </div>
 
       <div className="service-v1-fundraise-controls">
-        <p className="service-v1-fundraise-now">
-          Now: <span>{stage.ordinal} — {stage.name}</span>
-        </p>
+        {/* "Now: NN — Name" line removed — it was repeating the panel
+            heading immediately above. The controls speak for themselves. */}
         <div className="service-v1-fundraise-btns">
           <button
             type="button"
