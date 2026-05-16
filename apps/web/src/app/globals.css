@@ -8455,7 +8455,7 @@ main.service-v1 > div > section {
  * ─────────────────────────────────────────────────────────── */
 
 .client-logos-section {
-  background: var(--service-band-cream);
+  background: #fff;
   max-width: 1200px;
   margin: 0 auto;
 }
