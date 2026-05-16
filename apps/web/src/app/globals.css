@@ -6012,55 +6012,71 @@ html.lenis body {
 }
 .service-v1-fundraise-deliverable span[aria-hidden] { color: var(--service-accent-red); }
 
-/* Clickable variant — opens the resource modal on click. Reads as
-   editorial text first, becomes a button on hover/focus. */
-.service-v1-fundraise-deliverable-cta {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  padding: 4px 0 5px;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px dashed rgba(20, 24, 40, 0.28);
-  border-radius: 0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -0.005em;
-  color: #141828;
-  text-align: left;
-  cursor: pointer;
-  transition: color 0.18s ease, border-color 0.18s ease;
-}
-.service-v1-fundraise-deliverable-cta:hover,
-.service-v1-fundraise-deliverable-cta:focus-visible {
-  color: var(--service-accent-red);
-  border-bottom-color: var(--service-accent-red);
-  outline: none;
-}
-.service-v1-fundraise-deliverable-cta svg { display: none; }
-.service-v1-fundraise-deliverable-cta::after {
-  content: "Request sample";
-  font: 500 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(20, 24, 40, 0.45);
-  margin-left: 6px;
-  transition: color 0.18s ease;
-}
-.service-v1-fundraise-deliverable-cta:hover::after,
-.service-v1-fundraise-deliverable-cta:focus-visible::after {
-  color: var(--service-accent-red);
-}
-
-/* Document mockup (right side of the panel) */
+/* Document mockup (right side of the panel) — when the stage has a
+   matching entry in resources.ts, the entire stack becomes a clickable
+   trigger that opens the resource-request modal. Otherwise it's a
+   non-interactive `aside` (defensive fallback). */
 .service-v1-fundraise-doc-wrap {
   position: relative;
   width: 100%;
   max-width: 240px;
   aspect-ratio: 1 / 1;
   justify-self: end;
+}
+/* Reset the button defaults when the wrap is rendered as a trigger,
+   and add the click affordance — subtle lift + sharpened shadow. */
+.service-v1-fundraise-doc-trigger {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.service-v1-fundraise-doc-trigger:hover,
+.service-v1-fundraise-doc-trigger:focus-visible {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 16px 28px rgba(20, 24, 40, 0.12));
+}
+.service-v1-fundraise-doc-trigger:focus-visible {
+  outline: 2px solid var(--service-accent-red);
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+.service-v1-fundraise-doc-trigger:hover .service-v1-fundraise-doc-cta,
+.service-v1-fundraise-doc-trigger:focus-visible .service-v1-fundraise-doc-cta {
+  background: var(--service-accent-red);
+  color: #fefdf8;
+  border-color: var(--service-accent-red);
+}
+
+/* Visible CTA chip sitting top-right of the front card so the click
+   affordance reads without needing to hover. Width:max-content forces
+   it to shrink-wrap to the "Request sample" label (absolute-positioned
+   spans default to block width otherwise). */
+.service-v1-fundraise-doc-cta {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: max-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  background: #141828;
+  color: #fefdf8;
+  border: 1px solid #141828;
+  border-radius: 999px;
+  font: 600 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 .service-v1-fundraise-doc {
   position: absolute;

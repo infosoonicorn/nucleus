@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { getResourceBySlug } from '@/content/resources';
 import { RequestResourceButton } from '@/components/resources/request-resource-button';
 
@@ -20,7 +20,7 @@ const STAGES: Stage[] = [
     ordinal: '01',
     name: 'Readiness',
     weeks: 'Weeks 1–2',
-    nucleusDoes: 'Readiness assessment, data-room scoping, governance review.',
+    nucleusDoes: 'Data-room scoping, governance review, gap analysis before any investor sees a page.',
     deliverable: 'Fundraise readiness report',
     resourceSlug: 'ib-stage-readiness-report',
   },
@@ -28,7 +28,7 @@ const STAGES: Stage[] = [
     ordinal: '02',
     name: 'Modelling',
     weeks: 'Weeks 3–4',
-    nucleusDoes: '3-statement model, sensitivity tabs, base/bull/bear scenarios.',
+    nucleusDoes: 'Three-statement build with sensitivity tabs and base / bull / bear scenarios, tied back to actuals.',
     deliverable: 'Financial model',
     resourceSlug: 'ib-stage-financial-model',
   },
@@ -36,7 +36,7 @@ const STAGES: Stage[] = [
     ordinal: '03',
     name: 'Storytelling',
     weeks: 'Weeks 5–7',
-    nucleusDoes: 'Narrative-first investor deck, IM, sector framing.',
+    nucleusDoes: 'Narrative work, sector framing, FAQ pack written for the analyst who reads on Saturday morning.',
     deliverable: 'Investor deck and IM',
     resourceSlug: 'ib-stage-investor-deck-im',
   },
@@ -44,7 +44,7 @@ const STAGES: Stage[] = [
     ordinal: '04',
     name: 'Outreach',
     weeks: 'Weeks 8–12',
-    nucleusDoes: 'Investor mapping, target list, intro coordination.',
+    nucleusDoes: 'Investor mapping, sequenced introductions, calendar choreography across funds.',
     deliverable: 'Investor target list',
     resourceSlug: 'ib-stage-investor-target-list',
   },
@@ -52,7 +52,7 @@ const STAGES: Stage[] = [
     ordinal: '05',
     name: 'Diligence',
     weeks: 'Weeks 10–14',
-    nucleusDoes: 'DD pack, Q&A management, issue tracker for accountable closure.',
+    nucleusDoes: 'Document marshalling, Q&A management, issue tracker driven to accountable closure.',
     deliverable: 'Diligence checklist and data room',
     resourceSlug: 'ib-stage-diligence-pack',
   },
@@ -60,7 +60,7 @@ const STAGES: Stage[] = [
     ordinal: '06',
     name: 'Close',
     weeks: 'Weeks 14–16',
-    nucleusDoes: 'Term sheet review, transaction workplan, signing coordination.',
+    nucleusDoes: 'Term sheet negotiation, signing coordination, ninety-day post-wire handover.',
     deliverable: 'Transaction workplan',
     resourceSlug: 'ib-stage-transaction-workplan',
   },
@@ -131,7 +131,10 @@ export function FundraiseStages({ ordinal = '01' }: FundraiseStagesProps = {}) {
               <p className="service-v1-fundraise-label">What Nucleus does</p>
               <p>{stage.nucleusDoes}</p>
               <p className="service-v1-fundraise-label">Deliverable</p>
-              <DeliverableCTA stage={stage} />
+              <p className="service-v1-fundraise-deliverable">
+                <span aria-hidden="true">→ </span>
+                {stage.deliverable}
+              </p>
             </li>
           ))}
         </ol>
@@ -218,7 +221,10 @@ export function FundraiseStages({ ordinal = '01' }: FundraiseStagesProps = {}) {
                 </div>
                 <div>
                   <p className="service-v1-fundraise-label">Deliverable</p>
-                  <DeliverableCTA stage={stage} />
+                  <p className="service-v1-fundraise-deliverable">
+                    <span aria-hidden="true">→ </span>
+                    {stage.deliverable}
+                  </p>
                 </div>
               </div>
             </div>
@@ -282,31 +288,17 @@ function FundraiseHeader({ ordinal }: Readonly<{ ordinal: string }>) {
 }
 
 /**
- * Deliverable CTA — renders the stage's deliverable as a clickable button
- * that opens the same resource-request modal used elsewhere on the site.
- * Falls back to plain text if the stage's resourceSlug doesn't match an
- * entry in resources.ts (defensive — should never happen given the static
- * STAGES table above).
+ * DocPreview — the stacked-document mockup on the right of the active
+ * stage panel. The whole stack is now a clickable trigger that opens
+ * the resource-request modal so visitors can ask for a redacted sample
+ * of that stage's actual artefact. A visible "→ Request sample" chip
+ * sits at the top-right of the front card so the affordance is
+ * unmistakable, not just a hover surprise.
+ *
+ * Falls back to a non-interactive `aside` (the old behaviour) if no
+ * matching entry in resources.ts is found — defensive only, the static
+ * STAGES table above always provides a valid slug.
  */
-function DeliverableCTA({ stage }: Readonly<{ stage: Stage }>) {
-  const resource = getResourceBySlug(stage.resourceSlug);
-  if (!resource) {
-    return (
-      <p className="service-v1-fundraise-deliverable">
-        <span aria-hidden="true">→ </span>
-        {stage.deliverable}
-      </p>
-    );
-  }
-  return (
-    <RequestResourceButton
-      resource={resource}
-      label={`→ ${stage.deliverable}`}
-      className="service-v1-fundraise-deliverable-cta"
-    />
-  );
-}
-
 function DocPreview({ stage }: Readonly<{ stage: Stage }>) {
   // Stable mock-content line widths per stage so the preview feels like a real
   // document, not a random skeleton. Seed from ordinal so each stage is distinct.
@@ -318,19 +310,23 @@ function DocPreview({ stage }: Readonly<{ stage: Stage }>) {
     });
   }, [stage.ordinal]);
 
-  return (
-    <aside className="service-v1-fundraise-doc-wrap" aria-hidden="true">
-      <div className="service-v1-fundraise-doc service-v1-fundraise-doc-back-2" />
-      <div className="service-v1-fundraise-doc service-v1-fundraise-doc-back-1" />
-      <article className="service-v1-fundraise-doc service-v1-fundraise-doc-front">
-        <div className="service-v1-fundraise-doc-corner" />
-        <p className="service-v1-fundraise-doc-eyebrow">Nucleus Advisors · Confidential</p>
-        <h4 className="service-v1-fundraise-doc-title">{stage.deliverable}</h4>
-        <p className="service-v1-fundraise-doc-meta">
+  const cardStack = (
+    <>
+      <span className="service-v1-fundraise-doc service-v1-fundraise-doc-back-2" />
+      <span className="service-v1-fundraise-doc service-v1-fundraise-doc-back-1" />
+      <span className="service-v1-fundraise-doc service-v1-fundraise-doc-front">
+        <span className="service-v1-fundraise-doc-corner" />
+        <span className="service-v1-fundraise-doc-cta">
+          Request sample
+          <ArrowRight size={12} aria-hidden="true" />
+        </span>
+        <span className="service-v1-fundraise-doc-eyebrow">Nucleus Advisors · Confidential</span>
+        <span className="service-v1-fundraise-doc-title">{stage.deliverable}</span>
+        <span className="service-v1-fundraise-doc-meta">
           {stage.weeks} · §{stage.ordinal}
-        </p>
-        <div className="service-v1-fundraise-doc-rule" />
-        <div className="service-v1-fundraise-doc-lines">
+        </span>
+        <span className="service-v1-fundraise-doc-rule" />
+        <span className="service-v1-fundraise-doc-lines">
           {lines.map((w, i) => (
             <span
               key={i}
@@ -338,12 +334,29 @@ function DocPreview({ stage }: Readonly<{ stage: Stage }>) {
               style={{ width: `${w}%` }}
             />
           ))}
-        </div>
-        <div className="service-v1-fundraise-doc-sig">
+        </span>
+        <span className="service-v1-fundraise-doc-sig">
           <span className="service-v1-fundraise-doc-sig-line" />
           <span className="service-v1-fundraise-doc-sig-lab">Prepared by Nucleus</span>
-        </div>
-      </article>
-    </aside>
+        </span>
+      </span>
+    </>
+  );
+
+  const resource = getResourceBySlug(stage.resourceSlug);
+  if (!resource) {
+    return (
+      <aside className="service-v1-fundraise-doc-wrap" aria-hidden="true">
+        {cardStack}
+      </aside>
+    );
+  }
+  return (
+    <RequestResourceButton
+      resource={resource}
+      className="service-v1-fundraise-doc-wrap service-v1-fundraise-doc-trigger"
+    >
+      {cardStack}
+    </RequestResourceButton>
   );
 }

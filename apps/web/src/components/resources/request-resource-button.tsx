@@ -1,15 +1,21 @@
 'use client';
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, Check, FileText, X } from 'lucide-react';
 import type { Resource } from '@/content/resources';
 
 type Props = Readonly<{
   resource: Resource;
+  /** Default trigger text. Ignored when `children` is set. */
   label?: string;
   className?: string;
   variant?: 'primary' | 'ghost';
+  /** Custom trigger content. When set, replaces the default pill button
+   *  entirely — caller is responsible for any styling. Use this when the
+   *  click target needs to be something other than a small pill (e.g. a
+   *  whole image card). */
+  children?: ReactNode;
 }>;
 
 type Status = 'idle' | 'submitting' | 'ok' | 'error';
@@ -28,6 +34,7 @@ export function RequestResourceButton({
   label = 'Get this',
   className,
   variant = 'primary',
+  children,
 }: Props) {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<Status>('idle');
@@ -96,20 +103,32 @@ export function RequestResourceButton({
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className={
-          className ??
-          (variant === 'primary'
-            ? 'resource-cta resource-cta-primary'
-            : 'resource-cta resource-cta-ghost')
-        }
-        aria-haspopup="dialog"
-      >
-        {label}
-        <ArrowRight size={14} aria-hidden="true" />
-      </button>
+      {children ? (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className={className}
+          aria-haspopup="dialog"
+          aria-label={`Request: ${resource.title}`}
+        >
+          {children}
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className={
+            className ??
+            (variant === 'primary'
+              ? 'resource-cta resource-cta-primary'
+              : 'resource-cta resource-cta-ghost')
+          }
+          aria-haspopup="dialog"
+        >
+          {label}
+          <ArrowRight size={14} aria-hidden="true" />
+        </button>
+      )}
 
       <AnimatePresence>
         {open ? (
