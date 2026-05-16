@@ -56,6 +56,84 @@ const downloadables: Resource[] = [
     serviceSlugs: ['investment-banking'],
     status: 'available',
   },
+
+  /* ── Fundraise-stage sample templates ──
+   *
+   * One per stage of the IB fundraise journey (see FundraiseStages
+   * component). Requesting these opens the same capture modal used
+   * everywhere else; on submit, the partner emails a redacted sample
+   * of the artefact we produce at that stage on a real mandate.
+   *
+   * Filtered out of the main ResourceDeck (Templates aren't visitor-
+   * facing research) — they only surface via the FundraiseStages
+   * deliverable click.
+   */
+  {
+    slug: 'ib-stage-readiness-report',
+    title: 'Fundraise readiness report — sample',
+    abstract:
+      'Redacted sample of the readiness assessment we deliver at the end of week 2 — gap analysis, data-room scoping, governance flags.',
+    kind: 'Template',
+    format: 'PDF',
+    tags: ['Sample', 'Readiness'],
+    serviceSlugs: ['investment-banking'],
+    status: 'available',
+  },
+  {
+    slug: 'ib-stage-financial-model',
+    title: 'Financial model — sample',
+    abstract:
+      'Redacted sample of the three-statement model with base/bull/bear sensitivity layer that we build by end of week 4.',
+    kind: 'Template',
+    format: 'XLSX',
+    tags: ['Sample', 'Modelling'],
+    serviceSlugs: ['investment-banking'],
+    status: 'available',
+  },
+  {
+    slug: 'ib-stage-investor-deck-im',
+    title: 'Investor deck and IM — sample',
+    abstract:
+      'Redacted sample of the narrative-first investor deck and information memorandum prepared in weeks 5–7 of a mandate.',
+    kind: 'Template',
+    format: 'PDF',
+    tags: ['Sample', 'Storytelling'],
+    serviceSlugs: ['investment-banking'],
+    status: 'available',
+  },
+  {
+    slug: 'ib-stage-investor-target-list',
+    title: 'Investor target list — sample',
+    abstract:
+      'Redacted sample of the investor map and target list, with rationale and approach notes per fund, prepared at the start of outreach.',
+    kind: 'Template',
+    format: 'XLSX',
+    tags: ['Sample', 'Outreach'],
+    serviceSlugs: ['investment-banking'],
+    status: 'available',
+  },
+  {
+    slug: 'ib-stage-diligence-pack',
+    title: 'Diligence checklist and data-room — sample',
+    abstract:
+      'Redacted sample of the diligence pack and issue tracker we maintain through weeks 10–14 of a mandate.',
+    kind: 'Template',
+    format: 'PDF',
+    tags: ['Sample', 'Diligence'],
+    serviceSlugs: ['investment-banking'],
+    status: 'available',
+  },
+  {
+    slug: 'ib-stage-transaction-workplan',
+    title: 'Transaction workplan — sample',
+    abstract:
+      'Redacted sample of the closing workplan covering term sheet review, signing coordination, and post-wire handover (weeks 14–16).',
+    kind: 'Template',
+    format: 'PDF',
+    tags: ['Sample', 'Close'],
+    serviceSlugs: ['investment-banking'],
+    status: 'available',
+  },
 ];
 
 function fromReport(r: Report): Resource {

@@ -23,7 +23,10 @@ const KIND_BADGE_CLASS: Record<string, string> = {
   Guide: 'resource-card-badge-guide',
 };
 
-export function ResourceDeck({ ordinal, serviceSlug, resources }: Props) {
+export function ResourceDeck({ ordinal, serviceSlug, resources: allResources }: Props) {
+  // Templates are stage-specific sample artefacts surfaced from inside
+  // sections like FundraiseStages — keep them out of the headline deck.
+  const resources = allResources.filter((r) => r.kind !== 'Template');
   const reduceMotion = useReducedMotion();
   const trackRef = useRef<HTMLDivElement>(null);
   const [scrollState, setScrollState] = useState<{ atStart: boolean; atEnd: boolean }>({

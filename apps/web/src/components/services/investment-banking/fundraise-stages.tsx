@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { getResourceBySlug } from '@/content/resources';
+import { RequestResourceButton } from '@/components/resources/request-resource-button';
 
 type Stage = {
   ordinal: string;
@@ -10,6 +12,7 @@ type Stage = {
   weeks: string;
   nucleusDoes: string;
   deliverable: string;
+  resourceSlug: string;     // matching entry in apps/web/src/content/resources.ts
 };
 
 const STAGES: Stage[] = [
@@ -19,6 +22,7 @@ const STAGES: Stage[] = [
     weeks: 'Weeks 1–2',
     nucleusDoes: 'Readiness assessment, data-room scoping, governance review.',
     deliverable: 'Fundraise readiness report',
+    resourceSlug: 'ib-stage-readiness-report',
   },
   {
     ordinal: '02',
@@ -26,6 +30,7 @@ const STAGES: Stage[] = [
     weeks: 'Weeks 3–4',
     nucleusDoes: '3-statement model, sensitivity tabs, base/bull/bear scenarios.',
     deliverable: 'Financial model',
+    resourceSlug: 'ib-stage-financial-model',
   },
   {
     ordinal: '03',
@@ -33,6 +38,7 @@ const STAGES: Stage[] = [
     weeks: 'Weeks 5–7',
     nucleusDoes: 'Narrative-first investor deck, IM, sector framing.',
     deliverable: 'Investor deck and IM',
+    resourceSlug: 'ib-stage-investor-deck-im',
   },
   {
     ordinal: '04',
@@ -40,6 +46,7 @@ const STAGES: Stage[] = [
     weeks: 'Weeks 8–12',
     nucleusDoes: 'Investor mapping, target list, intro coordination.',
     deliverable: 'Investor target list',
+    resourceSlug: 'ib-stage-investor-target-list',
   },
   {
     ordinal: '05',
@@ -47,6 +54,7 @@ const STAGES: Stage[] = [
     weeks: 'Weeks 10–14',
     nucleusDoes: 'DD pack, Q&A management, issue tracker for accountable closure.',
     deliverable: 'Diligence checklist and data room',
+    resourceSlug: 'ib-stage-diligence-pack',
   },
   {
     ordinal: '06',
@@ -54,6 +62,7 @@ const STAGES: Stage[] = [
     weeks: 'Weeks 14–16',
     nucleusDoes: 'Term sheet review, transaction workplan, signing coordination.',
     deliverable: 'Transaction workplan',
+    resourceSlug: 'ib-stage-transaction-workplan',
   },
 ];
 
@@ -116,10 +125,7 @@ export function FundraiseStages() {
               <p className="service-v1-fundraise-label">What Nucleus does</p>
               <p>{stage.nucleusDoes}</p>
               <p className="service-v1-fundraise-label">Deliverable</p>
-              <p className="service-v1-fundraise-deliverable">
-                <span aria-hidden="true">→ </span>
-                {stage.deliverable}
-              </p>
+              <DeliverableCTA stage={stage} />
             </li>
           ))}
         </ol>
@@ -206,10 +212,7 @@ export function FundraiseStages() {
                 </div>
                 <div>
                   <p className="service-v1-fundraise-label">Deliverable</p>
-                  <p className="service-v1-fundraise-deliverable">
-                    <span aria-hidden="true">→ </span>
-                    {stage.deliverable}
-                  </p>
+                  <DeliverableCTA stage={stage} />
                 </div>
               </div>
             </div>
@@ -269,6 +272,32 @@ function FundraiseHeader() {
         in <em>six deliberate steps.</em>
       </h2>
     </header>
+  );
+}
+
+/**
+ * Deliverable CTA — renders the stage's deliverable as a clickable button
+ * that opens the same resource-request modal used elsewhere on the site.
+ * Falls back to plain text if the stage's resourceSlug doesn't match an
+ * entry in resources.ts (defensive — should never happen given the static
+ * STAGES table above).
+ */
+function DeliverableCTA({ stage }: Readonly<{ stage: Stage }>) {
+  const resource = getResourceBySlug(stage.resourceSlug);
+  if (!resource) {
+    return (
+      <p className="service-v1-fundraise-deliverable">
+        <span aria-hidden="true">→ </span>
+        {stage.deliverable}
+      </p>
+    );
+  }
+  return (
+    <RequestResourceButton
+      resource={resource}
+      label={`→ ${stage.deliverable}`}
+      className="service-v1-fundraise-deliverable-cta"
+    />
   );
 }
 
