@@ -9853,6 +9853,24 @@ main.service-v1 > div > section {
   color: #141828;
   font-size: 0.86rem;
 }
+.service-v1-faq-foot-link {
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(20, 24, 40, 0.4);
+  padding-bottom: 1px;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.service-v1-faq-foot-link em {
+  transition: color 0.18s ease;
+}
+.service-v1-faq-foot-link:hover,
+.service-v1-faq-foot-link:focus-visible {
+  border-bottom-color: var(--service-accent-red);
+  outline: none;
+}
+.service-v1-faq-foot-link:hover em,
+.service-v1-faq-foot-link:focus-visible em {
+  color: var(--service-accent-red);
+}
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {

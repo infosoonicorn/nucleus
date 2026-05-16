@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { Plus } from 'lucide-react';
 
 type FaqItem = {
@@ -180,7 +181,10 @@ export function Faq({ ordinal, serviceTitle, faq }: FaqProps) {
 
       <footer className="service-v1-faq-foot">
         <p className="service-v1-faq-foot-meta">
-          Didn&rsquo;t find your question? <em>Ask us directly</em> — partner-level reply within 48 hours.
+          Didn&rsquo;t find your question?{' '}
+          <Link href="/contact" className="service-v1-faq-foot-link">
+            <em>Ask us directly</em>
+          </Link>
         </p>
       </footer>
     </section>
