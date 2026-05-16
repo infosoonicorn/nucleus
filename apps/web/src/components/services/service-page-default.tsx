@@ -19,7 +19,14 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
   const clients = getClientsForService(service.slug);
   return (
     <main className="home-v3 service-v1">
-      <ServiceHero service={service} />
+      <ServiceHero
+        ordinal={service.ordinal}
+        title={service.title}
+        slug={service.slug}
+        displayHeadline={service.displayHeadline}
+        promise={service.promise}
+        cta={service.cta}
+      />
       <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
       {/* Renders nothing when no clients are tagged for this service slug. */}
       <ClientLogos ordinal={service.ordinal} clients={clients} />

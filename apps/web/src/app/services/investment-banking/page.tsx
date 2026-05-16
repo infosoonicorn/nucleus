@@ -67,7 +67,14 @@ export default function InvestmentBankingPage() {
           fullBleed={
             <>
               {/* 1. Identity — hero stays full-width for impact */}
-              <ServiceHero service={service} />
+              <ServiceHero
+                ordinal={service.ordinal}
+                title={service.title}
+                slug={service.slug}
+                displayHeadline={service.displayHeadline}
+                promise={service.promise}
+                cta={service.cta}
+              />
               {/* §01 Track record — scrolling client/founder logo strip */}
               <ClientLogos ordinal={SECTION_ORDINAL.clientLogos} clients={clients} />
             </>
