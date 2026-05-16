@@ -70,7 +70,7 @@ const AUTOPLAY_MS = 4200;
 const RESUME_AFTER_USER_MS = 8000;
 
 type FundraiseStagesProps = Readonly<{
-  /** Section ordinal shown in the eyebrow (`§NN`). Defaults to '01' for
+  /** Section ordinal shown in the eyebrow (`●NN`). Defaults to '01' for
    *  backwards compat — IB page now passes its own section number. */
   ordinal?: string;
 }>;
@@ -262,7 +262,7 @@ function FundraiseHeader({ ordinal }: Readonly<{ ordinal: string }>) {
   return (
     <header className="service-v1-fundraise-header">
       <p className="service-v1-fundraise-eyebrow">
-        <span>§{ordinal}</span>
+        <span>●{ordinal}</span>
         <span aria-hidden="true" className="service-v1-fundraise-eyebrow-rule" />
         <span>Fundraise</span>
       </p>
@@ -312,7 +312,7 @@ function DocPreview({ stage }: Readonly<{ stage: Stage }>) {
         <span className="service-v1-fundraise-doc-eyebrow">Nucleus Advisors · Confidential</span>
         <span className="service-v1-fundraise-doc-title">{stage.deliverable}</span>
         <span className="service-v1-fundraise-doc-meta">
-          {stage.weeks} · §{stage.ordinal}
+          {stage.weeks} · ●{stage.ordinal}
         </span>
         <span className="service-v1-fundraise-doc-rule" />
         <span className="service-v1-fundraise-doc-lines">

@@ -67,7 +67,7 @@ export function WhenToEngage({ ordinal, moments }: WhenToEngageProps) {
   return (
     <section className="service-v1-section service-v1-when">
       <SectionHeader
-        eyebrow={`§${ordinal} / When to engage`}
+        eyebrow={`●${ordinal} / When to engage`}
         title="The moments where outside judgement earns its keep."
       />
       <dl className="service-v1-when-list" aria-label="When to engage Nucleus">
@@ -93,7 +93,7 @@ export function WhenToEngage({ ordinal, moments }: WhenToEngageProps) {
                 >
                   <span className="service-v1-when-chip service-v1-when-chip-if">
                     <span className="service-v1-when-ordinal">
-                      §{String(i + 1).padStart(2, '0')}
+                      ●{String(i + 1).padStart(2, '0')}
                     </span>
                     IF
                   </span>

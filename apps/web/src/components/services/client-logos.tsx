@@ -24,7 +24,7 @@ export function ClientLogos({ ordinal, clients }: Props) {
     <section className="service-v1-section client-logos-section" aria-labelledby="client-logos-h">
       <header className="client-logos-head">
         <p className="client-logos-eyebrow">
-          <span className="client-logos-eyebrow-num">§{ordinal}</span>
+          <span className="client-logos-eyebrow-num">●{ordinal}</span>
           <span className="client-logos-eyebrow-bar" aria-hidden="true" />
           <span>Track record · Founders we&rsquo;ve worked with</span>
         </p>

@@ -29,7 +29,7 @@ export function IndustryReports({ ordinal, serviceSlug }: IndustryReportsProps) 
   return (
     <section className="service-v1-section service-v1-reports">
       <SectionHeader
-        eyebrow={`§${ordinal} / Industry reports`}
+        eyebrow={`●${ordinal} / Industry reports`}
         title="Research and data we publish alongside the work."
         text="Anonymised benchmarks, working papers, and advisory notes. Request a copy if you would like the full PDF."
       />

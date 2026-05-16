@@ -9,7 +9,7 @@ import { SectionHeader } from '@/components/sections';
 /**
  * RelatedServices — animated card row with the three closest service
  * lines to the one being viewed. Each card has:
- *   • §NN ordinal at top-left + service icon badge at top-right
+ *   • ●NN ordinal at top-left + service icon badge at top-right
  *   • Service title + summary
  *   • "View service" CTA with a sliding arrow
  * Hover state inverts the surface (dark navy → vivid red gradient,
@@ -51,7 +51,7 @@ export function RelatedServices({
 
                 <div className="related-card-content">
                   <header className="related-card-head">
-                    <span className="related-card-num">§{item.ordinal}</span>
+                    <span className="related-card-num">●{item.ordinal}</span>
                     <span className="related-card-icon" aria-hidden="true">
                       <Icon size={18} strokeWidth={1.75} />
                     </span>

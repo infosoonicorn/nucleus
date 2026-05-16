@@ -52,7 +52,7 @@ export function SoonicornCallout({
 
       <header className="service-v1-soonicorn-head">
         <p className="service-v1-soonicorn-eyebrow">
-          <span className="service-v1-soonicorn-eyebrow-num">§{ordinal ?? '04'}</span>
+          <span className="service-v1-soonicorn-eyebrow-num">●{ordinal ?? '04'}</span>
           <span aria-hidden="true" className="service-v1-soonicorn-eyebrow-bar" />
           <span>In-house capital, alongside advisory</span>
         </p>

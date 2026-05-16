@@ -49,7 +49,7 @@ export function HowWeHelp({ ordinal, flat, detailed }: HowWeHelpProps) {
     <section className="service-v1-section service-v1-help">
       <header className="service-v1-help-header">
         <p className="service-v1-help-eyebrow">
-          <span>§{ordinal}</span>
+          <span>●{ordinal}</span>
           <span aria-hidden="true" className="service-v1-help-eyebrow-rule" />
           <span>How we help</span>
         </p>
@@ -63,7 +63,7 @@ export function HowWeHelp({ ordinal, flat, detailed }: HowWeHelpProps) {
           {detailed.map((item, index) => {
             const isActive = index === activeIndex;
             const Icon = ICONS[index % ICONS.length] ?? Sparkles;
-            const ordinalLabel = `§${String(index + 1).padStart(2, '0')}`;
+            const ordinalLabel = `●${String(index + 1).padStart(2, '0')}`;
             return (
               <motion.button
                 key={item.title}

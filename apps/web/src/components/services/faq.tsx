@@ -84,7 +84,7 @@ export function Faq({ ordinal, serviceTitle, faq }: FaqProps) {
       <header className="service-v1-faq-head">
         <div>
           <p className="service-v1-faq-eyebrow">
-            <span className="service-v1-faq-eyebrow-num">§{ordinal}</span>
+            <span className="service-v1-faq-eyebrow-num">●{ordinal}</span>
             <span className="service-v1-faq-eyebrow-bar" aria-hidden="true" />
             <span>FAQs · On the record</span>
           </p>
@@ -142,7 +142,7 @@ export function Faq({ ordinal, serviceTitle, faq }: FaqProps) {
                 aria-controls={`faq-panel-${i}`}
                 onClick={() => toggle(i)}
               >
-                <span className="service-v1-faq-num">§Q.{item.ord}</span>
+                <span className="service-v1-faq-num">●Q.{item.ord}</span>
                 <span className="service-v1-faq-q">{item.q}</span>
                 <span className="service-v1-faq-toggle" aria-hidden="true">
                   <Plus size={12} strokeWidth={2.5} />

@@ -71,7 +71,7 @@ export function ResourceDeck({ ordinal, serviceSlug, resources: allResources }: 
       <header className="resource-deck-head">
         <div>
           <p className="resource-deck-eyebrow">
-            <span className="resource-deck-eyebrow-num">§{ordinal}</span>
+            <span className="resource-deck-eyebrow-num">●{ordinal}</span>
             <span className="resource-deck-eyebrow-bar" aria-hidden="true" />
             <span>Resources · Deliverables</span>
           </p>

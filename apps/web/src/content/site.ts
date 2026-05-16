@@ -43,7 +43,7 @@ export type IndustryReport = {
 };
 
 export type ProcessDossierPhase = {
-  ordinal: string;            // e.g. '§01'
+  ordinal: string;            // e.g. '●01'
   name: string;                // e.g. 'Mandate & scope'
   weeks: string;               // e.g. 'Weeks 1-2'
   date: string;                // e.g. '14 Apr 2026' — illustrative milestone date
@@ -89,7 +89,7 @@ export type Service = {
   cta: string;
   proof?: string[];
   icon: LucideIcon;
-  /** Two-digit ordinal: '01' through '09'. Drives the §NN eyebrow on service pages. */
+  /** Two-digit ordinal: '01' through '09'. Drives the ●NN eyebrow on service pages. */
   ordinal: string;
   displayHeadline?: string;                 // 3-word punchier hero headline; falls back to title.
   whenToEngage?: { if: string; then: string }[]; // 4 IF/THEN scenario pairs; fallback shows generic checklist if absent.
@@ -344,7 +344,7 @@ export const services: Service[] = [
       footerNote: 'Issued under partnership letter — illustrative example',
       phases: [
         {
-          ordinal: '§01',
+          ordinal: '●01',
           name: 'Mandate & scope',
           weeks: 'Weeks 1–2',
           date: '14 Apr 2026',
@@ -354,7 +354,7 @@ export const services: Service[] = [
           stampLine: 'Aligned',
         },
         {
-          ordinal: '§02',
+          ordinal: '●02',
           name: 'Build & pressure-test',
           weeks: 'Weeks 3–6',
           date: '06 May 2026',
@@ -364,7 +364,7 @@ export const services: Service[] = [
           stampLine: 'Stress-tested',
         },
         {
-          ordinal: '§03',
+          ordinal: '●03',
           name: 'Market & manage',
           weeks: 'Weeks 7–12',
           date: '21 Jun 2026',
@@ -374,7 +374,7 @@ export const services: Service[] = [
           stampLine: 'In market',
         },
         {
-          ordinal: '§04',
+          ordinal: '●04',
           name: 'Close & handover',
           weeks: 'Weeks 13–16 + 90-day handover',
           date: '',
@@ -394,7 +394,7 @@ export const services: Service[] = [
       kind: 'in-house-fund',
       brand: 'Soonicorn Ventures',
       logoPath: '/brand/soonicorn-ventures.png',
-      eyebrow: '§ In-house capital alongside advisory',
+      eyebrow: '● In-house capital alongside advisory',
       title: 'Soonicorn Ventures',
       body: "Nucleus is Investment Manager to Soonicorn Angel Trust-I, an early-stage fund focused on seed and pre-Series A startups raising up to US $1M. If your round fits the fund's mandate, you can also explore Soonicorn Ventures directly.",
       ctaLabel: 'Visit Soonicorn Ventures',

@@ -46,9 +46,9 @@ export function ServiceHero({
   // Phase preview cards — reference the dossier phases below so the hero
   // teases what's coming without inventing metrics.
   const cards = [
-    { label: '§01 Mandate', meta: 'Weeks 1–2',  cls: 'svc-hero-card-1', initialRot: -8, finalRot: -4 },
-    { label: '§03 Market',  meta: 'Weeks 7–12', cls: 'svc-hero-card-2', initialRot:  6, finalRot:  3 },
-    { label: '§04 Wire',    meta: 'Week 16',    cls: 'svc-hero-card-3', initialRot: -3, finalRot: -1, stamp: true },
+    { label: '●01 Mandate', meta: 'Weeks 1–2',  cls: 'svc-hero-card-1', initialRot: -8, finalRot: -4 },
+    { label: '●03 Market',  meta: 'Weeks 7–12', cls: 'svc-hero-card-2', initialRot:  6, finalRot:  3 },
+    { label: '●04 Wire',    meta: 'Week 16',    cls: 'svc-hero-card-3', initialRot: -3, finalRot: -1, stamp: true },
   ];
 
   return (
@@ -61,7 +61,7 @@ export function ServiceHero({
           <FadeIn duration={0.55}>
             <p className="home-v3-eyebrow">
               <span aria-hidden="true" />
-              §{ordinal} / {title}
+              ●{ordinal} / {title}
             </p>
           </FadeIn>
 

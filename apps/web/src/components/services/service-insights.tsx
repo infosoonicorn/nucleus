@@ -24,7 +24,7 @@ export function ServiceInsights({
   return (
     <section className="service-v1-section service-v1-articles">
       <SectionHeader
-        eyebrow={`§${ordinal ?? service.ordinal} / Insights`}
+        eyebrow={`●${ordinal ?? service.ordinal} / Insights`}
         title="Notes from the desk."
       />
 

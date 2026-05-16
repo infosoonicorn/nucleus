@@ -53,7 +53,7 @@ export function ContactBand({
 
       <div className="contact-band-content">
         <p className="contact-band-eyebrow">
-          <span className="contact-band-eyebrow-num">§{ordinal}</span>
+          <span className="contact-band-eyebrow-num">●{ordinal}</span>
           <span aria-hidden="true" className="contact-band-eyebrow-bar" />
           <span>Talk to the desk</span>
         </p>

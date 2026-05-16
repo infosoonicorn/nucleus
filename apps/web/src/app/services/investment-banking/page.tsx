@@ -25,7 +25,7 @@ import { getTeamForService } from '@/content/team';
 const SERVICE_SLUG = 'investment-banking';
 
 /**
- * Within-page section ordinals shown in each section's eyebrow (`§NN`).
+ * Within-page section ordinals shown in each section's eyebrow (`●NN`).
  * Distinct from `service.ordinal` ("01" — Investment Banking's position
  * in the firm-wide service taxonomy, shown only on the Hero). Adding a
  * new section in the middle? Renumber here in one place.
@@ -75,7 +75,7 @@ export default function InvestmentBankingPage() {
                 promise={service.promise}
                 cta={service.cta}
               />
-              {/* §01 Track record — scrolling client/founder logo strip */}
+              {/* ●01 Track record — scrolling client/founder logo strip */}
               <ClientLogos ordinal={SECTION_ORDINAL.clientLogos} clients={clients} />
             </>
           }
@@ -87,20 +87,20 @@ export default function InvestmentBankingPage() {
             </>
           }
         >
-          {/* §02 Recognition — "is this for me?" */}
+          {/* ●02 Recognition — "is this for me?" */}
           <WhenToEngage ordinal={SECTION_ORDINAL.whenToEngage} moments={service.whenToEngage} />
 
-          {/* §03 What we deliver — capabilities */}
+          {/* ●03 What we deliver — capabilities */}
           <HowWeHelp
             ordinal={SECTION_ORDINAL.howWeHelp}
             flat={service.howWeHelp}
             detailed={service.howWeHelpDetailed}
           />
 
-          {/* §04 What unfolds — the six-step fundraise journey */}
+          {/* ●04 What unfolds — the six-step fundraise journey */}
           <FundraiseStages ordinal={SECTION_ORDINAL.fundraise} />
 
-          {/* §05 How we engage — partner-led mandate dossier */}
+          {/* ●05 How we engage — partner-led mandate dossier */}
           <Process
             serviceTitle={service.title}
             ordinal={SECTION_ORDINAL.process}
@@ -109,26 +109,26 @@ export default function InvestmentBankingPage() {
             dossier={service.processDossier}
           />
 
-          {/* §06 Differentiator — in-house Soonicorn fund */}
+          {/* ●06 Differentiator — in-house Soonicorn fund */}
           <SoonicornCallout service={service} ordinal={SECTION_ORDINAL.soonicorn} />
 
           {/* Evidence — no eyebrow number; only renders if data exists */}
           <Proof service={service} />
 
-          {/* §07 Read deeper — editorial */}
+          {/* ●07 Read deeper — editorial */}
           <ServiceInsights service={service} ordinal={SECTION_ORDINAL.insights} />
 
-          {/* §08 Resources — unified downloads (checklist + industry reports). */}
+          {/* ●08 Resources — unified downloads (checklist + industry reports). */}
           <ResourceDeck
             ordinal={SECTION_ORDINAL.resources}
             serviceSlug={service.slug}
             resources={resources}
           />
 
-          {/* §09 Objection handling */}
+          {/* ●09 Objection handling */}
           <Faq ordinal={SECTION_ORDINAL.faq} serviceTitle={service.title} faq={service.faq} />
 
-          {/* §10 Final CTA — primary close of the page */}
+          {/* ●10 Final CTA — primary close of the page */}
           <ContactBand
             ordinal={SECTION_ORDINAL.contact}
             serviceTitle={service.title}

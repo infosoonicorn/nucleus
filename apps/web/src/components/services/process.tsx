@@ -88,7 +88,7 @@ function DossierProcess({
       <header className="service-v1-dossier-head">
         <div>
           <p className="service-v1-dossier-eyebrow">
-            <span className="service-v1-dossier-eyebrow-num">§{ordinal}</span>
+            <span className="service-v1-dossier-eyebrow-num">●{ordinal}</span>
             <span aria-hidden="true" className="service-v1-dossier-eyebrow-bar" />
             <span>Process · Investment Banking</span>
           </p>
