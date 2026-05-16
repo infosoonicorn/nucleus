@@ -181,7 +181,6 @@ function DossierProcess({
                       NUCLEUS · {s.weeks.replace(/Weeks\s*/, 'WK ')}
                     </span>
                   </span>
-                  <span className="service-v1-dossier-date">{s.date}</span>
                 </span>
               </button>
             );
