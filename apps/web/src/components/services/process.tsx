@@ -82,7 +82,6 @@ function DossierProcess({
 
   const currentStage = stages[active];
   const fillPct = ((active + 1) / stagesLen) * 100;
-  const allDoneAtEnd = active === stagesLen - 1;
 
   return (
     <section className="service-v1-section service-v1-section-alt service-v1-dossier">
@@ -189,25 +188,14 @@ function DossierProcess({
           })}
         </div>
 
-        <footer
-          className={`service-v1-dossier-foot ${allDoneAtEnd ? 'is-all-done' : ''}`}
-        >
-          <div className="service-v1-dossier-footmeta">
-            <span>{dossier.footerLine}</span>
-            <span>{dossier.footerNote}</span>
-          </div>
-          <div className="service-v1-dossier-sig">
-            <span className="service-v1-dossier-sig-name">{dossier.partnerSignature}</span>
-            <span className="service-v1-dossier-sig-line" />
-            <span className="service-v1-dossier-sig-cap">{dossier.partnerCaption}</span>
-          </div>
-        </footer>
+        {/* Engagement-file footer (location line / file note / partner
+            signature) removed — it was decorative chrome that didn't
+            add information beyond the dossier header above. */}
       </article>
 
       <div className="service-v1-dossier-controls">
-        <p className="service-v1-dossier-now">
-          Now: <span>{currentStage.ordinal} — {currentStage.name}</span>
-        </p>
+        {/* "Now: NN — Name" indicator removed — repeated info that's
+            already shown in each entry's status box above. */}
         <div className="service-v1-dossier-bar" aria-hidden="true">
           <span className="service-v1-dossier-fill" style={{ width: `${fillPct}%` }} />
         </div>
