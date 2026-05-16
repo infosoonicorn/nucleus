@@ -42,14 +42,19 @@ Update rules:
 
 ## Current Snapshot
 
-Last updated: 2026-05-13 — home polish pass landed (nav blur, moments rail grid, hero counters derived, proof single-source, lifecycle scroll trimmed). Home spine/thread refinement intentionally deferred; next active task is bringing About / Services / Careers / Insights / Contact up to the home-v3 motion + typography baseline.
+Last updated: 2026-05-15 — Investment Banking page is now end-to-end. Most recent landings (in order): FundraiseStages converted from scroll-pinned to timer autoplay; central `/insights` and `/reports` hubs with filterable listings replace the Phase-1 shells; IB sections reordered along the founder reading journey; FAQ rebuilt as 2-column editorial Q&A; unified Resources deck (horizontal scroller, 5 cards, framer-motion stagger) replaces the old LeadMagnet + IndustryReports preview, with a single capture modal (Name / Email / Company / Role) wired to a `/api/resources/request` stub that logs each capture with `resourceSlug` for interest tracking. Next active task is bringing About / Careers / Insights detail / Contact up to the home-v3 + service-v1 baseline.
 
-Current branch: `main` (also `claude/sleepy-kirch-f73f38` worktree).
+Current branch: `main` (60+ ahead of origin — origin is intentionally untouched while production DNS still points "coming soon"). Push to origin requires explicit Vijay consent.
 
-Current commit baseline:
+Recent commit landmarks on `main`:
 
-- `867763a chore(web): add framer-motion, lenis, lottie-react, clsx, tailwind-merge, tailwindcss-animate`
-- Homepage motion redesign committed on top of the above (this pass).
+- `f352492 feat(resources): unified deck + capture modal for all downloadables`
+- `018dae7 feat(faq): 2-column layout on web (single column on mobile)`
+- `784dd44 feat(faq): editorial Q&A column matching the dossier brand language`
+- `01e6a1e refactor(ib): reorder sections along founder reading journey`
+- `62efbee feat(insights+reports): central hubs with filters; service pages preview 4`
+- `280b5de fix(ib): autoplay fundraise stages, drop scroll-jacking + tighten rhythm`
+- `c982beb polish(web): unified section rhythm + headers + hairlines on IB page`
 
 Current deployed preview:
 
@@ -176,7 +181,7 @@ Launch a premium, credible, fast public website with structured content. It shou
   - Acceptance: a brand-tinted Lottie JSON sourced from LottieFiles or in-house motion artist is placed at `apps/web/public/lottie/nucleus-hero.json`. Spec: `docs/home-hero-lottie-spec.md`.
 - [~] Apply motion / spacing language to remaining public pages.
   - Acceptance: About, Services overview, Service detail, Careers, Insights, Contact inherit the home-v3 typography rhythm and tasteful motion without a full per-page redesign.
-  - Status (2026-05-14): Services slice landed for Investment Banking (bespoke composition with FundraiseStages, ArtefactStack, SoonicornCallout, ServiceInsights primitives) and elevated default composition for the other 8 service pages. Section primitives in `apps/web/src/components/services/` ready for About / Careers / Insights / Contact slices.
+  - Status (2026-05-15): Investment Banking is end-to-end (Hero, WhenToEngage, HowWeHelp bento, FundraiseStages autoplay, Process dossier, Soonicorn callout, Proof, Insights preview, Resources deck, FAQ 2-col editorial, RelatedServices, ContactBand). The 8 other service pages render the elevated default composition. `/insights` and `/reports` hubs are now real filterable listings (no longer Phase-1 shells). Section primitives in `apps/web/src/components/services/` and `apps/web/src/components/resources/` are ready for About / Careers / Insights detail / Contact slices.
 - [x] Add service-specific proof blocks.
   - Acceptance: firm-wide counters stay on homepage; service pages use service-specific proof/counter placeholders where verified numbers are pending.
 - [ ] Home page — page-wide unifying spine/thread.
@@ -184,7 +189,13 @@ Launch a premium, credible, fast public website with structured content. It shou
   - Status (2026-05-13): deferred. To revisit after About / Services / Careers / Insights / Contact are at parity.
   - Note: design options documented in the 2026-05-13 conversation; option A (spine rail) recommended. Decisions still open: spine position (left vs right), label always-on vs hover.
 - [x] Investment Banking service page — bespoke composition.
-  - Acceptance: `/services/investment-banking` renders the bespoke composition with FundraiseStages, ArtefactStack, SoonicornCallout, ServiceInsights; lint, typecheck, build, e2e pass; manual browser verification clean.
+  - Acceptance: `/services/investment-banking` renders the bespoke composition with FundraiseStages (autoplay, 6 stages), HowWeHelp bento, Process dossier (4 phases, partner-signed), SoonicornCallout (orbital plate + 12 portfolio logos), ServiceInsights, ResourceDeck, FAQ editorial; lint, typecheck, build pass; manual browser verification clean. Section order follows the founder reading journey (identity → recognition → what → how → why-us → proof → read deeper → ask → CTA).
+- [x] Central editorial hubs — `/insights` and `/reports` with filters.
+  - Acceptance: `/insights` renders all articles across services with chip filters by service line and tag; `/reports` renders all industry reports with chip filters by service and report type; filters are URL-query-driven so views are shareable; service pages show first 4 items + "See all" link to the hub pre-filtered. Replaces the Phase-1 placeholder shells.
+- [x] Long-form Insights articles infrastructure.
+  - Acceptance: `apps/web/src/content/articles.ts` holds 10 IB articles authored by Vijay Singh Rathore (Founding Partner) with reviewer-status gate (drafts visible in dev only). Article reader route at `/insights/[slug]` with metadata, draft banner, back-to-insights link. Content awaits Vijay's per-article review before each `reviewerStatus` flips to `approved`.
+- [x] Unified Resources deck + capture modal.
+  - Acceptance: `apps/web/src/content/resources.ts` aggregates industry reports + lead-magnet checklists by service. `ResourceDeck` renders a horizontal-scroller of cards with framer-motion stagger and prev/next nav. Every "Get this" / "Request the full report" button opens the same `RequestResourceButton` modal (Name / Work email / Company / Role) wired to `POST /api/resources/request`, which validates and logs each capture as structured JSON with `resourceSlug`. Replaces the old separate LeadMagnet section and `/contact?report=…` dead-link pattern.
 - [ ] Bespoke centerpieces for remaining 8 service pages.
   - Acceptance: each service line gets its own brainstorm + spec + bespoke centerpiece, modelled on the IB pattern. Currently rendering elevated default composition.
 - [ ] Rename `.home-v3` CSS scope to a neutral name (e.g. `.np-base`).
@@ -197,8 +208,8 @@ Launch a premium, credible, fast public website with structured content. It shou
   - Acceptance: each service hero gets its own aurora/atmosphere variant. (Cherry-pick E4 deferred from IB build.)
 - [ ] Source SVG of Soonicorn Ventures wordmark (currently PNG).
   - Acceptance: `apps/web/public/brand/soonicorn-ventures.svg` exists, page references SVG.
-- [ ] IB-specific FAQ content (4 Q+A pairs).
-  - Acceptance: `services[].faq` populated for Investment Banking, partner-approved.
+- [x] IB-specific FAQ content (10 Q+A pairs).
+  - Acceptance: `services[].faq` populated for Investment Banking with 10 partner-voice answers covering engagement timing, diligence readiness, compensation, timeline, NDA, differentiation, legal-counsel split, post-close, Soonicorn conflict-of-interest, mandate sizing. Rendered as 2-column editorial Q&A on `/services/investment-banking`. Content still flagged for Vijay's content review before flipping each answer's `reviewerApprovedAt`.
 - [ ] Quarterly review cadence for `insightSources`.
   - Acceptance: documented review schedule and partner ownership; pending items flipped to approved as confirmed.
 - [ ] Soonicorn callout copy re-approval cycle.
@@ -213,6 +224,20 @@ Launch a premium, credible, fast public website with structured content. It shou
   - Acceptance: add Playwright tests for empty-string email and malformed-but-present email (currently covered only for missing field).
 - [ ] Pre-existing home.spec.ts nav flake.
   - Acceptance: investigate and fix the intermittent failure where clicking the "Services" nav link on `/` doesn't navigate. Separate investigation already underway.
+- [ ] Vijay content review of 10 IB long-form articles.
+  - Acceptance: Vijay reads each entry in `apps/web/src/content/articles.ts`, edits as needed, and flips each `reviewerStatus: 'pending'` to `'approved'` with `reviewerApprovedAt: 'YYYY-MM-DD'`. Until then, articles surface only in dev (the production gate hides drafts).
+- [ ] Vijay content review of 10 IB FAQ answers.
+  - Acceptance: Vijay reads each entry in `services[].faq` for Investment Banking. Currently surfaced without a per-answer reviewer stamp — discuss whether to extend the FAQ data model to track `reviewerApprovedAt` per Q or stamp at the service-level.
+- [ ] Vijay content review of 4 IB industry reports + 1 lead-magnet checklist.
+  - Acceptance: review each entry in `apps/web/src/content/reports.ts` and `apps/web/src/content/resources.ts` (downloadables block). Need actual PDFs to back each title before flipping any to "available" in production — currently the API returns success copy that promises an email, but no PDF delivery exists yet (Phase 1.5).
+- [ ] Pre-fill / acknowledge `report` query param on `/contact`.
+  - Acceptance: if `?report=<slug>` is present, `/contact` shows a small banner ("Report request: <title>") and pre-fills the form's enquiry textarea. The old "Request the full report → /contact?report=…" pattern is now superseded by the Resources modal, but stray inbound links from search/cache may still land here. Either redirect to `/reports?service=…` or honour the param. Low priority.
+- [ ] Local dev: avoid `.next/` cache corruption from OneDrive sync.
+  - Acceptance: project's `.next/` is symlinked to `~/.cache/nucleus-advisors-web/next` on Vijay's machine (manual setup, not git-tracked). Document this in `docs/claude-onboarding.md` or `README.md` so any future agent / new machine setup doesn't hit the recurring `Compaction failed: Another write batch or compaction is already active` Turbopack failure. Long-term fix: move repo out of `~/Documents/` or exclude `.next/` in OneDrive preferences.
+- [ ] Phase 1.5 captures persistence to file (interim before Supabase).
+  - Acceptance: `/api/resources/request` writes each capture line to `~/Library/Application Support/nucleus-advisors/lead-captures.jsonl` so requests survive dev server restarts. Today they only live in stdout. Drop once Supabase is wired.
+- [ ] Consent + privacy copy on Resources modal.
+  - Acceptance: before pushing to origin, add a "By submitting, you agree to be contacted about this resource. See our Privacy Policy" line + checkbox (or unticked-acknowledgement) — required for India/EU GDPR-style follow-ups.
 
 ## Phase 1.5: Lightweight Backend
 
@@ -226,8 +251,9 @@ Add practical backend capture before full CMS, without overbuilding.
   - Acceptance: consultation enquiries are stored with service interest, consent, source page, and timestamp.
 - [ ] Newsletter subscription storage.
   - Acceptance: subscription form captures consent and unsubscribe-ready fields.
-- [ ] Gated download capture.
+- [~] Gated download capture.
   - Acceptance: lead magnet form stores lead, asset, service interest, consent, and source.
+  - Status (2026-05-15): Phase 1 stub live — `POST /api/resources/request` validates payload against the central `resources.ts` registry and logs each capture as structured JSON (`resourceSlug, resourceTitle, resourceKind, serviceSlugs, name, email, company, role, receivedAt`) to the server console. Same modal flow is wired to every "Get this" / "Request the full report" CTA across `/services/*` and `/reports`. Phase 1.5 swap: replace the `console.warn` with a Supabase `lead_captures` insert and trigger the partner email delivery; add explicit consent checkbox + privacy-policy link; add rate limiting (Cloudflare Turnstile) before pushing to origin.
 - [ ] Career interest/job application storage.
   - Acceptance: candidate submissions are separated from client leads.
 - [ ] Basic admin visibility.
@@ -405,8 +431,8 @@ Reuse the same backend APIs for mobile when web portal workflows are stable.
   - Needed for: forms, insights, downloads.
 - [ ] Source hero Lottie file.
   - Needed for: hero "Advisory coverage" canvas accent (`apps/web/public/lottie/nucleus-hero.json`). Spec in `docs/home-hero-lottie-spec.md`.
-- [!] Three reviewer-approved entries in `apps/web/src/content/insights-sources.ts` for Investment Banking.
-  - Needed for: visible "Regulatory updates we're tracking" panel on the IB page. Component currently shows a friendly empty-state message until at least one item flips to approved.
+- [x] Reviewer-approved entries in `apps/web/src/content/insights-sources.ts` for Investment Banking.
+  - Resolution (2026-05-14): all 4 IB regulatory entries approved with `reviewerApprovedAt: '2026-05-14'`; RBI source URL corrected. The Regulatory Updates surface is currently deferred to Phase 2 (needs dynamic monitoring) — the panel is not shown on the IB page; `ServiceInsights` now renders long-form articles instead.
 
 ## Parking Lot
 
