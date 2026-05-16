@@ -1,6 +1,8 @@
 import type { Service } from '@/content/site';
+import { getClientsForService } from '@/content/clients';
 import { ServiceHero } from './service-hero';
 import { WhenToEngage } from './when-to-engage';
+import { ClientLogos } from './client-logos';
 import { HowWeHelp } from './how-we-help';
 import { Deliverables } from './deliverables';
 import { ServiceInsights } from './service-insights';
@@ -13,10 +15,13 @@ import { RelatedServices } from './related-services';
 import { ContactBand } from './contact-band';
 
 export function ServicePageDefault({ service }: Readonly<{ service: Service }>) {
+  const clients = getClientsForService(service.slug);
   return (
     <main className="home-v3 service-v1">
       <ServiceHero service={service} />
       <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
+      {/* Renders nothing when no clients are tagged for this service slug. */}
+      <ClientLogos ordinal={service.ordinal} clients={clients} />
       <HowWeHelp
         ordinal={service.ordinal}
         flat={service.howWeHelp}
