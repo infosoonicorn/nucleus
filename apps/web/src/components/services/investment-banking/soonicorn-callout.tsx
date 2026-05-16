@@ -29,7 +29,10 @@ function placeOnRing(count: number, radius: number, index: number): { x: number;
   return { x: Math.cos(angle) * radius, y: Math.sin(angle) * radius };
 }
 
-export function SoonicornCallout({ service }: Readonly<{ service: Service }>) {
+export function SoonicornCallout({
+  service,
+  ordinal,
+}: Readonly<{ service: Service; ordinal?: string }>) {
   const cross = service.crossLink;
   if (!cross) return null;
 
@@ -49,7 +52,7 @@ export function SoonicornCallout({ service }: Readonly<{ service: Service }>) {
 
       <header className="service-v1-soonicorn-head">
         <p className="service-v1-soonicorn-eyebrow">
-          <span className="service-v1-soonicorn-eyebrow-num">§04</span>
+          <span className="service-v1-soonicorn-eyebrow-num">§{ordinal ?? '04'}</span>
           <span aria-hidden="true" className="service-v1-soonicorn-eyebrow-bar" />
           <span>In-house capital, alongside advisory</span>
         </p>

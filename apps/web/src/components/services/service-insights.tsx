@@ -6,7 +6,10 @@ import type { Service } from '@/content/site';
 
 const PREVIEW_COUNT = 4;
 
-export function ServiceInsights({ service }: Readonly<{ service: Service }>) {
+export function ServiceInsights({
+  service,
+  ordinal,
+}: Readonly<{ service: Service; ordinal?: string }>) {
   // In development, surface drafts so partners can review unreviewed articles
   // on the page. In production, only `reviewerStatus: 'approved'` items render.
   const allowDrafts = process.env.NODE_ENV !== 'production';
@@ -21,7 +24,7 @@ export function ServiceInsights({ service }: Readonly<{ service: Service }>) {
   return (
     <section className="service-v1-section service-v1-articles">
       <SectionHeader
-        eyebrow={`§${service.ordinal} / Insights`}
+        eyebrow={`§${ordinal ?? service.ordinal} / Insights`}
         title="Notes from the desk."
         text="Long-form writing from Nucleus partners — fundraise mechanics, term sheets, deal observations."
       />

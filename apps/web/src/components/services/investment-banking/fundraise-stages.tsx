@@ -69,7 +69,13 @@ const STAGES: Stage[] = [
 const AUTOPLAY_MS = 4200;
 const RESUME_AFTER_USER_MS = 8000;
 
-export function FundraiseStages() {
+type FundraiseStagesProps = Readonly<{
+  /** Section ordinal shown in the eyebrow (`§NN`). Defaults to '01' for
+   *  backwards compat — IB page now passes its own section number. */
+  ordinal?: string;
+}>;
+
+export function FundraiseStages({ ordinal = '01' }: FundraiseStagesProps = {}) {
   const reduceMotion = useReducedMotion();
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
@@ -113,7 +119,7 @@ export function FundraiseStages() {
   if (reduceMotion) {
     return (
       <section className="service-v1-section service-v1-fundraise service-v1-fundraise-reduced">
-        <FundraiseHeader />
+        <FundraiseHeader ordinal={ordinal} />
         <ol className="service-v1-fundraise-grid">
           {STAGES.map((stage) => (
             <li key={stage.ordinal}>
@@ -138,7 +144,7 @@ export function FundraiseStages() {
 
   return (
     <section className="service-v1-section service-v1-fundraise">
-      <FundraiseHeader />
+      <FundraiseHeader ordinal={ordinal} />
 
       <div className="service-v1-fundraise-track-wrap">
         <div className="service-v1-fundraise-track-line" aria-hidden="true">
@@ -257,11 +263,11 @@ export function FundraiseStages() {
   );
 }
 
-function FundraiseHeader() {
+function FundraiseHeader({ ordinal }: Readonly<{ ordinal: string }>) {
   return (
     <header className="service-v1-fundraise-header">
       <p className="service-v1-fundraise-eyebrow">
-        <span>§01</span>
+        <span>§{ordinal}</span>
         <span aria-hidden="true" className="service-v1-fundraise-eyebrow-rule" />
         <span>Fundraise</span>
       </p>
