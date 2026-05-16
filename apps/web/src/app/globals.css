@@ -8449,6 +8449,349 @@ main.service-v1 > div > section {
 }
 
 /* ───────────────────────────────────────────────────────────
+ * Service page 2-column shell
+ *   ≥ 1100px: | main 1fr | sidebar 320px |   (sidebar sticky, scrolls on hover)
+ *   < 1100px: single column; sidebar content drops below main.
+ * `fullBleed` children render outside the grid for full container width.
+ * ─────────────────────────────────────────────────────────── */
+
+.service-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3vw, 32px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  column-gap: clamp(28px, 4vw, 48px);
+  align-items: start;
+}
+.service-shell-main {
+  min-width: 0;        /* let grid item shrink instead of forcing horizontal scroll */
+}
+/* Sections inside main reset their own max-width — they used to be
+   1200px wrappers; the shell already owns the outer frame now. */
+.service-shell-main .service-v1-section { max-width: none; padding-inline: 0; }
+
+.service-shell-side {
+  position: sticky;
+  top: 88px;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  /* Native browser scroll-chaining: mouse over sidebar scrolls sidebar
+     until boundary, then wheel events bubble to main. Subtle scrollbar. */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(20, 24, 40, 0.18) transparent;
+  padding-right: 4px;
+}
+.service-shell-side::-webkit-scrollbar { width: 6px; }
+.service-shell-side::-webkit-scrollbar-track { background: transparent; }
+.service-shell-side::-webkit-scrollbar-thumb {
+  background: rgba(20, 24, 40, 0.18);
+  border-radius: 999px;
+}
+
+@media (max-width: 1099px) {
+  .service-shell {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+  .service-shell-side {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+    margin-top: 48px;
+    display: grid;
+    gap: 28px;
+  }
+}
+
+/* Sidebar shared block primitives (used by Team, LatestReports, CTA) */
+.sidebar-block {
+  background: #fff;
+  border: 1px solid rgba(20, 24, 40, 0.1);
+  border-radius: 12px;
+  padding: 18px 18px 20px;
+  margin-bottom: 16px;
+}
+.sidebar-block:last-child { margin-bottom: 0; }
+.sidebar-block-head { margin-bottom: 14px; }
+.sidebar-block-eyebrow {
+  margin: 0 0 4px;
+  font: 500 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--service-accent-red);
+}
+.sidebar-block-title {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 680;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  color: #141828;
+}
+.sidebar-block-allcta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font: 500 0.74rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.7);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(20, 24, 40, 0.25);
+  padding-bottom: 2px;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.sidebar-block-allcta:hover {
+  color: var(--service-accent-red);
+  border-color: var(--service-accent-red);
+}
+
+/* Team block + cards */
+.sidebar-team-list { display: flex; flex-direction: column; gap: 14px; }
+.team-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 12px 14px;
+  background: #fefdf8;
+  border: 1px solid rgba(20, 24, 40, 0.08);
+  border-radius: 10px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.team-card:hover {
+  border-color: rgba(20, 24, 40, 0.18);
+  box-shadow: 0 6px 14px rgba(20, 24, 40, 0.06);
+}
+.team-card-head { display: flex; gap: 12px; align-items: center; }
+.team-card-avatar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f3ebd9, #e9dec3);
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(20, 24, 40, 0.1);
+}
+.team-card-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.team-card-monogram {
+  font: 600 0.78rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.04em;
+  color: #141828;
+}
+.team-card-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.team-card-name {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  color: #141828;
+  letter-spacing: -0.008em;
+}
+.team-card-role {
+  margin: 0;
+  font: 500 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.55);
+}
+.team-card-bio {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(20, 24, 40, 0.72);
+}
+.team-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.team-card-iconbtn {
+  width: 28px;
+  height: 28px;
+  display: inline-grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid rgba(20, 24, 40, 0.16);
+  border-radius: 50%;
+  color: rgba(20, 24, 40, 0.7);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.team-card-iconbtn:hover {
+  background: #141828;
+  color: #fefdf8;
+  border-color: #141828;
+}
+.team-card-profilebtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  background: transparent;
+  border: 1px solid rgba(20, 24, 40, 0.16);
+  border-radius: 999px;
+  font: 500 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.78);
+  cursor: pointer;
+  margin-left: auto;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.team-card-profilebtn:hover {
+  background: #141828;
+  border-color: #141828;
+  color: #fefdf8;
+}
+
+/* Team profile modal — extends the resource-modal primitives */
+.team-modal { max-width: 560px; }
+.team-modal-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-right: 36px;
+  margin-bottom: 18px;
+}
+.team-modal-avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f3ebd9, #e9dec3);
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(20, 24, 40, 0.12);
+}
+.team-modal-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.team-modal-monogram {
+  font: 600 1.05rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.04em;
+  color: #141828;
+}
+.team-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 18px;
+  max-height: 50vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.team-modal-body p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(20, 24, 40, 0.82);
+}
+.team-modal-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Sidebar Latest Reports list */
+.sidebar-reports-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sidebar-report-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(20, 24, 40, 0.08);
+}
+.sidebar-report-item:first-child { border-top: 0; padding-top: 0; }
+.sidebar-report-cover {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: #f4ecd9;
+  border-radius: 6px;
+  color: rgba(20, 24, 40, 0.55);
+}
+.sidebar-report-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.sidebar-report-kind {
+  margin: 0;
+  font: 500 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.5);
+}
+.sidebar-report-title {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  line-height: 1.32;
+  color: #141828;
+  letter-spacing: -0.008em;
+}
+.sidebar-report-item .resource-cta {
+  padding: 6px 12px;
+  font-size: 0.72rem;
+  align-self: flex-start;
+}
+
+/* Sidebar CTA */
+.sidebar-cta-block {
+  background: #141828;
+  border-color: #141828;
+}
+.sidebar-cta-title {
+  margin: 0 0 10px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 680;
+  font-size: 1.15rem;
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+  color: #fefdf8;
+}
+.sidebar-cta-title em {
+  font-style: italic;
+  font-weight: 680;
+  color: #ffb2ad;
+}
+.sidebar-cta-text {
+  margin: 0 0 14px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: rgba(254, 253, 248, 0.78);
+}
+.sidebar-cta-btn { width: 100%; justify-content: center; }
+.sidebar-cta-block .resource-cta-primary {
+  background: #fefdf8;
+  border-color: #fefdf8;
+  color: #141828;
+}
+.sidebar-cta-block .resource-cta-primary:hover {
+  background: var(--service-accent-red);
+  border-color: var(--service-accent-red);
+  color: #fefdf8;
+}
+
+/* ───────────────────────────────────────────────────────────
  * Client logos — scrolling marquee (track record proof strip).
  * CSS-only infinite scroll, edge fade mask, pause on hover,
  * collapses to a wrapping grid under prefers-reduced-motion.
