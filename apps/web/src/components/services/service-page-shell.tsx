@@ -29,7 +29,14 @@ export function ServicePageShell({
       {fullBleed}
       <div className="service-shell">
         <div className="service-shell-main">{children}</div>
-        <aside className="service-shell-side" aria-label="Service sidebar">
+        {/* data-lenis-prevent lets the sidebar do native overflow scroll;
+            without it, Lenis intercepts wheel events on the whole page and
+            the sidebar never scrolls independently. */}
+        <aside
+          className="service-shell-side"
+          aria-label="Service sidebar"
+          data-lenis-prevent
+        >
           {rightSlot}
         </aside>
       </div>

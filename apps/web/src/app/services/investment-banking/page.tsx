@@ -47,11 +47,10 @@ export default function InvestmentBankingPage() {
         <ServicePageShell
           fullBleed={
             <>
-              {/* 1. Identity */}
+              {/* 1. Identity — hero stays full-width for impact */}
               <ServiceHero service={service} />
-              {/* 2. Recognition — "is this for me?" */}
-              <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
-              {/* 2.5 Track record — scrolling client/founder logo strip */}
+              {/* 2. Track record — scrolling client/founder logo strip
+                   (moved above WhenToEngage so visitors see proof early) */}
               <ClientLogos ordinal={service.ordinal} clients={clients} />
             </>
           }
@@ -63,17 +62,21 @@ export default function InvestmentBankingPage() {
             </>
           }
         >
-          {/* 3. What we deliver — capabilities */}
+          {/* 3. Recognition — "is this for me?" (now in 2-col main column,
+              sidebar visible to its right) */}
+          <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
+
+          {/* 4. What we deliver — capabilities */}
           <HowWeHelp
             ordinal={service.ordinal}
             flat={service.howWeHelp}
             detailed={service.howWeHelpDetailed}
           />
 
-          {/* 4. What unfolds — the six-step fundraise journey */}
+          {/* 5. What unfolds — the six-step fundraise journey */}
           <FundraiseStages />
 
-          {/* 5. How we engage — partner-led mandate dossier */}
+          {/* 6. How we engage — partner-led mandate dossier */}
           <Process
             serviceTitle={service.title}
             ordinal={service.ordinal}
@@ -82,29 +85,29 @@ export default function InvestmentBankingPage() {
             dossier={service.processDossier}
           />
 
-          {/* 6. Differentiator — in-house Soonicorn fund */}
+          {/* 7. Differentiator — in-house Soonicorn fund */}
           <SoonicornCallout service={service} />
 
-          {/* 7. Evidence */}
+          {/* 8. Evidence */}
           <Proof service={service} />
 
-          {/* 8. Read deeper — editorial */}
+          {/* 9. Read deeper — editorial */}
           <ServiceInsights service={service} />
 
-          {/* 9. Resources — unified downloads (checklist + industry reports). */}
+          {/* 10. Resources — unified downloads (checklist + industry reports). */}
           <ResourceDeck
             ordinal={service.ordinal}
             serviceSlug={service.slug}
             resources={resources}
           />
 
-          {/* 10. Objection handling */}
+          {/* 11. Objection handling */}
           <Faq ordinal={service.ordinal} serviceTitle={service.title} faq={service.faq} />
 
-          {/* 11. Cross-sell */}
+          {/* 12. Cross-sell */}
           <RelatedServices service={service} />
 
-          {/* 12. Final CTA */}
+          {/* 13. Final CTA */}
           <ContactBand service={service} />
         </ServicePageShell>
       </main>
