@@ -51,8 +51,8 @@ export function ServiceInsights({ service }: Readonly<{ service: Service }>) {
                     {article.author.initials}
                   </span>
                   <span>
-                    {article.author.name}
-                    <span className="service-v1-articles-role"> · {article.author.role}</span>
+                    <span className="service-v1-articles-name">{article.author.name}</span>
+                    <span className="service-v1-articles-role">{article.author.role}</span>
                   </span>
                 </span>
                 <span className="service-v1-articles-time">
