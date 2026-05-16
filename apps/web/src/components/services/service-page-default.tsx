@@ -41,7 +41,6 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
       <IndustryReports ordinal={service.ordinal} serviceSlug={service.slug} />
       <Faq ordinal={service.ordinal} serviceTitle={service.title} faq={service.faq} />
       <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />
-      <RelatedServices currentSlug={service.slug} />
       <ContactBand
         ordinal={service.ordinal}
         serviceTitle={service.title}
@@ -49,6 +48,7 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
         cta={service.cta}
         team={getTeamForService(service.slug)}
       />
+      <RelatedServices currentSlug={service.slug} />
     </main>
   );
 }

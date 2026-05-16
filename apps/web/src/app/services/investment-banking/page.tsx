@@ -121,10 +121,7 @@ export default function InvestmentBankingPage() {
           {/* §09 Objection handling */}
           <Faq ordinal={SECTION_ORDINAL.faq} serviceTitle={service.title} faq={service.faq} />
 
-          {/* 12. Cross-sell */}
-          <RelatedServices currentSlug={service.slug} />
-
-          {/* §10 Final CTA */}
+          {/* §10 Final CTA — primary close of the page */}
           <ContactBand
             ordinal={SECTION_ORDINAL.contact}
             serviceTitle={service.title}
@@ -132,6 +129,9 @@ export default function InvestmentBankingPage() {
             cta={service.cta}
             team={team}
           />
+
+          {/* Cross-sell — soft "explore more" block after the close */}
+          <RelatedServices currentSlug={service.slug} />
         </ServicePageShell>
       </main>
     </PageShell>
