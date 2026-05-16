@@ -8,13 +8,13 @@ import { HowWeHelp } from '@/components/services/how-we-help';
 import { ServiceInsights } from '@/components/services/service-insights';
 import { Process } from '@/components/services/process';
 import { Proof } from '@/components/services/proof';
-import { IndustryReports } from '@/components/services/industry-reports';
 import { Faq } from '@/components/services/faq';
-import { LeadMagnet } from '@/components/services/lead-magnet';
 import { RelatedServices } from '@/components/services/related-services';
 import { ContactBand } from '@/components/services/contact-band';
 import { FundraiseStages } from '@/components/services/investment-banking/fundraise-stages';
 import { SoonicornCallout } from '@/components/services/investment-banking/soonicorn-callout';
+import { ResourceDeck } from '@/components/resources/resource-deck';
+import { getResourcesForService } from '@/content/resources';
 
 const SERVICE_SLUG = 'investment-banking';
 
@@ -27,6 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function InvestmentBankingPage() {
   const service = services.find((s) => s.slug === SERVICE_SLUG);
   if (!service) notFound();
+  const resources = getResourcesForService(service.slug);
 
   return (
     <PageShell>
@@ -65,19 +66,23 @@ export default function InvestmentBankingPage() {
         {/* 8. Read deeper — editorial */}
         <ServiceInsights service={service} />
 
-        {/* 9. Research — published reports */}
-        <IndustryReports ordinal={service.ordinal} serviceSlug={service.slug} />
+        {/* 9. Resources — unified downloads (checklist + industry reports).
+             Replaces the old separate LeadMagnet + IndustryReports preview.
+             Each card opens a single capture modal so we know which
+             resource each visitor requested. */}
+        <ResourceDeck
+          ordinal={service.ordinal}
+          serviceSlug={service.slug}
+          resources={resources}
+        />
 
         {/* 10. Objection handling */}
         <Faq ordinal={service.ordinal} serviceTitle={service.title} faq={service.faq} />
 
-        {/* 11. Direct capture */}
-        <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />
-
-        {/* 12. Cross-sell */}
+        {/* 11. Cross-sell */}
         <RelatedServices service={service} />
 
-        {/* 13. Final CTA */}
+        {/* 12. Final CTA */}
         <ContactBand service={service} />
       </main>
     </PageShell>

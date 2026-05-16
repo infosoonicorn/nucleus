@@ -32,7 +32,8 @@ function splitAnswer(a: string | undefined): { tldr?: string; body: string[] } {
   if (!a) return { body: [] };
   const trimmed = a.trim();
   // Match the first sentence ending with . ! or ? followed by a space.
-  const match = trimmed.match(/^(.+?[.!?])(\s+)(.+)$/s);
+  // [\s\S] avoids needing the /s dotall flag (TS target below es2018).
+  const match = trimmed.match(/^([\s\S]+?[.!?])(\s+)([\s\S]+)$/);
   if (match) {
     const [, first, , rest] = match;
     if (first.length <= 180 && first.length >= 20) {

@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, FileText } from 'lucide-react';
+import { ArrowRight, FileText } from 'lucide-react';
 import { SectionHeader } from '@/components/sections';
 import { getReportsForService } from '@/content/reports';
+import { getResourceBySlug } from '@/content/resources';
+import { RequestResourceButton } from '@/components/resources/request-resource-button';
 
 type IndustryReportsProps = Readonly<{
   ordinal: string;
@@ -57,13 +59,16 @@ export function IndustryReports({ ordinal, serviceSlug }: IndustryReportsProps) 
                   </span>
                 ))}
               </div>
-              <Link
-                href={`/contact?report=${report.slug}`}
-                className="service-v1-reports-cta"
-              >
-                Request the full report
-                <ArrowUpRight size={14} aria-hidden="true" />
-              </Link>
+              {(() => {
+                const resource = getResourceBySlug(report.slug);
+                return resource ? (
+                  <RequestResourceButton
+                    resource={resource}
+                    label="Request the full report"
+                    className="service-v1-reports-cta"
+                  />
+                ) : null;
+              })()}
             </div>
           </article>
         ))}

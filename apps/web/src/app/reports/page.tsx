@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowUpRight, FileText } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
 import { getAllReports, REPORT_TYPES } from '@/content/reports';
+import { getResourceBySlug } from '@/content/resources';
+import { RequestResourceButton } from '@/components/resources/request-resource-button';
 import { services } from '@/content/site';
 
 export const metadata: Metadata = {
@@ -144,13 +146,16 @@ export default async function ReportsHubPage({
                         </span>
                       ))}
                     </div>
-                    <Link
-                      href={`/contact?report=${report.slug}`}
-                      className="service-v1-reports-cta"
-                    >
-                      Request the full report
-                      <ArrowUpRight size={14} aria-hidden="true" />
-                    </Link>
+                    {(() => {
+                      const resource = getResourceBySlug(report.slug);
+                      return resource ? (
+                        <RequestResourceButton
+                          resource={resource}
+                          label="Request the full report"
+                          className="service-v1-reports-cta"
+                        />
+                      ) : null;
+                    })()}
                   </div>
                 </article>
               ))}
