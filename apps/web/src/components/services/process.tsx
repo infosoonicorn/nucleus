@@ -98,10 +98,6 @@ function DossierProcess({
           </h2>
         </div>
         <div className="service-v1-dossier-headside">
-          <p className="service-v1-dossier-lede">
-            How a Nucleus IB engagement runs — <em>scoped, built, marketed, closed</em>. One working
-            file per mandate; four signatures to the wire.
-          </p>
           <div className="service-v1-dossier-headmeta">
             <span className="service-v1-dossier-livedot" aria-hidden="true" />
             <span>{dossier.fileBadge}</span>

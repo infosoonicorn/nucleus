@@ -78,10 +78,6 @@ export function ResourceDeck({ ordinal, serviceSlug, resources: allResources }: 
           <h2 id="resource-deck-h" className="resource-deck-title">
             Checklists, reports, <em>and working papers</em> from the desk.
           </h2>
-          <p className="resource-deck-lede">
-            Every download is partner-reviewed. Request any of these and a Nucleus partner
-            sends the PDF directly — no automated drip.
-          </p>
         </div>
         <div className="resource-deck-headside">
           <div className="resource-deck-nav" aria-label="Scroll resources">

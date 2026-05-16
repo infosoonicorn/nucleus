@@ -56,7 +56,6 @@ export function SoonicornCallout({
           <span aria-hidden="true" className="service-v1-soonicorn-eyebrow-bar" />
           <span>In-house capital, alongside advisory</span>
         </p>
-        <p className="service-v1-soonicorn-meta">Sister entity · Investment Manager</p>
       </header>
 
       <article className="service-v1-soonicorn-card">

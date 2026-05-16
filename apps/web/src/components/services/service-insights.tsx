@@ -26,7 +26,6 @@ export function ServiceInsights({
       <SectionHeader
         eyebrow={`§${ordinal ?? service.ordinal} / Insights`}
         title="Notes from the desk."
-        text="Long-form writing from Nucleus partners — fundraise mechanics, term sheets, deal observations."
       />
 
       <div className="service-v1-articles-grid">

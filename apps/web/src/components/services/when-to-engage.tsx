@@ -69,7 +69,6 @@ export function WhenToEngage({ ordinal, moments }: WhenToEngageProps) {
       <SectionHeader
         eyebrow={`§${ordinal} / When to engage`}
         title="The moments where outside judgement earns its keep."
-        text="Specific scenarios where founders and boards bring us in."
       />
       <dl className="service-v1-when-list" aria-label="When to engage Nucleus">
         {moments.map((m, i) => {
