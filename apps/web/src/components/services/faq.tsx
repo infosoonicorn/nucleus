@@ -56,8 +56,8 @@ export function Faq({ ordinal, serviceTitle, faq }: FaqProps) {
     [items],
   );
 
-  // First item open by default to anchor the editorial rhythm. All others closed.
-  const [openSet, setOpenSet] = useState<Set<number>>(() => new Set([0]));
+  // All questions closed by default — readers open what interests them.
+  const [openSet, setOpenSet] = useState<Set<number>>(() => new Set());
 
   function toggle(i: number) {
     setOpenSet((prev) => {
