@@ -8449,6 +8449,129 @@ main.service-v1 > div > section {
 }
 
 /* ───────────────────────────────────────────────────────────
+ * Client logos — scrolling marquee (track record proof strip).
+ * CSS-only infinite scroll, edge fade mask, pause on hover,
+ * collapses to a wrapping grid under prefers-reduced-motion.
+ * ─────────────────────────────────────────────────────────── */
+
+.client-logos-section {
+  background: var(--service-band-cream);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.client-logos-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.client-logos-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font: 500 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.55);
+}
+.client-logos-eyebrow-num { color: var(--service-accent-red); }
+.client-logos-eyebrow-bar {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: rgba(20, 24, 40, 0.22);
+}
+.client-logos-title {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 680;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+  color: #141828;
+  text-wrap: balance;
+}
+.client-logos-title em {
+  font-style: italic;
+  font-weight: 680;
+  color: var(--service-accent-red);
+}
+
+.client-logos-marquee {
+  position: relative;
+  overflow: hidden;
+  /* Edge fade mask — logos appear from / dissolve into the cream band. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.client-logos-track {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  width: max-content;
+  padding: 8px 28px;
+  animation: clientLogosScroll 42s linear infinite;
+}
+/* Pause when the user hovers — gives them time to read a specific logo. */
+.client-logos-marquee:hover .client-logos-track,
+.client-logos-marquee:focus-within .client-logos-track {
+  animation-play-state: paused;
+}
+@keyframes clientLogosScroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.client-logos-cell {
+  flex: 0 0 auto;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.client-logos-cell:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 6px 14px rgba(20, 24, 40, 0.12));
+}
+.client-logos-img {
+  width: auto;
+  height: 100%;
+  max-height: 44px;
+  max-width: 160px;
+  object-fit: contain;
+  /* Logos arrive coloured — no greyscale slop. */
+}
+
+/* Reduced motion + small screens: fall back to a wrapping centred grid
+   so the brand of every logo is still visible without animation. */
+@media (prefers-reduced-motion: reduce) {
+  .client-logos-marquee {
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+  .client-logos-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 32px 40px;
+  }
+}
+@media (max-width: 540px) {
+  .client-logos-track { gap: 40px; padding: 4px 20px; }
+  .client-logos-cell { height: 44px; }
+  .client-logos-img { max-height: 36px; max-width: 120px; }
+}
+
+/* ───────────────────────────────────────────────────────────
  * Resource deck + capture modal
  * Horizontal scrolling cards on the service page;
  * unifies lead-magnets + industry reports behind one modal flow.

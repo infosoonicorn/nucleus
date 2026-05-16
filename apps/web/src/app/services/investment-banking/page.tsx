@@ -4,6 +4,7 @@ import { PageShell } from '@/components/site-chrome';
 import { services } from '@/content/site';
 import { ServiceHero } from '@/components/services/service-hero';
 import { WhenToEngage } from '@/components/services/when-to-engage';
+import { ClientLogos } from '@/components/services/client-logos';
 import { HowWeHelp } from '@/components/services/how-we-help';
 import { ServiceInsights } from '@/components/services/service-insights';
 import { Process } from '@/components/services/process';
@@ -15,6 +16,7 @@ import { FundraiseStages } from '@/components/services/investment-banking/fundra
 import { SoonicornCallout } from '@/components/services/investment-banking/soonicorn-callout';
 import { ResourceDeck } from '@/components/resources/resource-deck';
 import { getResourcesForService } from '@/content/resources';
+import { getClientsForService } from '@/content/clients';
 
 const SERVICE_SLUG = 'investment-banking';
 
@@ -28,6 +30,7 @@ export default function InvestmentBankingPage() {
   const service = services.find((s) => s.slug === SERVICE_SLUG);
   if (!service) notFound();
   const resources = getResourcesForService(service.slug);
+  const clients = getClientsForService(service.slug);
 
   return (
     <PageShell>
@@ -37,6 +40,9 @@ export default function InvestmentBankingPage() {
 
         {/* 2. Recognition — "is this for me?" */}
         <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
+
+        {/* 2.5 Track record — scrolling client/founder logo strip */}
+        <ClientLogos ordinal={service.ordinal} clients={clients} />
 
         {/* 3. What we deliver — capabilities */}
         <HowWeHelp
