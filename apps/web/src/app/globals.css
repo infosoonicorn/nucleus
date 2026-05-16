@@ -6055,28 +6055,36 @@ html.lenis body {
   border-color: var(--service-accent-red);
 }
 
-/* Visible CTA chip sitting top-right of the front card so the click
-   affordance reads without needing to hover. Width:max-content forces
-   it to shrink-wrap to the "Request sample" label (absolute-positioned
-   spans default to block width otherwise). */
+/* Visible CTA chip — sits at the centre of the front card so it reads
+   as the primary action on the artefact (the corner placement was too
+   timid). width:max-content forces it to shrink-wrap to the label.
+   z-index keeps it above the card body lines. */
 .service-v1-fundraise-doc-cta {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   width: max-content;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
+  gap: 6px;
+  padding: 8px 14px;
   background: #141828;
   color: #fefdf8;
   border: 1px solid #141828;
   border-radius: 999px;
-  font: 600 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 600 0.68rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  box-shadow: 0 8px 22px rgba(20, 24, 40, 0.18);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+              transform 0.2s ease, box-shadow 0.2s ease;
+}
+.service-v1-fundraise-doc-trigger:hover .service-v1-fundraise-doc-cta,
+.service-v1-fundraise-doc-trigger:focus-visible .service-v1-fundraise-doc-cta {
+  transform: translate(-50%, -50%) scale(1.04);
+  box-shadow: 0 10px 28px rgba(184, 44, 36, 0.3);
 }
 .service-v1-fundraise-doc {
   position: absolute;

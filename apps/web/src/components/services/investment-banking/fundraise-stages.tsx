@@ -130,11 +130,7 @@ export function FundraiseStages({ ordinal = '01' }: FundraiseStagesProps = {}) {
               </div>
               <p className="service-v1-fundraise-label">What Nucleus does</p>
               <p>{stage.nucleusDoes}</p>
-              <p className="service-v1-fundraise-label">Deliverable</p>
-              <p className="service-v1-fundraise-deliverable">
-                <span aria-hidden="true">→ </span>
-                {stage.deliverable}
-              </p>
+              {/* Deliverable identified visually by the doc-card on the right. */}
             </li>
           ))}
         </ol>
@@ -219,13 +215,7 @@ export function FundraiseStages({ ordinal = '01' }: FundraiseStagesProps = {}) {
                   <p className="service-v1-fundraise-label">What Nucleus does</p>
                   <p className="service-v1-fundraise-body">{stage.nucleusDoes}</p>
                 </div>
-                <div>
-                  <p className="service-v1-fundraise-label">Deliverable</p>
-                  <p className="service-v1-fundraise-deliverable">
-                    <span aria-hidden="true">→ </span>
-                    {stage.deliverable}
-                  </p>
-                </div>
+                {/* Deliverable identified visually by the doc-card on the right. */}
               </div>
             </div>
 
