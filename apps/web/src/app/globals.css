@@ -5480,9 +5480,12 @@ html.lenis body {
    ============================================================= */
 
 .service-v1 {
-  --service-band-cream: var(--np-cream, #faf6ef);
+  /* Aligned with home-v3 tokens (--v3-paper, --v3-red) so service pages
+     read as the same brand as the home. Was #faf6ef / #7a1f1f — those
+     ran slightly yellower and noticeably duller than the home accent. */
+  --service-band-cream: var(--np-cream, #f7f5ef);
   --service-band-alt:   #f3ede2;
-  --service-accent-red: var(--np-red, #7a1f1f);
+  --service-accent-red: var(--np-red, #dd1017);
   --service-divider:    rgba(20, 24, 40, 0.08);
 }
 
@@ -8154,86 +8157,22 @@ main.service-v1 > div > section {
   border-top: 1px solid rgba(20, 24, 40, 0.07);
 }
 
-/* --- Unified header treatment ---
-   Apply identical eyebrow + title typography to every section's
-   header, regardless of which bespoke class wraps them.
-*/
-.service-v1 .service-v1-when-eyebrow,
-.service-v1 .service-v1-fundraise-eyebrow,
-.service-v1 .service-v1-help-eyebrow,
-.service-v1 .service-v1-soonicorn-eyebrow,
-.service-v1 .service-v1-soonicorn-body-eyebrow,
-.service-v1 .service-v1-dossier-eyebrow,
-.service-v1 .service-v1-reports .eyebrow,
-.service-v1 .service-v1-articles .eyebrow,
-.service-v1 .eyebrow {
-  font: 500 0.74rem/1 ui-monospace, SFMono-Regular, Menlo, monospace !important;
-  letter-spacing: 0.16em !important;
-  text-transform: uppercase !important;
-  color: rgba(20, 24, 40, 0.55) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 14px !important;
-}
+/* --- Old "Unified header treatment" polish block (with !important
+   overrides) removed. Replaced by the home-v3 parity polish layer at
+   the end of this file, which applies the home-style sans+pill
+   eyebrow and the unified title clamp without relying on !important. */
 
-.service-v1 .service-v1-when-eyebrow > span:first-child,
-.service-v1 .service-v1-fundraise-eyebrow > span:first-child,
-.service-v1 .service-v1-help-eyebrow > span:first-child,
-.service-v1 .service-v1-soonicorn-eyebrow > span:first-child,
-.service-v1 .service-v1-dossier-eyebrow > span:first-child,
-.service-v1 .service-v1-eyebrow-num,
-.service-v1 .service-v1-when-eyebrow .service-v1-eyebrow-num,
-.service-v1 .service-v1-fundraise-eyebrow .service-v1-eyebrow-num,
-.service-v1 .service-v1-soonicorn-eyebrow-num,
-.service-v1 .service-v1-dossier-eyebrow-num,
-.service-v1 .eyebrow .num {
-  color: var(--service-accent-red) !important;
-}
-
-.service-v1 .service-v1-when-eyebrow-rule,
-.service-v1 .service-v1-fundraise-eyebrow-rule,
-.service-v1 .service-v1-help-eyebrow-rule,
-.service-v1 .service-v1-soonicorn-eyebrow-bar,
-.service-v1 .service-v1-dossier-eyebrow-bar,
-.service-v1 .eyebrow .bar {
-  display: inline-block !important;
-  width: 32px !important;
-  height: 1px !important;
-  background: rgba(20, 24, 40, 0.25) !important;
-}
-
-/* Section titles — unified Inter weight + italic-red emphasis */
-.service-v1 .service-v1-section .section-header h2,
-.service-v1 .service-v1-when-list ~ * h2,
-.service-v1 .service-v1-help-headline,
-.service-v1 .service-v1-fundraise-headline,
-.service-v1 .service-v1-soonicorn-title,
-.service-v1 .service-v1-dossier-title {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-  font-weight: 680 !important;
-  font-size: clamp(1.6rem, 3.2vw, 2.6rem) !important;
-  line-height: 1.06 !important;
-  letter-spacing: -0.022em !important;
-  color: #141828 !important;
-}
-
-.service-v1 .service-v1-help-headline em,
-.service-v1 .service-v1-fundraise-headline em,
-.service-v1 .service-v1-soonicorn-title em,
-.service-v1 .service-v1-dossier-title em {
-  font-style: italic;
-  font-weight: 680 !important;
-  color: var(--service-accent-red) !important;
-}
-
-/* Lede paragraph normalisation */
-.service-v1 .service-v1-section .section-header p,
+/* Lede paragraph normalisation — explicitly excludes .eyebrow so the
+   home-style sans+pill eyebrow colour (red) isn't overridden by the
+   lede slate. Without :not(.eyebrow) the rule matches any <p> in a
+   section header, including the eyebrow paragraph. */
+.service-v1 .service-v1-section .section-header p:not(.eyebrow),
 .service-v1 .service-v1-dossier-lede,
 .service-v1 .service-v1-soonicorn-lede {
-  font-size: 1rem !important;
-  line-height: 1.55 !important;
-  color: rgba(20, 24, 40, 0.7) !important;
-  max-width: 640px !important;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(20, 24, 40, 0.7);
+  max-width: 640px;
 }
 
 /* Standard header-to-body gap inside each section */
@@ -9748,4 +9687,189 @@ main.service-v1 > div > section {
     padding: 0 0 20px 58px;
   }
   .service-v1-faq-entry.is-open::before { left: -10px; }
+}
+
+/* ───────────────────────────────────────────────────────────
+ * Service-page parity polish layer
+ *
+ * Brings service-v1 sections into visual parity with the home-v3
+ * design system:
+ *   1. Every section eyebrow → home-v3 sans+pill style (was mono editorial)
+ *   2. Section titles → one shared clamp range
+ *   3. Hairline rules between full-bleed sections
+ *   4. Hover lift on hero CTAs and sidebar report cards
+ *
+ * Lives at the END of globals.css so it overrides earlier section
+ * definitions without `!important`.
+ * ─────────────────────────────────────────────────────────── */
+
+/* ── 1. Unified eyebrow — sans+pill, vivid red, bold ── */
+.service-v1 .client-logos-eyebrow,
+.service-v1 .service-v1-when-eyebrow,
+.service-v1 .service-v1-fundraise-eyebrow,
+.service-v1 .service-v1-help-eyebrow,
+.service-v1 .service-v1-soonicorn-eyebrow,
+.service-v1 .service-v1-soonicorn-body-eyebrow,
+.service-v1 .service-v1-dossier-eyebrow,
+.service-v1 .service-v1-faq-eyebrow,
+.service-v1 .resource-deck-eyebrow,
+.service-v1 .sidebar-block-eyebrow,
+.service-v1 .article-page .eyebrow,
+.service-v1 .section-header .eyebrow,
+.service-v1 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 860;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--service-accent-red);
+}
+
+/* Bare .eyebrow has no inner pill span — inject one via ::before so
+   the section-header eyebrow matches the section-eyebrow visual. */
+.service-v1 .section-header .eyebrow::before,
+.service-v1 .service-v1-section .eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.4rem;
+  height: 0.42rem;
+  background: var(--service-accent-red);
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+/* The §NN number lives inside each eyebrow — keep visible, same red */
+.service-v1 .client-logos-eyebrow .client-logos-eyebrow-num,
+.service-v1 .service-v1-when-eyebrow .service-v1-when-eyebrow-num,
+.service-v1 .service-v1-fundraise-eyebrow > span:first-child,
+.service-v1 .service-v1-help-eyebrow > span:first-child,
+.service-v1 .service-v1-soonicorn-eyebrow > span:first-child,
+.service-v1 .service-v1-dossier-eyebrow .service-v1-dossier-eyebrow-num,
+.service-v1 .service-v1-faq-eyebrow .service-v1-faq-eyebrow-num,
+.service-v1 .resource-deck-eyebrow .resource-deck-eyebrow-num {
+  color: var(--service-accent-red);
+  font-weight: 860;
+}
+
+/* Convert the rule/bar inside each eyebrow into the home-v3 red pill */
+.service-v1 .client-logos-eyebrow .client-logos-eyebrow-bar,
+.service-v1 .service-v1-when-eyebrow .service-v1-when-eyebrow-bar,
+.service-v1 .service-v1-fundraise-eyebrow .service-v1-fundraise-eyebrow-rule,
+.service-v1 .service-v1-help-eyebrow .service-v1-help-eyebrow-rule,
+.service-v1 .service-v1-soonicorn-eyebrow .service-v1-soonicorn-eyebrow-bar,
+.service-v1 .service-v1-soonicorn-body-eyebrow .service-v1-soonicorn-body-eyebrow-bar,
+.service-v1 .service-v1-dossier-eyebrow .service-v1-dossier-eyebrow-bar,
+.service-v1 .service-v1-faq-eyebrow .service-v1-faq-eyebrow-bar,
+.service-v1 .resource-deck-eyebrow .resource-deck-eyebrow-bar {
+  display: inline-block;
+  width: 1.4rem;
+  height: 0.42rem;
+  background: var(--service-accent-red);
+  border-radius: 999px;
+  opacity: 1;
+}
+
+/* Inner soonicorn-num token uses scoped --soonicorn-red — bump to v3 red
+   so all eyebrow numerals match. */
+.service-v1 .service-v1-soonicorn-eyebrow .service-v1-soonicorn-eyebrow-num,
+.service-v1 .service-v1-soonicorn-body-eyebrow .service-v1-soonicorn-body-eyebrow-num {
+  color: var(--service-accent-red);
+}
+
+/* Sidebar block eyebrow — no inner bar; prepend a pill via ::before */
+.service-v1 .sidebar-block-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.1rem;
+  height: 0.36rem;
+  background: var(--service-accent-red);
+  border-radius: 999px;
+  margin-right: 0.55rem;
+  vertical-align: 0.05em;
+}
+
+/* ── 2. Unified section title clamp + weight ── */
+.service-v1 .client-logos-title,
+.service-v1 .service-v1-when-headline,
+.service-v1 .service-v1-fundraise-headline,
+.service-v1 .service-v1-help-title,
+.service-v1 .service-v1-soonicorn-title,
+.service-v1 .service-v1-dossier-title,
+.service-v1 .service-v1-faq-title,
+.service-v1 .resource-deck-title,
+.service-v1 .service-v1-articles .section-header h2,
+.service-v1 .service-v1-section .section-header h2 {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 680;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  color: #141828;
+}
+
+/* Italic-red emphasis inside section titles uses the vivid v3 red token */
+.service-v1 .client-logos-title em,
+.service-v1 .service-v1-when-headline em,
+.service-v1 .service-v1-fundraise-headline em,
+.service-v1 .service-v1-help-title em,
+.service-v1 .service-v1-soonicorn-title em,
+.service-v1 .service-v1-dossier-title em,
+.service-v1 .service-v1-faq-title em,
+.service-v1 .resource-deck-title em,
+.service-v1 .service-v1-faq-title-stop {
+  color: var(--service-accent-red);
+  font-style: italic;
+  font-weight: 680;
+}
+
+/* ── 3. Hairline rule between full-bleed sections (Hero / ClientLogos)
+       and the start of the 2-col shell. Subtle dividers, not chunky. ── */
+.service-v1 .client-logos-section {
+  position: relative;
+}
+.service-v1 .client-logos-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: clamp(20px, 3vw, 32px);
+  right: clamp(20px, 3vw, 32px);
+  height: 1px;
+  background: rgba(20, 24, 40, 0.08);
+}
+
+/* ── 4. Hero CTA hover lift (to match deck card affordance) ── */
+.service-v1 .service-v1-hero .home-v3-button {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.service-v1 .service-v1-hero .home-v3-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(20, 24, 40, 0.08);
+}
+
+/* ── 5. Sidebar report item hover lift (parity with main-deck cards) ── */
+.service-v1 .sidebar-report-item {
+  transition: background 0.18s ease, transform 0.18s ease;
+  padding-inline: 4px;
+  border-radius: 6px;
+}
+.service-v1 .sidebar-report-item:hover {
+  background: rgba(20, 24, 40, 0.03);
+  transform: translateY(-1px);
+}
+
+/* ── 6. Italic emphasis everywhere inherits the new accent red.
+       This covers any leftover em tags inside body prose that we
+       didn't explicitly scope above. ── */
+.service-v1 .service-v1-faq-para em,
+.service-v1 .service-v1-faq-tldr strong,
+.service-v1 .service-v1-help-card em,
+.service-v1 .service-v1-when-then em,
+.service-v1 .article-page em,
+.service-v1 em.accent-red {
+  color: var(--service-accent-red);
 }
