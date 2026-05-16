@@ -5627,27 +5627,172 @@ html.lenis body {
   border: 0;
 }
 
-/* Related services */
-.service-v1-related-grid {
+/* Related services — animated cards with vivid red-fill hover state.
+   Numbered ordinal + icon badge, sliding arrow, staggered entry. */
+.related-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 24px;
+  /* minmax(220px) — 3 cards fit on the 768px main column. (260px was
+     wrapping to 2 + 1 because 3 × 260 + 36 gap exceeded 768.) Wider
+     viewports add columns automatically. */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
 }
-.service-v1-related-card {
+.related-card {
+  position: relative;
   display: block;
-  padding: 20px;
+  padding: 0;
   background: #fff;
-  border: 1px solid var(--service-divider);
+  border: 1px solid rgba(20, 24, 40, 0.08);
   border-radius: 14px;
   text-decoration: none;
   color: inherit;
-  transition: transform .25s ease, box-shadow .25s ease;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.4s ease;
 }
-.service-v1-related-card:hover,
-.service-v1-related-card:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(20, 24, 40, 0.06);
+.related-card-fill {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 0% 0%, #e8141b 0%, transparent 55%),
+    linear-gradient(140deg, var(--service-accent-red) 0%, #a30f15 100%);
+  transform: translateY(102%);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+.related-card-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(50% 50% at 50% 0%, rgba(254, 220, 220, 0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.related-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 22px 20px;
+  min-height: 220px;
+}
+.related-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.related-card-num {
+  font: 500 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.16em;
+  color: var(--service-accent-red);
+  transition: color 0.3s ease;
+}
+.related-card-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-grid;
+  place-items: center;
+  background: rgba(221, 16, 23, 0.08);
+  color: var(--service-accent-red);
+  border-radius: 999px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.related-card-title {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 660;
+  font-size: 1.22rem;
+  line-height: 1.16;
+  letter-spacing: -0.014em;
+  color: #141828;
+  text-wrap: balance;
+  transition: color 0.3s ease;
+}
+.related-card-summary {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(20, 24, 40, 0.66);
+  flex: 1;
+  transition: color 0.3s ease;
+  text-wrap: pretty;
+}
+.related-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--service-accent-red);
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+.related-card-cta svg {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover state — red fill slides up, all text inverts to cream, icon
+   rotates slightly, arrow walks diagonally. */
+.related-card:hover,
+.related-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 26px 50px rgba(184, 18, 24, 0.24);
+  outline: none;
+}
+.related-card:hover .related-card-fill,
+.related-card:focus-visible .related-card-fill {
+  transform: translateY(0);
+}
+.related-card:hover .related-card-glow,
+.related-card:focus-visible .related-card-glow {
+  opacity: 1;
+}
+.related-card:hover .related-card-num,
+.related-card:focus-visible .related-card-num {
+  color: rgba(254, 253, 248, 0.8);
+}
+.related-card:hover .related-card-icon,
+.related-card:focus-visible .related-card-icon {
+  background: rgba(254, 253, 248, 0.18);
+  color: #fefdf8;
+  transform: rotate(-6deg) scale(1.05);
+}
+.related-card:hover .related-card-title,
+.related-card:hover .related-card-summary,
+.related-card:hover .related-card-cta,
+.related-card:focus-visible .related-card-title,
+.related-card:focus-visible .related-card-summary,
+.related-card:focus-visible .related-card-cta {
+  color: #fefdf8;
+}
+.related-card:hover .related-card-summary,
+.related-card:focus-visible .related-card-summary {
+  color: rgba(254, 253, 248, 0.85);
+}
+.related-card:hover .related-card-cta,
+.related-card:focus-visible .related-card-cta {
+  gap: 10px;
+}
+.related-card:hover .related-card-cta svg,
+.related-card:focus-visible .related-card-cta svg {
+  transform: translate(4px, -4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .related-card,
+  .related-card-fill,
+  .related-card-icon,
+  .related-card-cta,
+  .related-card-cta svg {
+    transition-duration: 0.01ms !important;
+  }
 }
 .service-v1-card-link {
   display: inline-flex;

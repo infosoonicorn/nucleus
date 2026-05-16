@@ -121,7 +121,7 @@ export default function InvestmentBankingPage() {
           <Faq ordinal={SECTION_ORDINAL.faq} serviceTitle={service.title} faq={service.faq} />
 
           {/* 12. Cross-sell */}
-          <RelatedServices service={service} />
+          <RelatedServices currentSlug={service.slug} />
 
           {/* 13. Final CTA */}
           <ContactBand service={service} />

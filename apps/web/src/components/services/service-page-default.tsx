@@ -40,7 +40,7 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
       <IndustryReports ordinal={service.ordinal} serviceSlug={service.slug} />
       <Faq ordinal={service.ordinal} serviceTitle={service.title} faq={service.faq} />
       <LeadMagnet slug={service.slug} leadMagnet={service.leadMagnet} />
-      <RelatedServices service={service} />
+      <RelatedServices currentSlug={service.slug} />
       <ContactBand service={service} />
     </main>
   );
