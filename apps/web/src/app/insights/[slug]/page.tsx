@@ -5,7 +5,7 @@ import { ArrowLeft, Clock } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
 import { articles, getArticleBySlug } from '@/content/articles';
 import { ArticleRelated } from '@/components/insights/article-related';
-import { ArticleLeadForm } from '@/components/insights/article-lead-form';
+import { SidebarCTA } from '@/components/services/sidebar-blocks';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -106,8 +106,8 @@ export default async function ArticlePage({ params }: Props) {
             aria-label="Related articles and contact"
             data-lenis-prevent
           >
-            <ArticleLeadForm articleSlug={article.slug} serviceSlug={primaryServiceSlug} />
             <ArticleRelated current={article} />
+            {primaryServiceSlug ? <SidebarCTA serviceSlug={primaryServiceSlug} /> : null}
           </aside>
         </div>
       </main>
