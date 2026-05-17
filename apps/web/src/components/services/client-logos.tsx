@@ -26,16 +26,13 @@ export function ClientLogos({ ordinal, clients, metrics }: Props) {
   // Duplicate the list so the marquee loops seamlessly. aria-hidden on
   // the duplicate so screen readers don't announce every logo twice.
   return (
-    <section className="service-v1-section client-logos-section" aria-labelledby="client-logos-h">
+    <section className="service-v1-section client-logos-section" aria-labelledby="client-logos-eyebrow">
       <header className="client-logos-head">
-        <p className="client-logos-eyebrow">
+        <p id="client-logos-eyebrow" className="client-logos-eyebrow">
           <span className="client-logos-eyebrow-num">●{ordinal}</span>
           <span className="client-logos-eyebrow-bar" aria-hidden="true" />
           <span>Track record · Founders we&rsquo;ve worked with</span>
         </p>
-        <h2 id="client-logos-h" className="client-logos-title">
-          A small bench. Every mandate <em>partner-signed</em>.
-        </h2>
       </header>
 
       {metrics && metrics.length > 0 ? <TrackRecordMetrics metrics={metrics} /> : null}
