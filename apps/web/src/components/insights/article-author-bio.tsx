@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { BookOpen, Linkedin, Mail } from 'lucide-react';
 import { articles as allArticles, getArticleAuthor, type Article } from '@/content/articles';
+import { getFirstName } from '@/content/team';
 
 /**
  * "About the author" card at the end of the article reader.
@@ -22,7 +23,7 @@ import { articles as allArticles, getArticleAuthor, type Article } from '@/conte
  */
 export function ArticleAuthorBio({ article }: Readonly<{ article: Article }>) {
   const author = getArticleAuthor(article);
-  const firstName = author.name.split(' ')[0];
+  const firstName = getFirstName(author.name);
 
   // Other approved articles by the same author (drafts surface in dev).
   const allowDrafts = process.env.NODE_ENV !== 'production';

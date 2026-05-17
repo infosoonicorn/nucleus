@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Linkedin, Mail } from 'lucide-react';
-import type { TeamMember } from '@/content/team';
+import { getFirstName, type TeamMember } from '@/content/team';
 import { TeamProfileModal } from './team-profile-modal';
 
 const FIRM_EMAIL = 'info@nucleusadvisors.in';
@@ -93,7 +93,7 @@ export function TeamPageCard({ member }: Readonly<{ member: TeamMember }>) {
             href={emailHref}
             className="team-page-card-iconbtn"
             aria-label={emailAria}
-            title={member.email ?? `Email Nucleus about ${member.name.split(' ').slice(-1)[0]}`}
+            title={member.email ?? `Email Nucleus about ${getFirstName(member.name)}`}
           >
             <Mail size={14} />
           </a>

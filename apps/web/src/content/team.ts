@@ -68,6 +68,35 @@ export function normalisePastEmployer(e: string | PastEmployer): PastEmployer {
   return typeof e === 'string' ? { name: e } : e;
 }
 
+/**
+ * Professional prefixes that precede the legal name on a partner card
+ * but aren't part of the spoken first name. "CA Vijay Singh Rathore"
+ * is addressed as "Vijay", not "CA". Strip these when extracting the
+ * first or last name for use in copy ("Email Vijay", "Writing from
+ * Pravesh", etc.).
+ */
+const HONORIFIC_PREFIXES = new Set(['CA', 'CS', 'Dr.', 'Dr', 'Mr.', 'Mrs.', 'Ms.', 'Adv.', 'Adv']);
+
+function stripHonorific(name: string): string[] {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length > 0 && HONORIFIC_PREFIXES.has(parts[0])) {
+    return parts.slice(1);
+  }
+  return parts;
+}
+
+/** First name after stripping any honorific prefix. */
+export function getFirstName(name: string): string {
+  const parts = stripHonorific(name);
+  return parts[0] ?? name;
+}
+
+/** Last name (final token) after stripping any honorific prefix. */
+export function getLastName(name: string): string {
+  const parts = stripHonorific(name);
+  return parts[parts.length - 1] ?? name;
+}
+
 export const team: TeamMember[] = [
   // ─── Leadership Team ───────────────────────────────────────────────
   {

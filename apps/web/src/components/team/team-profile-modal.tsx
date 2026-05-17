@@ -13,7 +13,7 @@ import {
   Mail,
   X,
 } from 'lucide-react';
-import { normalisePastEmployer, type TeamMember } from '@/content/team';
+import { getFirstName, normalisePastEmployer, type TeamMember } from '@/content/team';
 import { articles as allArticles } from '@/content/articles';
 
 const FIRM_EMAIL = 'info@nucleusadvisors.in';
@@ -195,7 +195,7 @@ export function TeamProfileModal({
                 <section className="team-page-modal-articles">
                   <p className="team-page-modal-articles-eyebrow">
                     <BookOpen size={12} aria-hidden="true" /> Writing from{' '}
-                    {member.name.split(' ').slice(-1)[0]}
+                    {getFirstName(member.name)}
                   </p>
                   <div className="team-page-modal-article-cards">
                     {articlesByThisPartner.slice(0, 4).map((a) => (
@@ -256,7 +256,7 @@ export function TeamProfileModal({
                 href={emailHref}
                 className="team-page-card-iconbtn"
                 aria-label={member.email ? `Email ${member.name}` : `Email Nucleus about ${member.name}`}
-                title={member.email ?? `Email Nucleus about ${member.name.split(' ').slice(-1)[0]}`}
+                title={member.email ?? `Email Nucleus about ${getFirstName(member.name)}`}
               >
                 <Mail size={16} />
               </a>
