@@ -277,30 +277,36 @@ export function TeamPageCard({ member }: Readonly<{ member: TeamMember }>) {
               </div>
 
               <div className="team-page-modal-actions">
-                <a href={emailHref} className="resource-cta resource-cta-primary">
-                  <Mail size={14} aria-hidden="true" />
-                  Email {member.email ? member.name.split(' ').slice(-1)[0] : 'the desk'}
-                </a>
                 {member.linkedinUrl ? (
                   <a
                     href={member.linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="resource-cta resource-cta-ghost"
+                    className="team-page-card-iconbtn"
+                    aria-label={`${member.name} on LinkedIn`}
+                    title="LinkedIn"
                   >
-                    <Linkedin size={14} aria-hidden="true" />
-                    LinkedIn
+                    <Linkedin size={16} />
                   </a>
                 ) : (
                   <span
-                    className="resource-cta resource-cta-ghost resource-cta-disabled"
+                    className="team-page-card-iconbtn team-page-card-iconbtn-disabled"
                     aria-disabled="true"
-                    title="LinkedIn URL pending"
+                    title="LinkedIn profile pending"
                   >
-                    <Linkedin size={14} aria-hidden="true" />
-                    LinkedIn
+                    <Linkedin size={16} />
                   </span>
                 )}
+                <a
+                  href={emailHref}
+                  className="team-page-card-iconbtn"
+                  aria-label={emailAria}
+                  title={
+                    member.email ?? `Email Nucleus about ${member.name.split(' ').slice(-1)[0]}`
+                  }
+                >
+                  <Mail size={16} />
+                </a>
               </div>
             </motion.div>
           </motion.div>
