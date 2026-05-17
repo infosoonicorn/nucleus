@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
-import { articles, getArticleBySlug } from '@/content/articles';
+import { articles, getArticleAuthor, getArticleBySlug } from '@/content/articles';
 import { ArticleAuthorBio } from '@/components/insights/article-author-bio';
 import { ArticleRelated } from '@/components/insights/article-related';
 import { ArticleTOC, type TocHeading } from '@/components/insights/article-toc';
@@ -38,6 +38,7 @@ export default async function ArticlePage({ params }: Props) {
   const article = getArticleBySlug(slug, { allowDrafts });
   if (!article) notFound();
 
+  const author = getArticleAuthor(article);
   const isDraft = article.reviewerStatus !== 'approved';
   const paragraphs = article.body.split('\n\n');
 
@@ -99,11 +100,16 @@ export default async function ArticlePage({ params }: Props) {
               <p className="article-page-excerpt">{article.excerpt}</p>
               <div className="article-page-author">
                 <span className="article-page-avatar" aria-hidden="true">
-                  {article.author.initials}
+                  {author.headshotSrc ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={author.headshotSrc} alt="" />
+                  ) : (
+                    author.initials
+                  )}
                 </span>
                 <span>
-                  <span className="article-page-author-name">{article.author.name}</span>
-                  <span className="article-page-author-role">{article.author.role}</span>
+                  <span className="article-page-author-name">{author.name}</span>
+                  <span className="article-page-author-role">{author.role}</span>
                 </span>
               </div>
             </header>

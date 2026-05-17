@@ -19,12 +19,23 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ARTICLES_PATH = path.resolve(__dirname, '..', 'src', 'content', 'articles.ts');
+const TEAM_PATH = path.resolve(__dirname, '..', 'src', 'content', 'team.ts');
 const THUMBS_DIR = path.resolve(__dirname, '..', 'public', 'article-thumbs');
 
-const KNOWN_AUTHOR_KEYS = new Set(['VSR', 'PG', 'AK', 'AG', 'ABG', 'RS', 'NR']);
 const MIN_WORDS = 1200;
 const MAX_WORDS = 1800;
 const MIN_H2 = 3;
+
+// Pull every team-member slug out of team.ts. The article authorSlug
+// field must match one of these — that keeps article ↔ team in sync
+// without import-resolving TS at lint time.
+function loadTeamSlugs() {
+  const src = fs.readFileSync(TEAM_PATH, 'utf8');
+  const slugs = new Set();
+  for (const m of src.matchAll(/\bslug:\s*'([a-z0-9-]+)'/g)) slugs.add(m[1]);
+  return slugs;
+}
+const KNOWN_AUTHOR_SLUGS = loadTeamSlugs();
 
 const src = fs.readFileSync(ARTICLES_PATH, 'utf8');
 
@@ -55,8 +66,8 @@ function parseArticles(source) {
     const slug = m[1];
     const titleMatch = raw.match(/title:\s*'((?:\\'|[^'])*)'/);
     const title = titleMatch ? titleMatch[1].replace(/\\'/g, "'") : '';
-    const authorMatch = raw.match(/author:\s*([A-Z]{2,4})\b/);
-    const authorKey = authorMatch ? authorMatch[1] : null;
+    const authorMatch = raw.match(/authorSlug:\s*'([a-z0-9-]+)'/);
+    const authorSlug = authorMatch ? authorMatch[1] : null;
     const thumbMatch = raw.match(/thumbnailSrc:\s*'([^']+)'/);
     const thumbnailSrc = thumbMatch ? thumbMatch[1] : null;
 
@@ -68,7 +79,7 @@ function parseArticles(source) {
       body = strings.map(s => s[1].replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\\\/g, '\\')).join('\n\n');
     }
 
-    articles.push({ slug, title, body, authorKey, thumbnailSrc, raw });
+    articles.push({ slug, title, body, authorSlug, thumbnailSrc, raw });
   }
   return articles;
 }
@@ -93,9 +104,11 @@ for (const a of articles) {
     errors.push(`${prefix} slug must be kebab-case (lower-case ASCII, single hyphens)`);
   }
 
-  // Author key recognised
-  if (!a.authorKey || !KNOWN_AUTHOR_KEYS.has(a.authorKey)) {
-    errors.push(`${prefix} unknown author "${a.authorKey ?? '(missing)'}" — must be one of ${[...KNOWN_AUTHOR_KEYS].join(', ')}`);
+  // Author slug must resolve to a team.ts entry
+  if (!a.authorSlug || !KNOWN_AUTHOR_SLUGS.has(a.authorSlug)) {
+    errors.push(
+      `${prefix} unknown authorSlug "${a.authorSlug ?? '(missing)'}" — must match a slug in team.ts (known: ${[...KNOWN_AUTHOR_SLUGS].join(', ')})`,
+    );
   }
 
   // No em-dash in title

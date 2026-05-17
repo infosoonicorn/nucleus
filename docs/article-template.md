@@ -22,7 +22,7 @@ This prints a ready-to-paste TypeScript object with all required fields. Open `a
 | `title` | sentence case | 60-100 characters. No em-dashes. |
 | `excerpt` | one or two sentences | 140-260 characters. Renders as card preview + article subhead. |
 | `body` | array of strings joined with `\n\n` | See markdown rules below. |
-| `author` | one of `VSR`, `PG`, `AK`, `AG`, `ABG`, `RS`, `NR` | Partner author. Reuse the constants at the top of `articles.ts`. |
+| `authorSlug` | string matching a slug in `apps/web/src/content/team.ts` | E.g. `'pravesh-goel'`. The article author block, byline, headshot and bio are all resolved from the team registry — one source of truth. When the partner record gets updated (new photo, LinkedIn, longer bio), every article by them upgrades automatically. |
 | `publishedOn` | `YYYY-MM-DD` | Date of intended publication. Articles sort newest-first. |
 | `readMinutes` | integer | Estimated reading time. Around 200 wpm: 1,500-word article ≈ 8 min. |
 | `tag` | short string | Single tag chip on the card, e.g. "Sell-side process". |
@@ -77,7 +77,7 @@ It enforces the rules above and exits non-zero if your article:
 - has fewer than three `##` headings
 - is missing `thumbnailSrc` or the JPG file at the expected path
 - has a slug that collides with an existing article
-- uses an author constant that doesn't exist
+- uses an `authorSlug` that doesn't resolve to a team.ts entry
 
 Also run the standard gates before opening a PR:
 

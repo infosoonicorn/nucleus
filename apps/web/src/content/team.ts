@@ -24,10 +24,10 @@ export type TeamMember = {
   seniority: 'partner' | 'senior' | 'associate';         // ordering hint for cards
   initials: string;                                      // monogram avatar fallback
   headshotSrc?: string;                                  // optional `/team/<slug>.jpg`
-  email: string;                                         // mailto target
+  email?: string;                                        // mailto target (omit until confirmed)
   linkedinUrl?: string;                                  // external link, optional
-  shortBio: string;                                      // 1–2 lines, shown on card
-  fullBio: string;                                       // longer prose, shown in modal
+  shortBio?: string;                                     // 1–2 lines, shown on card
+  fullBio?: string;                                      // longer prose, shown in modal
   serviceSlugs: string[];                                // which service pages they surface on
 };
 
@@ -62,6 +62,61 @@ export const team: TeamMember[] = [
       'He owns the day-to-day cadence with founders, the investor-map maintenance, and the issue tracker that holds every diligence ask accountable to closure. On most mandates he is the person you exchange the most emails with.',
     ].join('\n\n'),
     serviceSlugs: ['investment-banking'],
+  },
+
+  // ─── Service-line partners (stub entries) ────────────────────────────
+  // Name, role, initials and service tags are confirmed. Headshots,
+  // emails, LinkedIn URLs, and bios are pending each partner's input.
+  // The article-author-bio component falls back gracefully when these
+  // are empty; populating them here upgrades every article by that
+  // partner automatically.
+  {
+    slug: 'pravesh-goel',
+    name: 'Pravesh Goel',
+    role: 'Partner · M&A Advisory',
+    seniority: 'partner',
+    initials: 'PG',
+    serviceSlugs: ['ma-advisory'],
+  },
+  {
+    slug: 'aakash-kalra',
+    name: 'Aakash Kalra',
+    role: 'Partner · M&A Advisory',
+    seniority: 'partner',
+    initials: 'AK',
+    serviceSlugs: ['ma-advisory'],
+  },
+  {
+    slug: 'ashish-gupta',
+    name: 'Ashish Gupta',
+    role: 'Partner · Risk Advisory',
+    seniority: 'partner',
+    initials: 'AG',
+    serviceSlugs: ['risk-advisory'],
+  },
+  {
+    slug: 'abhishek-gupta',
+    name: 'Abhishek Gupta',
+    role: 'Partner · Tax & Assurance',
+    seniority: 'partner',
+    initials: 'ABG',
+    serviceSlugs: ['tax-regulatory', 'assurance'],
+  },
+  {
+    slug: 'rajat-singla',
+    name: 'Rajat Singla',
+    role: 'Partner · Finance Outsourcing',
+    seniority: 'partner',
+    initials: 'RS',
+    serviceSlugs: ['finance-outsourcing'],
+  },
+  {
+    slug: 'neha-rathore',
+    name: 'Neha Rathore',
+    role: 'Partner · CS & Fund Management',
+    seniority: 'partner',
+    initials: 'NR',
+    serviceSlugs: ['corporate-secretarial', 'aif-fund-management'],
   },
 ];
 

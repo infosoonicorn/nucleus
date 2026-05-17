@@ -1,45 +1,40 @@
 import Link from 'next/link';
 import { BookOpen, Linkedin, Mail } from 'lucide-react';
-import type { Article } from '@/content/articles';
-import { articles as allArticles } from '@/content/articles';
-import { getTeamMemberByName } from '@/content/team';
+import { articles as allArticles, getArticleAuthor, type Article } from '@/content/articles';
 
 /**
  * "About the author" card at the end of the article reader.
  *
- * Resolves `article.author.name` against the team registry. When a
- * matching TeamMember exists (`team.ts`), the card upgrades to use
- * the partner's headshot, longer bio, email and LinkedIn — so we get
- * automatic visual improvement as team data is populated.
+ * Resolves the article's author via `getArticleAuthor()` — which reads
+ * straight from `team.ts`. That means a future `/team` page can edit
+ * the same TeamMember record (headshot, role, email, LinkedIn, bio)
+ * and every article by that partner upgrades automatically. One source
+ * of truth, zero duplicated maintenance.
  *
- * When the partner is not yet in `team.ts`, the card still reads as
- * a professional block (avatar with monogram, role chip, contextual
- * single-line blurb, "get in touch" CTA pointing at /contact). The
- * "no fake content" rule is intact: we never invent an email, photo,
- * or bio — we only surface what exists.
+ * The card degrades gracefully when team data is sparse:
+ *   - headshotSrc missing      → monogram avatar
+ *   - email missing            → "Get in touch" → /contact (no fake mailto)
+ *   - linkedinUrl missing      → pill hidden
+ *   - shortBio missing         → one-line role statement as fallback
  *
- * Also computes the count of other articles by this author and shows
- * a "More from {first name}" link when there are any.
+ * Also shows a "More from {first name}" link when the author has other
+ * articles in the registry.
  */
 export function ArticleAuthorBio({ article }: Readonly<{ article: Article }>) {
-  const { author } = article;
-  const member = getTeamMemberByName(author.name);
+  const author = getArticleAuthor(article);
   const firstName = author.name.split(' ')[0];
 
   // Other approved articles by the same author (drafts surface in dev).
   const allowDrafts = process.env.NODE_ENV !== 'production';
   const moreCount = allArticles.filter(
     (a) =>
-      a.author.name === author.name &&
+      a.authorSlug === author.slug &&
       a.slug !== article.slug &&
       (allowDrafts ? true : a.reviewerStatus === 'approved'),
   ).length;
 
-  // Single-paragraph blurb — prefer the partner's shortBio when we have
-  // it, otherwise fall back to a one-line role statement so the card
-  // body never reads as empty.
   const blurb =
-    member?.shortBio ??
+    author.shortBio ??
     `${author.role} at Nucleus Advisors. The desk is partner-led; the response on this article comes from this author or a directly briefed colleague.`;
 
   return (
@@ -47,10 +42,10 @@ export function ArticleAuthorBio({ article }: Readonly<{ article: Article }>) {
       <p className="article-author-bio-eyebrow">About the author</p>
       <div className="article-author-bio-card">
         <span className="article-author-bio-avatar" aria-hidden="true">
-          {member?.headshotSrc ? (
+          {author.headshotSrc ? (
             // Small photo, next/image adds machinery we don't need.
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={member.headshotSrc} alt="" />
+            <img src={author.headshotSrc} alt="" />
           ) : (
             <span className="article-author-bio-monogram">{author.initials}</span>
           )}
@@ -60,9 +55,9 @@ export function ArticleAuthorBio({ article }: Readonly<{ article: Article }>) {
           <p className="article-author-bio-role">{author.role}</p>
           <p className="article-author-bio-blurb">{blurb}</p>
           <div className="article-author-bio-actions">
-            {member?.email ? (
+            {author.email ? (
               <a
-                href={`mailto:${member.email}`}
+                href={`mailto:${author.email}`}
                 className="article-author-bio-action article-author-bio-action-primary"
               >
                 <Mail size={14} aria-hidden="true" />
@@ -77,9 +72,9 @@ export function ArticleAuthorBio({ article }: Readonly<{ article: Article }>) {
                 Get in touch
               </Link>
             )}
-            {member?.linkedinUrl ? (
+            {author.linkedinUrl ? (
               <a
-                href={member.linkedinUrl}
+                href={author.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="article-author-bio-action"

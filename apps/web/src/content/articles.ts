@@ -13,18 +13,14 @@
  *  - Honest, sometimes inconvenient. Promotional only where earned by data.
  */
 
-export type ArticleAuthor = {
-  name: string;
-  role: string;
-  initials: string;            // 'VSR' — used for the small avatar pill
-};
+import { getTeamMemberBySlug, type TeamMember } from './team';
 
 type ArticleBase = {
   slug: string;
   title: string;
   excerpt: string;             // one or two lines for the card preview
   body: string;                // long-form. Plain paragraphs separated by blank lines.
-  author: ArticleAuthor;
+  authorSlug: string;          // points to a team member slug in team.ts — single source of truth
   publishedOn: string;         // YYYY-MM-DD
   readMinutes: number;         // estimated read time
   tag: string;                 // single primary tag for chip
@@ -36,22 +32,27 @@ export type Article =
   | (ArticleBase & { reviewerStatus: 'approved'; reviewerApprovedAt: string })
   | (ArticleBase & { reviewerStatus: 'pending'; reviewerApprovedAt?: never });
 
-// ─── Partner authors per service line ─────────────────────────────
-// These constants are the single source of truth for article bylines.
-// Roles + initials approved by Vijay; emails / headshots live in
-// team.ts. Initials must be 2–3 chars and unique across the set.
-const VSR: ArticleAuthor = { name: 'Vijay Singh Rathore', role: 'Founding Partner',          initials: 'VSR' };
-const PG:  ArticleAuthor = { name: 'Pravesh Goel',        role: 'Partner · M&A Advisory',     initials: 'PG'  };
-// The next five authors will pick up articles once the per-service batches
-// are drafted (currently only one M&A demo article is live, authored by PG).
-// eslint-disable until consumed.
-/* eslint-disable @typescript-eslint/no-unused-vars */
-const AK:  ArticleAuthor = { name: 'Aakash Kalra',        role: 'Partner · M&A Advisory',     initials: 'AK'  };
-const AG:  ArticleAuthor = { name: 'Ashish Gupta',        role: 'Partner · Risk Advisory',    initials: 'AG'  };
-const ABG: ArticleAuthor = { name: 'Abhishek Gupta',      role: 'Partner · Tax & Assurance',  initials: 'ABG' };
-const RS:  ArticleAuthor = { name: 'Rajat Singla',        role: 'Partner · Finance Outsourcing', initials: 'RS' };
-const NR:  ArticleAuthor = { name: 'Neha Rathore',        role: 'Partner · CS & Fund Mgmt',   initials: 'NR'  };
-/* eslint-enable @typescript-eslint/no-unused-vars */
+/**
+ * Resolve an article's author to the canonical TeamMember record.
+ * Throws if the article references a team slug that doesn't exist —
+ * lint-articles catches this in CI, but the runtime throw means a
+ * silent mismatch can never reach a rendered page.
+ *
+ * When a `/team` page is built, it reads from the same `team.ts`
+ * registry, so any change there (new headshot, updated role, new
+ * LinkedIn URL) automatically reflects on every article by that
+ * partner. Authors maintain one record, not two.
+ */
+export function getArticleAuthor(article: Article): TeamMember {
+  const member = getTeamMemberBySlug(article.authorSlug);
+  if (!member) {
+    throw new Error(
+      `Article "${article.slug}" references unknown author slug "${article.authorSlug}". ` +
+        `Add the partner to apps/web/src/content/team.ts or fix the authorSlug.`,
+    );
+  }
+  return member;
+}
 
 export const articles: Article[] = [
   {
@@ -67,7 +68,7 @@ export const articles: Article[] = [
       "What we do in the readiness assessment is run this math at engagement. Not the optimistic version — the realistic one. Two rounds out, an ESOP top-up at each, a market-standard preference stack, and what the exit looks like in the bottom half of likely outcomes. We do not show this to investors. We show it to you. The point is that you walk into the term sheet conversation knowing what you are agreeing to two rounds from now, not just at the closing.",
       "Some of what we run sees founders push back on the headline valuation in favour of cleaner terms — a 1x non-participating preference instead of 1.5x, no anti-dilution carve-outs, an ESOP top-up timed after the round instead of before. The headline number is what gets press-released. The terms are what you live with.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2026-04-12',
     readMinutes: 5,
     tag: 'Term sheet',
@@ -87,7 +88,7 @@ export const articles: Article[] = [
       "The hardest section is the FAQ pack. We sit with the founder for half a day and write every question an investor will ask. Why is gross margin so low. Why does CAC look like that. Why did the previous CFO leave. Why is your largest customer also your largest shareholder. The questions are the awkward ones. The answers are honest, with the underlying numbers shown.",
       "Founders sometimes resist this. They worry that surfacing every concern up front kills the deal. The opposite is true. The investor was going to find it anyway in week three of diligence, in a far more damaging way. Showing it on page eight of the IM with the data already laid out turns a possible deal-killer into a non-event. That's the whole job of the IM.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2026-04-02',
     readMinutes: 6,
     tag: 'Investor narrative',
@@ -109,7 +110,7 @@ export const articles: Article[] = [
       "Sixth — and the most common — wrong arithmetic in the cap-table spreadsheet itself. The total adds to 100.4%. The fully-diluted column does not match the issued column. The ESOP pool size differs across three tabs of the model. We see this in 30% of cap-tables we audit.",
       "The fix for all six is the same — run a cap-table audit before you go to market. Half a day with the company secretary and a focused partner. Pull every issuance back to a board resolution. Reconcile against ROC filings. Build a single source-of-truth cap-table that ties out at every column. Audit-cost: low. Time saved in diligence: four to six weeks. We have never seen the math come out the other way.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2026-03-22',
     readMinutes: 5,
     tag: 'Cap table',
@@ -134,7 +135,7 @@ export const articles: Article[] = [
       "Information rights. Quarterly financials, annual budget approval, audited statements. Standard. The thing to watch is veto rights on operating decisions — the term sheet should list these explicitly. If a founder needs investor consent to hire a single engineer, that is a problem.",
       "Read the term sheet in this order. Spend ten minutes on each of these clauses, not on the valuation. The valuation is a number you negotiate up by 15% with a good story. The clauses are what determine the next five years of how this company runs.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2026-03-08',
     readMinutes: 8,
     tag: 'Term sheet',
@@ -156,7 +157,7 @@ export const articles: Article[] = [
       "What to watch: anti-dilution can be paired with a 'pay-to-play' clause that forces existing investors to participate in the down round or lose their preferred preferences. This is founder-friendly and worth asking for if you can.",
       "One more thing. Anti-dilution is reset on every subsequent up round — once you raise above the protected price, the protection drops away. So the practical risk window is the period between the round being signed and the next up round closing. In a healthy company, that's twelve to eighteen months. In a stressed one, it's the year the clause matters most.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2026-02-26',
     readMinutes: 6,
     tag: 'Term sheet',
@@ -178,7 +179,7 @@ export const articles: Article[] = [
       "What founders should not do is treat the readiness work as something to do AFTER the first pitch lands. By then, you are racing the clock against your own investor's diligence team. The math does not favour you.",
       "Plan for eight weeks of build before the pitch. Plan for two to ten weeks from the first pitch to the term sheet, depending on how the conversation goes. Plan for six to ten weeks of diligence and SHA negotiation after. That is the realistic timeline for a clean round. Anything faster usually had eight weeks of unseen preparation behind it.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2026-02-14',
     readMinutes: 5,
     tag: 'Process',
@@ -203,7 +204,7 @@ export const articles: Article[] = [
       "Nine. Tax positions that look comfortable to the founder but uncomfortable to a diligence team. Aggressive depreciation, a related-party transaction that wasn't at arm's length, an undisclosed customer rebate booked above the gross-margin line. We flag these so the founder makes an informed call: disclose and explain, or restructure before going to market.",
       "The audit takes two days of focused work. The fixes take anywhere from two weeks to two months depending on what surfaces. The point is to find these things before the investor's lawyer does, when the conversation is still about whether to invest, not whether to renegotiate the price.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2026-01-29',
     readMinutes: 7,
     tag: 'Readiness',
@@ -226,7 +227,7 @@ export const articles: Article[] = [
       "Which one to pursue depends on what you actually want next. A founder who is done with the operating job and wants liquidity should probably take the strategic conversation. A founder who is excited to run the next stage with someone professionalising the company should take the PE conversation. We have seen wrong choices made on both sides — the founder who took the strategic deal and regretted being absorbed; the founder who took the PE deal and burned out a year later because the new operating cadence wasn't what they had imagined.",
       "What we do at the start of these engagements is a one-day clarifier. Founder articulates what they want next year, three years from now, and five years from now. We talk through what each deal type looks like in each of those windows. The right deal then becomes clearer. The wrong deal usually becomes obvious.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2026-01-15',
     readMinutes: 7,
     tag: 'M&A',
@@ -249,7 +250,7 @@ export const articles: Article[] = [
       "One more thing — refresh grants. Most ESOP plans contemplate refresh grants for tenured employees, typically every two to three years, in addition to the initial grant. These come out of the pool too, but they don't show up in initial cap-table modeling. Plan for them. A 30-person team three years in will absorb 2-3% of pool refresh, easily.",
       "ESOP economics is the cleanest place where partner-led readiness work pays for itself. The right pool size, the right top-up timing, the right grant structure — the dilution swing between an inexperienced founder negotiation and a partner-supported one is usually 1-3 percentage points of founder ownership. On a typical Indian Series A, that's $2-5M of value.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2025-12-18',
     readMinutes: 7,
     tag: 'Cap table',
@@ -271,7 +272,7 @@ export const articles: Article[] = [
       "The categories of founder who should: anyone raising primary or secondary above $5M; anyone selling the business; anyone whose round needs to be structured creatively (carve-outs, secondary, structured equity); anyone running a process with more than three or four interested parties.",
       "What we tell founders in the first scoping call is this: a banker is a $X cost, structured as retainer plus success fee. The question is whether the value we add — a wider investor map, a tighter term sheet, an unblocked founder for four months, a partner-supported diligence process — exceeds $X. For most founders raising above $5M, yes. For some, no. We tell people which group they are in honestly. No mandate is also a real answer.",
     ].join('\n\n'),
-    author: VSR,
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2025-12-04',
     readMinutes: 6,
     tag: 'Capital strategy',
@@ -351,7 +352,7 @@ export const articles: Article[] = [
       "Three months later the founder is on the phone telling us a clean offer from a strategic acquirer is being blocked by a board member who wanted a private equity buyout. The board member's view was reasonable, but no one had aligned the board on a single mandate before the process started. The deal does not close. The seller restarts eighteen months later, with a market that has moved on.",
       "Worth the upfront three weeks every time.",
     ].join('\n\n'),
-    author: PG,
+    authorSlug: 'pravesh-goel',
     publishedOn: '2026-05-12',
     readMinutes: 8,
     tag: 'Sell-side process',

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, Clock } from 'lucide-react';
-import { getArticlesForService } from '@/content/articles';
+import { getArticlesForService, getArticleAuthor } from '@/content/articles';
 import type { Service } from '@/content/site';
 
 const PREVIEW_COUNT = 4;
@@ -36,6 +36,7 @@ export function ServiceInsights({
 
       <div className="service-v1-articles-grid">
         {articles.map((article) => {
+          const author = getArticleAuthor(article);
           const isDraft = article.reviewerStatus !== 'approved';
           return (
             <Link
@@ -56,11 +57,16 @@ export function ServiceInsights({
               <div className="service-v1-articles-foot">
                 <span className="service-v1-articles-author">
                   <span className="service-v1-articles-avatar" aria-hidden="true">
-                    {article.author.initials}
+                    {author.headshotSrc ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={author.headshotSrc} alt="" />
+                    ) : (
+                      author.initials
+                    )}
                   </span>
                   <span>
-                    <span className="service-v1-articles-name">{article.author.name}</span>
-                    <span className="service-v1-articles-role">{article.author.role}</span>
+                    <span className="service-v1-articles-name">{author.name}</span>
+                    <span className="service-v1-articles-role">{author.role}</span>
                   </span>
                 </span>
                 <span className="service-v1-articles-time">

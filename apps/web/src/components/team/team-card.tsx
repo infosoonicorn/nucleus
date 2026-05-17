@@ -34,7 +34,9 @@ export function TeamCard({ member }: Readonly<{ member: TeamMember }>) {
     };
   }, [open, close]);
 
-  const paragraphs = member.fullBio.split('\n\n');
+  const paragraphs = member.fullBio
+    ? member.fullBio.split('\n\n')
+    : ['Detailed bio coming soon. In the meantime, reach the team for an introduction.'];
 
   return (
     <>
@@ -55,16 +57,20 @@ export function TeamCard({ member }: Readonly<{ member: TeamMember }>) {
             <p className="team-card-role">{member.role}</p>
           </div>
         </div>
-        <p className="team-card-bio">{member.shortBio}</p>
+        <p className="team-card-bio">
+          {member.shortBio ?? `${member.role} at Nucleus Advisors.`}
+        </p>
         <div className="team-card-actions">
-          <a
-            href={`mailto:${member.email}`}
-            className="team-card-iconbtn"
-            aria-label={`Email ${member.name}`}
-            title={`Email ${member.name}`}
-          >
-            <Mail size={14} />
-          </a>
+          {member.email ? (
+            <a
+              href={`mailto:${member.email}`}
+              className="team-card-iconbtn"
+              aria-label={`Email ${member.name}`}
+              title={`Email ${member.name}`}
+            >
+              <Mail size={14} />
+            </a>
+          ) : null}
           {member.linkedinUrl ? (
             <a
               href={member.linkedinUrl}
@@ -144,10 +150,12 @@ export function TeamCard({ member }: Readonly<{ member: TeamMember }>) {
               </div>
 
               <div className="team-modal-actions">
-                <a href={`mailto:${member.email}`} className="resource-cta resource-cta-primary">
-                  <Mail size={14} aria-hidden="true" />
-                  Email {member.name.split(' ')[0]}
-                </a>
+                {member.email ? (
+                  <a href={`mailto:${member.email}`} className="resource-cta resource-cta-primary">
+                    <Mail size={14} aria-hidden="true" />
+                    Email {member.name.split(' ')[0]}
+                  </a>
+                ) : null}
                 {member.linkedinUrl ? (
                   <a
                     href={member.linkedinUrl}

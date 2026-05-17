@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowUpRight, Clock } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
-import { articles } from '@/content/articles';
+import { articles, getArticleAuthor } from '@/content/articles';
 import { services } from '@/content/site';
 
 export const metadata: Metadata = {
@@ -123,6 +123,7 @@ export default async function InsightsHubPage({
           ) : (
             <div className="service-v1-articles-grid hub-articles-grid">
               {filtered.map((article) => {
+                const author = getArticleAuthor(article);
                 const isDraft = article.reviewerStatus !== 'approved';
                 return (
                   <Link
@@ -146,11 +147,16 @@ export default async function InsightsHubPage({
                     <div className="service-v1-articles-foot">
                       <span className="service-v1-articles-author">
                         <span className="service-v1-articles-avatar" aria-hidden="true">
-                          {article.author.initials}
+                          {author.headshotSrc ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={author.headshotSrc} alt="" />
+                          ) : (
+                            author.initials
+                          )}
                         </span>
                         <span>
-                          <span className="service-v1-articles-name">{article.author.name}</span>
-                          <span className="service-v1-articles-role">{article.author.role}</span>
+                          <span className="service-v1-articles-name">{author.name}</span>
+                          <span className="service-v1-articles-role">{author.role}</span>
                         </span>
                       </span>
                       <span className="service-v1-articles-time">

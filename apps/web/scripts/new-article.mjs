@@ -68,7 +68,7 @@ const stub = `  {
       "## TODO: closing section header",
       "TODO: one-paragraph close. Don't restate the article. Land a specific commitment or observation.",
     ].join('\\n\\n'),
-    author: VSR, // TODO: change to PG / AK / AG / ABG / RS / NR if relevant
+    authorSlug: 'vijay-singh-rathore', // TODO: change to the team.ts slug of the author
     publishedOn: '${today}',
     readMinutes: 8, // TODO: adjust if word count differs significantly from 1,500
     tag: 'TODO: short tag', // shows as chip on card

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight, Clock } from 'lucide-react';
-import { articles as allArticles, type Article } from '@/content/articles';
+import { articles as allArticles, getArticleAuthor, type Article } from '@/content/articles';
 
 /**
  * Sidebar block: "Read next." Surfaces up to 4 articles related to
@@ -50,7 +50,7 @@ export function ArticleRelated({
               <span className="article-related-tag">{a.tag}</span>
               <span className="article-related-title">{a.title}</span>
               <span className="article-related-meta">
-                <span className="article-related-author">{a.author.name}</span>
+                <span className="article-related-author">{getArticleAuthor(a).name}</span>
                 <span aria-hidden="true" className="article-related-sep">·</span>
                 <span className="article-related-readtime">
                   <Clock size={11} aria-hidden="true" />
