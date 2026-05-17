@@ -5,6 +5,7 @@ import { useCallback, useEffect, useId, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, BookOpen, Briefcase, Clock, GraduationCap, Linkedin, Mail, X } from 'lucide-react';
 import type { TeamMember } from '@/content/team';
+import { normalisePastEmployer } from '@/content/team';
 import { articles as allArticles } from '@/content/articles';
 
 const FIRM_EMAIL = 'info@nucleusadvisors.in';
@@ -217,17 +218,40 @@ export function TeamPageCard({ member }: Readonly<{ member: TeamMember }>) {
                       </span>
                     </div>
                   ) : null}
-                  {member.pastEmployers && member.pastEmployers.length > 0 ? (
-                    <div className="team-page-modal-fact">
-                      <span className="team-page-modal-fact-label">
-                        <Briefcase size={11} aria-hidden="true" /> Previously
-                      </span>
-                      <span className="team-page-modal-fact-value">
-                        {member.pastEmployers.join(', ')}
-                      </span>
-                    </div>
-                  ) : null}
                 </div>
+
+                {member.pastEmployers && member.pastEmployers.length > 0 ? (
+                  <section className="team-page-modal-prev" aria-labelledby={`${titleId}-prev`}>
+                    <p
+                      id={`${titleId}-prev`}
+                      className="team-page-modal-prev-label"
+                    >
+                      <Briefcase size={12} aria-hidden="true" /> Previously
+                    </p>
+                    <ul className="team-page-modal-prev-list">
+                      {member.pastEmployers.map((entry, i) => {
+                        const e = normalisePastEmployer(entry);
+                        return (
+                          <li key={`${e.name}-${i}`} className="team-page-modal-prev-item">
+                            {e.src ? (
+                              // Logo file is populated for this employer.
+                              // Plain <img>; small static asset, no next/image needed.
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img
+                                src={e.src}
+                                alt={e.name}
+                                className="team-page-modal-prev-logo"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <span className="team-page-modal-prev-pill">{e.name}</span>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </section>
+                ) : null}
 
                 <div className="team-page-modal-body">
                   {fullBioParagraphs.map((p, i) => (

@@ -24,6 +24,25 @@
  * - LinkedIn URLs left empty until each partner provides them.
  */
 
+/**
+ * Past employer entry. `name` is required and is used as both the text-
+ * pill label (default render) and the alt-text when a logo image is
+ * present. `src` upgrades the pill to a small grayscale logo image.
+ *
+ * To add a logo:
+ *   1. Drop the PNG at `apps/web/public/team/logos/<name>.png`
+ *      (use the company's own brand-asset page where possible to get
+ *      a clean, licensed file)
+ *   2. Add `src: '/team/logos/<name>.png'` to that PastEmployer record
+ * The modal swaps from a text pill to the image automatically. No
+ * third-party logo files ship with the default install — populate as
+ * the firm clears each one for use.
+ */
+export type PastEmployer = {
+  name: string;
+  src?: string;
+};
+
 export type TeamMember = {
   slug: string;                                          // url-safe identifier
   name: string;                                          // full display name
@@ -36,12 +55,18 @@ export type TeamMember = {
   linkedinUrl?: string;                                  // external link, optional
   expertise: readonly string[];                          // 3-4 expertise tags shown as pills
   experienceYears?: number;                              // numeric years of professional experience
-  pastEmployers?: readonly string[];                     // ex-companies / institutions
+  pastEmployers?: readonly (string | PastEmployer)[];    // ex-companies; string = text pill, object = with optional logo
   qualifications?: readonly string[];                    // CA, CFA, LLM, etc.
   shortBio?: string;                                     // 1-2 lines, shown on card
   fullBio?: string;                                      // longer prose, shown in modal / profile page
   serviceSlugs: readonly string[];                       // which service pages they surface on
 };
+
+/** Normalise pastEmployers entries — accept both legacy `string` and
+ *  rich `PastEmployer` shapes for backward compat with existing data. */
+export function normalisePastEmployer(e: string | PastEmployer): PastEmployer {
+  return typeof e === 'string' ? { name: e } : e;
+}
 
 export const team: TeamMember[] = [
   // ─── Leadership Team ───────────────────────────────────────────────

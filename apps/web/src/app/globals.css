@@ -11696,6 +11696,65 @@ main.service-v1 > div > section {
 }
 .team-page-modal-body p:last-child { margin-bottom: 0; }
 
+/* "Previously" strip. Sits between the facts grid and the bio body.
+   Each entry renders as either a text pill (default) or a small
+   grayscale logo image (when team.ts populates `src` on the entry).
+   The two render forms align on the same baseline so a row can mix
+   them — useful while logos are being added one at a time. */
+.team-page-modal-prev {
+  margin: -8px 0 22px;
+}
+.team-page-modal-prev-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 0.68rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.55);
+  margin: 0 0 10px;
+}
+.team-page-modal-prev-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items: center;
+}
+.team-page-modal-prev-item {
+  display: inline-flex;
+  align-items: center;
+}
+.team-page-modal-prev-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(20, 24, 40, 0.14);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #141828;
+  line-height: 1.2;
+}
+.team-page-modal-prev-logo {
+  display: block;
+  height: 32px;
+  max-width: 110px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(1) contrast(0.92);
+  opacity: 0.88;
+  transition: opacity 160ms ease, filter 160ms ease;
+}
+.team-page-modal-prev-logo:hover {
+  filter: none;
+  opacity: 1;
+}
+
 .team-page-modal-articles {
   margin: 22px 0 0;
   padding: 18px 0 4px;
