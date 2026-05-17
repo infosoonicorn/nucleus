@@ -22,6 +22,7 @@ import { getResourcesForService } from '@/content/resources';
 import { getClientsForService } from '@/content/clients';
 import { getTeamForService } from '@/content/team';
 import { IB_SECTION_ORDINAL } from '@/content/section-ordinals';
+import { deriveHeroCards } from '@/components/services/hero-cards';
 
 const SERVICE_SLUG = 'investment-banking';
 
@@ -60,6 +61,7 @@ export default function InvestmentBankingPage() {
                 displayHeadline={service.displayHeadline}
                 promise={service.promise}
                 cta={service.cta}
+                heroCards={deriveHeroCards(service.processDossier)}
               />
               {/* ●01 Track record — 4-metric counter row + scrolling logo strip */}
               <ClientLogos

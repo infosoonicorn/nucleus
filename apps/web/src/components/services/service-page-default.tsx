@@ -5,6 +5,7 @@ import { getResourcesForService } from '@/content/resources';
 import { DEFAULT_SECTION_ORDINAL } from '@/content/section-ordinals';
 import { PageShell } from '@/components/site-chrome';
 import { ServiceHero } from './service-hero';
+import { deriveHeroCards } from './hero-cards';
 import { WhenToEngage } from './when-to-engage';
 import { ClientLogos } from './client-logos';
 import { HowWeHelp } from './how-we-help';
@@ -61,6 +62,7 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
                 displayHeadline={service.displayHeadline}
                 promise={service.promise}
                 cta={service.cta}
+                heroCards={deriveHeroCards(service.processDossier)}
               />
 
               {/* ●01 Track record — counter row + scrolling logo strip */}

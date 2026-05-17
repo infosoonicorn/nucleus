@@ -7,6 +7,14 @@ import { FadeIn, Magnetic, WordReveal } from '@/components/motion-primitives';
 
 /** Primitive subset of Service the hero needs — no function fields,
  *  so the prop can cross the server→client boundary cleanly. */
+/** A single floating card on the right side of the hero. */
+export type HeroCard = Readonly<{
+  ordinal: string;       // "●01" — shown as eyebrow
+  label: string;         // "Mandate" — short verb/noun summarising the phase
+  meta: string;          // "Weeks 1–2" — small label beneath
+  stamp?: string;        // optional red pill on the front of the card (e.g. "CLOSED")
+}>;
+
 export type ServiceHeroProps = Readonly<{
   ordinal: string;
   title: string;
@@ -14,6 +22,10 @@ export type ServiceHeroProps = Readonly<{
   displayHeadline?: string;
   promise: string;
   cta: string;
+  /** Exactly 3 cards stacked on the right. Each service derives its own
+   *  from its processDossier phases so the hero teases what's coming
+   *  below. Falls back to nothing if omitted. */
+  heroCards?: HeroCard[];
 }>;
 
 /**
@@ -39,17 +51,23 @@ export function ServiceHero({
   displayHeadline,
   promise,
   cta,
+  heroCards,
 }: ServiceHeroProps) {
   const reduceMotion = useReducedMotion();
   const headline = displayHeadline ?? title;
 
-  // Phase preview cards — reference the dossier phases below so the hero
-  // teases what's coming without inventing metrics.
-  const cards = [
-    { label: '●01 Mandate', meta: 'Weeks 1–2',  cls: 'svc-hero-card-1', initialRot: -8, finalRot: -4 },
-    { label: '●03 Market',  meta: 'Weeks 7–12', cls: 'svc-hero-card-2', initialRot:  6, finalRot:  3 },
-    { label: '●04 Wire',    meta: 'Week 16',    cls: 'svc-hero-card-3', initialRot: -3, finalRot: -1, stamp: true },
+  // Per-service phase preview cards, derived from processDossier by the
+  // caller. Each card gets a fixed CSS class for its position in the
+  // stack + a rotation pair for the entrance animation.
+  const stackStyles = [
+    { cls: 'svc-hero-card-1', initialRot: -8, finalRot: -4 },
+    { cls: 'svc-hero-card-2', initialRot:  6, finalRot:  3 },
+    { cls: 'svc-hero-card-3', initialRot: -3, finalRot: -1 },
   ];
+  const cards = (heroCards ?? []).slice(0, 3).map((card, i) => ({
+    ...card,
+    ...stackStyles[i],
+  }));
 
   return (
     <section className="svc-hero" aria-label={`${title} hero`}>
@@ -102,10 +120,11 @@ export function ServiceHero({
           </FadeIn>
         </div>
 
+        {cards.length === 0 ? null : (
         <div className="svc-hero-stack" aria-hidden="true">
           {cards.map((c, i) => (
             <motion.div
-              key={c.label}
+              key={`${c.ordinal}-${c.label}`}
               className={`svc-hero-card ${c.cls}`}
               initial={
                 reduceMotion ? false : { opacity: 0, y: 28, rotate: c.initialRot }
@@ -134,14 +153,15 @@ export function ServiceHero({
                     }
               }
             >
-              {c.stamp ? <span className="svc-hero-card-stamp">CLOSED</span> : null}
-              <span className="svc-hero-card-eyebrow">{c.label}</span>
+              {c.stamp ? <span className="svc-hero-card-stamp">{c.stamp}</span> : null}
+              <span className="svc-hero-card-eyebrow">{c.ordinal} {c.label}</span>
               <p className="svc-hero-card-meta">{c.meta}</p>
               <span className="svc-hero-card-line" aria-hidden="true" />
               <span className="svc-hero-card-line svc-hero-card-line-half" aria-hidden="true" />
             </motion.div>
           ))}
         </div>
+        )}
       </div>
     </section>
   );
