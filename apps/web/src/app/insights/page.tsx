@@ -10,6 +10,7 @@ import {
   type FilterOption,
 } from '@/components/insights/insights-toolbar';
 import { NewsletterSignup } from '@/components/insights/newsletter-signup';
+import { FeaturedArticle } from '@/components/insights/featured-article';
 
 export const metadata: Metadata = {
   title: 'Insights — Nucleus Advisors',
@@ -46,10 +47,26 @@ export default async function InsightsHubPage({
     allowDrafts ? true : a.reviewerStatus === 'approved',
   );
 
+  // Featured "Start here" article: only surfaced when no filters are
+  // active (otherwise it would compete with the user's stated intent).
+  // Pick the most-recent article flagged `featured: true`, or the
+  // most-recent visible article overall as a fallback.
+  const noFiltersActive = !serviceFilter && !tagFilter && !authorFilter;
+  const featuredArticle = noFiltersActive
+    ? visible
+        .filter((a) => a.featured)
+        .sort((a, b) => b.publishedOn.localeCompare(a.publishedOn))[0] ??
+      visible.sort((a, b) => b.publishedOn.localeCompare(a.publishedOn))[0] ??
+      null
+    : null;
+
   const filtered = visible
     .filter((a) => (serviceFilter ? a.serviceSlugs.includes(serviceFilter) : true))
     .filter((a) => (tagFilter ? a.tag === tagFilter : true))
     .filter((a) => (authorFilter ? a.authorSlug === authorFilter : true))
+    // Hide the featured piece from the grid so it doesn't duplicate the
+    // "Start here" slot above.
+    .filter((a) => (featuredArticle ? a.slug !== featuredArticle.slug : true))
     .sort((a, b) =>
       sort === 'oldest'
         ? a.publishedOn.localeCompare(b.publishedOn)
@@ -169,6 +186,13 @@ export default async function InsightsHubPage({
             </p>
           ) : null}
         </section>
+
+        {featuredArticle ? (
+          <FeaturedArticle
+            article={featuredArticle}
+            author={getArticleAuthor(featuredArticle)}
+          />
+        ) : null}
 
         <section className="hub-toolbar-section" aria-label="Filter and sort">
           <InsightsToolbar

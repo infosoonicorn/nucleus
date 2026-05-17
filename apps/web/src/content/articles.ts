@@ -26,6 +26,7 @@ type ArticleBase = {
   tag: string;                 // single primary tag for chip
   serviceSlugs: string[];      // which service pages this article shows up on
   thumbnailSrc?: string;       // optional path under apps/web/public, e.g. '/article-thumbs/<slug>.jpg'
+  featured?: boolean;          // when true, eligible for the 'Start here' slot on /insights
 };
 
 export type Article =
