@@ -9428,7 +9428,11 @@ main.service-v1 > div > section {
    to a sensible reading width; justify-content:start left-aligns the
    short rows so a one-result page reads correctly. */
 .hub-articles-grid {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 380px));
+  /* 360px max keeps three columns at 1200px container width.
+     3 * 360 + 2 * 20 gap = 1120 (fits in 1136 usable). 380px was
+     too generous: 3 * 380 + 40 = 1180 (overflows), dropping the grid
+     to two columns. */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 360px));
   justify-content: start;
 }
 
