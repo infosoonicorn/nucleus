@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
 import { articles, getArticleBySlug } from '@/content/articles';
+import { ArticleAuthorBio } from '@/components/insights/article-author-bio';
 import { ArticleRelated } from '@/components/insights/article-related';
 import { ArticleTOC, type TocHeading } from '@/components/insights/article-toc';
 import { ReadingProgress } from '@/components/insights/reading-progress';
@@ -118,12 +119,7 @@ export default async function ArticlePage({ params }: Props) {
               })}
             </div>
 
-            <footer className="article-page-foot">
-              <p>
-                <strong>{article.author.name}</strong> is a {article.author.role} at Nucleus Advisors.{' '}
-                <Link href="/contact">Write to the desk</Link>.
-              </p>
-            </footer>
+            <ArticleAuthorBio article={article} />
           </article>
 
           {/* data-lenis-prevent: lets the rail scroll independently of

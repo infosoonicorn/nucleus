@@ -8468,14 +8468,125 @@ html.lenis body {
   vertical-align: middle;
   transform: translateY(-2px);
 }
-.article-page-foot {
-  margin-top: 56px;
-  padding-top: 28px;
+/* ── About-the-author block at the end of the article ──
+   Replaces the old single-line .article-page-foot. Resolves to a real
+   partner card with avatar, role, blurb, and an action row: email when
+   known, "Get in touch" fallback, LinkedIn when known, "more from
+   {author}" when other articles by them exist. */
+.article-author-bio {
+  margin-top: 64px;
+  padding-top: 32px;
   border-top: 1px solid rgba(20, 24, 40, 0.1);
-  font-size: 0.92rem;
-  color: rgba(20, 24, 40, 0.62);
 }
-.article-page-foot a { color: var(--service-accent-red); text-decoration: underline; }
+.article-author-bio-eyebrow {
+  font: 600 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--service-accent-red, #dd1017);
+  margin: 0 0 18px;
+}
+.article-author-bio-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  padding: 24px 26px 26px;
+  background: linear-gradient(180deg, #fefdf8 0%, #f7f5ef 100%);
+  border: 1px solid rgba(20, 24, 40, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px -32px rgba(20, 24, 40, 0.28);
+}
+@media (max-width: 520px) {
+  .article-author-bio-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 22px 20px 24px;
+  }
+}
+.article-author-bio-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--service-accent-red, #dd1017);
+  color: #fefdf8;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px #fefdf8, 0 0 0 5px rgba(221, 16, 23, 0.18);
+}
+.article-author-bio-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.article-author-bio-monogram { line-height: 1; }
+.article-author-bio-body {
+  min-width: 0;
+}
+.article-author-bio-name {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.18rem;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #0c1024;
+  margin: 0 0 4px;
+}
+.article-author-bio-role {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(20, 24, 40, 0.6);
+  margin: 0 0 12px;
+}
+.article-author-bio-blurb {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(20, 24, 40, 0.78);
+  margin: 0 0 16px;
+  text-align: left;
+}
+.article-author-bio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.article-author-bio-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #141828;
+  background: #fff;
+  border: 1px solid rgba(20, 24, 40, 0.14);
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease, transform 120ms ease;
+}
+.article-author-bio-action:hover {
+  border-color: rgba(20, 24, 40, 0.4);
+  background: #fefdf8;
+}
+.article-author-bio-action-primary {
+  background: #141828;
+  color: #fefdf8;
+  border-color: #141828;
+}
+.article-author-bio-action-primary:hover {
+  background: var(--service-accent-red, #dd1017);
+  border-color: var(--service-accent-red, #dd1017);
+  color: #fefdf8;
+}
+.article-author-bio-action svg { flex-shrink: 0; }
 
 /* =============================================================
    IB page polish layer — applied via `.service-v1` scope so the

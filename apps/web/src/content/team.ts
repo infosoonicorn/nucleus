@@ -80,3 +80,15 @@ export function getTeamForService(slug: string): TeamMember[] {
 export function getTeamMemberBySlug(slug: string): TeamMember | undefined {
   return team.find((m) => m.slug === slug);
 }
+
+/**
+ * Case-insensitive lookup by display name. Used by the article author
+ * bio to resolve `article.author.name` to the full TeamMember record
+ * (with bio, email, headshot, etc.) when one exists. Returns undefined
+ * if the partner is not yet in the team registry — the consumer should
+ * fall back to whatever minimal data the article author block provides.
+ */
+export function getTeamMemberByName(name: string): TeamMember | undefined {
+  const needle = name.trim().toLowerCase();
+  return team.find((m) => m.name.toLowerCase() === needle);
+}
