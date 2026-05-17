@@ -40,4 +40,21 @@ export const IB_SECTION_ORDINAL = {
   contact: '10',
 } as const;
 
+/**
+ * M&A page inserts the buy-side / sell-side mandate visualizer at ●03
+ * between WhenToEngage and HowWeHelp — the bespoke centerpiece for
+ * the page. Every other section shifts one ordinal down.
+ */
+export const MA_SECTION_ORDINAL = {
+  clientLogos: '01',
+  whenToEngage: '02',
+  mandate: '03',         // bespoke: buy-side / sell-side visualizer
+  howWeHelp: '04',
+  process: '05',
+  insights: '06',
+  resources: '07',
+  faq: '08',
+  contact: '09',
+} as const;
+
 export type SectionOrdinalMap = Readonly<Record<string, string>>;

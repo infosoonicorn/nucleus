@@ -10637,3 +10637,306 @@ main.service-v1 > div > section {
   .clients-hub-group-head { align-items: flex-start; }
   .clients-hub-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
 }
+
+/* ───────────────────────────────────────────────────────────
+ * M&A bespoke: Buy-side / Sell-side mandate visualizer
+ * Tabbed block; framer-motion crossfades between mandate types.
+ * Layout: header → tabs → promise → 2-col (timeline | inflections)
+ *         → who-does-what 3-col actors grid.
+ * ─────────────────────────────────────────────────────────── */
+
+.ma-mandate { background: var(--service-band-cream); }
+
+.ma-mandate-head { margin-bottom: 22px; }
+.ma-mandate-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 860;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--service-accent-red);
+}
+.ma-mandate-eyebrow-num { color: var(--service-accent-red); font-weight: 860; }
+.ma-mandate-eyebrow-bar {
+  display: inline-block;
+  width: 1.4rem;
+  height: 0.42rem;
+  background: var(--service-accent-red);
+  border-radius: 999px;
+}
+.ma-mandate-title {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 680;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  color: #141828;
+  text-wrap: balance;
+}
+.ma-mandate-title em {
+  font-style: italic;
+  font-weight: 680;
+  color: var(--service-accent-red);
+}
+
+/* Tabs */
+.ma-mandate-tabs {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  margin-bottom: 18px;
+  padding: 6px;
+  background: rgba(20, 24, 40, 0.04);
+  border-radius: 999px;
+  width: fit-content;
+}
+.ma-mandate-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 18px;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.25s ease, color 0.25s ease;
+  color: rgba(20, 24, 40, 0.65);
+}
+.ma-mandate-tab:hover { color: #141828; }
+.ma-mandate-tab.is-active {
+  background: #141828;
+  color: #fefdf8;
+}
+.ma-mandate-tab-label {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.008em;
+}
+.ma-mandate-tab-posture {
+  font: 500 0.66rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+.ma-mandate-tab:focus-visible {
+  outline: 2px solid var(--service-accent-red);
+  outline-offset: 3px;
+}
+.ma-mandate-playbtn {
+  margin-left: 6px;
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(20, 24, 40, 0.16);
+  background: transparent;
+  border-radius: 999px;
+  color: rgba(20, 24, 40, 0.6);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.ma-mandate-playbtn:hover {
+  background: #141828;
+  color: #fefdf8;
+  border-color: #141828;
+}
+
+/* Panel */
+.ma-mandate-panel-wrap { position: relative; }
+.ma-mandate-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.ma-mandate-promise {
+  margin: 0;
+  max-width: 720px;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: rgba(20, 24, 40, 0.82);
+}
+.ma-mandate-promise strong { color: #141828; }
+
+.ma-mandate-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 32px;
+}
+.ma-mandate-col { display: flex; flex-direction: column; gap: 14px; }
+.ma-mandate-collabel {
+  margin: 0 0 4px;
+  font: 500 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.5);
+}
+
+/* Timeline */
+.ma-mandate-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ma-mandate-timeline-step {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 14px;
+  position: relative;
+  padding: 14px 0;
+  border-top: 1px dashed rgba(20, 24, 40, 0.12);
+}
+.ma-mandate-timeline-step:first-child { border-top: 0; padding-top: 4px; }
+.ma-mandate-timeline-dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--service-accent-red);
+  position: relative;
+}
+.ma-mandate-timeline-step:not(:last-child) .ma-mandate-timeline-dot::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 1px;
+  height: calc(100% + 28px);
+  background: rgba(184, 18, 24, 0.25);
+  transform: translateX(-50%);
+}
+.ma-mandate-timeline-weeks {
+  margin: 0;
+  font: 500 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--service-accent-red);
+}
+.ma-mandate-timeline-phase {
+  margin: 4px 0 2px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.96rem;
+  color: #141828;
+}
+.ma-mandate-timeline-brief {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: rgba(20, 24, 40, 0.7);
+}
+
+/* Inflections */
+.ma-mandate-inflections {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.ma-mandate-inflection {
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid rgba(20, 24, 40, 0.1);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.ma-mandate-inflection:hover {
+  border-color: rgba(184, 18, 24, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(20, 24, 40, 0.05);
+}
+.ma-mandate-inflection-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 6px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #141828;
+}
+.ma-mandate-inflection-num {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(184, 18, 24, 0.1);
+  color: var(--service-accent-red);
+  font: 600 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+.ma-mandate-inflection-body {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(20, 24, 40, 0.72);
+  text-wrap: pretty;
+}
+
+/* Who does what */
+.ma-mandate-actors {
+  margin-top: 8px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(20, 24, 40, 0.1);
+}
+.ma-mandate-actors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+.ma-mandate-actor {
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid rgba(20, 24, 40, 0.08);
+  border-radius: 10px;
+}
+.ma-mandate-actor-name {
+  margin: 0 0 10px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #141828;
+  letter-spacing: -0.005em;
+}
+.ma-mandate-actor-tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ma-mandate-actor-tasks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: rgba(20, 24, 40, 0.78);
+}
+.ma-mandate-actor-tasks svg {
+  margin-top: 3px;
+  flex-shrink: 0;
+  color: var(--service-accent-red);
+}
+
+@media (max-width: 820px) {
+  .ma-mandate-cols { grid-template-columns: 1fr; }
+  .ma-mandate-actors-grid { grid-template-columns: 1fr; }
+  .ma-mandate-tab { padding: 8px 14px; }
+  .ma-mandate-tab-posture { display: none; }
+}
