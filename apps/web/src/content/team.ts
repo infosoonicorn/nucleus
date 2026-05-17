@@ -119,7 +119,7 @@ export const team: TeamMember[] = [
     group: 'leadership',
     seniority: 'partner',
     initials: 'TA',
-    // headshot not in source PDF — falls back to monogram until partner supplies one
+    headshotSrc: '/team/tarun-agarwal.jpg',
     expertise: ['vCFO', 'Corporate Finance', 'Group Consolidation'],
     experienceYears: 20,
     qualifications: ['Chartered Accountant'],
