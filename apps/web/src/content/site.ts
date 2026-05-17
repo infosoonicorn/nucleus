@@ -128,8 +128,9 @@ export const site = {
 export const navigation = [
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Careers', href: '/careers' },
+  { label: 'Team', href: '/team' },
   { label: 'Insights', href: '/insights' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
 ];
 
