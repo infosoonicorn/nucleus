@@ -32,6 +32,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description:
       member.shortBio ??
       `Articles by ${member.name}, ${member.role} at Nucleus Advisors.`,
+    alternates: {
+      canonical: `/insights/by/${member.slug}`,
+      types: {
+        'application/rss+xml': [
+          {
+            url: `/insights/by/${member.slug}/feed.xml`,
+            title: `${member.name} — Insights | Nucleus Advisors`,
+          },
+        ],
+      },
+    },
     openGraph: {
       type: 'profile',
       title: `${member.name} — Insights`,
