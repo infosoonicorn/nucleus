@@ -614,6 +614,48 @@ export const services: Service[] = [
         },
       ],
     },
+    faq: [
+      {
+        q: 'When does a company need M&A advisory versus running the process internally?',
+        a: 'Internal teams can handle conversations with a known counterparty. The case for M&A advisory is usually one of three: the universe of potential buyers or targets is wider than your network and needs systematic mapping; the diligence, negotiation and documentation load is too heavy to handle alongside operating the company; or you want a third party in the room when terms are negotiated so the relationship with the other side stays clean. If none of those are true, hold off. If two are true, talk to us.',
+      },
+      {
+        q: "What's the difference between buy-side and sell-side mandates?",
+        a: 'Buy-side means we work for the acquirer — target screening, approach, diligence and negotiation. Sell-side means we work for the seller — process design, buyer outreach, CIM and bid evaluation. Same partners, different posture. On a sell-side we run a competitive process to get to the best price; on a buy-side we run a structured search and a disciplined negotiation. We take both, but never both sides of the same transaction.',
+      },
+      {
+        q: 'How are M&A fees structured?',
+        a: "A modest monthly retainer covers partner-led work — strategy memos, model, diligence coordination, documentation alongside counsel. A success fee, structured as a percentage of transaction value, only triggers on a closed deal. The retainer is fully creditable against the success fee. Exact rates depend on transaction size, complexity and whether it's buy-side or sell-side, and land on the engagement letter before kick-off. No back-loaded surprises, no out-of-pocket markups.",
+      },
+      {
+        q: 'What is a typical M&A timeline with Nucleus?',
+        a: "Plan on sixteen to twenty weeks for a mid-market transaction from engagement letter to close, give or take two weeks. The variable is the other side's pace, not the prep. The first six weeks are scope, target screening, and approach. Weeks seven to twelve are dialogue and diligence. Weeks thirteen to twenty are term sheet, SPA / SHA negotiation, CP tracking and close. Restructuring or cross-border transactions can stretch to twenty-four to twenty-eight weeks.",
+      },
+      {
+        q: 'Do you sign an NDA before the first meeting?',
+        a: 'Yes. A short, mutual NDA goes out the same day a founder or board reaches out — before any materials change hands either direction. The form is one page, 24-month tail, India-law unless the counterparty is incorporated abroad. Internally we maintain Chinese walls between the IB / M&A team and Soonicorn Ventures, our in-house fund. Any potential conflict is flagged in writing before kick-off, not buried in a footer.',
+      },
+      {
+        q: 'How are you different from boutique M&A houses or Big-4 corporate finance?',
+        a: 'Most boutique and Big-4 teams sell with partners and deliver with juniors. We staff partner-deep, run a handful of mandates at a time rather than thirty, and the team is built from former founders and ex-CFOs rather than audit or consulting alumni. Fees are mostly success-aligned rather than retainer-heavy, so our incentive is the same as yours: a clean close. We also stay engaged for sixty days post-close on integration handover.',
+      },
+      {
+        q: 'Will you work alongside our legal counsel?',
+        a: 'Always. Bring your own counsel — we run the commercial workstream, they run the legal one, and we sit in the same room at term sheet, SPA and SHA. Our lane is valuation, structure, deal economics and process discipline. Counsel drives SPA / SHA drafting, reps and warranties, governance, regulatory filings and closing mechanics. We never receive referral economics from counsel introductions — that is on the engagement letter.',
+      },
+      {
+        q: 'What happens if the transaction falls through?',
+        a: "You owe the retainer for the time spent — that's it. The success component never triggers without a wire. We document why the transaction didn't close, what to fix before re-attempting, and whether the strategic logic still holds. Many companies come back twelve to eighteen months later with a sharper view. We hold the file open without charge for that period.",
+      },
+      {
+        q: "Can Soonicorn Ventures participate in a deal you're running?",
+        a: "Soonicorn cannot lead a transaction we are advising on — that would be a conflict, and SEBI AIF regulations are clear on it. As a non-lead, smaller-cheque participant in a competitive process, yes, with disclosure to all parties in writing before any materials are shared. Most of our M&A mandates sit above Soonicorn's investment band anyway, so the question rarely comes up.",
+      },
+      {
+        q: 'What size of transactions do you take mandates for?',
+        a: "Practically, transaction values from US $5M and up for a full mandate. Below that, the economics of partner-led delivery don't work — we are happy to do a lighter strategic review, target map, or term-sheet read for founders we like, scoped as a fixed-fee project. At the upper end our typical mandates sit in the US $5M to US $100M band; we have run buy-side strategic mandates above that.",
+      },
+    ],
     deliverables: [
       'Transaction feasibility note.',
       'Deal model.',
@@ -822,6 +864,48 @@ export const services: Service[] = [
         },
       ],
     },
+    faq: [
+      {
+        q: 'When should we bring in external internal audit instead of building in-house?',
+        a: "Build in-house when the company has hit a scale where a permanent function pays for itself — usually past 300 employees or multiple business units. Bring in external internal audit when the audit committee wants independent assurance, when there's a regulatory trigger (IFC / ICFR for listed entities), or when in-house attempts have created findings without action. We are also brought in to bootstrap an internal audit function — set the methodology, build the team, hand over in twelve to eighteen months.",
+      },
+      {
+        q: "What's the right scope for an annual internal audit plan?",
+        a: "Risk-based — derive the plan from a current risk-and-control register, not from last year's checklist. We typically cover the top eight to twelve cycles in year one: procure-to-pay, order-to-cash, payroll, treasury, fixed assets, inventory, IT general controls and the two or three cycles material to your sector. The audit committee approves the plan; we deliver it across the year with quarterly status updates.",
+      },
+      {
+        q: 'How are internal audit fees structured?',
+        a: "Annual retainer scoped to the approved plan, billed monthly. The retainer covers fieldwork, reporting and the action-tracker reviews. Out-of-scope special audits (forensic, fraud, M&A-related) are scoped and billed separately at engagement-level rates. We don't bill by the hour — predictable annual budgeting matters more to CFOs than precise time tracking.",
+      },
+      {
+        q: "What's the timeline for a first-year IFC / ICFR implementation?",
+        a: 'Sixteen to twenty weeks for a mid-sized listed entity to reach a documented, tested and remediated control environment. The first six weeks are scoping and walkthroughs; weeks seven to fourteen are design and operating-effectiveness testing; the final six weeks are remediation, retesting and the audit-committee report. After year one, the maintenance cadence drops to roughly forty percent of that effort annually.',
+      },
+      {
+        q: 'How do you handle confidentiality around findings?',
+        a: 'Findings go to the audit committee and management — never to anyone else inside or outside the firm. We sign mutual NDAs at engagement letter stage. Our workpapers are stored on access-controlled servers, separated from other client engagements, and destroyed seven years after engagement close as professional standards require.',
+      },
+      {
+        q: 'How are you different from Big-4 internal audit?',
+        a: 'Same staffing point as our other practices — Big-4 teams sell with partners and deliver with junior consultants. We staff partner-deep, run fewer engagements, and the partner you meet is the partner who signs the report. Our methodology is the same as Big-4 (IIA standards, risk-based audit, IFC / ICFR aligned to SOX-equivalent rigour) — what differs is who is actually in the room.',
+      },
+      {
+        q: 'Will you work with our existing internal audit team?',
+        a: "Yes, and often that's the structure that works best. We co-source — your team does the routine cycle audits, we cover the specialised or higher-risk areas, and our partner sits on the audit committee briefing. After eighteen to twenty-four months your team usually owns ninety percent of the work and we step into a quality-assurance role.",
+      },
+      {
+        q: 'What happens to the action tracker after the engagement?',
+        a: 'It belongs to you — we hand over the live tracker, the methodology, and the templates at the end of the engagement. We continue to review the tracker quarterly during the retainer; after the retainer ends, you run it. Most clients keep the quarterly review going on a smaller retainer rather than letting the tracker go stale.',
+      },
+      {
+        q: 'Can the same firm do both statutory audit and internal audit?',
+        a: "Not for the same company. Independence rules in the Companies Act and ICAI's code prohibit it. If we already do your statutory audit, we cannot also do internal audit, and vice versa. We sometimes pair with another firm doing the audit we cannot — but the engagement letter makes that crystal clear from day one.",
+      },
+      {
+        q: 'What size companies do you typically work with?',
+        a: "Mid-market — typically companies with revenue between INR 50 crore and INR 2,000 crore. Smaller companies usually don't need a full internal audit function yet; larger companies often have built one in-house. The sweet spot for an external partner-led practice is that mid band, where the audit committee wants independent assurance but a full in-house function isn't yet warranted.",
+      },
+    ],
     deliverables: [
       'Risk and control matrix.',
       'Internal audit plan.',
@@ -1022,6 +1106,48 @@ export const services: Service[] = [
         },
       ],
     },
+    faq: [
+      {
+        q: 'When should we bring in external tax advisory versus handle it in-house?',
+        a: "Build in-house when filings are routine and the team is at scale. Bring in external advisory when there's a structural decision in play — a cross-border transaction, a transfer-pricing assessment, an investment manager structure, a notice that's gone beyond the routine. Also bring us in when an internal team is overloaded during assessment season. We don't replace your finance team; we sit alongside it for the work that needs partner-grade attention.",
+      },
+      {
+        q: 'When is the right time to do international tax structuring?',
+        a: 'Before the cross-border element exists, not after. Structuring a cross-border investment or transaction after the cash has moved is twice the work and often locks in a worse outcome. The decision points to engage us are: planning an outbound investment, setting up an overseas subsidiary, planning a cross-border M&A, raising from a non-resident investor, or considering a holding-company restructure. Six to eight weeks of structuring before action saves quarters of unwinding.',
+      },
+      {
+        q: 'How are tax assessment and litigation fees structured?',
+        a: 'Tax assessment representation is billed as a fixed engagement fee, scoped after the notice and assessment year are reviewed. Appellate work (CIT(A), ITAT, High Court) is scoped per appeal with milestones tied to the stage. Counsel fees at higher forums are separately billed at counsel rates. We give a full fee estimate before engagement letter, including the probable counsel-fee range for higher forums.',
+      },
+      {
+        q: 'How long does a typical assessment representation take?',
+        a: 'Three to six months from notice to assessment order for a routine scrutiny assessment. Complex assessments — transfer pricing, related-party transactions, large additions — can stretch to nine months. We commit to a hearing calendar with the assessing officer at the first hearing; once the calendar is set, the timeline becomes predictable.',
+      },
+      {
+        q: 'How do you handle confidential financial data?',
+        a: "Mutual NDA at engagement letter stage. Workpapers and source documents sit on access-controlled servers — segregated per client, accessible only to the named engagement team. We do not share materials across engagements, and we never use one client's data to inform views given to another. Standard professional confidentiality is enforced through ICAI's code and our internal policies.",
+      },
+      {
+        q: 'How are you different from Big-4 tax practices?',
+        a: 'Partner-led delivery rather than associate-heavy. Big-4 tax practices are excellent — and necessary when the matter touches multiple jurisdictions at scale. For India-domestic work, mid-market international tax, transfer pricing for INR 50–2,000 crore companies, and routine assessment / appellate work, a partner-led smaller practice gets you direct partner attention at a fraction of the cost.',
+      },
+      {
+        q: 'Will you work with our existing in-house tax team?',
+        a: 'Yes. Most of our engagements are with companies that have a tax controller or a finance lead handling routine compliance. We layer on for the partner-grade decisions — structuring, assessment defence, opinions, audits. Your team retains ownership of day-to-day filings; we own the matters that need a partner signature.',
+      },
+      {
+        q: 'Can you represent us in higher appellate forums?',
+        a: 'We represent up to ITAT directly. For High Court and Supreme Court matters we brief and work alongside senior tax counsel — we have a panel of three counsel we work with regularly. The engagement letter notes counsel-fee ranges so there are no surprises if the matter escalates.',
+      },
+      {
+        q: 'What happens after a tax notice is closed?',
+        a: "We document the position taken, file it in the assessment defence pack, and update the position memo so future assessments don't re-litigate the same issue. If the closure was conditional on changes to the company's position going forward, we walk through those with the finance team so they get baked into next year's filings.",
+      },
+      {
+        q: 'Do you handle both GST and direct tax under one engagement?',
+        a: 'Yes, and we usually recommend it. Most issues that matter to a CFO have both direct-tax and indirect-tax dimensions — transfer pricing of services, treatment of inter-company transactions, M&A structuring, ESOP grants to non-residents. Splitting them across firms loses the cross-view. The same partner team covers both.',
+      },
+    ],
     deliverables: [
       'Tax position note.',
       'Compliance calendar.',
@@ -1225,6 +1351,48 @@ export const services: Service[] = [
         },
       ],
     },
+    faq: [
+      {
+        q: 'When should we change our statutory auditor?',
+        a: "The Companies Act mandates rotation for listed and large unlisted companies — once every five or ten years depending on type. Beyond the regulatory trigger, change auditors when the current relationship has gone stale (same partner-team for five-plus years, audit becoming mechanical), when there's been a material disagreement on an accounting position, or when the company's complexity has outgrown the current firm. A change is a six-month process planned ahead — opening-balance audit, transition workpapers, audit-committee approval.",
+      },
+      {
+        q: 'When is the right time to start year-end audit work?',
+        a: 'Eight to ten weeks before year-end for interim fieldwork. Walkthroughs, control testing, and substantive procedures on stable cycles (revenue, AP, payroll) happen in the interim period so year-end is concentrated on year-end-specific work. Companies that wait for year-end to start audit work end up with a compressed audit and pressure on the close calendar. We schedule the calendar with management in the planning meeting.',
+      },
+      {
+        q: 'How are statutory audit fees structured?',
+        a: "Annual engagement fee scoped to the year's audit plan, billed in two or three installments tied to milestones (planning, interim, sign-off). Out-of-scope work — restatement, special audits, opinions outside the audit — is scoped and billed separately at engagement-level rates. We provide a full fee proposal before engagement letter, and we don't surprise-bill mid-year.",
+      },
+      {
+        q: 'How long does a typical statutory audit take?',
+        a: 'Sixteen weeks of partner involvement, of which eight to ten are interim fieldwork and the rest are year-end. The actual on-site fieldwork is much shorter — a typical mid-market audit involves two to three weeks of in-person fieldwork. The rest is review, partner sign-off, and audit-committee discussion. Listed entities add four weeks for the limited reviews around quarterly results.',
+      },
+      {
+        q: 'How do you handle confidential financial data?',
+        a: "Same standards as any other practice — mutual NDA, access-controlled workpapers, ring-fenced engagement teams, no cross-client use. As statutory auditors we are bound by ICAI's code which is stricter than NDA — disclosure of audit information to anyone outside the entity is a professional offence.",
+      },
+      {
+        q: 'How are you different from Big-4 audit firms?',
+        a: "For mid-market companies (INR 50 crore to INR 2,000 crore revenue), Big-4 audit is often over-priced and under-attended — partner attention is rationed, and the day-to-day team is junior. A partner-led mid-tier firm delivers the same audit quality at a fraction of the cost, with the partner actually in the room. Big-4 is the right choice when listing on a foreign exchange or when the company's scale truly warrants Big-4 brand-name comfort to specific stakeholders.",
+      },
+      {
+        q: 'Can you also do limited reviews and special audits?',
+        a: "Yes. Limited reviews for listed entities (quarterly and half-year), special audits (forensic, regulatory, transaction-related), system audits, and certifications (utilisation, FEMA, RBI) are all within scope. Each is scoped as its own engagement so the work doesn't bleed into the statutory audit fee.",
+      },
+      {
+        q: "What if there's a disagreement on an accounting position?",
+        a: "Disagreements get worked through with management first, then with the audit committee. If it's an accounting standard interpretation, we provide our position in writing with reasoning, references and any alternate views considered. If the difference can't be resolved, it lands in the audit report — a qualified opinion, emphasis of matter, or other modification as appropriate. We never adjust our position to keep an engagement.",
+      },
+      {
+        q: 'What happens after the audit report is signed?',
+        a: 'Management letter goes to the audit committee with observations on the year — control weaknesses, accounting policy refinements, and process improvements. We follow up the next year on the status of those observations. Statutory audit ends at the sign-off; ongoing advisory is a separate engagement if needed.',
+      },
+      {
+        q: 'Do you take audits of listed companies?',
+        a: 'Yes, for SME-platform and mid-cap mainboard listings. We have the peer review and the FRRB exposure compliance required to sign listed-company audits. For large-cap or globally listed entities, we usually act as joint auditors with a Big-4 firm rather than as sole auditor — that gets the cost benefit without losing the Big-4 brand comfort that some institutional investors look for.',
+      },
+    ],
     deliverables: [
       'Audit plan.',
       'Audit queries and closure tracker.',
@@ -1426,6 +1594,48 @@ export const services: Service[] = [
         },
       ],
     },
+    faq: [
+      {
+        q: 'When does a company need an independent valuation?',
+        a: "Most commonly: a fundraise (to support the share-issue price for FEMA / Income-tax purposes), an ESOP grant (for grant-price determination), a related-party transaction (to demonstrate arm's length), a transaction (M&A fairness or pricing), a restatement (purchase-price allocation under Ind AS 103), or a regulatory ask (RBI / SEBI). Less commonly: dispute / IBC matters, internal management decisions, or shareholder buyouts. The purpose drives the value standard and the methodology — we scope that in week one.",
+      },
+      {
+        q: "What's the right standard of value for our purpose?",
+        a: 'Depends on the purpose. Fair market value is the default for tax and regulatory contexts. Fair value (Ind AS / IFRS) for financial reporting. Investment value or strategic value for M&A. Liquidation value for IBC. Getting the standard wrong is the most common source of valuation rework — we anchor on the purpose first, the standard second, the methodology third. Most reports have the standard noted on the cover.',
+      },
+      {
+        q: 'How are valuation fees structured?',
+        a: "Fixed engagement fee per valuation, scoped after the purpose, value standard and complexity are agreed. Simple fundraise / ESOP valuations are in a defined band; complex transaction valuations, multi-entity valuations, or contested matters are scoped individually. Fees never depend on the conclusion — that would undermine the report's independence.",
+      },
+      {
+        q: 'How long does a typical valuation take?',
+        a: 'Two to three weeks for a routine fundraise or ESOP valuation. Three to four weeks for a transaction valuation with multiple methodologies. Six to eight weeks for a complex multi-entity or cross-border valuation. The timeline is mostly driven by information availability — the actual analytical work is two to three weeks of partner time.',
+      },
+      {
+        q: 'How do you defend the valuation in diligence or in court?',
+        a: "Every report ships with a defence pack: methodology disclosure, assumption schedule, sensitivity analysis, and the alternative views considered. The same partner who signed the report represents in diligence calls, audit-committee questions, or appellate proceedings. We don't outsource the defence.",
+      },
+      {
+        q: 'How are you different from Big-4 valuation teams?',
+        a: 'Same staffing point as the rest of the firm — partner-led delivery rather than associate-heavy. For ESOP, fundraise, FEMA and Indian-regulatory valuations Big-4 is typically more expensive and slower without delivering a meaningfully different report. For cross-border fairness opinions where institutional investors specifically require Big-4 brand, we recommend Big-4.',
+      },
+      {
+        q: 'Can the same firm value and audit?',
+        a: "Not for the same company. SEBI's Listing Obligations, the Companies Act, and ICAI's code all prohibit the auditor of a listed or large company from also providing valuation services to that company. We sometimes pair — value for one company, audit for an unrelated company — but never both for the same.",
+      },
+      {
+        q: 'What if we disagree with the valuation conclusion?',
+        a: "Disagreement is expected — usually because management's expectations diverge from market-implied multiples or DCF assumptions. We walk through every assumption, show the sensitivity to the variables in question, and document the disagreement on the workpapers. If the difference is fundamental, we don't issue the report. We never adjust the number to land where the client wants.",
+      },
+      {
+        q: 'How often should we refresh the valuation?',
+        a: "Annually as a default for ESOP and fundraise contexts. Sooner when there's a material event — a closed round at a new price, a significant business development, a regulatory change in valuation methodology. A stale valuation defended against current diligence is harder to support than a fresh one.",
+      },
+      {
+        q: 'What size of transactions or companies do you value?',
+        a: 'Sweet spot is companies with revenue between INR 20 crore and INR 2,000 crore, or transactions in the US $5M to US $500M band. Smaller engagements work too — a $1M ESOP grant valuation is a routine assignment. Above that band, we sometimes pair with a Big-4 firm where institutional investor preference demands it.',
+      },
+    ],
     deliverables: [
       'Valuation report.',
       'Valuation model.',
@@ -1629,6 +1839,48 @@ export const services: Service[] = [
         },
       ],
     },
+    faq: [
+      {
+        q: 'When does a company benefit from outsourced finance?',
+        a: 'Three cases. First, the company is too small for a full in-house finance team but too large for the founder to handle on a spreadsheet — typically Series A through early Series B. Second, the company has an in-house team but needs partner-level oversight without hiring a CFO — a vCFO layer. Third, the company is going through a transition (new funding, restructuring, M&A integration) and needs surge capacity. If none of those, building in-house is the right answer.',
+      },
+      {
+        q: 'When does a company outgrow vCFO and need a full-time CFO?',
+        a: 'Three triggers: monthly close requires more than one person full-time; investor reporting cadence has crossed quarterly into monthly; or strategic finance work (capital allocation, M&A pipeline, treasury) is dominating the finance role. Most companies cross that threshold around US $20M ARR or 200 employees. We help in the transition — scope the role, run the search alongside the founder, and hand over cleanly.',
+      },
+      {
+        q: 'How are outsourced finance fees structured?',
+        a: 'Monthly retainer scoped to the work — usually a fixed amount per month based on transaction volume, complexity and whether vCFO is in scope. The retainer covers everything in the scope; out-of-scope special projects (fundraise, audit support, M&A integration) are scoped separately. No per-hour billing — predictable monthly budgeting matters.',
+      },
+      {
+        q: 'How long does onboarding take?',
+        a: "Three to four weeks to opening balances clean, chart-of-accounts redesigned, tooling stack set up, and first close ready. The first month live is usually a hybrid — we run the close, your team observes, and we hand over the runbook. By month two we're at steady state.",
+      },
+      {
+        q: 'How do you handle confidential data and system access?',
+        a: "Mutual NDA at engagement letter stage. We work inside your accounting system (Zoho, Tally, NetSuite or whatever) rather than running parallel books — your data stays in your environment. Access is restricted to the named engagement team. We don't move data to our servers except for the workpapers we are obligated to retain.",
+      },
+      {
+        q: 'How are you different from typical outsourced firms?',
+        a: 'Most outsourced finance firms scale by adding junior accountants. We staff partner-deep — a partner reviews every close, sits on monthly reviews, and is available for the strategic finance calls. The day-to-day work happens with a smaller engagement team, but the partner is genuinely in the engagement, not just on the engagement letter.',
+      },
+      {
+        q: 'Will the same team work with us or rotate?',
+        a: "Same team. Rotation is the right model for routine commoditised work; finance outsourcing benefits from continuity. The partner stays through the engagement. The execution team can change with personnel moves, but we transition in pairs so context isn't lost. If you specifically want rotation for independence reasons (uncommon outside audit) we accommodate.",
+      },
+      {
+        q: 'What happens if we want to bring finance in-house later?',
+        a: 'Common path. We help scope the in-house role, can run the search alongside, and run a structured handover — typically eight to twelve weeks of overlap during which the in-house lead shadows us, then takes over with us in advisory standby. After the transition we are often retained on a smaller scope (audit support, specific projects) rather than a complete exit.',
+      },
+      {
+        q: 'Can you support fundraising alongside operations?',
+        a: 'Yes, and most of our engagements do. The vCFO is involved in fundraise prep, investor diligence and post-close reporting. For the actual fundraise mandate (pitch, IM, investor outreach), we co-engage with our Investment Banking practice under a separate engagement letter so the work is properly scoped and the fee structure is clear.',
+      },
+      {
+        q: "What's the minimum engagement size?",
+        a: 'We typically engage with companies past Series A or with revenue above INR 5 crore — below that scale, the cost of a partner-led outsourced finance team is hard to justify against the alternative of one in-house accountant. For pre-Series-A companies we sometimes do a fixed-fee monthly bookkeeping engagement, but the vCFO layer requires a higher base.',
+      },
+    ],
     deliverables: [
       'Monthly MIS pack.',
       'Compliance tracker.',
@@ -1832,6 +2084,48 @@ export const services: Service[] = [
         },
       ],
     },
+    faq: [
+      {
+        q: 'When does a private company need a company secretary?',
+        a: "The Companies Act requires a CS for public companies and private companies with paid-up capital above INR 10 crore. Outside the regulatory trigger, hire a CS function (in-house or outsourced) when filings are starting to slip, when there's an upcoming funding round that requires clean compliance, or when the board is starting to meet formally. A solo CS in-house works at one scale; an outsourced partner-led practice covers the same scope at a fraction of the cost up to mid-market.",
+      },
+      {
+        q: "Annual filings versus ongoing compliance — what's the difference?",
+        a: 'Annual filings (AOC-4, MGT-7, DPT-3) are the ROC submissions every company files once a year. Ongoing compliance covers everything in between — board meetings, general meetings, resolutions, statutory register updates, charge filings, director declarations, and the responses to ROC queries. Annual filings are usually fine; ongoing compliance is where most companies drift. Both need to be done, both are within our scope.',
+      },
+      {
+        q: 'How are corporate secretarial fees structured?',
+        a: 'Annual retainer covering the standard scope (annual filings, board / general meetings, statutory registers, ongoing compliance) billed in two installments. Out-of-scope work (incorporations, transactions, secretarial DD, FEMA matters) is scoped per project. The retainer is set based on company size, number of meetings expected, and AIF / regulated-entity overlay if any.',
+      },
+      {
+        q: 'How quickly can you turn around an incorporation?',
+        a: 'Five to seven business days for a routine private-company incorporation from documents in hand. Faster if name approval and DSCs are already in place. Fund / AIF entity incorporations take three to four weeks because of additional MOA / AOA drafting and regulatory cross-checks. We give a date at engagement and we hold it.',
+      },
+      {
+        q: 'How do you handle confidential cap-table and director data?',
+        a: "Mutual NDA at engagement letter. Access to the company's ROC portal is limited to the named engagement team, and we use unique credentials per client (never shared). Statutory registers we maintain on your behalf belong to you — we maintain the working copies and the final copies sit with the company secretary or company records as the Companies Act requires.",
+      },
+      {
+        q: 'How are you different from solo CS practices?',
+        a: 'Solo CS practices are excellent for the basics at a low cost. Where we differ: partner attention on the matters that need it (FEMA, AIF compliance, secretarial DD, transaction documentation), continuity if the lead partner is unavailable, and process discipline across a firm rather than dependence on one person. For mid-market companies past Series A, the difference becomes meaningful — for very small companies, a solo practice is often the right choice.',
+      },
+      {
+        q: 'Can you also handle AIF and fund-level compliance?',
+        a: "Yes — it's a significant part of our practice given the Soonicorn relationship and the firm's broader fund-services work. SEBI quarterly returns, investor onboarding documents, trustee coordination, fund-level filings, PPM updates and investor letters. The same partner team covers both corporate secretarial and fund-level work, so there's no handoff between practices.",
+      },
+      {
+        q: 'What if we have missed filings from before engaging you?',
+        a: 'Common situation. The first ninety days of engagement are usually a clean-up sprint: gap audit, prioritised remediation list, late-filing penalties calculated, and a path to fully current compliance. Penalties are paid by the company; our work is to get back to a clean baseline. After that, ongoing compliance keeps it clean.',
+      },
+      {
+        q: 'What does post-incorporation support cover?',
+        a: 'First year of compliance — first board meeting documentation, opening of bank accounts coordination, statutory register setup, first filings (commencement of business, share allotments to founders / investors), and the calendar of compliance events for the year ahead. Most newly-incorporated companies retain us for the post-incorporation year because doing it alone is high-risk for a first-time company.',
+      },
+      {
+        q: 'Can you support FEMA and FDI matters?',
+        a: 'Yes. FDI filings (FC-GPR, FC-TRS), ODI filings, ECB filings, downstream investment reporting, and FEMA compliance for share issuance / transfer between residents and non-residents. We coordinate with the AD bank and RBI directly. For complex cross-border structures, we work alongside specialist FEMA counsel — that pairing is on the engagement letter so fees are clear.',
+      },
+    ],
     deliverables: [
       'Compliance calendar.',
       'Statutory registers checklist.',
@@ -2035,6 +2329,48 @@ export const services: Service[] = [
         },
       ],
     },
+    faq: [
+      {
+        q: 'When should a fund manager use external AIF advisors versus build in-house?',
+        a: 'First-time fund managers almost always benefit from external setup — the regulatory work is specialised and one-time. Past the first fund, in-house operations capability grows. We typically continue with multi-fund managers in a partner-grade compliance and SEBI-liaison role even after the in-house ops team is built. For single-fund or first-time managers, end-to-end external support is the norm.',
+      },
+      {
+        q: "Cat I, II or III — what's the right structure for our first fund?",
+        a: "Cat I for early-stage / venture / social impact (broadly the regulator's 'positive externality' fund types). Cat II is the default for growth / private equity / debt funds that don't have positive-externality classification. Cat III for hedge / long-short / liquid strategies. The decision drives leverage caps, tax pass-through treatment, and SEBI reporting load. We scope the structure decision in week one of engagement.",
+      },
+      {
+        q: 'How are AIF setup and operations fees structured?',
+        a: 'Setup is a fixed engagement fee tied to milestones (structure approval, document drafting, SEBI application, registration, first close). Ongoing operations is a quarterly retainer scoped to fund size, investor count, and SEBI compliance load. Trustee and custodian fees are separate (paid directly by the fund). All fees on the engagement letter before kick-off.',
+      },
+      {
+        q: 'How long does it take to get a first close?',
+        a: "Twelve to sixteen weeks from engagement letter to first close, assuming structure is straightforward and PPM commercials are largely agreed. Cross-border structures (GIFT City / IFSC, offshore feeders) add four to six weeks for additional regulatory steps. SEBI's own processing time for the AIF registration is six to eight weeks of that window — predictable but not compressible.",
+      },
+      {
+        q: 'How do you handle confidential LP information?',
+        a: "Mutual NDAs at engagement letter and individually with each LP onboarding. LP records sit on access-controlled systems segregated per fund. We never use LP information from one fund to inform another fund's marketing or operations. SEBI's reporting requirements limit disclosure scope to aggregate data — individual LP disclosure beyond what SEBI requires never happens.",
+      },
+      {
+        q: 'How are you different from law firms doing AIF setup?',
+        a: 'Law firms do excellent drafting work — PPM, contribution agreement, trust deed. What we bring on top is the operational design (drawdowns, NAV cycles, investor communications, quarterly compliance), the SEBI liaison through registration, and the post-launch operations capability. Most managers use a law firm for the documents and us for everything around them. We coordinate the workstreams.',
+      },
+      {
+        q: 'Can you continue post-launch operations support?',
+        a: "That's the steady-state engagement. Quarterly SEBI returns, drawdown notices, investor reporting, NAV cycles, audit timelines, regulatory filings, and the trustee / custodian / fund-administrator liaison. Most fund managers retain us through the fund's life rather than re-staffing each function in-house — the economics favour external for any fund below US $200M AUM.",
+      },
+      {
+        q: "What happens if there's a regulatory enquiry from SEBI?",
+        a: 'We handle the response — drafting, evidence packs, follow-up correspondence, and the formal meetings with the SEBI desk officer. Most enquiries are routine clarifications resolved within four to six weeks. For more serious matters (show-cause notices, enforcement), we work alongside SEBI-specialist counsel; that pairing is documented on the engagement letter so fees are clear if it ever happens.',
+      },
+      {
+        q: 'Can you set up funds in IFSC / GIFT City?',
+        a: 'Yes. GIFT City IFSCA-registered fund management entities are a growing share of our work — both as a primary domicile and as a feeder into a domestic AIF. The structuring decision (GIFT vs domestic AIF vs offshore vs hybrid) is driven by LP base, asset class, and tax efficiency. We scope that decision before engagement.',
+      },
+      {
+        q: "What's the minimum fund size that's economically viable?",
+        a: 'US $10M corpus for a Cat I or Cat II fund is the practical floor — below that, the fixed cost of setup, trustee, audit and compliance outweighs the management fee. The economics improve sharply above US $25M. For sub-$10M strategies we sometimes recommend the company set up as a non-AIF structure (LLP / private trust) with lighter regulation, scope-permitting.',
+      },
+    ],
     deliverables: [
       'AIF setup workplan.',
       'Regulatory and compliance calendar.',
