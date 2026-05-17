@@ -1,0 +1,1082 @@
+{
+  "math-of-dilution": {
+    "publishedOn": "2025-12-23",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Cap table",
+    "isNew": false,
+    "order": 1
+  },
+  "how-investors-read-im": {
+    "publishedOn": "2025-12-29",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Investor narrative",
+    "isNew": false,
+    "order": 2
+  },
+  "cap-table-hygiene": {
+    "publishedOn": "2026-01-06",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Cap table",
+    "isNew": false,
+    "order": 3
+  },
+  "term-sheet-line-by-line": {
+    "publishedOn": "2026-01-11",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Term sheet",
+    "isNew": false,
+    "order": 4
+  },
+  "anti-dilution-clauses-explained": {
+    "publishedOn": "2026-01-17",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Term sheet",
+    "isNew": false,
+    "order": 5
+  },
+  "14-day-pitch-to-term-sheet-myth": {
+    "publishedOn": "2026-01-23",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Deal process",
+    "isNew": false,
+    "order": 6
+  },
+  "fundraise-readiness-audit": {
+    "publishedOn": "2026-01-28",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Fundraising",
+    "isNew": false,
+    "order": 7
+  },
+  "strategic-exit-vs-pe-buyout": {
+    "publishedOn": "2026-02-01",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Exit",
+    "isNew": false,
+    "order": 8
+  },
+  "esop-economics-for-founders": {
+    "publishedOn": "2026-02-06",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "ESOP",
+    "isNew": false,
+    "order": 9
+  },
+  "case-for-outside-banker": {
+    "publishedOn": "2026-02-13",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Founder ops",
+    "isNew": false,
+    "order": 10
+  },
+  "safe-vs-ccps-india": {
+    "publishedOn": "2026-02-20",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Convertibles",
+    "isNew": true,
+    "order": 11
+  },
+  "pre-money-vs-post-money-confusion": {
+    "publishedOn": "2026-03-02",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Cap table",
+    "isNew": true,
+    "order": 12
+  },
+  "bridge-rounds-save-or-signal-trouble": {
+    "publishedOn": "2026-03-06",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Bridge round",
+    "isNew": true,
+    "order": 13
+  },
+  "pro-rata-rights-series-b": {
+    "publishedOn": "2026-03-12",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "investment-banking",
+    "tag": "Term sheet",
+    "isNew": true,
+    "order": 14
+  },
+  "esop-valuation-india-409a-playbook": {
+    "publishedOn": "2026-03-16",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "ESOP valuation",
+    "isNew": false,
+    "order": 1
+  },
+  "dcf-early-stage-india-tv-dominates": {
+    "publishedOn": "2026-03-22",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "DCF",
+    "isNew": true,
+    "order": 2
+  },
+  "comparable-company-peer-set-india": {
+    "publishedOn": "2026-03-27",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "Comps",
+    "isNew": true,
+    "order": 3
+  },
+  "safe-ccps-conversion-price-traps": {
+    "publishedOn": "2026-04-07",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "Convertibles",
+    "isNew": true,
+    "order": 4
+  },
+  "brand-valuation-big-deals": {
+    "publishedOn": "2026-04-12",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "Brand value",
+    "isNew": true,
+    "order": 6
+  },
+  "ip-valuations-patents-software": {
+    "publishedOn": "2026-04-18",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "IP",
+    "isNew": true,
+    "order": 8
+  },
+  "ma-valuation-bid-ask-gap": {
+    "publishedOn": "2026-04-22",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "M&A val",
+    "isNew": true,
+    "order": 9
+  },
+  "liquidation-preference-economics": {
+    "publishedOn": "2026-04-27",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "Liq pref",
+    "isNew": true,
+    "order": 10
+  },
+  "down-round-ratchet-structuring": {
+    "publishedOn": "2026-05-06",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "Down rounds",
+    "isNew": true,
+    "order": 12
+  },
+  "minority-discounts-private-cos": {
+    "publishedOn": "2026-05-08",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "Discounts",
+    "isNew": true,
+    "order": 13
+  },
+  "eight-ways-founders-inflate-valuation": {
+    "publishedOn": "2026-05-17",
+    "authorSlug": "vijay-singh-rathore",
+    "serviceSlug": "valuations",
+    "tag": "Founder bias",
+    "isNew": true,
+    "order": 15
+  },
+  "setting-up-cat-iii-aif": {
+    "publishedOn": "2026-01-07",
+    "authorSlug": "samarth-pandey",
+    "serviceSlug": "aif-fund-management",
+    "tag": "Cat III",
+    "isNew": true,
+    "order": 3
+  },
+  "gp-lp-economics-fee-carry-hurdle": {
+    "publishedOn": "2026-01-25",
+    "authorSlug": "samarth-pandey",
+    "serviceSlug": "aif-fund-management",
+    "tag": "GP-LP",
+    "isNew": true,
+    "order": 4
+  },
+  "investment-committee-mechanics": {
+    "publishedOn": "2026-02-09",
+    "authorSlug": "samarth-pandey",
+    "serviceSlug": "aif-fund-management",
+    "tag": "IC",
+    "isNew": true,
+    "order": 7
+  },
+  "distribution-waterfall-european-american": {
+    "publishedOn": "2026-03-01",
+    "authorSlug": "samarth-pandey",
+    "serviceSlug": "aif-fund-management",
+    "tag": "Waterfall",
+    "isNew": true,
+    "order": 9
+  },
+  "cat-i-social-impact-irr": {
+    "publishedOn": "2026-03-22",
+    "authorSlug": "samarth-pandey",
+    "serviceSlug": "aif-fund-management",
+    "tag": "Impact",
+    "isNew": true,
+    "order": 11
+  },
+  "tax-pass-through-aif-gp-level": {
+    "publishedOn": "2026-04-06",
+    "authorSlug": "samarth-pandey",
+    "serviceSlug": "aif-fund-management",
+    "tag": "Tax",
+    "isNew": true,
+    "order": 13
+  },
+  "sponsor-commitment-skin-in-game": {
+    "publishedOn": "2026-04-26",
+    "authorSlug": "samarth-pandey",
+    "serviceSlug": "aif-fund-management",
+    "tag": "Skin in the game",
+    "isNew": true,
+    "order": 15
+  },
+  "founder-vesting-and-re-vesting": {
+    "publishedOn": "2026-05-17",
+    "authorSlug": "samarth-pandey",
+    "serviceSlug": "investment-banking",
+    "tag": "Founder economics",
+    "isNew": true,
+    "order": 15
+  },
+  "first-30-days-of-a-sell-side-process": {
+    "publishedOn": "2026-01-06",
+    "authorSlug": "pravesh-goel",
+    "serviceSlug": "ma-advisory",
+    "tag": "Deal process",
+    "isNew": false,
+    "order": 1
+  },
+  "four-buyer-archetypes": {
+    "publishedOn": "2026-01-22",
+    "authorSlug": "pravesh-goel",
+    "serviceSlug": "ma-advisory",
+    "tag": "Buyer archetypes",
+    "isNew": true,
+    "order": 2
+  },
+  "indicative-to-binding-bid": {
+    "publishedOn": "2026-02-11",
+    "authorSlug": "pravesh-goel",
+    "serviceSlug": "ma-advisory",
+    "tag": "Deal process",
+    "isNew": true,
+    "order": 3
+  },
+  "working-capital-adjustment-sandbagging": {
+    "publishedOn": "2026-02-27",
+    "authorSlug": "pravesh-goel",
+    "serviceSlug": "ma-advisory",
+    "tag": "Closing mechanics",
+    "isNew": true,
+    "order": 5
+  },
+  "carve-out-sales-mechanics": {
+    "publishedOn": "2026-03-21",
+    "authorSlug": "pravesh-goel",
+    "serviceSlug": "ma-advisory",
+    "tag": "Carve-outs",
+    "isNew": true,
+    "order": 8
+  },
+  "cross-border-closing-india": {
+    "publishedOn": "2026-04-09",
+    "authorSlug": "pravesh-goel",
+    "serviceSlug": "ma-advisory",
+    "tag": "Cross-border",
+    "isNew": true,
+    "order": 10
+  },
+  "closing-valuation-expectation-gap": {
+    "publishedOn": "2026-04-29",
+    "authorSlug": "pravesh-goel",
+    "serviceSlug": "ma-advisory",
+    "tag": "Valuation",
+    "isNew": true,
+    "order": 13
+  },
+  "reverse-merger-vs-direct-sale": {
+    "publishedOn": "2026-05-17",
+    "authorSlug": "pravesh-goel",
+    "serviceSlug": "ma-advisory",
+    "tag": "Exit structuring",
+    "isNew": true,
+    "order": 15
+  },
+  "founder-earn-outs-structure": {
+    "publishedOn": "2026-01-25",
+    "authorSlug": "aakash-kalra",
+    "serviceSlug": "ma-advisory",
+    "tag": "Earn-outs",
+    "isNew": true,
+    "order": 4
+  },
+  "why-sell-side-ma-fails-india": {
+    "publishedOn": "2026-03-04",
+    "authorSlug": "aakash-kalra",
+    "serviceSlug": "ma-advisory",
+    "tag": "Deal process",
+    "isNew": true,
+    "order": 6
+  },
+  "pre-loi-diligence-share-or-hold": {
+    "publishedOn": "2026-04-07",
+    "authorSlug": "aakash-kalra",
+    "serviceSlug": "ma-advisory",
+    "tag": "Information sharing",
+    "isNew": true,
+    "order": 9
+  },
+  "buy-side-target-list-construction": {
+    "publishedOn": "2026-05-17",
+    "authorSlug": "aakash-kalra",
+    "serviceSlug": "ma-advisory",
+    "tag": "Buy-side",
+    "isNew": true,
+    "order": 12
+  },
+  "seven-reports-ceo-reads": {
+    "publishedOn": "2026-01-10",
+    "authorSlug": "tarun-aggarwal",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Reporting",
+    "isNew": true,
+    "order": 6
+  },
+  "multi-currency-consolidation-fx": {
+    "publishedOn": "2026-02-07",
+    "authorSlug": "tarun-aggarwal",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Consolidation",
+    "isNew": true,
+    "order": 9
+  },
+  "internal-reporting-board-kpis": {
+    "publishedOn": "2026-02-28",
+    "authorSlug": "tarun-aggarwal",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "KPIs",
+    "isNew": true,
+    "order": 11
+  },
+  "fractional-cfo-model-pricing": {
+    "publishedOn": "2026-03-29",
+    "authorSlug": "tarun-aggarwal",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Fractional CFO",
+    "isNew": true,
+    "order": 14
+  },
+  "reps-and-warranties-insurance": {
+    "publishedOn": "2026-04-20",
+    "authorSlug": "tarun-aggarwal",
+    "serviceSlug": "ma-advisory",
+    "tag": "Risk allocation",
+    "isNew": true,
+    "order": 7
+  },
+  "post-close-integration-playbook": {
+    "publishedOn": "2026-05-14",
+    "authorSlug": "tarun-aggarwal",
+    "serviceSlug": "ma-advisory",
+    "tag": "Integration",
+    "isNew": true,
+    "order": 11
+  },
+  "distressed-ma-under-ibc": {
+    "publishedOn": "2026-01-11",
+    "authorSlug": "vijay-k-choudhary",
+    "serviceSlug": "ma-advisory",
+    "tag": "Distressed",
+    "isNew": true,
+    "order": 14
+  },
+  "transfer-pricing-tech-startups": {
+    "publishedOn": "2026-02-02",
+    "authorSlug": "vijay-k-choudhary",
+    "serviceSlug": "tax-regulatory",
+    "tag": "TP",
+    "isNew": true,
+    "order": 3
+  },
+  "equalisation-levy-2026": {
+    "publishedOn": "2026-02-28",
+    "authorSlug": "vijay-k-choudhary",
+    "serviceSlug": "tax-regulatory",
+    "tag": "Digital tax",
+    "isNew": true,
+    "order": 7
+  },
+  "poem-and-cbc-global-structures": {
+    "publishedOn": "2026-03-30",
+    "authorSlug": "vijay-k-choudhary",
+    "serviceSlug": "tax-regulatory",
+    "tag": "Int'l tax",
+    "isNew": true,
+    "order": 8
+  },
+  "international-tax-mauritius-cleanup": {
+    "publishedOn": "2026-04-20",
+    "authorSlug": "vijay-k-choudhary",
+    "serviceSlug": "tax-regulatory",
+    "tag": "Int'l tax",
+    "isNew": true,
+    "order": 12
+  },
+  "faceless-assessment-appellate": {
+    "publishedOn": "2026-05-15",
+    "authorSlug": "vijay-k-choudhary",
+    "serviceSlug": "tax-regulatory",
+    "tag": "Tax litigation",
+    "isNew": true,
+    "order": 15
+  },
+  "five-control-failures-nbfc-internal-audit": {
+    "publishedOn": "2025-12-31",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "NBFC audit",
+    "isNew": false,
+    "order": 1
+  },
+  "icfr-ipo-prep-checklist": {
+    "publishedOn": "2026-01-14",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "ICFR",
+    "isNew": true,
+    "order": 2
+  },
+  "nbfc-concurrent-audit-rbi-2026": {
+    "publishedOn": "2026-01-27",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "NBFC audit",
+    "isNew": true,
+    "order": 3
+  },
+  "fraud-risk-assessment-framework": {
+    "publishedOn": "2026-02-11",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "Fraud",
+    "isNew": true,
+    "order": 4
+  },
+  "cybersecurity-audits-fintechs": {
+    "publishedOn": "2026-02-24",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "Cyber",
+    "isNew": true,
+    "order": 6
+  },
+  "vendor-risk-supplier-incidents": {
+    "publishedOn": "2026-03-10",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "Third-party risk",
+    "isNew": true,
+    "order": 7
+  },
+  "pe-diligence-control-gaps": {
+    "publishedOn": "2026-03-20",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "PE diligence",
+    "isNew": true,
+    "order": 9
+  },
+  "internal-audit-for-saas": {
+    "publishedOn": "2026-04-04",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "SaaS audit",
+    "isNew": true,
+    "order": 11
+  },
+  "forensic-accounting-basics": {
+    "publishedOn": "2026-04-17",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "Forensics",
+    "isNew": true,
+    "order": 13
+  },
+  "sox-like-controls-india-gaap": {
+    "publishedOn": "2026-05-05",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "SOX",
+    "isNew": true,
+    "order": 14
+  },
+  "risk-based-audit-planning": {
+    "publishedOn": "2026-05-17",
+    "authorSlug": "ashish-gupta",
+    "serviceSlug": "risk-advisory",
+    "tag": "Audit planning",
+    "isNew": true,
+    "order": 15
+  },
+  "outsourced-ap-when-to-bring-inhouse": {
+    "publishedOn": "2026-01-06",
+    "authorSlug": "geetanjali-virmani",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "AP",
+    "isNew": true,
+    "order": 4
+  },
+  "d2c-inventory-cogs-accounting": {
+    "publishedOn": "2026-01-31",
+    "authorSlug": "geetanjali-virmani",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "D2C",
+    "isNew": true,
+    "order": 8
+  },
+  "variance-analysis-monthly-review": {
+    "publishedOn": "2026-02-18",
+    "authorSlug": "geetanjali-virmani",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Variance",
+    "isNew": true,
+    "order": 13
+  },
+  "treasury-controls-automate": {
+    "publishedOn": "2026-03-12",
+    "authorSlug": "geetanjali-virmani",
+    "serviceSlug": "risk-advisory",
+    "tag": "Treasury",
+    "isNew": true,
+    "order": 5
+  },
+  "whistleblower-mechanism-first-case": {
+    "publishedOn": "2026-04-01",
+    "authorSlug": "geetanjali-virmani",
+    "serviceSlug": "risk-advisory",
+    "tag": "Governance",
+    "isNew": true,
+    "order": 8
+  },
+  "process-audit-vs-internal-audit": {
+    "publishedOn": "2026-04-22",
+    "authorSlug": "geetanjali-virmani",
+    "serviceSlug": "risk-advisory",
+    "tag": "Audit scope",
+    "isNew": true,
+    "order": 10
+  },
+  "audit-committee-five-questions": {
+    "publishedOn": "2026-05-14",
+    "authorSlug": "geetanjali-virmani",
+    "serviceSlug": "risk-advisory",
+    "tag": "Audit committee",
+    "isNew": true,
+    "order": 12
+  },
+  "statutory-audit-questions-founders-dread": {
+    "publishedOn": "2025-12-24",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Audit basics",
+    "isNew": false,
+    "order": 1
+  },
+  "materiality-in-startup-audits": {
+    "publishedOn": "2026-01-02",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Materiality",
+    "isNew": true,
+    "order": 2
+  },
+  "ind-as-115-revenue-startup-mistakes": {
+    "publishedOn": "2026-01-12",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Revenue",
+    "isNew": true,
+    "order": 3
+  },
+  "audit-working-paper-file": {
+    "publishedOn": "2026-01-17",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Audit process",
+    "isNew": true,
+    "order": 4
+  },
+  "going-concern-qualifications": {
+    "publishedOn": "2026-01-25",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Going concern",
+    "isNew": true,
+    "order": 5
+  },
+  "auditor-rotation-companies-act": {
+    "publishedOn": "2026-02-01",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Rotation",
+    "isNew": true,
+    "order": 6
+  },
+  "caro-2020-growing-companies": {
+    "publishedOn": "2026-02-11",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "CARO",
+    "isNew": true,
+    "order": 7
+  },
+  "group-audits-component-auditors": {
+    "publishedOn": "2026-02-18",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Group audit",
+    "isNew": true,
+    "order": 8
+  },
+  "audit-of-stock-options": {
+    "publishedOn": "2026-02-23",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "ESOP audit",
+    "isNew": true,
+    "order": 9
+  },
+  "related-party-disclosure-discipline": {
+    "publishedOn": "2026-03-08",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "RPT",
+    "isNew": true,
+    "order": 10
+  },
+  "section-143-fraud-reporting": {
+    "publishedOn": "2026-03-14",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Fraud reporting",
+    "isNew": true,
+    "order": 11
+  },
+  "ifc-testing-what-auditor-tests": {
+    "publishedOn": "2026-03-24",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "IFC",
+    "isNew": true,
+    "order": 12
+  },
+  "sa-700-audit-reports-for-boards": {
+    "publishedOn": "2026-03-28",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Audit report",
+    "isNew": true,
+    "order": 13
+  },
+  "quarterly-limited-review-listed": {
+    "publishedOn": "2026-04-08",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Listed co audit",
+    "isNew": true,
+    "order": 14
+  },
+  "audit-fee-economics": {
+    "publishedOn": "2026-04-15",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "assurance",
+    "tag": "Audit fees",
+    "isNew": true,
+    "order": 15
+  },
+  "gst-refund-procedural-failures": {
+    "publishedOn": "2026-04-24",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "tax-regulatory",
+    "tag": "GST",
+    "isNew": false,
+    "order": 1
+  },
+  "section-56-2-viib-angel-tax-2026": {
+    "publishedOn": "2026-05-01",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "tax-regulatory",
+    "tag": "Angel tax",
+    "isNew": true,
+    "order": 2
+  },
+  "section-80-iac-tax-holiday": {
+    "publishedOn": "2026-05-08",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "tax-regulatory",
+    "tag": "Startup incentives",
+    "isNew": true,
+    "order": 9
+  },
+  "buy-back-tax-post-2026": {
+    "publishedOn": "2026-05-16",
+    "authorSlug": "abhishek-gupta",
+    "serviceSlug": "tax-regulatory",
+    "tag": "Buy-back",
+    "isNew": true,
+    "order": 14
+  },
+  "place-of-supply-gst-exports": {
+    "publishedOn": "2026-02-03",
+    "authorSlug": "hemendra-chauhan",
+    "serviceSlug": "tax-regulatory",
+    "tag": "GST",
+    "isNew": true,
+    "order": 4
+  },
+  "100-day-gst-notice-playbook": {
+    "publishedOn": "2026-03-24",
+    "authorSlug": "hemendra-chauhan",
+    "serviceSlug": "tax-regulatory",
+    "tag": "GST notices",
+    "isNew": true,
+    "order": 6
+  },
+  "gst-search-seizure-first-24-hours": {
+    "publishedOn": "2026-05-15",
+    "authorSlug": "hemendra-chauhan",
+    "serviceSlug": "tax-regulatory",
+    "tag": "GST",
+    "isNew": true,
+    "order": 11
+  },
+  "when-outsourced-finance-beats-hiring-your-first-cfo": {
+    "publishedOn": "2025-12-30",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Org design",
+    "isNew": false,
+    "order": 1
+  },
+  "month-end-close-five-days": {
+    "publishedOn": "2026-01-12",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Close",
+    "isNew": true,
+    "order": 2
+  },
+  "controllership-from-scratch-0-50": {
+    "publishedOn": "2026-01-30",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Controllership",
+    "isNew": true,
+    "order": 3
+  },
+  "thirteen-week-cash-flow-forecast": {
+    "publishedOn": "2026-02-11",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Forecasting",
+    "isNew": true,
+    "order": 5
+  },
+  "esop-administration-grant-tracking": {
+    "publishedOn": "2026-02-24",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "ESOP ops",
+    "isNew": true,
+    "order": 7
+  },
+  "tally-zoho-netsuite-when-each": {
+    "publishedOn": "2026-03-06",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "ERP",
+    "isNew": true,
+    "order": 10
+  },
+  "cfo-doing-ar-followups-cost": {
+    "publishedOn": "2026-03-25",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Org design",
+    "isNew": true,
+    "order": 12
+  },
+  "annual-budget-vs-rolling-forecast": {
+    "publishedOn": "2026-04-06",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "finance-outsourcing",
+    "tag": "Budgeting",
+    "isNew": true,
+    "order": 15
+  },
+  "tds-overseas-15ca-15cb": {
+    "publishedOn": "2026-04-20",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "tax-regulatory",
+    "tag": "Withholding",
+    "isNew": true,
+    "order": 5
+  },
+  "itc-mismatch-gstr2b-reconcile": {
+    "publishedOn": "2026-05-01",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "tax-regulatory",
+    "tag": "GST",
+    "isNew": true,
+    "order": 10
+  },
+  "inverted-duty-itc-refund": {
+    "publishedOn": "2026-05-14",
+    "authorSlug": "rajat-singla",
+    "serviceSlug": "tax-regulatory",
+    "tag": "GST",
+    "isNew": true,
+    "order": 13
+  },
+  "section-56-2-x-valuation-avr": {
+    "publishedOn": "2026-01-25",
+    "authorSlug": "tarun-agarwal",
+    "serviceSlug": "valuations",
+    "tag": "Tax valuations",
+    "isNew": true,
+    "order": 5
+  },
+  "goodwill-impairment-ind-as-36": {
+    "publishedOn": "2026-03-03",
+    "authorSlug": "tarun-agarwal",
+    "serviceSlug": "valuations",
+    "tag": "Impairment",
+    "isNew": true,
+    "order": 7
+  },
+  "distressed-valuation-ibc": {
+    "publishedOn": "2026-04-09",
+    "authorSlug": "tarun-agarwal",
+    "serviceSlug": "valuations",
+    "tag": "IBC",
+    "isNew": true,
+    "order": 11
+  },
+  "real-estate-vs-cash-flow-valuation": {
+    "publishedOn": "2026-05-17",
+    "authorSlug": "tarun-agarwal",
+    "serviceSlug": "valuations",
+    "tag": "Asset val",
+    "isNew": true,
+    "order": 14
+  },
+  "cat-i-vs-cat-ii-aif-structural-choice": {
+    "publishedOn": "2025-12-27",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "aif-fund-management",
+    "tag": "AIF structure",
+    "isNew": false,
+    "order": 1
+  },
+  "sebi-aif-regulations-2026": {
+    "publishedOn": "2026-01-07",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "aif-fund-management",
+    "tag": "AIF regs",
+    "isNew": true,
+    "order": 2
+  },
+  "side-letters-needle-movers": {
+    "publishedOn": "2026-01-13",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "aif-fund-management",
+    "tag": "Side letters",
+    "isNew": true,
+    "order": 5
+  },
+  "fund-administration-inhouse-outsourced": {
+    "publishedOn": "2026-01-21",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "aif-fund-management",
+    "tag": "Fund admin",
+    "isNew": true,
+    "order": 10
+  },
+  "nav-calculations-pe-quarterly": {
+    "publishedOn": "2026-02-01",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "aif-fund-management",
+    "tag": "NAV",
+    "isNew": true,
+    "order": 12
+  },
+  "sebi-compliance-monthly-quarterly": {
+    "publishedOn": "2026-02-09",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "aif-fund-management",
+    "tag": "Compliance",
+    "isNew": true,
+    "order": 14
+  },
+  "roc-filings-that-fail-diligence": {
+    "publishedOn": "2026-02-23",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "ROC compliance",
+    "isNew": false,
+    "order": 1
+  },
+  "foreign-subsidiary-registrations": {
+    "publishedOn": "2026-03-01",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "FDI/ODI",
+    "isNew": true,
+    "order": 2
+  },
+  "board-governance-founder-led": {
+    "publishedOn": "2026-03-13",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Board",
+    "isNew": true,
+    "order": 4
+  },
+  "ten-board-resolutions-template": {
+    "publishedOn": "2026-03-21",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Board ops",
+    "isNew": true,
+    "order": 5
+  },
+  "companies-act-2026-amendments": {
+    "publishedOn": "2026-03-28",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Compliance",
+    "isNew": true,
+    "order": 6
+  },
+  "section-42-vs-preferential-allotment": {
+    "publishedOn": "2026-04-06",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Allotment",
+    "isNew": true,
+    "order": 8
+  },
+  "compounding-of-offences": {
+    "publishedOn": "2026-04-18",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Compounding",
+    "isNew": true,
+    "order": 10
+  },
+  "audit-committee-charter-drafting": {
+    "publishedOn": "2026-04-27",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Charters",
+    "isNew": true,
+    "order": 11
+  },
+  "director-kyc-din-disqualification": {
+    "publishedOn": "2026-05-10",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Director compliance",
+    "isNew": true,
+    "order": 13
+  },
+  "strike-off-dormant-subsidiaries": {
+    "publishedOn": "2026-05-14",
+    "authorSlug": "neha-rathore",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Strike-off",
+    "isNew": true,
+    "order": 14
+  },
+  "lp-onboarding-kyc-accreditation": {
+    "publishedOn": "2026-01-10",
+    "authorSlug": "astha-kumar",
+    "serviceSlug": "aif-fund-management",
+    "tag": "LP onboarding",
+    "isNew": true,
+    "order": 6
+  },
+  "subscription-agreement-clauses": {
+    "publishedOn": "2026-01-31",
+    "authorSlug": "astha-kumar",
+    "serviceSlug": "aif-fund-management",
+    "tag": "Sub-doc",
+    "isNew": true,
+    "order": 8
+  },
+  "section-90-sbo-reporting": {
+    "publishedOn": "2026-02-20",
+    "authorSlug": "astha-kumar",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "SBO",
+    "isNew": true,
+    "order": 3
+  },
+  "buy-back-sh7-bba-forms": {
+    "publishedOn": "2026-03-14",
+    "authorSlug": "astha-kumar",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Buy-back",
+    "isNew": true,
+    "order": 7
+  },
+  "demat-deadline-private-cos": {
+    "publishedOn": "2026-04-03",
+    "authorSlug": "astha-kumar",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "Demat",
+    "isNew": true,
+    "order": 9
+  },
+  "rpt-section-188-thresholds": {
+    "publishedOn": "2026-04-25",
+    "authorSlug": "astha-kumar",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "RPT",
+    "isNew": true,
+    "order": 12
+  },
+  "brsr-unlisted-cos-when": {
+    "publishedOn": "2026-05-17",
+    "authorSlug": "astha-kumar",
+    "serviceSlug": "corporate-secretarial",
+    "tag": "ESG",
+    "isNew": true,
+    "order": 15
+  }
+}
