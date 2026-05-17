@@ -8931,44 +8931,55 @@ main.service-v1 > div > section {
   .hub-search-clear { right: calc(clamp(20px, 3vw, 32px) + 14px); }
 }
 
-/* ── /insights hub: dropdown toolbar ──
-   Four native <select> dropdowns (Service / Tag / Author / Sort)
-   wrapped in custom-styled shells with a ChevronDown caret. Replaces
-   the older chip-row filters. Active dropdowns get a red ring so the
-   user can tell at a glance which filters are set. */
+/* ==============================================================
+   /insights hub filter toolbar.
+   Four native-select dropdowns (Service / Tag / Author / Sort) in a
+   responsive grid with custom shells + caret.
+   ============================================================== */
+
 .hub-toolbar-section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(20px, 3vw, 32px) clamp(14px, 2vw, 18px);
 }
+
 .hub-toolbar {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  align-items: flex-end;
+  align-items: end;
+  width: 100%;
 }
+@media (max-width: 720px) {
+  .hub-toolbar { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 420px) {
+  .hub-toolbar { grid-template-columns: 1fr; }
+}
+
 .hub-dropdown {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: block;
   min-width: 0;
-  flex: 1 1 200px;
-  max-width: 280px;
+  width: 100%;
 }
 .hub-dropdown-label {
+  display: block;
   font: 600 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(20, 24, 40, 0.5);
+  color: rgba(20, 24, 40, 0.55);
+  margin-bottom: 6px;
 }
 .hub-dropdown-shell {
+  display: block;
   position: relative;
-  display: flex;
-  align-items: center;
+  width: 100%;
 }
 .hub-dropdown-select {
   appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  display: block;
   width: 100%;
   padding: 11px 36px 11px 14px;
   font: 500 0.94rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
@@ -8996,18 +9007,13 @@ main.service-v1 > div > section {
 .hub-dropdown-caret {
   position: absolute;
   right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   pointer-events: none;
   color: rgba(20, 24, 40, 0.45);
 }
 .hub-dropdown.is-active .hub-dropdown-caret {
   color: var(--service-accent-red, #dd1017);
-}
-
-@media (max-width: 720px) {
-  .hub-dropdown { flex: 1 1 calc(50% - 6px); max-width: none; }
-}
-@media (max-width: 420px) {
-  .hub-dropdown { flex: 1 1 100%; }
 }
 
 /* Legacy chip filter rules retained for any non-hub usage. */

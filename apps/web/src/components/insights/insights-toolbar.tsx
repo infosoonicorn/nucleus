@@ -101,14 +101,18 @@ function Dropdown({
   onChange: (v: string) => void;
 }>) {
   const active = value !== '';
+  // <div> wrapper (not <label>) so layout doesn't depend on the label
+  // CSS reset; the underlying <select> gets its accessible name from
+  // aria-label below.
   return (
-    <label className={`hub-dropdown${active ? ' is-active' : ''}`}>
+    <div className={`hub-dropdown${active ? ' is-active' : ''}`}>
       <span className="hub-dropdown-label">{label}</span>
       <span className="hub-dropdown-shell">
         <select
           className="hub-dropdown-select"
           value={value}
           onChange={(e) => onChange(e.target.value)}
+          aria-label={label}
         >
           <option value="">{allLabel}</option>
           {options.map((opt) => (
@@ -120,6 +124,6 @@ function Dropdown({
         </select>
         <ChevronDown size={14} aria-hidden="true" className="hub-dropdown-caret" />
       </span>
-    </label>
+    </div>
   );
 }
