@@ -92,7 +92,7 @@ export const articles: Article[] = [
     publishedOn: '2026-04-02',
     readMinutes: 6,
     tag: 'Investor narrative',
-    serviceSlugs: ['investment-banking', 'ma-advisory'],
+    serviceSlugs: ['investment-banking'],
     reviewerStatus: 'pending',
   },
   {
@@ -139,7 +139,7 @@ export const articles: Article[] = [
     publishedOn: '2026-03-08',
     readMinutes: 8,
     tag: 'Term sheet',
-    serviceSlugs: ['investment-banking', 'ma-advisory'],
+    serviceSlugs: ['investment-banking'],
     reviewerStatus: 'pending',
   },
   {
@@ -231,7 +231,7 @@ export const articles: Article[] = [
     publishedOn: '2026-01-15',
     readMinutes: 7,
     tag: 'M&A',
-    serviceSlugs: ['investment-banking', 'ma-advisory'],
+    serviceSlugs: ['investment-banking'],
     reviewerStatus: 'pending',
   },
   {
@@ -276,7 +276,7 @@ export const articles: Article[] = [
     publishedOn: '2025-12-04',
     readMinutes: 6,
     tag: 'Capital strategy',
-    serviceSlugs: ['investment-banking', 'ma-advisory'],
+    serviceSlugs: ['investment-banking'],
     reviewerStatus: 'pending',
   },
 
