@@ -9459,6 +9459,21 @@ main.service-v1 > div > section {
   background: rgba(20, 24, 40, 0.06);
 }
 
+/* Suggested-reads rail shown directly below an empty filter / search
+   result so the reader has somewhere to go instead of a blank page.
+   Batch N of the Insights polish series. */
+.hub-empty-suggested {
+  margin-top: 28px;
+}
+.hub-empty-suggested-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.55);
+  margin: 0 0 14px;
+}
+
 /* Service-page section footer (used by Insights/Reports previews to link to hub) */
 .service-v1-section-foot {
   display: flex;

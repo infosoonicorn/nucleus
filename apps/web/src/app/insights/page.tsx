@@ -167,6 +167,33 @@ export default async function InsightsHubPage({
     };
   });
 
+  // Three most-recent visible articles, regardless of current filters,
+  // so a zero-result filter doesn't drop the reader on a blank page.
+  // Computed from `visible` (not `filtered`) so they're always available.
+  const suggestedArticles: GridArticle[] = visible
+    .slice()
+    .sort((a, b) => b.publishedOn.localeCompare(a.publishedOn))
+    .slice(0, 3)
+    .map((a) => {
+      const author = getArticleAuthor(a);
+      return {
+        slug: a.slug,
+        title: a.title,
+        excerpt: a.excerpt,
+        tag: a.tag,
+        readMinutes: a.readMinutes,
+        isDraft: a.reviewerStatus !== 'approved',
+        isNew: isRecentArticle(a),
+        thumbnailSrc: a.thumbnailSrc,
+        author: {
+          name: author.name,
+          role: author.role,
+          initials: author.initials,
+          headshotSrc: author.headshotSrc,
+        },
+      };
+    });
+
   const latestPublishedOn = getLatestPublishedOn({ allowDrafts });
 
   const anyFilterActive = Boolean(serviceFilter || tagFilter || authorFilter || sort === 'oldest');
@@ -230,7 +257,11 @@ export default async function InsightsHubPage({
         </section>
 
         <section className="hub-grid-section">
-          <InsightsGrid articles={gridArticles} filterDescription={filterDescription} />
+          <InsightsGrid
+            articles={gridArticles}
+            filterDescription={filterDescription}
+            suggested={suggestedArticles}
+          />
         </section>
 
         <section className="hub-newsletter-section">

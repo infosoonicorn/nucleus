@@ -36,9 +36,17 @@ export type GridArticle = {
 export function InsightsGrid({
   articles,
   filterDescription,
+  suggested,
 }: Readonly<{
   articles: readonly GridArticle[];
   filterDescription: string | null;
+  /**
+   * Three most-recent articles overall, used to populate the empty
+   * state so a zero-result filter / search doesn't drop the reader
+   * on a blank page. Always provided by the server, regardless of
+   * whether the current view is empty.
+   */
+  suggested?: readonly GridArticle[];
 }>) {
   const [query, setQuery] = useState('');
   const deferred = useDeferredValue(query);
@@ -84,26 +92,98 @@ export function InsightsGrid({
       </div>
 
       {filtered.length === 0 ? (
-        <div className="hub-empty">
-          <p>
-            {query
-              ? `No insights match "${query}"${filterDescription ? ` in ${filterDescription}` : ''}.`
-              : 'No insights match these filters yet.'}
-          </p>
-          {query ? (
-            <button
-              type="button"
-              onClick={() => setQuery('')}
-              className="hub-empty-reset"
-            >
-              Clear search
-            </button>
-          ) : (
-            <Link href="/insights" className="hub-empty-reset">
-              Clear filters
-            </Link>
-          )}
-        </div>
+        <>
+          <div className="hub-empty">
+            <p>
+              {query
+                ? `No insights match "${query}"${filterDescription ? ` in ${filterDescription}` : ''}.`
+                : 'No insights match these filters yet.'}
+            </p>
+            {query ? (
+              <button
+                type="button"
+                onClick={() => setQuery('')}
+                className="hub-empty-reset"
+              >
+                Clear search
+              </button>
+            ) : (
+              <Link href="/insights" className="hub-empty-reset">
+                Clear filters
+              </Link>
+            )}
+          </div>
+
+          {suggested && suggested.length > 0 ? (
+            <div className="hub-empty-suggested" aria-label="Suggested reads">
+              <p className="hub-empty-suggested-label">While you&apos;re here — recent reads</p>
+              <div className="service-v1-articles-grid hub-articles-grid">
+                {suggested.map((article) => (
+                  <Link
+                    key={article.slug}
+                    href={`/insights/${article.slug}`}
+                    className="service-v1-articles-card"
+                  >
+                    <span className="service-v1-articles-thumb" aria-hidden="true">
+                      {article.thumbnailSrc ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={article.thumbnailSrc} alt="" loading="lazy" />
+                      ) : (
+                        <span className="service-v1-articles-thumb-placeholder">
+                          <span className="service-v1-articles-thumb-tag">{article.tag}</span>
+                          <span className="service-v1-articles-thumb-brand">
+                            Nucleus <em>Insights</em>
+                          </span>
+                        </span>
+                      )}
+                    </span>
+                    <div className="service-v1-articles-meta">
+                      <span className="service-v1-articles-tag">{article.tag}</span>
+                      {article.isNew ? (
+                        <span
+                          className="service-v1-articles-new"
+                          title="Published in the last 3 weeks"
+                        >
+                          New
+                        </span>
+                      ) : null}
+                    </div>
+                    <h3 className="service-v1-articles-title">{article.title}</h3>
+                    <p className="service-v1-articles-excerpt">{article.excerpt}</p>
+                    <div className="service-v1-articles-foot">
+                      <span className="service-v1-articles-author">
+                        <span className="service-v1-articles-avatar" aria-hidden="true">
+                          {article.author.headshotSrc ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={article.author.headshotSrc} alt="" />
+                          ) : (
+                            article.author.initials
+                          )}
+                        </span>
+                        <span>
+                          <span className="service-v1-articles-name">
+                            {article.author.name}
+                          </span>
+                          <span className="service-v1-articles-role">
+                            {article.author.role}
+                          </span>
+                        </span>
+                      </span>
+                      <span className="service-v1-articles-time">
+                        <Clock size={12} aria-hidden="true" />
+                        {article.readMinutes} min
+                      </span>
+                    </div>
+                    <span className="service-v1-articles-read" aria-hidden="true">
+                      Read
+                      <ArrowUpRight size={14} />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </>
       ) : (
         <div className="service-v1-articles-grid hub-articles-grid">
           {filtered.map((article) => (
