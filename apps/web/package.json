@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
+    "lint:articles": "node scripts/lint-articles.mjs",
+    "new-article": "node scripts/new-article.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
