@@ -13578,3 +13578,124 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   color: rgba(20, 24, 40, 0.5);
   font-style: normal;
 }
+
+/* ==============================================================
+   Smooth-scroll behaviour for in-page anchors (TOC clicks, etc).
+   Respects prefers-reduced-motion via the media query.
+   ============================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ==============================================================
+   Print stylesheet — Batch L.
+   Strip every screen-only affordance (nav, sidebars, sticky CTA,
+   share buttons, newsletter, reading-progress bar, related-articles
+   rail, lead-magnet) so a printed article comes out as a clean
+   reading document. Keep: article hero, body, references, author
+   bio, breadcrumb (as a one-line provenance trail).
+   ============================================================== */
+@media print {
+  /* Hide the chrome */
+  .home-v3-header,
+  .home-v3-footer,
+  .article-progress,
+  .article-page-side,
+  .sticky-article-cta,
+  .newsletter,
+  .article-share,
+  .hub-newsletter-section {
+    display: none !important;
+  }
+
+  /* Reset article reader layout for single-column print */
+  .article-page-shell {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+  .article-page {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* Hero takes too much vertical space when printed; keep it tight */
+  .article-page-hero {
+    margin-bottom: 16px;
+    border-radius: 0;
+    box-shadow: none;
+    max-height: 220px;
+  }
+  .article-page-hero-placeholder { display: none; }
+
+  /* Body typography: black on white, justified, hyphens auto */
+  body, .article-page-body p, .article-page-body h2, .article-page-body h3 {
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .article-page-body p {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+  .article-page-body h2,
+  .article-page-body h3 {
+    break-after: avoid-page;
+    break-inside: avoid;
+  }
+  .article-page-body h2::before,
+  .article-page-body h3::before {
+    display: none;
+  }
+
+  /* Pull-quotes and callouts: keep but flatten the styling so they
+     print legibly without coloured backgrounds */
+  .article-page-pullquote,
+  .article-page-callout {
+    border-left: 2px solid #000 !important;
+    background: #fff !important;
+    color: #000 !important;
+    page-break-inside: avoid;
+  }
+  .article-page-callout-label { color: #000 !important; }
+
+  /* References: print with full URLs so the reader can follow them
+     offline. The CSS attr() trick suffixes the href after the link
+     text, like academic style. */
+  .article-page-references-link::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
+    color: #444;
+    word-break: break-all;
+  }
+
+  /* Author bio: keep, but flatten */
+  .article-author-bio-card {
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+  .article-author-bio-actions { display: none; }
+  .article-author-bio-monogram { background: #000 !important; }
+
+  /* Breadcrumb: keep as a one-line provenance trail at the top */
+  .article-breadcrumb a { color: #000 !important; }
+
+  /* Series banner: keep but plain */
+  .series-banner {
+    background: #fff !important;
+    border-left-color: #000 !important;
+  }
+
+  /* Force a page break before the references section */
+  .article-page-references { break-before: auto; }
+
+  /* Newsletter / sticky / share already hidden above */
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+}
