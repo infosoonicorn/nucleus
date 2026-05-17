@@ -62,6 +62,7 @@ export default function InvestmentBankingPage() {
                 promise={service.promise}
                 cta={service.cta}
                 heroCards={deriveHeroCards(service.processDossier)}
+                liveStrip={service.heroLive}
               />
               {/* ●01 Track record — 4-metric counter row + scrolling logo strip */}
               <ClientLogos

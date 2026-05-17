@@ -105,6 +105,7 @@ export type Service = {
   /** Two-digit ordinal: '01' through '09'. Drives the ●NN eyebrow on service pages. */
   ordinal: string;
   displayHeadline?: string;                 // 3-word punchier hero headline; falls back to title.
+  heroLive?: string;                        // editorial strip beneath the CTAs (e.g. "Partner-led mandates · $3M–$50M · India + cross-border"); hides if absent.
   whenToEngage?: { if: string; then: string }[]; // 4 IF/THEN scenario pairs; fallback shows generic checklist if absent.
   process?: { name: string; text: string }[]; // Custom engagement phases; falls back to generic 4-phase if absent.
   processTitle?: string;                       // Optional custom section title for Process; falls back to "A clear engagement path for {service.title}."
@@ -308,6 +309,7 @@ export const services: Service[] = [
     ],
     ordinal: '01',
     displayHeadline: 'Prepare. Position. Close.',
+    heroLive: 'Partner-led mandates · $3M–$50M · India + cross-border',
     whenToEngage: [
       {
         if: 'Raising your next round and the model needs to hold up to investor diligence.',
@@ -683,6 +685,7 @@ export const services: Service[] = [
       { value: 40, suffix: '+',  label: 'Strategic buyers in network' },
     ],
     ordinal: '02',
+    heroLive: 'Buy-side & sell-side · $5M–$100M · India + cross-border',
     whenToEngage: [
       {
         if: 'Receiving informal interest from a strategic acquirer and need to decide whether to engage.',
@@ -926,6 +929,7 @@ export const services: Service[] = [
       { value: 8,  suffix: ' wk', label: 'Avg engagement length' },
     ],
     ordinal: '03',
+    heroLive: 'Risk-based audits · IFC / ICFR · mid-market India',
     whenToEngage: [
       {
         if: 'Audit committee wants a formal internal audit calendar across business units this year.',
@@ -1169,6 +1173,7 @@ export const services: Service[] = [
       { value: 10,  suffix: '+', label: 'Cross-border tax matters' },
     ],
     ordinal: '04',
+    heroLive: 'Direct + indirect tax · transfer pricing · cross-border ready',
     whenToEngage: [
       {
         if: 'Cross-border transaction on the table and tax structure can swing the post-tax outcome.',
@@ -1413,6 +1418,7 @@ export const services: Service[] = [
       { value: 10, suffix: '+', label: 'Sectors covered' },
     ],
     ordinal: '05',
+    heroLive: 'Statutory audit · Ind AS · listed and unlisted',
     whenToEngage: [
       {
         if: 'First-time Ind AS conversion this year and books need to hold up under closer review.',
@@ -1656,6 +1662,7 @@ export const services: Service[] = [
       { value: 12, suffix: '+',  label: 'Sectors covered' },
     ],
     ordinal: '06',
+    heroLive: 'Business · ESOP · FEMA · fairness opinions · India + cross-border',
     whenToEngage: [
       {
         if: 'Issuing ESOPs and need a defensible Rule 11UA valuation before the grant.',
@@ -1902,6 +1909,7 @@ export const services: Service[] = [
       { value: 90, suffix: '%',  label: 'Retention beyond Year 1' },
     ],
     ordinal: '07',
+    heroLive: 'Books · vCFO · controllership · INR 5 cr+ revenue companies',
     whenToEngage: [
       {
         if: "Founder-led finance team can't keep up — close is slipping and the board is asking for cleaner numbers.",
@@ -2146,6 +2154,7 @@ export const services: Service[] = [
       { value: 5,  suffix: ' d',  label: 'Avg ROC turnaround' },
     ],
     ordinal: '08',
+    heroLive: 'Incorporation · ROC · AIF · FEMA — partner-reviewed',
     whenToEngage: [
       {
         if: 'Incorporating a new entity — Pvt Ltd, LLP, or AIF — and want the structure right from day one.',
@@ -2398,6 +2407,7 @@ export const services: Service[] = [
       { value: 60, suffix: '+',  label: 'Portfolio companies tracked' },
     ],
     ordinal: '09',
+    heroLive: 'Cat I / II / III · SEBI · GIFT City ready',
     whenToEngage: [
       {
         if: 'Setting up a new AIF and need the structure, sponsor, trustee, and investment manager arrangements aligned with SEBI.',

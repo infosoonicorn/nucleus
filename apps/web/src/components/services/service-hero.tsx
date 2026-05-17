@@ -26,6 +26,10 @@ export type ServiceHeroProps = Readonly<{
    *  from its processDossier phases so the hero teases what's coming
    *  below. Falls back to nothing if omitted. */
   heroCards?: HeroCard[];
+  /** Short editorial strip beneath the CTAs, e.g.
+   *  "Partner-led mandates · $3M–$50M · India + cross-border".
+   *  Per-service — hides if omitted. */
+  liveStrip?: string;
 }>;
 
 /**
@@ -52,6 +56,7 @@ export function ServiceHero({
   promise,
   cta,
   heroCards,
+  liveStrip,
 }: ServiceHeroProps) {
   const reduceMotion = useReducedMotion();
   const headline = displayHeadline ?? title;
@@ -112,12 +117,14 @@ export function ServiceHero({
             </div>
           </FadeIn>
 
-          <FadeIn delay={1.15} duration={0.5}>
-            <div className="svc-hero-live">
-              <span className="svc-hero-livedot" aria-hidden="true" />
-              <span>Partner-led mandates · $3M–$50M · India + cross-border</span>
-            </div>
-          </FadeIn>
+          {liveStrip ? (
+            <FadeIn delay={1.15} duration={0.5}>
+              <div className="svc-hero-live">
+                <span className="svc-hero-livedot" aria-hidden="true" />
+                <span>{liveStrip}</span>
+              </div>
+            </FadeIn>
+          ) : null}
         </div>
 
         {cards.length === 0 ? null : (

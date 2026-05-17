@@ -63,6 +63,7 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
                 promise={service.promise}
                 cta={service.cta}
                 heroCards={deriveHeroCards(service.processDossier)}
+                liveStrip={service.heroLive}
               />
 
               {/* ●01 Track record — counter row + scrolling logo strip */}
