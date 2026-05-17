@@ -31,11 +31,13 @@ export function ClientLogos({ ordinal, clients, metrics }: Props) {
         <p id="client-logos-eyebrow" className="client-logos-eyebrow">
           <span className="client-logos-eyebrow-num">●{ordinal}</span>
           <span className="client-logos-eyebrow-bar" aria-hidden="true" />
-          <span>Track record · Founders we&rsquo;ve worked with</span>
+          <span>Track record</span>
         </p>
       </header>
 
       {metrics && metrics.length > 0 ? <TrackRecordMetrics metrics={metrics} /> : null}
+
+      <p className="client-logos-strip-label">Founders we&rsquo;ve worked with</p>
 
       <div className="client-logos-marquee" aria-label="Client logos">
         <div className="client-logos-track">

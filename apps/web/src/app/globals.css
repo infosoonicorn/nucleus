@@ -9030,6 +9030,17 @@ main.service-v1 > div > section {
   color: var(--service-accent-red);
 }
 
+/* Caption above the marquee — pulled out of the eyebrow so the
+   "Founders we've worked with" label sits directly above its logos. */
+.client-logos-strip-label {
+  margin: 22px 0 12px;
+  text-align: center;
+  font: 500 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.5);
+}
+
 .client-logos-marquee {
   position: relative;
   overflow: hidden;
@@ -10553,9 +10564,8 @@ main.service-v1 > div > section {
 }
 
 /* ───────────────────────────────────────────────────────────
- * Track-record metric row
- * 4 cells with thin dividers, animated count-up inside ClientLogos.
- * Reusable across every service line via Service.metrics.
+ * Track-record metric row — 4 animated count-up cells inside
+ * ClientLogos. Reusable across every service via Service.metrics.
  * ─────────────────────────────────────────────────────────── */
 
 .track-metrics {
