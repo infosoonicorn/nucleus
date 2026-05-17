@@ -12947,3 +12947,58 @@ main.service-v1 > div > section {
   white-space: nowrap;
 }
 .team-page-modal-articles-archive:hover { text-decoration: underline; }
+
+/* ==============================================================
+   /insights/topic/<tag> — topic landing page.
+   Reuses .author-archive-item card styling for the article list;
+   only the topic-page hero is bespoke (eyebrow + title + editorial
+   description + article count).
+   ============================================================== */
+.topic-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px clamp(20px, 3vw, 32px) 96px;
+}
+.topic-page-head {
+  margin: 28px 0 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(20, 24, 40, 0.08);
+}
+.topic-page-eyebrow {
+  font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--service-accent-red, #dd1017);
+  margin: 0 0 14px;
+}
+.topic-page-title {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 720;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: #0c1024;
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+.topic-page-lede {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.6;
+  color: rgba(20, 24, 40, 0.72);
+  margin: 0 0 16px;
+  max-width: 720px;
+  text-wrap: balance;
+}
+.topic-page-count {
+  font: 600 0.78rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.55);
+  margin: 0;
+}
+.topic-page-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

@@ -169,7 +169,7 @@ export default async function ArticlePage({ params }: Props) {
                     <ChevronRight size={12} />
                   </li>
                   <li>
-                    <Link href={`/insights?tag=${encodeURIComponent(article.tag)}`}>
+                    <Link href={`/insights/topic/${encodeURIComponent(article.tag)}`}>
                       {article.tag}
                     </Link>
                   </li>
@@ -177,7 +177,7 @@ export default async function ArticlePage({ params }: Props) {
               </nav>
               <div className="article-page-meta">
                 <Link
-                  href={`/insights?tag=${encodeURIComponent(article.tag)}`}
+                  href={`/insights/topic/${encodeURIComponent(article.tag)}`}
                   className="article-page-tag article-page-tag-link"
                 >
                   {article.tag}
