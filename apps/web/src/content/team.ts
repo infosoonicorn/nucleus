@@ -81,6 +81,11 @@ export const team: TeamMember[] = [
     // email TODO confirm
     expertise: ['M&A', 'vCFO', 'Process Re-engineering'],
     experienceYears: 20,
+    pastEmployers: [
+      { name: 'Deloitte', src: '/team/logos/deloitte.png' },
+      { name: 'PwC', src: '/team/logos/pwc.png' },
+      { name: 'SAIPEM', src: '/team/logos/saipem.png' },
+    ],
     qualifications: ['Chartered Accountant'],
     shortBio:
       'Leads the M&A, vCFO and process re-engineering practice. Helps startups and SMEs navigate mergers, acquisitions, and complex disputes with tailored solutions.',
@@ -182,7 +187,10 @@ export const team: TeamMember[] = [
     headshotSrc: '/team/aakash-kalra.jpg',
     expertise: ['Deals', 'M&A', 'vCFO'],
     experienceYears: 10,
-    pastEmployers: ['Deloitte', 'PwC'],
+    pastEmployers: [
+      { name: 'Deloitte', src: '/team/logos/deloitte.png' },
+      { name: 'PwC', src: '/team/logos/pwc.png' },
+    ],
     qualifications: ['Chartered Accountant'],
     shortBio:
       'Partner with the M&A, due diligence and vCFO practice. Deep deal experience across ecommerce, auto ancillary, fintech, IT and consumer.',
@@ -270,7 +278,11 @@ export const team: TeamMember[] = [
     headshotSrc: '/team/tarun-aggarwal.jpg',
     expertise: ['Transaction Advisory', 'Corporate Finance & Strategy', 'vCFO'],
     experienceYears: 15,
-    pastEmployers: ['EasyPolicy', 'Lenskart', 'EY'],
+    pastEmployers: [
+      { name: 'EY', src: '/team/logos/ey.png' },
+      'Lenskart',
+      'EasyPolicy',
+    ],
     qualifications: ['Chartered Accountant'],
     serviceSlugs: ['ma-advisory', 'finance-outsourcing'],
   },
