@@ -16,6 +16,7 @@ export type GridArticle = {
   tag: string;
   readMinutes: number;
   isDraft: boolean;
+  isNew?: boolean;
   thumbnailSrc?: string;
   author: {
     name: string;
@@ -126,6 +127,11 @@ export function InsightsGrid({
               </span>
               <div className="service-v1-articles-meta">
                 <span className="service-v1-articles-tag">{article.tag}</span>
+                {article.isNew ? (
+                  <span className="service-v1-articles-new" title="Published in the last 3 weeks">
+                    New
+                  </span>
+                ) : null}
                 {article.isDraft ? (
                   <span
                     className="service-v1-articles-draft"

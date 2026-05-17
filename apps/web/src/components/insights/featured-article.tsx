@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight, Clock } from 'lucide-react';
-import type { Article } from '@/content/articles';
+import { type Article, isRecentArticle } from '@/content/articles';
 import type { TeamMember } from '@/content/team';
 
 /**
@@ -36,7 +36,14 @@ export function FeaturedArticle({
           )}
         </span>
         <div className="hub-featured-body">
-          <p className="hub-featured-eyebrow">Start here</p>
+          <p className="hub-featured-eyebrow">
+            Start here
+            {isRecentArticle(article) ? (
+              <span className="hub-featured-new" aria-label="Published in the last 3 weeks">
+                New
+              </span>
+            ) : null}
+          </p>
           <h2 id="hub-featured-heading" className="hub-featured-title">
             {article.title}
           </h2>

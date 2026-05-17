@@ -32,7 +32,35 @@ type ArticleBase = {
   seriesOrder?: number;        // 1-indexed position of this article within the series
   references?: readonly { label: string; href: string }[];
                                // primary-source citations rendered as a References block at the end
+  updatedOn?: string;          // YYYY-MM-DD; meta row shows "Updated <date>" when set
 };
+
+/**
+ * Whether an article was published in the last `days` days. Drives the
+ * "New" badge on hub + service-page cards so the publication feels
+ * current. Default 21 days.
+ */
+export function isRecentArticle(article: Article, days = 21): boolean {
+  const published = new Date(`${article.publishedOn}T00:00:00Z`).getTime();
+  if (Number.isNaN(published)) return false;
+  const ageMs = Date.now() - published;
+  return ageMs >= 0 && ageMs <= days * 24 * 60 * 60 * 1000;
+}
+
+/**
+ * Most recent publication date across all visible articles. Drives the
+ * "Latest: <date>" cadence indicator on the /insights hero. Returns
+ * null if no visible articles exist.
+ */
+export function getLatestPublishedOn(opts?: { allowDrafts?: boolean }): string | null {
+  const allowDrafts = opts?.allowDrafts ?? false;
+  const visible = articles.filter((a) => allowDrafts || a.reviewerStatus === 'approved');
+  if (visible.length === 0) return null;
+  return visible.reduce(
+    (max, a) => (a.publishedOn.localeCompare(max) > 0 ? a.publishedOn : max),
+    visible[0].publishedOn,
+  );
+}
 
 /**
  * Count words in an article body for the "N words" display in the
@@ -127,6 +155,7 @@ export const articles: Article[] = [
     readMinutes: 6,
     tag: 'Investor narrative',
     serviceSlugs: ['investment-banking'],
+    thumbnailSrc: '/article-thumbs/how-investors-read-im.jpg',
     reviewerStatus: 'pending',
   },
   {

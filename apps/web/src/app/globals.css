@@ -13511,3 +13511,70 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
     to   { transform: translateY(0); opacity: 1; }
   }
 }
+
+/* ==============================================================
+   Hub cadence indicator, "New" badge on cards, "Updated <date>"
+   in the article meta row. Three small freshness signals that
+   make the publication feel active rather than archived.
+   ============================================================== */
+
+/* Cadence: "Latest: May 17, 2026" pill below the hub lede */
+.hub-cadence {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px auto 0;
+  padding: 7px 14px;
+  background: rgba(20, 24, 40, 0.04);
+  border: 1px solid rgba(20, 24, 40, 0.1);
+  border-radius: 999px;
+  font: 500 0.78rem/1 Inter, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.02em;
+  color: rgba(20, 24, 40, 0.72);
+}
+.hub-cadence-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6b8463;
+  box-shadow: 0 0 0 4px rgba(107, 132, 99, 0.16);
+  flex-shrink: 0;
+  animation: hub-cadence-pulse 2.4s ease-in-out infinite;
+}
+@keyframes hub-cadence-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(107, 132, 99, 0.16); }
+  50%      { box-shadow: 0 0 0 6px rgba(107, 132, 99, 0.06); }
+}
+
+/* "New" badge on article cards in the grid */
+.service-v1-articles-new {
+  font: 600 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--service-accent-red, #dd1017);
+  color: #fefdf8;
+}
+
+/* "New" pill alongside "Start here" on the featured slot */
+.hub-featured-new {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--service-accent-red, #dd1017);
+  color: #fefdf8;
+  font: 600 0.6rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* Article reader: secondary "Updated <date>" treatment so it reads
+   as supplementary to the original publish date */
+.article-page-updated {
+  color: rgba(20, 24, 40, 0.5);
+  font-style: normal;
+}

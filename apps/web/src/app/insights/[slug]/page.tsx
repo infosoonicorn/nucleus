@@ -212,7 +212,17 @@ export default async function ArticlePage({ params }: Props) {
                   {article.tag}
                 </Link>
                 {isDraft ? <span className="article-page-draft">Draft — not yet published</span> : null}
-                <span className="article-page-date">{formatDate(article.publishedOn)}</span>
+                <span className="article-page-date">
+                  {formatDate(article.publishedOn)}
+                  {article.updatedOn && article.updatedOn !== article.publishedOn ? (
+                    <>
+                      {' '}
+                      <span className="article-page-updated">
+                        · Updated {formatDate(article.updatedOn)}
+                      </span>
+                    </>
+                  ) : null}
+                </span>
                 <span className="article-page-readtime">
                   <Clock size={12} aria-hidden="true" />
                   {wordCount.toLocaleString('en-IN')} words · {article.readMinutes} min read

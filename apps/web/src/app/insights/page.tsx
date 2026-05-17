@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageShell } from '@/components/site-chrome';
-import { articles, getArticleAuthor } from '@/content/articles';
+import {
+  articles,
+  getArticleAuthor,
+  getLatestPublishedOn,
+  isRecentArticle,
+} from '@/content/articles';
 import { services } from '@/content/site';
 import { team } from '@/content/team';
 import { InsightsGrid, type GridArticle } from '@/components/insights/insights-grid';
@@ -28,6 +33,12 @@ type SearchParams = Promise<{
 function pickFirst(value: string | string[] | undefined): string | undefined {
   if (Array.isArray(value)) return value[0];
   return value;
+}
+
+/** "May 17, 2026" for the hub cadence indicator. */
+function formatHumanDate(iso: string): string {
+  const d = new Date(`${iso}T00:00:00Z`);
+  return d.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 export default async function InsightsHubPage({
@@ -142,6 +153,7 @@ export default async function InsightsHubPage({
       tag: a.tag,
       readMinutes: a.readMinutes,
       isDraft: a.reviewerStatus !== 'approved',
+      isNew: isRecentArticle(a),
       thumbnailSrc: a.thumbnailSrc,
       author: {
         name: author.name,
@@ -151,6 +163,8 @@ export default async function InsightsHubPage({
       },
     };
   });
+
+  const latestPublishedOn = getLatestPublishedOn({ allowDrafts });
 
   const anyFilterActive = Boolean(serviceFilter || tagFilter || authorFilter || sort === 'oldest');
 
@@ -167,6 +181,12 @@ export default async function InsightsHubPage({
             M&amp;A, valuations, risk and tax. Filter by service line, tag, or author;
             sort newest or oldest; or search the archive.
           </p>
+          {latestPublishedOn ? (
+            <p className="hub-cadence" aria-label="Publication cadence">
+              <span className="hub-cadence-dot" aria-hidden="true" />
+              Latest: {formatHumanDate(latestPublishedOn)}
+            </p>
+          ) : null}
           {anyFilterActive ? (
             <p className="hub-active-author">
               {activeServiceTitle ? <>Service: <strong>{activeServiceTitle}</strong></> : null}
