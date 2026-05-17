@@ -46,7 +46,6 @@ export type ProcessDossierPhase = {
   ordinal: string;            // e.g. '●01'
   name: string;                // e.g. 'Mandate & scope'
   weeks: string;               // e.g. 'Weeks 1-2'
-  date: string;                // e.g. '14 Apr 2026' — illustrative milestone date
   desc: string;                // longer paragraph shown when phase is active
   items: string[];             // bullets shown when phase is active
   deliv: string;               // deliverable label
@@ -373,7 +372,6 @@ export const services: Service[] = [
           ordinal: '●01',
           name: 'Mandate & scope',
           weeks: 'Weeks 1–2',
-          date: '14 Apr 2026',
           desc: 'Define what a successful round looks like, agree the workplan, set fees, timeline, and named owners on both sides.',
           items: ['Success criteria', 'Workplan & owners', 'Fees & timeline'],
           deliv: 'Engagement letter',
@@ -383,7 +381,6 @@ export const services: Service[] = [
           ordinal: '●02',
           name: 'Build & pressure-test',
           weeks: 'Weeks 3–6',
-          date: '06 May 2026',
           desc: 'Model, deck, IM. Every assumption stress-tested as if hostile investor diligence is already running.',
           items: ['Operating model', 'Pitch deck', 'Information memo'],
           deliv: 'Investor-ready pack',
@@ -393,7 +390,6 @@ export const services: Service[] = [
           ordinal: '●03',
           name: 'Market & manage',
           weeks: 'Weeks 7–12',
-          date: '21 Jun 2026',
           desc: 'Investor mapping, outreach calendar, intro coordination, and Q&A management. We run the campaign so you can run the company.',
           items: ['Investor map', 'Outreach calendar', 'Q&A management'],
           deliv: 'Live process + warm intros',
@@ -403,7 +399,6 @@ export const services: Service[] = [
           ordinal: '●04',
           name: 'Close & handover',
           weeks: 'Weeks 13–16 + 90-day handover',
-          date: '',
           desc: "Term sheet locked, SHA negotiated alongside counsel, signing and wire coordinated. Then ninety days of post-wire handover — first board cadence, investor-reporting template, cap-table refresh, KPI dashboard moved to the in-house team — and the file is formally closed. No retainer tail, no recurring fee.",
           items: [
             'Term sheet + SHA close',

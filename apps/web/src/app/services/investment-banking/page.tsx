@@ -21,27 +21,13 @@ import { TeamBlock } from '@/components/team/team-block';
 import { getResourcesForService } from '@/content/resources';
 import { getClientsForService } from '@/content/clients';
 import { getTeamForService } from '@/content/team';
+import { IB_SECTION_ORDINAL } from '@/content/section-ordinals';
 
 const SERVICE_SLUG = 'investment-banking';
 
-/**
- * Within-page section ordinals shown in each section's eyebrow (`●NN`).
- * Distinct from `service.ordinal` ("01" — Investment Banking's position
- * in the firm-wide service taxonomy, shown only on the Hero). Adding a
- * new section in the middle? Renumber here in one place.
- */
-const SECTION_ORDINAL = {
-  clientLogos: '01',
-  whenToEngage: '02',
-  howWeHelp: '03',
-  fundraise: '04',
-  process: '05',
-  soonicorn: '06',
-  insights: '07',
-  resources: '08',
-  faq: '09',
-  contact: '10',
-} as const;
+// IB inserts FundraiseStages and SoonicornCallout into the default
+// numbering, so it uses its own bespoke ordinal map.
+const SECTION_ORDINAL = IB_SECTION_ORDINAL;
 
 export async function generateMetadata(): Promise<Metadata> {
   const service = services.find((s) => s.slug === SERVICE_SLUG);

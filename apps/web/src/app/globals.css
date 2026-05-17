@@ -5572,19 +5572,7 @@ html.lenis body {
   border: 1px solid var(--service-divider);
   border-radius: 12px;
 }
-.service-v1-faq-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 16px;
-}
-.service-v1-faq-grid details {
-  background: #fff;
-  border: 1px solid var(--service-divider);
-  border-radius: 12px;
-  padding: 14px 16px;
-}
-.service-v1-faq-grid summary { cursor: pointer; font-weight: 600; }
+
 .service-v1-pending-pill {
   display: inline-block;
   background: rgba(122, 31, 31, 0.08);
@@ -5794,14 +5782,6 @@ html.lenis body {
     transition-duration: 0.01ms !important;
   }
 }
-.service-v1-card-link {
-  display: inline-flex;
-  gap: 6px;
-  align-items: center;
-  margin-top: 8px;
-  color: var(--service-accent-red);
-  font-weight: 500;
-}
 
 /* Contact band */
 .service-v1-contact-band {
@@ -5892,7 +5872,6 @@ html.lenis body {
 /* Legacy scroll-pinned wrappers — now neutralised. FundraiseStages renders
    as a normal block section with timer-driven autoplay (no scroll-jacking). */
 .service-v1-fundraise-host { position: static; height: auto; }
-.service-v1-fundraise-sticky { position: static; min-height: 0; padding: 0; display: block; }
 
 .service-v1-fundraise {
   width: 100%;
@@ -6062,17 +6041,7 @@ html.lenis body {
   padding-top: 14px;
   border-top: 1px solid rgba(20, 24, 40, 0.08);
 }
-.service-v1-fundraise-now {
-  margin: 0;
-  font: 500 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(20, 24, 40, 0.55);
-}
-.service-v1-fundraise-now span {
-  color: #141828;
-  letter-spacing: 0.04em;
-}
+
 .service-v1-fundraise-btns {
   display: inline-flex;
   align-items: center;
@@ -6658,13 +6627,6 @@ html.lenis body {
   height: 1px;
   background: var(--soonicorn-rule);
 }
-.service-v1-soonicorn-meta {
-  margin: 0;
-  font: 500 0.68rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--soonicorn-ink-soft);
-}
 
 /* Card */
 .service-v1-soonicorn-card {
@@ -7126,12 +7088,9 @@ html.lenis body {
   .service-v1-section-split { grid-template-columns: 1fr; }
   .service-v1-list-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service-v1-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .service-v1-faq-grid { grid-template-columns: 1fr; }
-  .service-v1-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
   .service-v1-insights-grid { grid-template-columns: 1fr; }
-  /* Fundraise: drop the scroll-pin and stack panel content. */
-  .service-v1-fundraise-host { height: auto; position: static; }
-  .service-v1-fundraise-sticky { position: static; min-height: 0; display: block; }
+
   .service-v1-fundraise-track { grid-template-columns: repeat(6, minmax(60px, 1fr)); }
   .service-v1-fundraise-track-wrap { overflow-x: auto; }
   .service-v1-fundraise-panel-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -7146,7 +7105,7 @@ html.lenis body {
 @media (max-width: 639px) {
   .service-v1-list-grid { grid-template-columns: 1fr; }
   .service-v1-timeline { grid-template-columns: 1fr; }
-  .service-v1-related-grid { grid-template-columns: 1fr; }
+
   .service-v1-leadmagnet-form { flex-direction: column; }
   .service-v1-fundraise-dot-name { display: none; }
   .service-v1-fundraise-panel-head { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -7154,8 +7113,7 @@ html.lenis body {
 
 /* Reduced motion — defense in depth alongside the JS useReducedMotion path. */
 @media (prefers-reduced-motion: reduce) {
-  .service-v1-fundraise-host { height: auto; position: static; }
-  .service-v1-fundraise-sticky { position: static; min-height: 0; display: block; }
+
   .service-v1-artefact-fan { display: none; }
 }
 
@@ -7712,14 +7670,6 @@ html.lenis body {
   border-left: 1px solid var(--dos-rule);
   min-height: 110px;
 }
-.service-v1-dossier-date {
-  font: 500 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dos-ink-soft);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
 
 /* Wax stamp */
 .service-v1-dossier-stamp {
@@ -7799,55 +7749,9 @@ html.lenis body {
 }
 .service-v1-dossier-entry.is-done .service-v1-dossier-statusbox-glyph { background: var(--dos-ink); }
 
-/* Card footer */
-.service-v1-dossier-foot {
-  padding: 22px 36px 24px;
-  border-top: 1.5px solid var(--dos-ink);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: end;
-}
-.service-v1-dossier-footmeta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font: 500 0.66rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dos-ink-soft);
-}
-.service-v1-dossier-sig {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
-}
-.service-v1-dossier-sig-name {
-  font-family: var(--font-caveat), "Brush Script MT", cursive;
-  font-size: 2.1rem;
-  line-height: 1;
-  letter-spacing: 0.01em;
-  color: var(--dos-ink);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
 .service-v1-dossier-foot.is-all-done .service-v1-dossier-sig-name {
   opacity: 1;
   transform: translateX(0);
-}
-.service-v1-dossier-sig-line {
-  display: block;
-  width: 200px;
-  height: 1px;
-  background: var(--dos-ink);
-}
-.service-v1-dossier-sig-cap {
-  font: 500 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dos-ink-soft);
 }
 
 /* Controls */
@@ -7858,14 +7762,7 @@ html.lenis body {
   gap: 20px;
   align-items: center;
 }
-.service-v1-dossier-now {
-  margin: 0;
-  font: 500 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dos-ink);
-}
-.service-v1-dossier-now span { color: var(--dos-red); }
+
 .service-v1-dossier-bar {
   position: relative;
   height: 1px;
@@ -7918,8 +7815,7 @@ html.lenis body {
   .service-v1-dossier-entries { padding: 0 24px; }
   .service-v1-dossier-entry { grid-template-columns: 60px 1fr; gap: 16px; }
   .service-v1-dossier-margin { display: none; }
-  .service-v1-dossier-foot { padding: 18px 24px 20px; grid-template-columns: 1fr; }
-  .service-v1-dossier-sig { align-items: flex-start; }
+
   .service-v1-dossier-controls { grid-template-columns: 1fr; gap: 12px; }
 }
 
