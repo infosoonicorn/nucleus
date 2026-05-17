@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: 'Insights — Nucleus Advisors',
   description:
     'Long-form writing from Nucleus partners on fundraises, term sheets, M&A, valuations, risk and tax — filter by service line, tag, or author; sort newest or oldest.',
+  alternates: {
+    canonical: 'https://nucleusadvisors.in/insights',
+  },
 };
 
 type SearchParams = Promise<{
