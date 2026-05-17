@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
 import { articles, getArticleBySlug } from '@/content/articles';
+import { ArticleRelated } from '@/components/insights/article-related';
+import { ArticleLeadForm } from '@/components/insights/article-lead-form';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -36,63 +38,78 @@ export default async function ArticlePage({ params }: Props) {
   const isDraft = article.reviewerStatus !== 'approved';
   const paragraphs = article.body.split('\n\n');
 
+  const primaryServiceSlug = article.serviceSlugs[0];
+
   return (
     <PageShell>
       <main className="home-v3 service-v1">
-        <article className="article-page">
-          {article.thumbnailSrc ? (
-            <figure className="article-page-hero">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={article.thumbnailSrc} alt="" loading="eager" />
-            </figure>
-          ) : null}
-          <header className="article-page-head">
-            <Link href="/insights" className="article-page-back">
-              <ArrowLeft size={14} aria-hidden="true" />
-              <span>All insights</span>
-            </Link>
-            <div className="article-page-meta">
-              <span className="article-page-tag">{article.tag}</span>
-              {isDraft ? <span className="article-page-draft">Draft — not yet published</span> : null}
-              <span className="article-page-date">{formatDate(article.publishedOn)}</span>
-              <span className="article-page-readtime">
-                <Clock size={12} aria-hidden="true" />
-                {article.readMinutes} min read
-              </span>
-            </div>
-            <h1 className="article-page-title">{article.title}</h1>
-            <p className="article-page-excerpt">{article.excerpt}</p>
-            <div className="article-page-author">
-              <span className="article-page-avatar" aria-hidden="true">
-                {article.author.initials}
-              </span>
-              <span>
-                <span className="article-page-author-name">{article.author.name}</span>
-                <span className="article-page-author-role">{article.author.role}</span>
-              </span>
-            </div>
-          </header>
+        <div className="article-page-shell">
+          <article className="article-page">
+            {article.thumbnailSrc ? (
+              <figure className="article-page-hero">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={article.thumbnailSrc} alt="" loading="eager" />
+              </figure>
+            ) : null}
+            <header className="article-page-head">
+              <Link href="/insights" className="article-page-back">
+                <ArrowLeft size={14} aria-hidden="true" />
+                <span>All insights</span>
+              </Link>
+              <div className="article-page-meta">
+                <span className="article-page-tag">{article.tag}</span>
+                {isDraft ? <span className="article-page-draft">Draft — not yet published</span> : null}
+                <span className="article-page-date">{formatDate(article.publishedOn)}</span>
+                <span className="article-page-readtime">
+                  <Clock size={12} aria-hidden="true" />
+                  {article.readMinutes} min read
+                </span>
+              </div>
+              <h1 className="article-page-title">{article.title}</h1>
+              <p className="article-page-excerpt">{article.excerpt}</p>
+              <div className="article-page-author">
+                <span className="article-page-avatar" aria-hidden="true">
+                  {article.author.initials}
+                </span>
+                <span>
+                  <span className="article-page-author-name">{article.author.name}</span>
+                  <span className="article-page-author-role">{article.author.role}</span>
+                </span>
+              </div>
+            </header>
 
-          <div className="article-page-body">
-            {paragraphs.map((p, i) => {
-              if (p.startsWith('### ')) {
-                return <h3 key={i}>{p.slice(4)}</h3>;
-              }
-              if (p.startsWith('## ')) {
-                return <h2 key={i}>{p.slice(3)}</h2>;
-              }
-              return <p key={i}>{renderInline(p)}</p>;
-            })}
-          </div>
+            <div className="article-page-body">
+              {paragraphs.map((p, i) => {
+                if (p.startsWith('### ')) {
+                  return <h3 key={i}>{p.slice(4)}</h3>;
+                }
+                if (p.startsWith('## ')) {
+                  return <h2 key={i}>{p.slice(3)}</h2>;
+                }
+                return <p key={i}>{renderInline(p)}</p>;
+              })}
+            </div>
 
-          <footer className="article-page-foot">
-            <p>
-              <strong>{article.author.name}</strong> is a {article.author.role} at Nucleus Advisors.
-              Comments and pushback welcome —{' '}
-              <Link href="/contact">write to the desk</Link>.
-            </p>
-          </footer>
-        </article>
+            <footer className="article-page-foot">
+              <p>
+                <strong>{article.author.name}</strong> is a {article.author.role} at Nucleus Advisors.
+                Comments and pushback welcome.{' '}
+                <Link href="/contact">Write to the desk</Link>.
+              </p>
+            </footer>
+          </article>
+
+          {/* data-lenis-prevent: lets the rail scroll independently of
+              the main column under Lenis smooth-scroll. */}
+          <aside
+            className="article-page-side"
+            aria-label="Related articles and contact"
+            data-lenis-prevent
+          >
+            <ArticleLeadForm articleSlug={article.slug} serviceSlug={primaryServiceSlug} />
+            <ArticleRelated current={article} />
+          </aside>
+        </div>
       </main>
     </PageShell>
   );
