@@ -11742,15 +11742,12 @@ main.service-v1 > div > section {
 }
 .team-page-modal-prev-logo {
   display: block;
+  width: auto;
   height: 36px;
   max-width: 120px;
-  width: auto;
   object-fit: contain;
-  transition: transform 160ms ease;
 }
-.team-page-modal-prev-logo:hover {
-  transform: scale(1.04);
-}
+/* Past-employer logos: native brand colour, transparent PNG, no hover effect. */
 
 .team-page-modal-articles {
   margin: 22px 0 0;
