@@ -9421,6 +9421,17 @@ main.service-v1 > div > section {
   margin-top: 8px;
 }
 
+/* /insights hub: override the default service-page grid behaviour so a
+   single filter result doesn't stretch full-width.
+   auto-fit + 1fr was stretching one card to fill the row. auto-fill
+   keeps column tracks intact; capping minmax at 380px holds each card
+   to a sensible reading width; justify-content:start left-aligns the
+   short rows so a one-result page reads correctly. */
+.hub-articles-grid {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 380px));
+  justify-content: start;
+}
+
 .hub-empty {
   padding: 48px 24px;
   border: 1px dashed rgba(20, 24, 40, 0.18);
