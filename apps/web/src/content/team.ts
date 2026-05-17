@@ -357,10 +357,38 @@ const SENIORITY_ORDER: Record<TeamMember['seniority'], number> = {
   associate: 2,
 };
 
+/**
+ * Lead partner per service line. The named partner here always appears
+ * first on the corresponding service page's team sidebar, ahead of
+ * other partners tagged for the same service. This matches the firm's
+ * declared owner-of-practice mapping so the right face anchors each
+ * service line; other tagged partners stack below by seniority.
+ */
+const SERVICE_LEAD_PARTNER: Record<string, string> = {
+  'investment-banking':    'vijay-singh-rathore',
+  'ma-advisory':           'pravesh-goel',        // Aakash second
+  'risk-advisory':         'ashish-gupta',
+  'tax-regulatory':        'abhishek-gupta',
+  'assurance':             'abhishek-gupta',
+  'valuations':            'vijay-singh-rathore',
+  'finance-outsourcing':   'rajat-singla',
+  'corporate-secretarial': 'neha-rathore',
+  'aif-fund-management':   'neha-rathore',
+};
+
 export function getTeamForService(slug: string): TeamMember[] {
+  const leadSlug = SERVICE_LEAD_PARTNER[slug];
   return team
     .filter((m) => m.serviceSlugs.includes(slug))
-    .sort((a, b) => SENIORITY_ORDER[a.seniority] - SENIORITY_ORDER[b.seniority]);
+    .sort((a, b) => {
+      // Declared lead partner wins.
+      if (leadSlug) {
+        if (a.slug === leadSlug && b.slug !== leadSlug) return -1;
+        if (b.slug === leadSlug && a.slug !== leadSlug) return 1;
+      }
+      // Then by seniority.
+      return SENIORITY_ORDER[a.seniority] - SENIORITY_ORDER[b.seniority];
+    });
 }
 
 export function getTeamMemberBySlug(slug: string): TeamMember | undefined {
