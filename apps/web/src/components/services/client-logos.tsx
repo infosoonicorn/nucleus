@@ -34,7 +34,7 @@ export function ClientLogos({ ordinal, clients, metrics }: Props) {
           <span>Track record · Founders we&rsquo;ve worked with</span>
         </p>
         <h2 id="client-logos-h" className="client-logos-title">
-          <em>{clients.length}+</em> companies. One bench, partner-led.
+          A small bench. Every mandate <em>partner-signed</em>.
         </h2>
       </header>
 
