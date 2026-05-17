@@ -74,6 +74,21 @@ export type HelpItem = {
   badge?: string;                           // optional eyebrow on the flagship card, e.g. 'Flagship mandate'
 };
 
+/**
+ * Track-record metric shown in the count-up row inside ClientLogos.
+ * Reusable across all service lines — each entry animates from 0 to
+ * `value` when scrolled into view. The label sits beneath in mono.
+ *
+ *   { value: 30,  suffix: '+',   label: 'Mandates run' }
+ *   { value: 200, prefix: '$',   suffix: 'M+', label: 'Capital raised' }
+ */
+export type Metric = {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+};
+
 export type Service = {
   title: string;
   slug: string;
@@ -89,6 +104,9 @@ export type Service = {
   cta: string;
   proof?: string[];
   icon: LucideIcon;
+  /** Track-record counters — exactly 4 metrics render in a row above
+   *  the client-logo marquee. Reusable across service lines. */
+  metrics?: Metric[];
   /** Two-digit ordinal: '01' through '09'. Drives the ●NN eyebrow on service pages. */
   ordinal: string;
   displayHeadline?: string;                 // 3-word punchier hero headline; falls back to title.
@@ -285,6 +303,14 @@ export const services: Service[] = [
     leadMagnet: 'Fundraise Readiness Checklist',
     cta: 'Discuss your fundraise',
     icon: Landmark,
+    /* Placeholder metrics — Vijay to verify exact numbers before pushing
+       to origin. Tracker item logged. */
+    metrics: [
+      { value: 30,  suffix: '+',  label: 'Mandates run' },
+      { value: 200, prefix: '$', suffix: 'M+', label: 'Capital raised' },
+      { value: 18,  suffix: ' wk', label: 'Avg close timeline' },
+      { value: 12,  suffix: '+',  label: 'Funds in active network' },
+    ],
     ordinal: '01',
     displayHeadline: 'Prepare. Position. Close.',
     whenToEngage: [

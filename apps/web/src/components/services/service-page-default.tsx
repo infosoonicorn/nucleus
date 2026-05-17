@@ -29,7 +29,7 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
       />
       <WhenToEngage ordinal={service.ordinal} moments={service.whenToEngage} />
       {/* Renders nothing when no clients are tagged for this service slug. */}
-      <ClientLogos ordinal={service.ordinal} clients={clients} />
+      <ClientLogos ordinal={service.ordinal} clients={clients} metrics={service.metrics} />
       <HowWeHelp
         ordinal={service.ordinal}
         flat={service.howWeHelp}

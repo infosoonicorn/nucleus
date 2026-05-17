@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import type { Client } from '@/content/clients';
+import type { Metric } from '@/content/site';
+import { TrackRecordMetrics } from './track-record-metrics';
 
 type Props = Readonly<{
   ordinal: string;
   clients: Client[];
+  /** Optional 4-metric counter row rendered between the title and the
+   *  logo marquee. Skipped when not supplied. */
+  metrics?: Metric[];
 }>;
 
 /**
@@ -15,8 +20,8 @@ type Props = Readonly<{
  * exactly -50% for a seamless loop regardless of card count (works
  * for 7 to 25 logos as documented in clients.ts).
  */
-export function ClientLogos({ ordinal, clients }: Props) {
-  if (clients.length === 0) return null;
+export function ClientLogos({ ordinal, clients, metrics }: Props) {
+  if (clients.length === 0 && (!metrics || metrics.length === 0)) return null;
 
   // Duplicate the list so the marquee loops seamlessly. aria-hidden on
   // the duplicate so screen readers don't announce every logo twice.
@@ -32,6 +37,8 @@ export function ClientLogos({ ordinal, clients }: Props) {
           <em>{clients.length}+</em> companies. One bench, partner-led.
         </h2>
       </header>
+
+      {metrics && metrics.length > 0 ? <TrackRecordMetrics metrics={metrics} /> : null}
 
       <div className="client-logos-marquee" aria-label="Client logos">
         <div className="client-logos-track">

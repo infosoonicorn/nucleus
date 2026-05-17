@@ -75,8 +75,12 @@ export default function InvestmentBankingPage() {
                 promise={service.promise}
                 cta={service.cta}
               />
-              {/* ●01 Track record — scrolling client/founder logo strip */}
-              <ClientLogos ordinal={SECTION_ORDINAL.clientLogos} clients={clients} />
+              {/* ●01 Track record — 4-metric counter row + scrolling logo strip */}
+              <ClientLogos
+                ordinal={SECTION_ORDINAL.clientLogos}
+                clients={clients}
+                metrics={service.metrics}
+              />
             </>
           }
           rightSlot={
