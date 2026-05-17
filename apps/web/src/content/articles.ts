@@ -29,17 +29,28 @@ type ArticleBase = {
   readMinutes: number;         // estimated read time
   tag: string;                 // single primary tag for chip
   serviceSlugs: string[];      // which service pages this article shows up on
+  thumbnailSrc?: string;       // optional path under apps/web/public, e.g. '/article-thumbs/<slug>.jpg'
 };
 
 export type Article =
   | (ArticleBase & { reviewerStatus: 'approved'; reviewerApprovedAt: string })
   | (ArticleBase & { reviewerStatus: 'pending'; reviewerApprovedAt?: never });
 
-const VSR: ArticleAuthor = {
-  name: 'Vijay Singh Rathore',
-  role: 'Founding Partner',
-  initials: 'VSR',
-};
+// ─── Partner authors per service line ─────────────────────────────
+// These constants are the single source of truth for article bylines.
+// Roles + initials approved by Vijay; emails / headshots live in
+// team.ts. Initials must be 2–3 chars and unique across the set.
+const VSR: ArticleAuthor = { name: 'Vijay Singh Rathore', role: 'Founding Partner',          initials: 'VSR' };
+const PG:  ArticleAuthor = { name: 'Pravesh Goel',        role: 'Partner · M&A Advisory',     initials: 'PG'  };
+const AK:  ArticleAuthor = { name: 'Aakash Kalra',        role: 'Partner · M&A Advisory',     initials: 'AK'  };
+// The next four authors will pick up articles once the per-service batches
+// are drafted (currently only M&A has been sampled). eslint-disable until used.
+/* eslint-disable @typescript-eslint/no-unused-vars */
+const AG:  ArticleAuthor = { name: 'Ashish Gupta',        role: 'Partner · Risk Advisory',    initials: 'AG'  };
+const ABG: ArticleAuthor = { name: 'Abhishek Gupta',      role: 'Partner · Tax & Assurance',  initials: 'ABG' };
+const RS:  ArticleAuthor = { name: 'Rajat Singla',        role: 'Partner · Finance Outsourcing', initials: 'RS' };
+const NR:  ArticleAuthor = { name: 'Neha Rathore',        role: 'Partner · CS & Fund Mgmt',   initials: 'NR'  };
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 export const articles: Article[] = [
   {
@@ -264,6 +275,76 @@ export const articles: Article[] = [
     readMinutes: 6,
     tag: 'Capital strategy',
     serviceSlugs: ['investment-banking', 'ma-advisory'],
+    reviewerStatus: 'pending',
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  // M&A Advisory — bar-setting sample (3 of 10)
+  // Voice: declarative, practitioner-grade, no marketing slop.
+  // Authored by Pravesh Goel and Aakash Kalra (alternating).
+  // Remaining 7 to be drafted after partner sign-off on this bar.
+  // ═══════════════════════════════════════════════════════════════════
+  {
+    slug: 'first-30-days-of-a-sell-side-process',
+    title: 'The first 30 days of a sell-side process: what actually happens',
+    excerpt:
+      'Most sellers think the process starts when buyers see the teaser. It starts three weeks earlier — in the room where we agree what we are willing to sell, to whom, and what kills the deal.',
+    body: [
+      "Sellers come in believing the process begins when a teaser goes out. By then the deal is already largely decided. The first three weeks — what we do before any outsider sees a document — set the price, the buyer list, and the rhythm of everything that follows.",
+      "Week one is the alignment week. We meet the founders and the board separately. The founders tell us what they want; the board tells us what it will accept. The gap between the two is almost always wider than either side expects. A founder wants a strategic acquirer who will keep the brand; the board wants the highest cash bid. We surface the gap on paper before any buyer is mentioned. If we cannot close it in a room, we are not ready to run a process.",
+      "Week two is the readiness audit. Three years of audited financials, the cap table, every shareholder agreement, employment contracts above a threshold, regulatory approvals, IP registrations, related-party transactions. We index everything against a typical buy-side diligence checklist and flag the gaps. The two we see most often: stock-option exercises without proper board approvals, and inter-company transactions that never went through formal RPT process. Both fixable, neither cheap when surfaced during diligence.",
+      "Week three is buyer scoping. We do not start with a long list. We start with the question: who has the strategic logic, the capital, and the recent track record of closing? Most sectors have eight to twelve real candidates, not forty. A list of forty is a vanity exercise that wastes weeks on cold conversations. We build the eight-to-twelve list with the founder, then add another six as a watchlist for opportunistic outreach.",
+      "By day twenty-one the seller has: a board-aligned outcome map, a diligence-ready data room, and a buyer universe of around fifteen names with personal-relationship paths into each. The teaser draft and the CIM outline are usually ready by then. Outreach starts in week four.",
+      "What gets sellers in trouble: skipping week one. The temptation is always there — \"we know what we want, let's just get to market.\" Three months later the founder is on the phone telling us a clean offer from a strategic is being blocked by a board member who wanted private equity. Worth the upfront three weeks every time.",
+    ].join('\n\n'),
+    author: PG,
+    publishedOn: '2026-05-12',
+    readMinutes: 5,
+    tag: 'Sell-side process',
+    serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/first-30-days-of-a-sell-side-process.jpg',
+    reviewerStatus: 'pending',
+  },
+  {
+    slug: 'building-a-target-list-that-produces-real-meetings',
+    title: 'Building a target list that produces real meetings — not cold outreach',
+    excerpt:
+      'A 40-name target list looks comprehensive in a deck. It produces three meetings. A 12-name list, built with the right path into each name, produces eight.',
+    body: [
+      "Buy-side mandates fail in the target list more often than they fail at the term sheet. We see this most clearly with first-time acquirers: a wide initial list looks thorough, but only a fraction of names ever return the email. By the time the founder realises the list isn't producing meetings, two months have gone.",
+      "The list that works is shorter and built from the inside out. We start with three filters. First, strategic logic — does an acquisition of this kind solve a problem the buyer has been talking about publicly or has been visibly working around. Second, capital posture — has the buyer done at least one transaction at this scale in the last twenty-four months, or has stated capital allocation guidance suggesting it can. Third, deal-team availability — do they have the M&A bandwidth to engage now, not in their next strategic review.",
+      "Each candidate also has to have a path. Not LinkedIn warmth. A specific named introducer — a former colleague at a portfolio company, an investor on both sides, a banker who worked the most recent deal, a board member with a personal connection. If we can't name the path in writing, the candidate stays on the watchlist, not the active list.",
+      "Twelve targets done this way produces a different shape of dialogue. The first meeting comes through someone the target already trusts, not a cold approach letter from an advisor they have never heard of. Conversion from first meeting to live NDA tends to run above fifty percent. From NDA to indicative offer, roughly one in three. Twelve becomes eight meetings, four NDAs, one to two indicative offers. That is a process you can actually run to a decision.",
+      "The forty-name list, by contrast, produces two or three real meetings spread across two months, often with the wrong buyers. The founder reads the activity log and feels productive. The advisor reads the same log and knows the process is not converging.",
+      "There is a discipline question here. A short list forces an honest conversation about strategic fit with each name. A long list lets everyone defer that conversation until after the meeting. We prefer the harder upfront conversation. It saves the founder six weeks of avoidable disappointment.",
+    ].join('\n\n'),
+    author: AK,
+    publishedOn: '2026-05-05',
+    readMinutes: 5,
+    tag: 'Buy-side',
+    serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/building-a-target-list-that-produces-real-meetings.jpg',
+    reviewerStatus: 'pending',
+  },
+  {
+    slug: 'earnouts-in-india-what-works-what-doesnt',
+    title: 'Earnouts in India: what works, what doesn’t, what to negotiate',
+    excerpt:
+      'Earnouts close deals that valuation gaps would otherwise kill — and then they cause two years of disputes the founder didn’t budget for. Here is what actually works in India.',
+    body: [
+      "Earnouts are an honest answer to a real problem: buyer and seller disagree on the trajectory of the business, and the gap is too wide to bridge with cash. Tying part of the consideration to future performance lets both sides sign. Then comes the next two years.",
+      "The mistake is treating the earnout as a settlement of the price gap. It isn't. It is a contract that has to be administered, measured, and often litigated. Almost every Indian earnout we have seen end well had three features built in from the start: a single, unambiguous performance metric; a defined operating-control protection for the seller; and a dispute resolution path that does not require a court.",
+      "On the metric, EBITDA earnouts cause the most problems. EBITDA is a function of accounting choices, and after closing those choices belong to the buyer. The seller watches expenses migrate, intercompany allocations land on the acquired entity, capitalisation policy shift, and the EBITDA number drift. Revenue earnouts are simpler and harder to manipulate. Gross-margin earnouts work where revenue is volatile but the product mix is stable. The right metric depends on the business; the question we always ask is which number the seller can verify independently from a quarterly invoice register.",
+      "On operating control, the seller cannot run the business through the earnout period as it was run pre-acquisition without it written down. We typically negotiate a short list of operating decisions that require seller consent during the earnout window — pricing changes above a band, headcount cuts beyond a threshold, capital reallocations away from the acquired business, and accounting policy changes. Without these, an honest buyer can still drift the business in a way that costs the seller the earnout.",
+      "On dispute resolution, the standard SPA escalation through arbitration is too slow for an earnout dispute that crystallises every quarter. We push for an independent accountant as the first stop — a named firm, mutually appointed at closing, who is the binding arbiter for accounting-method disputes. Saves twelve to eighteen months and tens of lakhs in fees.",
+      "When earnouts work in India, they are usually one-year, single-metric, with a clear floor and a clear cap. When they fail, they are usually two-or-three-year EBITDA earnouts with no operating-control protection and no independent accountant. The pattern repeats often enough that it is worth structural attention at the term sheet, not after.",
+    ].join('\n\n'),
+    author: AK,
+    publishedOn: '2026-04-28',
+    readMinutes: 6,
+    tag: 'Deal structuring',
+    serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/earnouts-in-india-what-works-what-doesnt.jpg',
     reviewerStatus: 'pending',
   },
 ];
