@@ -8931,6 +8931,86 @@ main.service-v1 > div > section {
   .hub-search-clear { right: calc(clamp(20px, 3vw, 32px) + 14px); }
 }
 
+/* ── /insights hub: dropdown toolbar ──
+   Four native <select> dropdowns (Service / Tag / Author / Sort)
+   wrapped in custom-styled shells with a ChevronDown caret. Replaces
+   the older chip-row filters. Active dropdowns get a red ring so the
+   user can tell at a glance which filters are set. */
+.hub-toolbar-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3vw, 32px) clamp(14px, 2vw, 18px);
+}
+.hub-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+.hub-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1 1 200px;
+  max-width: 280px;
+}
+.hub-dropdown-label {
+  font: 600 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.5);
+}
+.hub-dropdown-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.hub-dropdown-select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 11px 36px 11px 14px;
+  font: 500 0.94rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #141828;
+  background: #fff;
+  border: 1px solid rgba(20, 24, 40, 0.16);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.hub-dropdown-select:hover {
+  border-color: rgba(20, 24, 40, 0.32);
+}
+.hub-dropdown-select:focus {
+  outline: none;
+  border-color: var(--service-accent-red, #dd1017);
+  box-shadow: 0 0 0 3px rgba(221, 16, 23, 0.12);
+}
+.hub-dropdown.is-active .hub-dropdown-select {
+  border-color: var(--service-accent-red, #dd1017);
+  background: rgba(221, 16, 23, 0.04);
+  color: #0c1024;
+  font-weight: 600;
+}
+.hub-dropdown-caret {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: rgba(20, 24, 40, 0.45);
+}
+.hub-dropdown.is-active .hub-dropdown-caret {
+  color: var(--service-accent-red, #dd1017);
+}
+
+@media (max-width: 720px) {
+  .hub-dropdown { flex: 1 1 calc(50% - 6px); max-width: none; }
+}
+@media (max-width: 420px) {
+  .hub-dropdown { flex: 1 1 100%; }
+}
+
+/* Legacy chip filter rules retained for any non-hub usage. */
 .hub-filters {
   max-width: 1200px;
   margin: 0 auto;

@@ -5,17 +5,22 @@ import { articles, getArticleAuthor } from '@/content/articles';
 import { services } from '@/content/site';
 import { team } from '@/content/team';
 import { InsightsGrid, type GridArticle } from '@/components/insights/insights-grid';
+import {
+  InsightsToolbar,
+  type FilterOption,
+} from '@/components/insights/insights-toolbar';
 
 export const metadata: Metadata = {
   title: 'Insights — Nucleus Advisors',
   description:
-    'Long-form writing from Nucleus partners on fundraises, term sheets, M&A, valuations, risk and tax — searchable by service line, tag, or author.',
+    'Long-form writing from Nucleus partners on fundraises, term sheets, M&A, valuations, risk and tax — filter by service line, tag, or author; sort newest or oldest.',
 };
 
 type SearchParams = Promise<{
   service?: string | string[];
   tag?: string | string[];
   author?: string | string[];
+  sort?: string | string[];
 }>;
 
 function pickFirst(value: string | string[] | undefined): string | undefined {
@@ -29,44 +34,87 @@ export default async function InsightsHubPage({
   searchParams: SearchParams;
 }) {
   const raw = await searchParams;
-  const serviceFilter = pickFirst(raw.service);
-  const tagFilter = pickFirst(raw.tag);
-  const authorFilter = pickFirst(raw.author);
+  const serviceFilter = pickFirst(raw.service) ?? '';
+  const tagFilter = pickFirst(raw.tag) ?? '';
+  const authorFilter = pickFirst(raw.author) ?? '';
+  const sort: 'newest' | 'oldest' = pickFirst(raw.sort) === 'oldest' ? 'oldest' : 'newest';
 
   const allowDrafts = process.env.NODE_ENV !== 'production';
 
-  const visible = articles
-    .filter((a) => (allowDrafts ? true : a.reviewerStatus === 'approved'))
-    .sort((a, b) => b.publishedOn.localeCompare(a.publishedOn));
+  const visible = articles.filter((a) =>
+    allowDrafts ? true : a.reviewerStatus === 'approved',
+  );
 
   const filtered = visible
     .filter((a) => (serviceFilter ? a.serviceSlugs.includes(serviceFilter) : true))
     .filter((a) => (tagFilter ? a.tag === tagFilter : true))
-    .filter((a) => (authorFilter ? a.authorSlug === authorFilter : true));
+    .filter((a) => (authorFilter ? a.authorSlug === authorFilter : true))
+    .sort((a, b) =>
+      sort === 'oldest'
+        ? a.publishedOn.localeCompare(b.publishedOn)
+        : b.publishedOn.localeCompare(a.publishedOn),
+    );
 
-  // Filter chips — only show services that have at least one article, and tags
-  // present in the currently-visible set.
-  const serviceCounts = countByMulti(visible, (a) => a.serviceSlugs);
-  const tagsForService = serviceFilter
-    ? Array.from(new Set(visible.filter((a) => a.serviceSlugs.includes(serviceFilter)).map((a) => a.tag)))
-    : Array.from(new Set(visible.map((a) => a.tag)));
-
+  // Build dropdown option lists from the *visible* set (so options
+  // never offer a filter that returns zero results). Counts are based
+  // on the current selection-context for each axis: service counts the
+  // articles in each service ignoring service selection; tag counts
+  // restrict to current service+author; author similarly. The intent
+  // is dropdowns stay honest about what's reachable without becoming
+  // a UI puzzle where one selection nukes another's options.
   const serviceTitleBySlug = new Map(services.map((s) => [s.slug, s.title]));
   const teamBySlug = new Map(team.map((m) => [m.slug, m]));
 
-  const activeService = serviceFilter ? serviceTitleBySlug.get(serviceFilter) : null;
-  const activeAuthor = authorFilter ? teamBySlug.get(authorFilter) : null;
+  const serviceCounts = new Map<string, number>();
+  for (const a of visible) {
+    for (const s of a.serviceSlugs) {
+      serviceCounts.set(s, (serviceCounts.get(s) ?? 0) + 1);
+    }
+  }
+  const serviceOptions: FilterOption[] = Array.from(serviceCounts.entries())
+    .filter(([slug]) => serviceTitleBySlug.has(slug))
+    .map(([slug, count]) => ({
+      value: slug,
+      label: serviceTitleBySlug.get(slug) ?? slug,
+      count,
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 
-  // Build a single-line description of the active server filters so the
-  // search input has context next to the result count.
+  const tagCounts = new Map<string, number>();
+  for (const a of visible) {
+    if (serviceFilter && !a.serviceSlugs.includes(serviceFilter)) continue;
+    if (authorFilter && a.authorSlug !== authorFilter) continue;
+    tagCounts.set(a.tag, (tagCounts.get(a.tag) ?? 0) + 1);
+  }
+  const tagOptions: FilterOption[] = Array.from(tagCounts.entries())
+    .map(([tag, count]) => ({ value: tag, label: tag, count }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+
+  const authorCounts = new Map<string, number>();
+  for (const a of visible) {
+    if (serviceFilter && !a.serviceSlugs.includes(serviceFilter)) continue;
+    if (tagFilter && a.tag !== tagFilter) continue;
+    authorCounts.set(a.authorSlug, (authorCounts.get(a.authorSlug) ?? 0) + 1);
+  }
+  const authorOptions: FilterOption[] = Array.from(authorCounts.entries())
+    .map(([slug, count]) => ({
+      value: slug,
+      label: teamBySlug.get(slug)?.name ?? slug,
+      count,
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+
+  const activeAuthor = authorFilter ? teamBySlug.get(authorFilter) : null;
+  const activeServiceTitle = serviceFilter
+    ? serviceTitleBySlug.get(serviceFilter) ?? null
+    : null;
+
   const descriptionParts: string[] = [];
-  if (activeService) descriptionParts.push(activeService);
+  if (activeServiceTitle) descriptionParts.push(activeServiceTitle);
   if (tagFilter) descriptionParts.push(`#${tagFilter}`);
   if (activeAuthor) descriptionParts.push(`by ${activeAuthor.name}`);
   const filterDescription = descriptionParts.length > 0 ? descriptionParts.join(' · ') : null;
 
-  // Project to the slimmer client-component shape so we don't ship the
-  // full body text down the wire just to render cards.
   const gridArticles: GridArticle[] = filtered.map((a) => {
     const author = getArticleAuthor(a);
     return {
@@ -85,6 +133,8 @@ export default async function InsightsHubPage({
     };
   });
 
+  const anyFilterActive = Boolean(serviceFilter || tagFilter || authorFilter || sort === 'oldest');
+
   return (
     <PageShell>
       <main className="home-v3 service-v1">
@@ -95,77 +145,39 @@ export default async function InsightsHubPage({
           </h1>
           <p className="hub-lede">
             Long-form writing from Nucleus partners. Fundraise mechanics, term sheets,
-            M&amp;A, valuations, risk and tax. Search the archive or filter by service line,
-            tag, or author.
+            M&amp;A, valuations, risk and tax. Filter by service line, tag, or author;
+            sort newest or oldest; or search the archive.
           </p>
-          {activeAuthor ? (
+          {anyFilterActive ? (
             <p className="hub-active-author">
-              Showing articles by{' '}
-              <strong>{activeAuthor.name}</strong>
+              {activeServiceTitle ? <>Service: <strong>{activeServiceTitle}</strong></> : null}
+              {tagFilter ? <>{activeServiceTitle ? ' · ' : ''}Tag: <strong>{tagFilter}</strong></> : null}
+              {activeAuthor ? (
+                <>{activeServiceTitle || tagFilter ? ' · ' : ''}Author:{' '}
+                  <strong>{activeAuthor.name}</strong>
+                </>
+              ) : null}
+              {sort === 'oldest' ? (
+                <>{activeServiceTitle || tagFilter || activeAuthor ? ' · ' : ''}Oldest first</>
+              ) : null}
               {' · '}
               <Link href="/insights" className="hub-active-clear">
-                clear author filter
+                clear all
               </Link>
             </p>
           ) : null}
         </section>
 
-        <section className="hub-filters" aria-label="Filter insights">
-          <div className="hub-filter-row">
-            <span className="hub-filter-label">Service —</span>
-            <FilterChip
-              href={authorFilter ? `/insights?author=${authorFilter}` : '/insights'}
-              active={!serviceFilter}
-              label={`All · ${visible.length}`}
-            />
-            {Array.from(serviceCounts.entries())
-              .sort((a, b) => b[1] - a[1])
-              .map(([slug, count]) => {
-                const title = serviceTitleBySlug.get(slug) ?? slug;
-                const params = new URLSearchParams();
-                params.set('service', slug);
-                if (authorFilter) params.set('author', authorFilter);
-                return (
-                  <FilterChip
-                    key={slug}
-                    href={`/insights?${params.toString()}`}
-                    active={serviceFilter === slug}
-                    label={`${title} · ${count}`}
-                  />
-                );
-              })}
-          </div>
-
-          {tagsForService.length > 0 ? (
-            <div className="hub-filter-row">
-              <span className="hub-filter-label">Tag —</span>
-              <FilterChip
-                href={
-                  serviceFilter
-                    ? `/insights?service=${serviceFilter}${authorFilter ? `&author=${authorFilter}` : ''}`
-                    : authorFilter
-                      ? `/insights?author=${authorFilter}`
-                      : '/insights'
-                }
-                active={!tagFilter}
-                label="All"
-              />
-              {tagsForService.map((tag) => {
-                const params = new URLSearchParams();
-                if (serviceFilter) params.set('service', serviceFilter);
-                if (authorFilter) params.set('author', authorFilter);
-                params.set('tag', tag);
-                return (
-                  <FilterChip
-                    key={tag}
-                    href={`/insights?${params.toString()}`}
-                    active={tagFilter === tag}
-                    label={tag}
-                  />
-                );
-              })}
-            </div>
-          ) : null}
+        <section className="hub-toolbar-section" aria-label="Filter and sort">
+          <InsightsToolbar
+            services={serviceOptions}
+            tags={tagOptions}
+            authors={authorOptions}
+            currentService={serviceFilter}
+            currentTag={tagFilter}
+            currentAuthor={authorFilter}
+            currentSort={sort}
+          />
         </section>
 
         <section className="hub-grid-section">
@@ -174,30 +186,4 @@ export default async function InsightsHubPage({
       </main>
     </PageShell>
   );
-}
-
-function FilterChip({
-  href,
-  active,
-  label,
-}: Readonly<{ href: string; active: boolean; label: string }>) {
-  return (
-    <Link
-      href={href}
-      className={`hub-chip ${active ? 'is-active' : ''}`}
-      aria-current={active ? 'page' : undefined}
-    >
-      {label}
-    </Link>
-  );
-}
-
-function countByMulti<T>(items: T[], getKeys: (item: T) => string[]): Map<string, number> {
-  const map = new Map<string, number>();
-  for (const it of items) {
-    for (const k of getKeys(it)) {
-      map.set(k, (map.get(k) ?? 0) + 1);
-    }
-  }
-  return map;
 }
