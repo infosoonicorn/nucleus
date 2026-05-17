@@ -16,6 +16,7 @@ export type GridArticle = {
   tag: string;
   readMinutes: number;
   isDraft: boolean;
+  thumbnailSrc?: string;
   author: {
     name: string;
     role: string;
@@ -110,6 +111,19 @@ export function InsightsGrid({
               href={`/insights/${article.slug}`}
               className="service-v1-articles-card"
             >
+              <span className="service-v1-articles-thumb" aria-hidden="true">
+                {article.thumbnailSrc ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={article.thumbnailSrc} alt="" loading="lazy" />
+                ) : (
+                  <span className="service-v1-articles-thumb-placeholder">
+                    <span className="service-v1-articles-thumb-tag">{article.tag}</span>
+                    <span className="service-v1-articles-thumb-brand">
+                      Nucleus <em>Insights</em>
+                    </span>
+                  </span>
+                )}
+              </span>
               <div className="service-v1-articles-meta">
                 <span className="service-v1-articles-tag">{article.tag}</span>
                 {article.isDraft ? (

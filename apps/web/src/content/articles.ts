@@ -357,7 +357,6 @@ export const articles: Article[] = [
     readMinutes: 8,
     tag: 'Sell-side process',
     serviceSlugs: ['ma-advisory'],
-    thumbnailSrc: '/article-thumbs/first-30-days-of-a-sell-side-process.jpg',
     reviewerStatus: 'pending',
   },
   {
@@ -407,7 +406,6 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Internal audit",
     serviceSlugs: ['risk-advisory'],
-    thumbnailSrc: '/article-thumbs/five-control-failures-nbfc-internal-audit.jpg',
     reviewerStatus: 'pending',
   },
   {
@@ -461,7 +459,6 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "GST refunds",
     serviceSlugs: ['tax-regulatory'],
-    thumbnailSrc: '/article-thumbs/gst-refund-procedural-failures.jpg',
     reviewerStatus: 'pending',
   },
   {
@@ -517,7 +514,6 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Statutory audit",
     serviceSlugs: ['assurance'],
-    thumbnailSrc: '/article-thumbs/statutory-audit-questions-founders-dread.jpg',
     reviewerStatus: 'pending',
   },
   {
@@ -568,7 +564,6 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "ESOP valuation",
     serviceSlugs: ['valuations'],
-    thumbnailSrc: '/article-thumbs/esop-valuation-india-409a-playbook.jpg',
     reviewerStatus: 'pending',
   },
   {
@@ -620,7 +615,6 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "vCFO",
     serviceSlugs: ['finance-outsourcing'],
-    thumbnailSrc: '/article-thumbs/when-outsourced-finance-beats-hiring-your-first-cfo.jpg',
     reviewerStatus: 'pending',
   },
   {
@@ -683,7 +677,6 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "ROC filings",
     serviceSlugs: ['corporate-secretarial'],
-    thumbnailSrc: '/article-thumbs/roc-filings-that-fail-diligence.jpg',
     reviewerStatus: 'pending',
   },
   {
@@ -739,7 +732,6 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "AIF structuring",
     serviceSlugs: ['aif-fund-management'],
-    thumbnailSrc: '/article-thumbs/cat-i-vs-cat-ii-aif-structural-choice.jpg',
     reviewerStatus: 'pending',
   },
 ];

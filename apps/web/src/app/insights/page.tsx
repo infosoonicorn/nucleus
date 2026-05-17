@@ -124,6 +124,7 @@ export default async function InsightsHubPage({
       tag: a.tag,
       readMinutes: a.readMinutes,
       isDraft: a.reviewerStatus !== 'approved',
+      thumbnailSrc: a.thumbnailSrc,
       author: {
         name: author.name,
         role: author.role,
