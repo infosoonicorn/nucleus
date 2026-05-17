@@ -84,15 +84,15 @@ export function ArticleAuthorBio({ article }: Readonly<{ article: Article }>) {
                 LinkedIn
               </a>
             ) : null}
-            {moreCount > 0 ? (
-              <Link
-                href={`/insights?author=${author.slug}`}
-                className="article-author-bio-action"
-              >
-                <BookOpen size={14} aria-hidden="true" />
-                {moreCount} more from {firstName}
-              </Link>
-            ) : null}
+            <Link
+              href={`/insights/by/${author.slug}`}
+              className="article-author-bio-action"
+            >
+              <BookOpen size={14} aria-hidden="true" />
+              {moreCount > 0
+                ? `${moreCount + 1} articles from ${firstName}`
+                : `Archive for ${firstName}`}
+            </Link>
           </div>
         </div>
       </div>

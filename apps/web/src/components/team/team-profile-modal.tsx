@@ -193,10 +193,20 @@ export function TeamProfileModal({
 
               {articlesByThisPartner.length > 0 ? (
                 <section className="team-page-modal-articles">
-                  <p className="team-page-modal-articles-eyebrow">
-                    <BookOpen size={12} aria-hidden="true" /> Writing from{' '}
-                    {getFirstName(member.name)}
-                  </p>
+                  <header className="team-page-modal-articles-head">
+                    <p className="team-page-modal-articles-eyebrow">
+                      <BookOpen size={12} aria-hidden="true" /> Writing from{' '}
+                      {getFirstName(member.name)}
+                    </p>
+                    <Link
+                      href={`/insights/by/${member.slug}`}
+                      onClick={handleClose}
+                      className="team-page-modal-articles-archive"
+                    >
+                      View full archive
+                      <ArrowUpRight size={11} aria-hidden="true" />
+                    </Link>
+                  </header>
                   <div className="team-page-modal-article-cards">
                     {articlesByThisPartner.slice(0, 4).map((a) => (
                       <Link
