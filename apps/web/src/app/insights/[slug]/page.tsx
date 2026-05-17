@@ -26,9 +26,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const allowDrafts = process.env.NODE_ENV !== 'production';
   const article = getArticleBySlug(slug, { allowDrafts });
   if (!article) return { title: 'Article — Nucleus Advisors' };
+
+  const author = getArticleAuthor(article);
+  const ogImage = article.thumbnailSrc ?? '/og-default.png';
+  const canonicalPath = `/insights/${article.slug}`;
+
   return {
     title: `${article.title} — Nucleus Advisors`,
     description: article.excerpt,
+    authors: [{ name: author.name }],
+    keywords: [article.tag, ...article.serviceSlugs],
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      type: 'article',
+      title: article.title,
+      description: article.excerpt,
+      url: canonicalPath,
+      siteName: 'Nucleus Advisors',
+      images: [{ url: ogImage, width: 1200, height: 630, alt: article.title }],
+      publishedTime: `${article.publishedOn}T00:00:00Z`,
+      authors: [author.name],
+      tags: [article.tag],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+      images: [ogImage],
+    },
   };
 }
 
@@ -70,8 +95,46 @@ export default async function ArticlePage({ params }: Props) {
 
   const primaryServiceSlug = article.serviceSlugs[0];
 
+  // JSON-LD Article structured data for Google rich results + future
+  // discovery surfaces. Image, dates, author and publisher all named
+  // explicitly so the article ranks as a first-class editorial piece,
+  // not a generic web page.
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.excerpt,
+    image: [article.thumbnailSrc ?? '/og-default.png'],
+    datePublished: `${article.publishedOn}T00:00:00Z`,
+    dateModified: `${article.publishedOn}T00:00:00Z`,
+    author: {
+      '@type': 'Person',
+      name: author.name,
+      jobTitle: author.role,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Nucleus Advisors',
+      logo: {
+        '@type': 'ImageObject',
+        url: '/og-default.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `/insights/${article.slug}`,
+    },
+    keywords: [article.tag, ...article.serviceSlugs].join(', '),
+    articleSection: article.tag,
+    wordCount: article.body.split(/\s+/).length,
+  };
+
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ReadingProgress />
       <main className="home-v3 service-v1">
         <div className="article-page-shell">

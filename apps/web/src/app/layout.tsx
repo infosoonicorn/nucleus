@@ -16,6 +16,22 @@ export const metadata: Metadata = {
   title: 'Nucleus Advisors | Full-Spectrum Consulting From Incorporation to Listing',
   description:
     'Nucleus Advisors helps businesses from incorporation to listing readiness across investment banking, M&A, risk advisory, tax, assurance, valuations and finance operations.',
+  alternates: {
+    types: {
+      'application/rss+xml': [
+        { url: '/insights/feed.xml', title: 'Nucleus Advisors — Insights' },
+      ],
+    },
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'Nucleus Advisors',
+    images: [{ url: '/og-default.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og-default.png'],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
