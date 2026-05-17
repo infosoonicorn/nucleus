@@ -8153,23 +8153,28 @@ html.lenis body {
 .article-page-side::-webkit-scrollbar { width: 6px; }
 .article-page-side::-webkit-scrollbar-thumb { background: rgba(20, 24, 40, 0.12); border-radius: 4px; }
 
-/* ── Shared sidebar-block primitives used by lead form + related list ── */
-.article-page-side .sidebar-block {
+/* ── Article-rail sidebar primitives ──
+   Scoped with :not(.sidebar-cta-block) so we don't override the shared
+   SidebarCTA card, which is designed dark-on-navy and would otherwise
+   render invisible light text on a white background. */
+.article-page-side .sidebar-block:not(.sidebar-cta-block) {
   background: #fff;
   border: 1px solid rgba(20, 24, 40, 0.08);
   border-radius: 14px;
   padding: 22px 22px 24px;
   box-shadow: 0 18px 36px -28px rgba(20, 24, 40, 0.3);
 }
-.article-page-side .sidebar-block-head { margin-bottom: 14px; }
-.article-page-side .sidebar-block-eyebrow {
+.article-page-side .sidebar-block:not(.sidebar-cta-block) .sidebar-block-head {
+  margin-bottom: 14px;
+}
+.article-page-side .sidebar-block:not(.sidebar-cta-block) .sidebar-block-eyebrow {
   font: 600 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--service-accent-red, #dd1017);
   margin: 0 0 8px;
 }
-.article-page-side .sidebar-block-title {
+.article-page-side .sidebar-block:not(.sidebar-cta-block) .sidebar-block-title {
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-weight: 700;
   font-size: 1.18rem;
@@ -8178,7 +8183,7 @@ html.lenis body {
   color: #0c1024;
   margin: 0;
 }
-.article-page-side .sidebar-block-title em {
+.article-page-side .sidebar-block:not(.sidebar-cta-block) .sidebar-block-title em {
   font-style: italic;
   color: var(--service-accent-red, #dd1017);
 }
