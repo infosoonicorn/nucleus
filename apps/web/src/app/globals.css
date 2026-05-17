@@ -8534,6 +8534,64 @@ html.lenis body {
   object-fit: cover;
   display: block;
 }
+/* Article hero placeholder.
+   Mirrors the card placeholder pattern but scaled up for the 16:9
+   hero area at the top of the article reader. Used when no
+   thumbnailSrc is set so the reader does not open on a flat empty
+   box. */
+.article-page-hero-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: clamp(20px, 3vw, 40px);
+  background:
+    linear-gradient(135deg, rgba(221, 16, 23, 0.05) 0%, rgba(221, 16, 23, 0) 60%),
+    linear-gradient(135deg, #fefdf8 0%, #f3eee2 60%, #ead9c0 100%);
+}
+.article-page-hero { position: relative; }
+.article-page-hero-placeholder::before {
+  content: '';
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(221, 16, 23, 0.16), rgba(221, 16, 23, 0));
+  pointer-events: none;
+}
+.article-page-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(221, 16, 23, 0.1);
+  color: var(--service-accent-red, #dd1017);
+  font: 600 0.78rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid rgba(221, 16, 23, 0.2);
+  position: relative;
+  z-index: 1;
+}
+.article-page-hero-brand {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 720;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  line-height: 1;
+  letter-spacing: -0.018em;
+  color: rgba(20, 24, 40, 0.55);
+  position: relative;
+  z-index: 1;
+}
+.article-page-hero-brand em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--service-accent-red, #dd1017);
+}
 .article-page-body p {
   margin: 0 0 1.2em;
   font-size: 1.05rem;

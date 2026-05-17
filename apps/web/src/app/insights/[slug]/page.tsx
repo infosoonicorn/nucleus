@@ -76,12 +76,19 @@ export default async function ArticlePage({ params }: Props) {
       <main className="home-v3 service-v1">
         <div className="article-page-shell">
           <article className="article-page">
-            {article.thumbnailSrc ? (
-              <figure className="article-page-hero">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+            <figure className="article-page-hero">
+              {article.thumbnailSrc ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img src={article.thumbnailSrc} alt="" loading="eager" />
-              </figure>
-            ) : null}
+              ) : (
+                <span className="article-page-hero-placeholder" aria-hidden="true">
+                  <span className="article-page-hero-tag">{article.tag}</span>
+                  <span className="article-page-hero-brand">
+                    Nucleus <em>Insights</em>
+                  </span>
+                </span>
+              )}
+            </figure>
             <header className="article-page-head">
               <nav className="article-breadcrumb" aria-label="Breadcrumb">
                 <ol>
