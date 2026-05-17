@@ -11808,6 +11808,15 @@ main.service-v1 > div > section {
   color: var(--service-accent-red, #dd1017);
 }
 
+/* Disabled CTA. Used in the modal action row for LinkedIn when no URL
+   is on file yet. Visually present so the design stays consistent;
+   muted styling + pointer-events:none so it can't be clicked. */
+.resource-cta-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* Sticky action row at the bottom of the modal (outside the scroll
    area, so the buttons stay visible regardless of bio length). */
 .team-page-modal-actions {

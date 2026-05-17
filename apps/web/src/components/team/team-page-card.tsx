@@ -173,7 +173,7 @@ export function TeamPageCard({ member }: Readonly<{ member: TeamMember }>) {
                 <X size={16} />
               </button>
 
-              <div className="team-page-modal-scroll">
+              <div className="team-page-modal-scroll" data-lenis-prevent>
                 <header className="team-page-modal-head">
                   <span className="team-page-modal-photo" aria-hidden="true">
                     {member.headshotSrc ? (
@@ -291,7 +291,16 @@ export function TeamPageCard({ member }: Readonly<{ member: TeamMember }>) {
                     <Linkedin size={14} aria-hidden="true" />
                     LinkedIn
                   </a>
-                ) : null}
+                ) : (
+                  <span
+                    className="resource-cta resource-cta-ghost resource-cta-disabled"
+                    aria-disabled="true"
+                    title="LinkedIn URL pending"
+                  >
+                    <Linkedin size={14} aria-hidden="true" />
+                    LinkedIn
+                  </span>
+                )}
               </div>
             </motion.div>
           </motion.div>

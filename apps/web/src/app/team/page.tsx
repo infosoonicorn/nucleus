@@ -23,8 +23,7 @@ export default function TeamPage() {
           <p className="team-page-hero-lede">
             A bench of partners and senior practitioners who run mandates themselves. Combined
             100+ years of experience across investment banking, M&amp;A, audit, tax, risk,
-            valuations and corporate secretarial. No leveraged junior teams pretending to be
-            partners.
+            valuations and corporate secretarial.
           </p>
           <div className="team-page-hero-stats" aria-label="Firm stats">
             <div className="team-page-hero-stat">
