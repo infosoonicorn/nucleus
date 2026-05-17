@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { useCallback, useEffect, useId, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUpRight, BookOpen, Briefcase, GraduationCap, Linkedin, Mail, X } from 'lucide-react';
+import { ArrowUpRight, BookOpen, Briefcase, Clock, GraduationCap, Linkedin, Mail, X } from 'lucide-react';
 import type { TeamMember } from '@/content/team';
-import { articles as allArticles, getArticleAuthor } from '@/content/articles';
+import { articles as allArticles } from '@/content/articles';
 
 const FIRM_EMAIL = 'info@nucleusadvisors.in';
 
@@ -238,34 +238,46 @@ export function TeamPageCard({ member }: Readonly<{ member: TeamMember }>) {
                 {articlesByThisPartner.length > 0 ? (
                   <section className="team-page-modal-articles">
                     <p className="team-page-modal-articles-eyebrow">
-                      <BookOpen size={12} aria-hidden="true" /> Writing
+                      <BookOpen size={12} aria-hidden="true" /> Writing from{' '}
+                      {member.name.split(' ').slice(-1)[0]}
                     </p>
-                    <ul>
+                    <div className="team-page-modal-article-cards">
                       {articlesByThisPartner.slice(0, 4).map((a) => (
-                        <li key={a.slug}>
-                          <Link href={`/insights/${a.slug}`} onClick={close}>
-                            <span>{a.title}</span>
-                            <span className="team-page-modal-articles-meta">
-                              {getArticleAuthor(a).role} · {a.readMinutes} min
+                        <Link
+                          key={a.slug}
+                          href={`/insights/${a.slug}`}
+                          onClick={close}
+                          className="team-page-modal-article-card"
+                        >
+                          <span className="team-page-modal-article-thumb" aria-hidden="true">
+                            {a.thumbnailSrc ? (
+                              // Small JPG thumbs, next/image not needed.
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={a.thumbnailSrc} alt="" loading="lazy" />
+                            ) : (
+                              <span className="team-page-modal-article-thumb-fallback">
+                                {a.tag}
+                              </span>
+                            )}
+                          </span>
+                          <span className="team-page-modal-article-meta">
+                            <span className="team-page-modal-article-tag">{a.tag}</span>
+                            <span className="team-page-modal-article-title">{a.title}</span>
+                            <span className="team-page-modal-article-foot">
+                              <Clock size={11} aria-hidden="true" />
+                              {a.readMinutes} min read
+                              <ArrowUpRight size={12} aria-hidden="true" />
                             </span>
-                          </Link>
-                        </li>
+                          </span>
+                        </Link>
                       ))}
-                    </ul>
+                    </div>
                   </section>
                 ) : null}
               </div>
 
               <div className="team-page-modal-actions">
-                <Link
-                  href={`/team/${member.slug}`}
-                  className="resource-cta resource-cta-primary"
-                  onClick={close}
-                >
-                  Full profile
-                  <ArrowUpRight size={14} aria-hidden="true" />
-                </Link>
-                <a href={emailHref} className="resource-cta resource-cta-ghost">
+                <a href={emailHref} className="resource-cta resource-cta-primary">
                   <Mail size={14} aria-hidden="true" />
                   Email {member.email ? member.name.split(' ').slice(-1)[0] : 'the desk'}
                 </a>
