@@ -9,6 +9,7 @@ import {
   InsightsToolbar,
   type FilterOption,
 } from '@/components/insights/insights-toolbar';
+import { NewsletterSignup } from '@/components/insights/newsletter-signup';
 
 export const metadata: Metadata = {
   title: 'Insights — Nucleus Advisors',
@@ -183,6 +184,10 @@ export default async function InsightsHubPage({
 
         <section className="hub-grid-section">
           <InsightsGrid articles={gridArticles} filterDescription={filterDescription} />
+        </section>
+
+        <section className="hub-newsletter-section">
+          <NewsletterSignup variant="hub" />
         </section>
       </main>
     </PageShell>

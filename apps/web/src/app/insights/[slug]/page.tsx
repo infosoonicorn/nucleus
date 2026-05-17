@@ -7,6 +7,7 @@ import { articles, getArticleAuthor, getArticleBySlug } from '@/content/articles
 import { ArticleAuthorBio } from '@/components/insights/article-author-bio';
 import { ArticleRelated } from '@/components/insights/article-related';
 import { ArticleTOC, type TocHeading } from '@/components/insights/article-toc';
+import { NewsletterSignup } from '@/components/insights/newsletter-signup';
 import { ReadingProgress } from '@/components/insights/reading-progress';
 import { SidebarCTA } from '@/components/services/sidebar-blocks';
 
@@ -218,6 +219,7 @@ export default async function ArticlePage({ params }: Props) {
             </div>
 
             <ArticleAuthorBio article={article} />
+            <NewsletterSignup variant="article-footer" />
           </article>
 
           {/* data-lenis-prevent: lets the rail scroll independently of
