@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Clock } from 'lucide-react';
+import { ChevronRight, Clock } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
 import { articles, getArticleAuthor, getArticleBySlug } from '@/content/articles';
 import { ArticleAuthorBio } from '@/components/insights/article-author-bio';
@@ -83,12 +83,34 @@ export default async function ArticlePage({ params }: Props) {
               </figure>
             ) : null}
             <header className="article-page-head">
-              <Link href="/insights" className="article-page-back">
-                <ArrowLeft size={14} aria-hidden="true" />
-                <span>All insights</span>
-              </Link>
+              <nav className="article-breadcrumb" aria-label="Breadcrumb">
+                <ol>
+                  <li>
+                    <Link href="/">Home</Link>
+                  </li>
+                  <li aria-hidden="true" className="article-breadcrumb-sep">
+                    <ChevronRight size={12} />
+                  </li>
+                  <li>
+                    <Link href="/insights">Insights</Link>
+                  </li>
+                  <li aria-hidden="true" className="article-breadcrumb-sep">
+                    <ChevronRight size={12} />
+                  </li>
+                  <li>
+                    <Link href={`/insights?tag=${encodeURIComponent(article.tag)}`}>
+                      {article.tag}
+                    </Link>
+                  </li>
+                </ol>
+              </nav>
               <div className="article-page-meta">
-                <span className="article-page-tag">{article.tag}</span>
+                <Link
+                  href={`/insights?tag=${encodeURIComponent(article.tag)}`}
+                  className="article-page-tag article-page-tag-link"
+                >
+                  {article.tag}
+                </Link>
                 {isDraft ? <span className="article-page-draft">Draft — not yet published</span> : null}
                 <span className="article-page-date">{formatDate(article.publishedOn)}</span>
                 <span className="article-page-readtime">

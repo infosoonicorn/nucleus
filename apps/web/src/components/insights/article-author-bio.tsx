@@ -85,7 +85,10 @@ export function ArticleAuthorBio({ article }: Readonly<{ article: Article }>) {
               </a>
             ) : null}
             {moreCount > 0 ? (
-              <Link href="/insights" className="article-author-bio-action">
+              <Link
+                href={`/insights?author=${author.slug}`}
+                className="article-author-bio-action"
+              >
                 <BookOpen size={14} aria-hidden="true" />
                 {moreCount} more from {firstName}
               </Link>
