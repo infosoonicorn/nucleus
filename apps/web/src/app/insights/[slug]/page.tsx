@@ -92,8 +92,7 @@ export default async function ArticlePage({ params }: Props) {
 
             <footer className="article-page-foot">
               <p>
-                <strong>{article.author.name}</strong> is a {article.author.role} at Nucleus Advisors.
-                Comments and pushback welcome.{' '}
+                <strong>{article.author.name}</strong> is a {article.author.role} at Nucleus Advisors.{' '}
                 <Link href="/contact">Write to the desk</Link>.
               </p>
             </footer>
