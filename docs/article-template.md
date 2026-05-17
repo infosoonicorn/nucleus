@@ -32,14 +32,26 @@ This prints a ready-to-paste TypeScript object with all required fields. Open `a
 
 ## 3. Body markdown rules
 
-The article body is parsed by `/insights/[slug]/page.tsx`. The supported markdown is intentionally minimal:
+The article body is parsed by `/insights/[slug]/page.tsx`. Supported markdown:
 
 - `## Heading` — section header (h2). Renders with a brand-red accent bar above.
 - `### Subheading` — subsection header (h3). Renders with a brand-red bullet dot.
 - `**bold**` — inline emphasis. Renders with a soft red highlight underlay.
+- `> text` — pull-quote. A paragraph beginning with `> ` renders as an oversized italic quote with a decorative red mark. Use sparingly: zero or one per article, on the line you most want the reader to hold.
+- `:::note text` — ochre callout box labelled **Worth noting**. Closing `:::` is optional. For asides that interrupt the argument with a side observation.
+- `:::insight text` — navy callout box labelled **The insight**. Use for the one line that summarises the article's central claim.
+- `:::watch text` — red callout box labelled **Watch for**. Use for a specific failure mode or risk to flag at the right moment in the narrative.
 - Everything else is a paragraph. Paragraphs are justified with browser hyphenation.
 
 No raw HTML. No em-dashes (`—`). No `<span>`, no `<br>`, no inline styles. If you want a visual treatment, raise it as a renderer feature — never embed presentation in the body.
+
+### When to reach for which callout
+
+Use callouts sparingly. A practitioner article that needs more than two callouts is probably structured wrong — break it into a `##` section instead.
+
+- **`:::watch`** at the moment in the article where a specific failure mode applies. ("Watch for: the regulator will read the agreement and the operating practice as different documents.")
+- **`:::insight`** as the article's load-bearing claim — usually at the end of the lead-in, before the first `##`. Quoted as the article's TL;DR in shares.
+- **`:::note`** for procedural context the practitioner needs but the argument doesn't strictly require. ("Worth noting: the FIRC requirement applies even when the bank issues a consolidated statement.")
 
 ## 4. Voice and length
 

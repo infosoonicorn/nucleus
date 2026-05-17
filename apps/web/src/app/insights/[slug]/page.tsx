@@ -229,6 +229,35 @@ export default async function ArticlePage({ params }: Props) {
                   if (h.level === 3) return <h3 key={i} id={h.id}>{h.text}</h3>;
                   return <h2 key={i} id={h.id}>{h.text}</h2>;
                 }
+                // Pull-quote: paragraph starting with "> "
+                if (p.startsWith('> ')) {
+                  return (
+                    <blockquote key={i} className="article-page-pullquote">
+                      {renderInline(p.slice(2))}
+                    </blockquote>
+                  );
+                }
+                // Callout: paragraph starting with ":::variant " (note / insight / watch)
+                const calloutMatch = p.match(/^:::(note|insight|watch)\s+([\s\S]+?)(?:\s*:::)?$/);
+                if (calloutMatch) {
+                  const variant = calloutMatch[1];
+                  const text = calloutMatch[2];
+                  const label =
+                    variant === 'note'
+                      ? 'Worth noting'
+                      : variant === 'insight'
+                        ? 'The insight'
+                        : 'Watch for';
+                  return (
+                    <aside
+                      key={i}
+                      className={`article-page-callout article-page-callout-${variant}`}
+                    >
+                      <p className="article-page-callout-label">{label}</p>
+                      <p className="article-page-callout-text">{renderInline(text)}</p>
+                    </aside>
+                  );
+                }
                 return <p key={i}>{renderInline(p)}</p>;
               })}
             </div>

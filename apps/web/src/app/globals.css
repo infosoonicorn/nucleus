@@ -13120,3 +13120,94 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 .series-banner-part.is-current .series-banner-part-link {
   cursor: default;
 }
+
+/* ==============================================================
+   Article body: pull-quotes and callout boxes.
+   Two editorial-design syntax extensions on the markdown-ish body:
+     "> "             -> pull-quote (oversized italic, red quote mark)
+     ":::note ..."    -> callout, ochre ("Worth noting")
+     ":::insight ..." -> callout, navy  ("The insight")
+     ":::watch ..."   -> callout, red   ("Watch for")
+   Closing ":::" is optional on callouts.
+   ============================================================== */
+.article-page-pullquote {
+  position: relative;
+  margin: 2em -8px;
+  padding: 8px 18px 8px 38px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-style: italic;
+  font-size: clamp(1.2rem, 1.9vw, 1.45rem);
+  line-height: 1.4;
+  color: #0c1024;
+  border-left: 3px solid var(--service-accent-red, #dd1017);
+  text-wrap: balance;
+}
+.article-page-pullquote::before {
+  content: '\201C';
+  position: absolute;
+  left: 8px;
+  top: -4px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3.4rem;
+  line-height: 1;
+  color: rgba(221, 16, 23, 0.4);
+  font-style: normal;
+  pointer-events: none;
+}
+.article-page-pullquote em,
+.article-page-pullquote strong {
+  background: none;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Callout boxes — three variants, same skeleton */
+.article-page-callout {
+  margin: 1.6em 0;
+  padding: 18px 22px;
+  border-radius: 10px;
+  border-left: 3px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.article-page-callout-label {
+  font: 600 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.article-page-callout-text {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #141828;
+  margin: 0;
+  text-align: left;
+  hyphens: manual;
+}
+.article-page-callout-text strong {
+  font-weight: 700;
+  background: none;
+  padding: 0;
+}
+
+.article-page-callout-note {
+  background: rgba(184, 160, 96, 0.1);
+  border-left-color: #b8a060;
+}
+.article-page-callout-note .article-page-callout-label { color: #8d7945; }
+
+.article-page-callout-insight {
+  background: rgba(21, 34, 73, 0.06);
+  border-left-color: #152249;
+}
+.article-page-callout-insight .article-page-callout-label { color: #152249; }
+
+.article-page-callout-watch {
+  background: rgba(221, 16, 23, 0.06);
+  border-left-color: var(--service-accent-red, #dd1017);
+}
+.article-page-callout-watch .article-page-callout-label {
+  color: var(--service-accent-red, #dd1017);
+}
