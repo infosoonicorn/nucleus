@@ -106,7 +106,9 @@ export const team: TeamMember[] = [
     email: 'vijay@nucleusadvisors.in', // TODO confirm
     expertise: ['Financial Due Diligence', 'Valuations', 'Startup Fundraising'],
     experienceYears: 10,
-    pastEmployers: ['ICICI Bank (Internal Audit, Retail Liabilities Group)'],
+    pastEmployers: [
+      { name: 'ICICI Bank', src: '/team/logos/icici-bank.png' },
+    ],
     qualifications: ['Chartered Accountant'],
     shortBio:
       'Heads investment banking. Works closely with founders on financial modelling, pitch decks, term sheet negotiations, and fundraising strategy.',
@@ -127,6 +129,13 @@ export const team: TeamMember[] = [
     headshotSrc: '/team/tarun-agarwal.jpg',
     expertise: ['vCFO', 'Corporate Finance', 'Group Consolidation'],
     experienceYears: 20,
+    pastEmployers: [
+      { name: 'EY', src: '/team/logos/ey.png' },
+      { name: 'Deloitte', src: '/team/logos/deloitte.png' },
+      { name: 'Azure Power', src: '/team/logos/azure-power.png' },
+      { name: 'RSPL', src: '/team/logos/rspl.png' },
+      { name: 'Sightview', src: '/team/logos/sightview.png' },
+    ],
     qualifications: ['Chartered Accountant'],
     shortBio:
       'Handles the vCFO, corporate finance and accounting advisory practice. Specialises in business partnering, group consolidation, and complex accounting areas.',
@@ -146,7 +155,11 @@ export const team: TeamMember[] = [
     headshotSrc: '/team/ashish-gupta.jpg',
     expertise: ['Internal Audit', 'vCFO (NBFC)', 'Bank Audits'],
     experienceYears: 13,
-    pastEmployers: ['Ridescapital Finserv'],
+    pastEmployers: [
+      { name: 'ICICI Bank', src: '/team/logos/icici-bank.png' },
+      { name: 'Yes Bank', src: '/team/logos/yes-bank.png' },
+      { name: 'AU Small Finance Bank', src: '/team/logos/au-small-finance-bank.png' },
+    ],
     qualifications: ['Chartered Accountant'],
     shortBio:
       'Leads internal audit and risk management. Specialises in banking, finance and NBFC sectors — audits, risk assessments, and process optimisation.',
@@ -167,6 +180,9 @@ export const team: TeamMember[] = [
     headshotSrc: '/team/abhishek-gupta.jpg',
     expertise: ['Statutory Audit', 'IFC & Process Re-engineering', 'Ind-AS'],
     experienceYears: 6,
+    pastEmployers: [
+      { name: 'ACME', src: '/team/logos/acme.png' },
+    ],
     qualifications: ['Chartered Accountant'],
     shortBio:
       'Leads audit and assurance. Significant experience in statutory audits across companies, startups and PSUs, plus limited reviews of listed companies.',
