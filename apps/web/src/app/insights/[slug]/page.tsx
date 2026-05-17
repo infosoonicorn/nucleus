@@ -3,12 +3,18 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ChevronRight, Clock } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
-import { articles, getArticleAuthor, getArticleBySlug } from '@/content/articles';
+import {
+  articles,
+  getArticleAuthor,
+  getArticleBySlug,
+  getSeriesArticles,
+} from '@/content/articles';
 import { ArticleAuthorBio } from '@/components/insights/article-author-bio';
 import { ArticleRelated } from '@/components/insights/article-related';
 import { ArticleTOC, type TocHeading } from '@/components/insights/article-toc';
 import { NewsletterSignup } from '@/components/insights/newsletter-signup';
 import { ReadingProgress } from '@/components/insights/reading-progress';
+import { SeriesBanner } from '@/components/insights/series-banner';
 import { SidebarCTA } from '@/components/services/sidebar-blocks';
 
 type Props = {
@@ -95,6 +101,12 @@ export default async function ArticlePage({ params }: Props) {
   let headingIdx = 0;
 
   const primaryServiceSlug = article.serviceSlugs[0];
+
+  // Resolve series cohort (siblings sharing seriesKey) so the banner
+  // can show "Part N of M" with links to each part.
+  const seriesParts = article.seriesKey
+    ? getSeriesArticles(article.seriesKey, { allowDrafts })
+    : [];
 
   // JSON-LD Article structured data for Google rich results + future
   // discovery surfaces. Image, dates, author and publisher all named
@@ -190,6 +202,9 @@ export default async function ArticlePage({ params }: Props) {
                 </span>
               </div>
               <h1 className="article-page-title">{article.title}</h1>
+              {seriesParts.length >= 2 ? (
+                <SeriesBanner current={article} parts={seriesParts} />
+              ) : null}
               <p className="article-page-excerpt">{article.excerpt}</p>
               <div className="article-page-author">
                 <span className="article-page-avatar" aria-hidden="true">

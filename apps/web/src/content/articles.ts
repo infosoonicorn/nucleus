@@ -27,7 +27,21 @@ type ArticleBase = {
   serviceSlugs: string[];      // which service pages this article shows up on
   thumbnailSrc?: string;       // optional path under apps/web/public, e.g. '/article-thumbs/<slug>.jpg'
   featured?: boolean;          // when true, eligible for the 'Start here' slot on /insights
+  seriesKey?: string;          // kebab-case series identifier — articles with the same key cluster
+  seriesTitle?: string;        // display title for the series, e.g. 'The sell-side process'
+  seriesOrder?: number;        // 1-indexed position of this article within the series
 };
+
+/**
+ * All articles sharing a seriesKey, ordered by seriesOrder. Used by
+ * the SeriesBanner in the article reader to surface sibling parts.
+ */
+export function getSeriesArticles(seriesKey: string, opts?: { allowDrafts?: boolean }): Article[] {
+  const allowDrafts = opts?.allowDrafts ?? false;
+  return articles
+    .filter((a) => a.seriesKey === seriesKey && (allowDrafts ? true : a.reviewerStatus === 'approved'))
+    .sort((a, b) => (a.seriesOrder ?? 0) - (b.seriesOrder ?? 0));
+}
 
 export type Article =
   | (ArticleBase & { reviewerStatus: 'approved'; reviewerApprovedAt: string })
