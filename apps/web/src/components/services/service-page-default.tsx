@@ -1,3 +1,5 @@
+// Default service-page composition — used by every service that doesn't
+// have a bespoke route (currently IB + M&A). See companion notes below.
 import type { Service } from '@/content/site';
 import { getClientsForService } from '@/content/clients';
 import { getTeamForService } from '@/content/team';

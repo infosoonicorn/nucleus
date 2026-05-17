@@ -68,9 +68,15 @@ export default async function ArticlePage({ params }: Props) {
           </header>
 
           <div className="article-page-body">
-            {paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+            {paragraphs.map((p, i) => {
+              if (p.startsWith('### ')) {
+                return <h3 key={i}>{p.slice(4)}</h3>;
+              }
+              if (p.startsWith('## ')) {
+                return <h2 key={i}>{p.slice(3)}</h2>;
+              }
+              return <p key={i}>{renderInline(p)}</p>;
+            })}
           </div>
 
           <footer className="article-page-foot">
@@ -89,4 +95,18 @@ export default async function ArticlePage({ params }: Props) {
 function formatDate(iso: string): string {
   const d = new Date(`${iso}T00:00:00Z`);
   return d.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: '2-digit' });
+}
+
+/**
+ * Inline emphasis renderer for article body paragraphs. Supports
+ * **bold** segments only (no italics — we avoid em tags in articles
+ * because the editorial pages reserve italics for brand emphasis).
+ */
+function renderInline(text: string): React.ReactNode {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    const m = part.match(/^\*\*(.+)\*\*$/);
+    if (m) return <strong key={i}>{m[1]}</strong>;
+    return <span key={i}>{part}</span>;
+  });
 }
