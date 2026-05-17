@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { PageShell } from '@/components/site-chrome';
 import { ServicePageDefault } from '@/components/services/service-page-default';
 import { services } from '@/content/site';
 
@@ -23,9 +22,5 @@ export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
   if (!service) notFound();
-  return (
-    <PageShell>
-      <ServicePageDefault service={service} />
-    </PageShell>
-  );
+  return <ServicePageDefault service={service} />;
 }
