@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, Clock } from 'lucide-react';
-import { SectionHeader } from '@/components/sections';
 import { getArticlesForService } from '@/content/articles';
 import type { Service } from '@/content/site';
 
@@ -21,12 +20,19 @@ export function ServiceInsights({
     return null;
   }
 
+  const ord = ordinal ?? service.ordinal;
   return (
     <section className="service-v1-section service-v1-articles">
-      <SectionHeader
-        eyebrow={`●${ordinal ?? service.ordinal} / Insights`}
-        title="Notes from the desk."
-      />
+      <header className="service-v1-articles-header">
+        <p className="service-v1-articles-eyebrow">
+          <span className="service-v1-articles-eyebrow-num">●{ord}</span>
+          <span aria-hidden="true" className="service-v1-articles-eyebrow-bar" />
+          <span>Insights</span>
+        </p>
+        <h2 className="service-v1-articles-headline">
+          Notes from the <em>desk</em>.
+        </h2>
+      </header>
 
       <div className="service-v1-articles-grid">
         {articles.map((article) => {

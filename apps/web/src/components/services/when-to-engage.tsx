@@ -66,10 +66,16 @@ export function WhenToEngage({ ordinal, moments }: WhenToEngageProps) {
 
   return (
     <section className="service-v1-section service-v1-when">
-      <SectionHeader
-        eyebrow={`●${ordinal} / When to engage`}
-        title="The moments where outside judgement earns its keep."
-      />
+      <header className="service-v1-when-header">
+        <p className="service-v1-when-eyebrow">
+          <span className="service-v1-when-eyebrow-num">●{ordinal}</span>
+          <span aria-hidden="true" className="service-v1-when-eyebrow-bar" />
+          <span>When to engage</span>
+        </p>
+        <h2 className="service-v1-when-headline">
+          The moments where <em>outside judgement</em> earns its keep.
+        </h2>
+      </header>
       <dl className="service-v1-when-list" aria-label="When to engage Nucleus">
         {moments.map((m, i) => {
           const isOpen = openIndices.has(i);
