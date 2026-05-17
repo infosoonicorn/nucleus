@@ -25,7 +25,14 @@ const RESUME_AFTER_USER_MS = 8000;
 
 export function Process({ serviceTitle, ordinal, title, phases, dossier }: ProcessProps) {
   if (dossier) {
-    return <DossierProcess ordinal={ordinal} title={title ?? 'Process'} dossier={dossier} />;
+    return (
+      <DossierProcess
+        ordinal={ordinal}
+        title={title ?? 'Process'}
+        serviceTitle={serviceTitle}
+        dossier={dossier}
+      />
+    );
   }
 
   const usedPhases = phases ?? GENERIC_PHASES;
@@ -48,11 +55,26 @@ export function Process({ serviceTitle, ordinal, title, phases, dossier }: Proce
   );
 }
 
+/**
+ * Tiny parser: splits a string by `<em>...</em>` markers and returns React
+ * children alternating between plain text and italic-red spans. Keeps the
+ * dossier title data-driven without inviting full HTML rendering.
+ */
+function renderHeadline(html: string) {
+  const parts = html.split(/(<em>.*?<\/em>)/g);
+  return parts.map((p, i) => {
+    const m = p.match(/^<em>(.*?)<\/em>$/);
+    if (m) return <em key={i}>{m[1]}</em>;
+    return <span key={i}>{p}</span>;
+  });
+}
+
 function DossierProcess({
   ordinal,
   title,
+  serviceTitle,
   dossier,
-}: Readonly<{ ordinal: string; title: string; dossier: ProcessDossier }>) {
+}: Readonly<{ ordinal: string; title: string; serviceTitle: string; dossier: ProcessDossier }>) {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -90,11 +112,17 @@ function DossierProcess({
           <p className="service-v1-dossier-eyebrow">
             <span className="service-v1-dossier-eyebrow-num">●{ordinal}</span>
             <span aria-hidden="true" className="service-v1-dossier-eyebrow-bar" />
-            <span>Process · Investment Banking</span>
+            <span>Process · {serviceTitle}</span>
           </p>
           <h2 className="service-v1-dossier-title">
-            From <em>mandate</em>, to <em>wire</em>
-            <span className="service-v1-dossier-title-stop">.</span>
+            {dossier.headline
+              ? renderHeadline(dossier.headline)
+              : (
+                <>
+                  From <em>mandate</em>, to <em>wire</em>
+                  <span className="service-v1-dossier-title-stop">.</span>
+                </>
+              )}
           </h2>
         </div>
         <div className="service-v1-dossier-headside">

@@ -58,6 +58,9 @@ export type ProcessDossier = {
   projectName: string;         // 'Anonymised mandate' or similar — italic serif
   engagementType: string;      // 'Sell-side · Primary fundraise'
   partnerLabel: string;        // 'Lead: V. S. Rathore, Partner'
+  /** Per-service dossier title. May contain `<em>...</em>` markers for
+   *  italic-red emphasis. Example: "From <em>mandate</em>, to <em>wire</em>." */
+  headline?: string;
   phases: ProcessDossierPhase[]; // 4 phases
 };
 
@@ -361,6 +364,7 @@ export const services: Service[] = [
       projectName: 'Anonymised mandate',
       engagementType: 'Sell-side · Primary fundraise',
       partnerLabel: 'Lead: V. S. Rathore, Partner',
+      headline: 'From <em>mandate</em>, to <em>wire</em>.',
       phases: [
         {
           ordinal: '●01',
@@ -557,6 +561,7 @@ export const services: Service[] = [
       projectName: 'Anonymised M&A mandate',
       engagementType: 'Buy-side · Strategic acquisition',
       partnerLabel: 'Lead: V. S. Rathore, Partner',
+      headline: 'From <em>scope</em>, to <em>signed deal</em>.',
       phases: [
         {
           ordinal: '●01',
@@ -808,6 +813,7 @@ export const services: Service[] = [
       projectName: 'Anonymised internal audit mandate',
       engagementType: 'Risk-based internal audit · annual plan',
       partnerLabel: 'Lead: V. S. Rathore, Partner',
+      headline: 'From <em>risk universe</em>, to <em>action tracker</em>.',
       phases: [
         {
           ordinal: '●01',
@@ -1051,6 +1057,7 @@ export const services: Service[] = [
       projectName: 'Anonymised tax engagement',
       engagementType: 'Direct tax · assessment & advisory',
       partnerLabel: 'Lead: V. S. Rathore, Partner',
+      headline: 'From <em>position</em>, to <em>assessment closed</em>.',
       phases: [
         {
           ordinal: '●01',
@@ -1297,6 +1304,7 @@ export const services: Service[] = [
       projectName: 'Anonymised audit engagement',
       engagementType: 'Statutory audit · Ind AS',
       partnerLabel: 'Lead: V. S. Rathore, Partner',
+      headline: 'From <em>planning</em>, to <em>audit signed</em>.',
       phases: [
         {
           ordinal: '●01',
@@ -1541,6 +1549,7 @@ export const services: Service[] = [
       projectName: 'Anonymised valuation mandate',
       engagementType: 'Business valuation · transaction',
       partnerLabel: 'Lead: V. S. Rathore, Partner',
+      headline: 'From <em>scope</em>, to <em>report issued</em>.',
       phases: [
         {
           ordinal: '●01',
@@ -1787,6 +1796,7 @@ export const services: Service[] = [
       projectName: 'Anonymised finance-outsourcing mandate',
       engagementType: 'Books + vCFO · monthly cadence',
       partnerLabel: 'Lead: V. S. Rathore, Partner',
+      headline: 'From <em>diagnose</em>, to <em>steady state</em>.',
       phases: [
         {
           ordinal: '●01',
@@ -2033,6 +2043,7 @@ export const services: Service[] = [
       projectName: 'Anonymised secretarial mandate',
       engagementType: 'Annual ROC + meetings retainer',
       partnerLabel: 'Lead: V. S. Rathore, Partner',
+      headline: 'From <em>health check</em>, to <em>quarterly clean</em>.',
       phases: [
         {
           ordinal: '●01',
@@ -2279,6 +2290,7 @@ export const services: Service[] = [
       projectName: 'Anonymised AIF setup',
       engagementType: 'Category I AIF · SEBI registration',
       partnerLabel: 'Lead: V. S. Rathore, Partner',
+      headline: 'From <em>structure</em>, to <em>first close</em>.',
       phases: [
         {
           ordinal: '●01',
