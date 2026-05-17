@@ -11317,11 +11317,12 @@ main.service-v1 > div > section {
   .ma-mandate-tab-posture { display: none; }
 }
 
-/* ============================================================
+/* ==============================================================
    /team page — leadership + executive grids.
-   Card opens modal with full bio, expertise, qualifications,
-   past employers, and articles by this partner.
-   ============================================================ */
+   Card layout: small headshot left + name/role/expertise right +
+   icon-button action row (LinkedIn + Email) at the bottom.
+   Clicking card opens a scrollable modal with the full bio.
+   ============================================================== */
 .team-page-hero {
   max-width: 1180px;
   margin: 0 auto;
@@ -11372,11 +11373,7 @@ main.service-v1 > div > section {
 @media (max-width: 720px) {
   .team-page-hero-stats { grid-template-columns: repeat(2, 1fr); }
 }
-.team-page-hero-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+.team-page-hero-stat { display: flex; flex-direction: column; gap: 4px; }
 .team-page-hero-stat-num {
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-weight: 720;
@@ -11395,14 +11392,10 @@ main.service-v1 > div > section {
 .team-page-section {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 56px 24px 24px;
+  padding: 48px 24px 24px;
 }
-.team-page-section:last-of-type {
-  padding-bottom: 96px;
-}
-.team-page-section-head {
-  margin-bottom: 28px;
-}
+.team-page-section:last-of-type { padding-bottom: 96px; }
+.team-page-section-head { margin-bottom: 22px; }
 .team-page-section-eyebrow {
   font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.16em;
@@ -11419,64 +11412,73 @@ main.service-v1 > div > section {
   margin: 0 0 8px;
 }
 .team-page-section-sub {
-  font-size: 0.96rem;
+  font-size: 0.94rem;
   line-height: 1.5;
   color: rgba(20, 24, 40, 0.62);
   margin: 0;
   max-width: 620px;
 }
 
+/* Compact horizontal card grid. 320px-360px cards, 3-up on desktop. */
 .team-page-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
 }
 
-/* Cards */
 .team-page-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  text-align: left;
   background: #fff;
   border: 1px solid rgba(20, 24, 40, 0.1);
-  border-radius: 16px;
-  padding: 0 0 22px;
-  overflow: hidden;
-  cursor: pointer;
+  border-radius: 12px;
+  padding: 14px 14px 12px;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
-  box-shadow: 0 18px 36px -32px rgba(20, 24, 40, 0.25);
-  font: inherit;
-  color: inherit;
+  box-shadow: 0 14px 28px -28px rgba(20, 24, 40, 0.25);
 }
 .team-page-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: rgba(20, 24, 40, 0.18);
-  box-shadow: 0 28px 48px -28px rgba(20, 24, 40, 0.35);
+  box-shadow: 0 22px 36px -28px rgba(20, 24, 40, 0.32);
 }
-.team-page-card:focus-visible {
+.team-page-card-trigger {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 14px;
+  align-items: start;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  width: 100%;
+}
+.team-page-card-trigger:focus-visible {
   outline: 2px solid var(--service-accent-red, #dd1017);
-  outline-offset: 3px;
+  outline-offset: 4px;
+  border-radius: 8px;
 }
 .team-page-card-photo {
   display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background: linear-gradient(135deg, #efece5 0%, #d8d3c5 100%);
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
   overflow: hidden;
   position: relative;
+  background: linear-gradient(135deg, #efece5 0%, #d8d3c5 100%);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px #fefdf8, 0 0 0 3px rgba(20, 24, 40, 0.08);
 }
 .team-page-card-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
-  transition: transform 320ms ease;
   filter: saturate(1.02);
-}
-.team-page-card:hover .team-page-card-photo img {
-  transform: scale(1.025);
 }
 .team-page-card-monogram {
   position: absolute;
@@ -11486,76 +11488,111 @@ main.service-v1 > div > section {
   justify-content: center;
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-weight: 720;
-  font-size: 3.6rem;
+  font-size: 1.4rem;
   letter-spacing: -0.02em;
   color: #fefdf8;
   background: linear-gradient(135deg, #dd1017 0%, #9c0b10 100%);
 }
-.team-page-card-body {
-  padding: 20px 22px 12px;
-}
+.team-page-card-body { min-width: 0; }
 .team-page-card-role {
-  font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.14em;
+  font: 600 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--service-accent-red, #dd1017);
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 .team-page-card-name {
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-weight: 700;
-  font-size: 1.18rem;
-  line-height: 1.18;
-  letter-spacing: -0.015em;
+  font-size: 1rem;
+  line-height: 1.22;
+  letter-spacing: -0.012em;
   color: #0c1024;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 .team-page-card-expertise {
   list-style: none;
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
 }
 .team-page-card-pill {
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  padding: 4px 9px;
+  padding: 3px 7px;
   border-radius: 999px;
-  background: rgba(20, 24, 40, 0.06);
+  background: rgba(20, 24, 40, 0.05);
   color: rgba(20, 24, 40, 0.78);
-  border: 1px solid rgba(20, 24, 40, 0.08);
+  border: 1px solid rgba(20, 24, 40, 0.07);
   line-height: 1.2;
 }
 .team-page-card-meta {
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   color: rgba(20, 24, 40, 0.55);
   margin: 0;
   line-height: 1.4;
 }
-.team-page-card-cta {
+
+/* Action row at the bottom-right of each card */
+.team-page-card-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(20, 24, 40, 0.06);
+  justify-content: flex-end;
+}
+.team-page-card-iconbtn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin: 4px 22px 0;
-  font: 600 0.78rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(20, 24, 40, 0.5);
-  align-self: flex-start;
-  transition: color 160ms ease, transform 160ms ease;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fefdf8;
+  color: rgba(20, 24, 40, 0.7);
+  border: 1px solid rgba(20, 24, 40, 0.12);
+  text-decoration: none;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease, transform 120ms ease;
 }
-.team-page-card:hover .team-page-card-cta {
-  color: var(--service-accent-red, #dd1017);
-  transform: translateX(2px);
+.team-page-card-iconbtn:hover {
+  background: var(--service-accent-red, #dd1017);
+  color: #fefdf8;
+  border-color: var(--service-accent-red, #dd1017);
+  transform: translateY(-1px);
+}
+.team-page-card-iconbtn-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
-/* Modal */
+/* Per-member object-position override for the Vijay K. Choudhary
+   photo, whose source frames the face on the right edge of the image. */
+.team-page-card-photo[data-slug="vijay-k-choudhary"] img { object-position: 60% center; }
+
+/* Scrollable modal */
 .team-page-modal {
   max-width: 720px !important;
-  padding: 28px 32px 32px !important;
+  max-height: calc(100vh - 48px);
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+}
+.team-page-modal-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 28px 32px 8px;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+.team-page-modal-scroll::-webkit-scrollbar { width: 8px; }
+.team-page-modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(20, 24, 40, 0.18);
+  border-radius: 4px;
 }
 .team-page-modal-head {
   display: grid;
@@ -11583,6 +11620,7 @@ main.service-v1 > div > section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
 }
 .team-page-modal-monogram {
@@ -11651,11 +11689,7 @@ main.service-v1 > div > section {
   color: var(--service-accent-red, #dd1017);
   margin: 0 0 12px;
 }
-.team-page-modal-articles ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+.team-page-modal-articles ul { list-style: none; margin: 0; padding: 0; }
 .team-page-modal-articles li + li { border-top: 1px solid rgba(20, 24, 40, 0.06); }
 .team-page-modal-articles li a {
   display: flex;
@@ -11677,11 +11711,17 @@ main.service-v1 > div > section {
   color: rgba(20, 24, 40, 0.55);
 }
 
+/* Sticky action row at the bottom of the modal (outside the scroll
+   area, so the buttons stay visible regardless of bio length). */
 .team-page-modal-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 22px;
+  padding: 18px 32px 24px;
+  border-top: 1px solid rgba(20, 24, 40, 0.08);
+  background: #fefdf8;
+  border-radius: 0 0 14px 14px;
+  flex: 0 0 auto;
 }
 
 /* ============================================================
