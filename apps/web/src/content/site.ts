@@ -507,6 +507,13 @@ export const services: Service[] = [
     leadMagnet: 'M&A Readiness Checklist',
     cta: 'Evaluate a transaction',
     icon: BriefcaseBusiness,
+    // TODO: Vijay to verify M&A metrics before pushing to origin.
+    metrics: [
+      { value: 20, suffix: '+',  label: 'Deals advised' },
+      { value: 150, prefix: '$', suffix: 'M+', label: 'Aggregate deal value' },
+      { value: 20, suffix: ' wk', label: 'Avg deal timeline' },
+      { value: 40, suffix: '+',  label: 'Strategic buyers in network' },
+    ],
     ordinal: '02',
     whenToEngage: [
       {
@@ -567,6 +574,13 @@ export const services: Service[] = [
     leadMagnet: 'Internal Controls Health Check',
     cta: 'Review your control environment',
     icon: ShieldCheck,
+    // TODO: Vijay to verify Risk Advisory metrics.
+    metrics: [
+      { value: 60, suffix: '+',  label: 'Internal audits delivered' },
+      { value: 40, suffix: '+',  label: 'Companies served' },
+      { value: 12, suffix: '+',  label: 'IFC / ICFR engagements' },
+      { value: 8,  suffix: ' wk', label: 'Avg engagement length' },
+    ],
     ordinal: '03',
     whenToEngage: [
       {
@@ -627,6 +641,13 @@ export const services: Service[] = [
     leadMagnet: 'GST and Tax Compliance Calendar',
     cta: 'Review tax and compliance exposure',
     icon: Scale,
+    // TODO: Vijay to verify Tax & Regulatory metrics.
+    metrics: [
+      { value: 400, suffix: '+', label: 'Returns filed annually' },
+      { value: 80,  suffix: '+', label: 'Companies served' },
+      { value: 30,  suffix: '+', label: 'Tax notices represented' },
+      { value: 10,  suffix: '+', label: 'Cross-border tax matters' },
+    ],
     ordinal: '04',
     whenToEngage: [
       {
@@ -688,6 +709,13 @@ export const services: Service[] = [
     leadMagnet: 'Audit Readiness Checklist',
     cta: 'Prepare for audit readiness',
     icon: FileCheck2,
+    // TODO: Vijay to verify Assurance metrics.
+    metrics: [
+      { value: 50, suffix: '+', label: 'Statutory audits delivered' },
+      { value: 30, suffix: '+', label: 'Companies served' },
+      { value: 8,  suffix: '+', label: 'Ind AS / IFRS conversions' },
+      { value: 10, suffix: '+', label: 'Sectors covered' },
+    ],
     ordinal: '05',
     whenToEngage: [
       {
@@ -748,6 +776,13 @@ export const services: Service[] = [
     leadMagnet: 'Valuation Readiness Checklist',
     cta: 'Start a valuation discussion',
     icon: LineChart,
+    // TODO: Vijay to verify Valuations metrics.
+    metrics: [
+      { value: 80, suffix: '+',  label: 'Valuations issued' },
+      { value: 500, prefix: '$', suffix: 'M+', label: 'Aggregate enterprise value' },
+      { value: 3,  suffix: ' wk', label: 'Avg turnaround' },
+      { value: 12, suffix: '+',  label: 'Sectors covered' },
+    ],
     ordinal: '06',
     whenToEngage: [
       {
@@ -811,6 +846,13 @@ export const services: Service[] = [
     leadMagnet: 'Monthly MIS Template for Founders',
     cta: 'Strengthen finance operations',
     icon: BarChart3,
+    // TODO: Vijay to verify Finance Outsourcing metrics.
+    metrics: [
+      { value: 25, suffix: '+',  label: 'vCFO engagements' },
+      { value: 50, suffix: '+',  label: 'Books closed monthly' },
+      { value: 4,  suffix: ' wk', label: 'Avg ramp-up time' },
+      { value: 90, suffix: '%',  label: 'Retention beyond Year 1' },
+    ],
     ordinal: '07',
     whenToEngage: [
       {
@@ -872,6 +914,13 @@ export const services: Service[] = [
     leadMagnet: 'Corporate Compliance Calendar',
     cta: 'Review corporate compliance status',
     icon: ClipboardCheck,
+    // TODO: Vijay to verify Corporate Secretarial metrics.
+    metrics: [
+      { value: 35, suffix: '+', label: 'Incorporations completed' },
+      { value: 60, suffix: '+', label: 'Companies under retainer' },
+      { value: 300, suffix: '+', label: 'Compliance events handled' },
+      { value: 5,  suffix: ' d',  label: 'Avg ROC turnaround' },
+    ],
     ordinal: '08',
     whenToEngage: [
       {
@@ -941,6 +990,13 @@ export const services: Service[] = [
       'Proof is shown as operating experience, not as investment solicitation or performance promotion.',
     ],
     icon: Building2,
+    // TODO: Vijay to verify AIF & Fund Management metrics — Soonicorn-related.
+    metrics: [
+      { value: 2,  suffix: '+',  label: 'AIF structures set up' },
+      { value: 50, prefix: '$',  suffix: 'M+', label: 'AUM advised' },
+      { value: 12, suffix: ' wk', label: 'Avg fund-launch timeline' },
+      { value: 60, suffix: '+',  label: 'Portfolio companies tracked' },
+    ],
     ordinal: '09',
     whenToEngage: [
       {
