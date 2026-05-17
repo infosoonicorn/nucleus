@@ -13211,3 +13211,51 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 .article-page-callout-watch .article-page-callout-label {
   color: var(--service-accent-red, #dd1017);
 }
+
+/* ==============================================================
+   Article reader: References block (primary-source citations).
+   Numbered list rendered at the end of an article when the article
+   record carries a `references` array of { label, href }.
+   ============================================================== */
+.article-page-references {
+  margin: 48px 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(20, 24, 40, 0.1);
+}
+.article-page-references-eyebrow {
+  font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--service-accent-red, #dd1017);
+  margin: 0 0 14px;
+}
+.article-page-references-list {
+  margin: 0;
+  padding: 0 0 0 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: decimal;
+  list-style-position: outside;
+  color: rgba(20, 24, 40, 0.55);
+}
+.article-page-references-item {
+  padding-left: 4px;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.article-page-references-item::marker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+  color: rgba(20, 24, 40, 0.5);
+}
+.article-page-references-link {
+  color: #141828;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(20, 24, 40, 0.35);
+  transition: color 0.14s ease, border-color 0.14s ease;
+}
+.article-page-references-link:hover {
+  color: var(--service-accent-red, #dd1017);
+  border-bottom-color: var(--service-accent-red, #dd1017);
+}

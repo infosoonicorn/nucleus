@@ -7,6 +7,7 @@ import {
   articles,
   getArticleAuthor,
   getArticleBySlug,
+  getArticleWordCount,
   getSeriesArticles,
 } from '@/content/articles';
 import { ArticleAuthorBio } from '@/components/insights/article-author-bio';
@@ -99,6 +100,8 @@ export default async function ArticlePage({ params }: Props) {
     }
   }
   let headingIdx = 0;
+
+  const wordCount = getArticleWordCount(article);
 
   const primaryServiceSlug = article.serviceSlugs[0];
 
@@ -198,7 +201,7 @@ export default async function ArticlePage({ params }: Props) {
                 <span className="article-page-date">{formatDate(article.publishedOn)}</span>
                 <span className="article-page-readtime">
                   <Clock size={12} aria-hidden="true" />
-                  {article.readMinutes} min read
+                  {wordCount.toLocaleString('en-IN')} words · {article.readMinutes} min read
                 </span>
               </div>
               <h1 className="article-page-title">{article.title}</h1>
@@ -261,6 +264,28 @@ export default async function ArticlePage({ params }: Props) {
                 return <p key={i}>{renderInline(p)}</p>;
               })}
             </div>
+
+            {article.references && article.references.length > 0 ? (
+              <section className="article-page-references" aria-labelledby="article-references-heading">
+                <p id="article-references-heading" className="article-page-references-eyebrow">
+                  References
+                </p>
+                <ol className="article-page-references-list">
+                  {article.references.map((ref, i) => (
+                    <li key={`${ref.href}-${i}`} className="article-page-references-item">
+                      <a
+                        href={ref.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="article-page-references-link"
+                      >
+                        {ref.label}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            ) : null}
 
             <ArticleAuthorBio article={article} />
             <NewsletterSignup variant="article-footer" />

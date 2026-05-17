@@ -30,7 +30,26 @@ type ArticleBase = {
   seriesKey?: string;          // kebab-case series identifier — articles with the same key cluster
   seriesTitle?: string;        // display title for the series, e.g. 'The sell-side process'
   seriesOrder?: number;        // 1-indexed position of this article within the series
+  references?: readonly { label: string; href: string }[];
+                               // primary-source citations rendered as a References block at the end
 };
+
+/**
+ * Count words in an article body for the "N words" display in the
+ * meta row. Strips markdown markers (## headings, **bold**, > quote
+ * prefix, ::: callout fences) so the count reflects readable prose
+ * only, not author shortcuts.
+ */
+export function getArticleWordCount(article: Article): number {
+  return article.body
+    .replace(/\*\*([^*]+)\*\*/g, '$1')      // bold
+    .replace(/^#+\s*/gm, '')                // headings
+    .replace(/^>\s*/gm, '')                  // pull-quote prefix
+    .replace(/^:::(note|insight|watch)\s+/gm, '') // callout opener
+    .replace(/:::\s*$/gm, '')                // callout closer
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
 
 /**
  * All articles sharing a seriesKey, ordered by seriesOrder. Used by
