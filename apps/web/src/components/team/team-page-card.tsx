@@ -226,7 +226,7 @@ export function TeamPageCard({ member }: Readonly<{ member: TeamMember }>) {
                       id={`${titleId}-prev`}
                       className="team-page-modal-prev-label"
                     >
-                      <Briefcase size={12} aria-hidden="true" /> Previously
+                      <Briefcase size={12} aria-hidden="true" /> Previously worked with
                     </p>
                     <ul className="team-page-modal-prev-list">
                       {member.pastEmployers.map((entry, i) => {
