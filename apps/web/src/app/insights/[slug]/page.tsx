@@ -13,9 +13,13 @@ import {
 import { ArticleAuthorBio } from '@/components/insights/article-author-bio';
 import { ArticleRelated } from '@/components/insights/article-related';
 import { ArticleTOC, type TocHeading } from '@/components/insights/article-toc';
+import { MoreFromAuthor } from '@/components/insights/more-from-author';
 import { NewsletterSignup } from '@/components/insights/newsletter-signup';
 import { ReadingProgress } from '@/components/insights/reading-progress';
 import { SeriesBanner } from '@/components/insights/series-banner';
+import { ShareButtons } from '@/components/insights/share-buttons';
+import { StickyArticleCTA } from '@/components/insights/sticky-article-cta';
+import { getFirstName } from '@/content/team';
 import { SidebarCTA } from '@/components/services/sidebar-blocks';
 
 type Props = {
@@ -104,6 +108,16 @@ export default async function ArticlePage({ params }: Props) {
   const wordCount = getArticleWordCount(article);
 
   const primaryServiceSlug = article.serviceSlugs[0];
+
+  // Sticky CTA target — prefer the partner's mailto when set,
+  // otherwise the firm contact form with the article's service
+  // pre-selected so the contact page can pre-fill state.
+  const partnerHref = author.email
+    ? `mailto:${author.email}?subject=${encodeURIComponent(`Re: ${article.title}`)}`
+    : primaryServiceSlug
+      ? `/contact?service=${primaryServiceSlug}`
+      : '/contact';
+  const partnerFirstName = getFirstName(author.name);
 
   // Resolve series cohort (siblings sharing seriesKey) so the banner
   // can show "Part N of M" with links to each part.
@@ -203,6 +217,7 @@ export default async function ArticlePage({ params }: Props) {
                   <Clock size={12} aria-hidden="true" />
                   {wordCount.toLocaleString('en-IN')} words · {article.readMinutes} min read
                 </span>
+                <ShareButtons url={`/insights/${article.slug}`} title={article.title} />
               </div>
               <h1 className="article-page-title">{article.title}</h1>
               {seriesParts.length >= 2 ? (
@@ -287,6 +302,7 @@ export default async function ArticlePage({ params }: Props) {
               </section>
             ) : null}
 
+            <MoreFromAuthor current={article} />
             <ArticleAuthorBio article={article} />
             <NewsletterSignup variant="article-footer" />
           </article>
@@ -303,6 +319,11 @@ export default async function ArticlePage({ params }: Props) {
             {primaryServiceSlug ? <SidebarCTA serviceSlug={primaryServiceSlug} /> : null}
           </aside>
         </div>
+        <StickyArticleCTA
+          articleSlug={article.slug}
+          partnerFirstName={partnerFirstName}
+          partnerHref={partnerHref}
+        />
       </main>
     </PageShell>
   );
