@@ -190,7 +190,7 @@ export const team: TeamMember[] = [
   {
     slug: 'neha-rathore',
     name: 'CS Neha Rathore',
-    role: 'Secretarial Partner',
+    role: 'Partner',
     group: 'leadership',
     seniority: 'partner',
     initials: 'NR',
