@@ -8238,6 +8238,69 @@ html.lenis body {
 
 /* (Article reader reuses the shared SidebarCTA from services/sidebar-blocks.tsx
    for its contact affordance — no bespoke form CSS lives here.) */
+
+/* ── Reading-progress bar (fixed strip at top of viewport). ── */
+.article-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 60;
+  pointer-events: none;
+}
+.article-progress-bar {
+  height: 100%;
+  background: var(--service-accent-red, #dd1017);
+  width: 0%;
+  transition: width 80ms linear;
+  will-change: width;
+}
+
+/* ── Table of Contents in the right rail ── */
+.article-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.article-toc-item {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+.article-toc-link {
+  display: block;
+  padding: 7px 10px 7px 14px;
+  margin-left: -14px;
+  color: rgba(20, 24, 40, 0.62);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 120ms ease, border-color 120ms ease, background 120ms ease;
+  text-wrap: balance;
+}
+.article-toc-link:hover {
+  color: var(--service-accent-red, #dd1017);
+  background: rgba(221, 16, 23, 0.04);
+}
+.article-toc-item-3 .article-toc-link {
+  padding-left: 28px;
+  font-size: 0.8rem;
+  color: rgba(20, 24, 40, 0.5);
+}
+.article-toc-item.is-active .article-toc-link {
+  color: var(--service-accent-red, #dd1017);
+  border-left-color: var(--service-accent-red, #dd1017);
+  font-weight: 600;
+}
+
+/* Ensure scrolled-to headings clear the progress bar + sticky chrome. */
+.article-page-body h2,
+.article-page-body h3 {
+  scroll-margin-top: 96px;
+}
 .article-page-back {
   display: inline-flex;
   align-items: center;

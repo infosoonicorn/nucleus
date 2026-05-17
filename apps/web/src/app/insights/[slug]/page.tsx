@@ -5,6 +5,8 @@ import { ArrowLeft, Clock } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
 import { articles, getArticleBySlug } from '@/content/articles';
 import { ArticleRelated } from '@/components/insights/article-related';
+import { ArticleTOC, type TocHeading } from '@/components/insights/article-toc';
+import { ReadingProgress } from '@/components/insights/reading-progress';
 import { SidebarCTA } from '@/components/services/sidebar-blocks';
 
 type Props = {
@@ -38,10 +40,37 @@ export default async function ArticlePage({ params }: Props) {
   const isDraft = article.reviewerStatus !== 'approved';
   const paragraphs = article.body.split('\n\n');
 
+  // Walk paragraphs once to extract h2/h3 headings with stable anchor
+  // ids. The renderer below consumes the same list (by index) so each
+  // rendered <h2>/<h3> carries the matching id attribute — anchors stay
+  // in lock-step with the TOC entries.
+  const headings: TocHeading[] = [];
+  const slugCounts = new Map<string, number>();
+  for (const p of paragraphs) {
+    let level: 2 | 3 | null = null;
+    let text = '';
+    if (p.startsWith('### ')) {
+      level = 3;
+      text = p.slice(4);
+    } else if (p.startsWith('## ')) {
+      level = 2;
+      text = p.slice(3);
+    }
+    if (level && text) {
+      const base = slugify(text);
+      const count = slugCounts.get(base) ?? 0;
+      slugCounts.set(base, count + 1);
+      const id = count === 0 ? base : `${base}-${count + 1}`;
+      headings.push({ level, text, id });
+    }
+  }
+  let headingIdx = 0;
+
   const primaryServiceSlug = article.serviceSlugs[0];
 
   return (
     <PageShell>
+      <ReadingProgress />
       <main className="home-v3 service-v1">
         <div className="article-page-shell">
           <article className="article-page">
@@ -80,11 +109,10 @@ export default async function ArticlePage({ params }: Props) {
 
             <div className="article-page-body">
               {paragraphs.map((p, i) => {
-                if (p.startsWith('### ')) {
-                  return <h3 key={i}>{p.slice(4)}</h3>;
-                }
-                if (p.startsWith('## ')) {
-                  return <h2 key={i}>{p.slice(3)}</h2>;
+                if (p.startsWith('### ') || p.startsWith('## ')) {
+                  const h = headings[headingIdx++];
+                  if (h.level === 3) return <h3 key={i} id={h.id}>{h.text}</h3>;
+                  return <h2 key={i} id={h.id}>{h.text}</h2>;
                 }
                 return <p key={i}>{renderInline(p)}</p>;
               })}
@@ -102,9 +130,10 @@ export default async function ArticlePage({ params }: Props) {
               the main column under Lenis smooth-scroll. */}
           <aside
             className="article-page-side"
-            aria-label="Related articles and contact"
+            aria-label="In this article, related reading, and contact"
             data-lenis-prevent
           >
+            <ArticleTOC headings={headings} />
             <ArticleRelated current={article} />
             {primaryServiceSlug ? <SidebarCTA serviceSlug={primaryServiceSlug} /> : null}
           </aside>
@@ -117,6 +146,21 @@ export default async function ArticlePage({ params }: Props) {
 function formatDate(iso: string): string {
   const d = new Date(`${iso}T00:00:00Z`);
   return d.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: '2-digit' });
+}
+
+/**
+ * Stable anchor-id generator for headings. Lower-cases, strips non
+ * word/space/hyphen, collapses whitespace to hyphens. Collisions are
+ * disambiguated by the caller (which appends -2, -3, etc.).
+ */
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
 }
 
 /**
