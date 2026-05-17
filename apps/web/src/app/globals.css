@@ -8440,6 +8440,16 @@ html.lenis body {
   font-size: 1.05rem;
   line-height: 1.7;
   color: rgba(20, 24, 40, 0.86);
+  /* Editorial justification with browser hyphenation so word gaps stay
+     tight on long lines. Falls back to left-align on short widths
+     where justification produces visible rivers between words. */
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  text-justify: inter-word;
+}
+@media (max-width: 640px) {
+  .article-page-body p { text-align: left; hyphens: manual; }
 }
 .article-page-body p strong {
   font-weight: 700;
