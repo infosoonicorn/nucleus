@@ -89,15 +89,11 @@ export function Faq({ ordinal, serviceTitle, faq }: FaqProps) {
             <span>FAQs · On the record</span>
           </p>
           <h2 id="ib-faq-heading" className="service-v1-faq-title">
-            Questions <em>this page</em> is designed to answer
+            Questions founders <em>actually</em> ask
             <span className="service-v1-faq-title-stop">.</span>
           </h2>
         </div>
         <div className="service-v1-faq-headside">
-          <p className="service-v1-faq-lede">
-            Ten of the questions we hear most often from founders, with the{' '}
-            <em>honest, partner-level answers</em> we&rsquo;d give over coffee — no marketing veneer.
-          </p>
           <div className="service-v1-faq-livemeta">
             <span className="service-v1-faq-livedot" aria-hidden="true" />
             <span>Updated · {updated}</span>
