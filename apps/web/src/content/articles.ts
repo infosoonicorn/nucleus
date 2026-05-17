@@ -42,10 +42,11 @@ export type Article =
 // team.ts. Initials must be 2–3 chars and unique across the set.
 const VSR: ArticleAuthor = { name: 'Vijay Singh Rathore', role: 'Founding Partner',          initials: 'VSR' };
 const PG:  ArticleAuthor = { name: 'Pravesh Goel',        role: 'Partner · M&A Advisory',     initials: 'PG'  };
-const AK:  ArticleAuthor = { name: 'Aakash Kalra',        role: 'Partner · M&A Advisory',     initials: 'AK'  };
-// The next four authors will pick up articles once the per-service batches
-// are drafted (currently only M&A has been sampled). eslint-disable until used.
+// The next five authors will pick up articles once the per-service batches
+// are drafted (currently only one M&A demo article is live, authored by PG).
+// eslint-disable until consumed.
 /* eslint-disable @typescript-eslint/no-unused-vars */
+const AK:  ArticleAuthor = { name: 'Aakash Kalra',        role: 'Partner · M&A Advisory',     initials: 'AK'  };
 const AG:  ArticleAuthor = { name: 'Ashish Gupta',        role: 'Partner · Risk Advisory',    initials: 'AG'  };
 const ABG: ArticleAuthor = { name: 'Abhishek Gupta',      role: 'Partner · Tax & Assurance',  initials: 'ABG' };
 const RS:  ArticleAuthor = { name: 'Rajat Singla',        role: 'Partner · Finance Outsourcing', initials: 'RS' };
@@ -279,10 +280,11 @@ export const articles: Article[] = [
   },
 
   // ═══════════════════════════════════════════════════════════════════
-  // M&A Advisory — bar-setting sample (3 of 10)
-  // Voice: declarative, practitioner-grade, no marketing slop.
-  // Authored by Pravesh Goel and Aakash Kalra (alternating).
-  // Remaining 7 to be drafted after partner sign-off on this bar.
+  // M&A Advisory — single demo article (1 of 1)
+  // Bar-setter for the rest of the editorial run. Once approved, the
+  // remaining 9 M&A articles (and 70 across other service lines) get
+  // drafted to this shape: ~1500 words, ## section headers, ### sub-
+  // sections, **bold** inline emphasis, no em-dashes, paired thumbnail.
   // ═══════════════════════════════════════════════════════════════════
   {
     slug: 'first-30-days-of-a-sell-side-process',
@@ -290,241 +292,71 @@ export const articles: Article[] = [
     excerpt:
       'Most sellers think the process starts when buyers see the teaser. It starts three weeks earlier, in the room where we agree what we are willing to sell, to whom, and what kills the deal.',
     body: [
-      "Most founders preparing for a sale process believe the work starts when the teaser is sent out. They picture an outreach calendar, buyer responses, indicative offers landing. The teaser feels like the starting gun.",
-      "By the time the teaser goes out, the deal is already largely decided. Price range, buyer list, what the seller will and will not accept, the diligence vulnerabilities, the board dynamics. All of it sits in place before any outsider sees a document. The first three weeks of a sell-side process are where the deal is actually built. Skip them, and the next six months become an expensive education in why preparation matters.",
-      "This is what those three weeks look like, in the order we run them.",
+      "Most founders preparing for a sale process believe the work starts when the teaser is sent out. They picture an outreach calendar, buyer responses, indicative offers landing on a Monday. The teaser feels like the starting gun.",
+      "By the time the teaser goes out, the deal is already largely decided. Price range, buyer list, what the seller will and will not accept, the diligence vulnerabilities, the board dynamics. All of it sits in place before any outsider sees a document. The first three weeks of a sell-side process are where the deal is actually built.",
+      "Skip them, and the next six months become an expensive education in why preparation matters.",
 
       "## Why the first 30 days set the deal",
-
       "Two things make the early window disproportionately important.",
-      "First, sell-side processes work on momentum. From the moment a buyer sees a teaser, the clock starts running on their interest. If the seller is unprepared, every diligence question, every data-room gap, every internal disagreement that surfaces externally signals weakness. Buyers price weakness. They also walk away from it.",
-      "Second, almost every failure mode in a sell-side process is a failure of upfront preparation, not a failure during the negotiation. Buyer pulls out after diligence because of a customer concentration that was not disclosed cleanly. Board blocks a clean offer because the directors were never aligned on what acceptable looked like. Earnout structure becomes contentious because the seller never thought through what they would be willing to accept on consideration timing.",
-      "The first 30 days exist to remove these failure modes before they cost the seller anything. They are not about going to market. They are about deciding whether to.",
+      "First, sell-side processes work on momentum. From the moment a buyer sees a teaser, the clock starts running on their interest. Every diligence question, every data-room gap, every internal disagreement that surfaces externally signals weakness. Buyers price weakness. They also walk away from it.",
+      "Second, almost every failure mode in a sell-side process is a failure of upfront preparation, not a failure during the negotiation. Buyer pulls out after diligence because of a customer concentration that was not disclosed cleanly. Board blocks a clean offer because the directors were never aligned on what acceptable looked like. Earnout structure becomes contentious because the seller never thought through what they would accept on consideration timing.",
+      "The first 30 days remove these failure modes before they cost the seller anything. They are not about going to market. They are about deciding whether to.",
 
       "## Week one: alignment in the room",
       "The first week is the alignment week. We run two conversations in parallel, deliberately separated.",
-      "The first is with the founders. What outcome do they actually want from this transaction. Maximum cash. Continued operating role. Brand preservation. Team retention. The specific structural deal points they care about. The non-negotiables they have not articulated to themselves yet.",
-      "The second is with the board, separately. What outcome does the board mandate as acceptable. The lowest price they will sign. The deal structures they will and will not consider. The timeline pressures they have not shared with the founders.",
+      "The first is with the founders. What outcome do they actually want. Maximum cash. Continued operating role. Brand preservation. Team retention. The non-negotiables they have not articulated even to themselves.",
+      "The second is with the board, separately. What does the board mandate as acceptable. The lowest price they will sign. The structures they will and will not consider. The timeline pressures they have not shared with the founders.",
       "The gap between the founder list and the board list is almost always wider than either side expects. A founder wants a strategic acquirer who will preserve the brand. The board wants the highest cash bid. A founder wants a meaningful continuing role. The board wants a clean exit and no contingent consideration. These differences are real. They will not resolve themselves once a process is live.",
 
       "### The gap memo",
-      "By the end of week one we deliver a gap memo to the board and the founders, jointly. It lists the founder priorities, the board mandate, and the differences in writing. We then run a board meeting (or a small subset, depending on governance) where the gap is closed point by point.",
+      "By the end of week one we deliver a written gap memo to the board and the founders, jointly. It lists the founder priorities, the board mandate, and the differences. We then run a working session where the gap is closed point by point.",
       "Sometimes the gap closes by the founders adjusting expectations. Sometimes by the board widening its mandate. Sometimes the gap does not close, and the right answer is not to run a process now. That last outcome is rare but it happens. It is always cheaper to discover at week one than at week twelve.",
-      "Only when the gap is closed in writing do we move to week two.",
 
       "## Week two: the readiness audit",
       "The second week is the readiness audit. We pull together every document a buyer is going to ask for in the first 60 days of diligence and we index it against a standard buy-side checklist.",
-      "The standard buy-side checklist runs to several hundred line items, but the seven categories that matter most for early diligence are: three years of audited financials with the auditor's full file, the live cap table with every share issuance and transfer documented, all shareholder agreements and side letters, employment contracts for the senior team and any contract above a defined threshold, key customer and vendor contracts with assignment clauses flagged, IP registrations and assignments, and the related-party transaction register.",
-      "We expect gaps. Every company has them. The job of the readiness audit is to surface them now, when there is time to fix them quietly, rather than have them surface in week ten of buyer diligence under time pressure.",
+      "Seven categories matter most for early diligence: three years of audited financials with the auditor's full file, the live cap table with every share issuance and transfer documented, all shareholder agreements and side letters, employment contracts for the senior team, key customer and vendor contracts with assignment clauses flagged, IP registrations and assignments, and the related-party transaction register.",
+      "Every company has gaps. The job of the readiness audit is to surface them now, when there is time to fix them quietly, rather than have them surface in week ten of buyer diligence under time pressure.",
 
       "### The two gaps we see most often",
-      "Two gaps appear in almost every sell-side mandate.",
-      "The first is stock-option exercises without proper board approvals on file. ESOPs get granted, options get exercised, share certificates get issued, but the underlying board resolutions, the grant letters, the cashless-exercise mechanics, the related allotment filings with the ROC, are incomplete or missing. A buyer's lawyer will ask for the full audit trail. If it does not exist, the cap table itself becomes contested. Fixing this in week two is a matter of reconstructing the documentation. Fixing it in week ten is a matter of expensive workarounds.",
-      "The second is inter-company transactions that never went through formal RPT process. Loans between sister entities, services billed without proper agreements, common-cost allocations done without board approval. These are routine in most growing companies. They are also flagged by buy-side counsel almost without exception. The fix is to paper them properly: backdated approvals where governance permits, formal agreements going forward, clear disclosure of historical practice. None of it is hard. It just takes time.",
+      "**Stock-option exercises without proper board approvals on file.** ESOPs get granted, options get exercised, share certificates get issued, but the underlying board resolutions, grant letters, cashless-exercise mechanics, and ROC allotment filings are incomplete. A buyer's lawyer will ask for the full audit trail. If it does not exist, the cap table itself becomes contested. Fixing this in week two is documentation work. Fixing it in week ten is an expensive workaround.",
+      "**Inter-company transactions that never went through formal RPT process.** Loans between sister entities, services billed without proper agreements, common-cost allocations done without board approval. Routine in growing companies, and flagged by buy-side counsel almost without exception. The fix is to paper them properly. None of it is hard. It just takes time.",
 
       "### What ready actually means",
-      "By the end of week two the readiness audit produces a document that says, in plain language, what is in good shape, what is in the process of being fixed, what cannot be fixed and will need to be disclosed honestly. The third category is the most important. Every sell-side process has things that will not look good in diligence. Pretending otherwise loses the deal. Disclosing them up front, in the right register, controls the narrative.",
+      "By the end of week two the audit produces a document that says, in plain language, what is in good shape, what is being fixed, and what cannot be fixed and will need to be disclosed honestly. The third category is the most important. Every sell-side process has things that will not look good in diligence. Pretending otherwise loses the deal. Disclosing them up front, in the right register, controls the narrative.",
 
       "## Week three: the buyer universe",
       "The third week is buyer scoping. This is where most sellers, working alone or with the wrong advisor, lose months of momentum.",
-      "The temptation is to build a long list. Forty names looks comprehensive. The seller feels covered. The advisor looks busy.",
-      "Forty names produces three real meetings. The other thirty-seven are cold approaches that never get returned, or warm approaches without enough strategic fit to convert. By the time the seller notices the conversion problem, two months have passed and the urgency to move on weaker prospects has crept in.",
+      "The temptation is to build a long list. Forty names looks comprehensive. The seller feels covered. The advisor looks busy. Forty names produces three real meetings. The other thirty-seven are cold approaches that never get returned, or warm approaches without strategic fit. By the time the conversion problem is visible, two months have passed.",
 
       "### Building the short list",
-      "We start with three filters. First, strategic logic: does an acquisition of this kind solve a problem the buyer has been talking about publicly or has been visibly working around through partnerships, organic builds, or acqui-hires. Second, capital posture: has the buyer done at least one transaction at this scale in the last twenty-four months, or is there public capital allocation guidance suggesting it can. Third, deal-team availability: is there an M&A bandwidth signal, recent partner hires, an active corporate development function, or are they likely to be too distracted internally.",
-      "Most sectors yield eight to twelve real candidates after applying these three filters. We add another four to six as a watchlist for opportunistic outreach in case the primary list moves slowly. That gives us a working universe of around fifteen names. Manageable, real, defensible if a board member asks why a specific name is or is not on it.",
+      "Three filters get us to the working list. **Strategic logic:** does an acquisition of this kind solve a problem the buyer has been visibly working around through partnerships, organic builds, or acqui-hires. **Capital posture:** has the buyer done at least one transaction at this scale in the last twenty-four months, or is there public capital allocation guidance suggesting it can. **Deal-team availability:** is there an M&A bandwidth signal, recent corp-dev hires, or are they likely to be too distracted internally.",
+      "Most sectors yield eight to twelve real candidates after applying these three filters. We add four to six as a watchlist for opportunistic outreach. That gives a working universe of around fifteen names. Manageable, real, defensible if a board member asks why a specific name is or is not on it.",
 
       "### The path-in test",
-      "Each candidate also has to have a path in. Not LinkedIn warmth. A specific named introducer: a former colleague at a portfolio company, an investor on both sides, a banker who worked the most recent deal, a board member with a personal connection. If we cannot name the path in writing, the candidate stays on the watchlist, not the active list.",
-      "Twelve targets done this way produces a different shape of dialogue. The first meeting comes through someone the target already trusts, not a cold approach letter from an advisor they have never heard of. Conversion from first meeting to live NDA tends to run above fifty percent. From NDA to indicative offer, roughly one in three. Twelve becomes eight meetings, four NDAs, one to two indicative offers. That is a process you can actually run to a decision.",
+      "Each candidate has to have a path in. Not LinkedIn warmth. A specific named introducer: a former colleague at a portfolio company, an investor on both sides, a banker who worked the most recent deal, a board member with a personal connection. If we cannot name the path in writing, the candidate stays on the watchlist, not the active list.",
+      "Twelve targets done this way produces a different shape of dialogue. The first meeting comes through someone the target already trusts. Conversion from first meeting to NDA runs above fifty percent. From NDA to indicative offer, roughly one in three. Twelve becomes eight meetings, four NDAs, one to two indicative offers. A process you can actually run to a decision.",
 
       "## What good looks like by day 30",
-      "By day twenty-one, the seller has: a board-aligned outcome map, a diligence-ready data room, and a buyer universe of around fifteen named candidates with personal paths into each.",
+      "By day twenty-one the seller has a board-aligned outcome map, a diligence-ready data room, and a buyer universe of around fifteen named candidates with personal paths into each.",
       "Days twenty-one through twenty-eight are document week. Teaser draft, CIM outline, NDA template, process letter, initial Q&A pack. All ready to go.",
       "Day thirty is the kickoff. Outreach begins. First meetings within ten days. NDAs in week six. Indicative offers in week ten.",
 
       "## Common mistakes in the early window",
-      "Three patterns get sellers in trouble.",
-      "**Skipping the gap conversation in week one.** The founders and the board both think they are aligned. The first hostile board comment lands three months in, after the seller has rejected a clean offer. The fix is to force the gap conversation in writing, with the advisor in the room, before any buyer is contacted.",
-      "**Treating the readiness audit as a documentation exercise.** A buy-side counsel does not just want documents, they want a coherent story about how decisions were made. The readiness audit needs to surface not just the documents but the narrative around the documents.",
+      "**Skipping the gap conversation in week one.** Founders and the board both believe they are aligned. The first hostile board comment lands three months in, after the seller has rejected a clean offer. Force the gap conversation in writing, with the advisor in the room, before any buyer is contacted.",
+      "**Treating the readiness audit as a documentation exercise.** A buy-side counsel does not just want documents, they want a coherent story about how decisions were made. The audit needs to surface the narrative around the documents, not just the documents.",
       "**Diluting the buyer list to look thorough.** A list of fifty buyers tells the board the advisor is being comprehensive. It also produces a fragmented process that does not converge. Discipline at the buyer-list stage is the single highest-leverage decision in a sell-side process.",
 
       "## Worth the three weeks",
-      "Sellers occasionally push back on the upfront three weeks. The argument is always some version of \"we know what we want, let us just get to market.\"",
-      "Three months later the founder is on the phone telling us a clean offer from a strategic acquirer is being blocked by a board member who wanted a private equity buyout. The board member's view was reasonable, but no one had aligned the board on a single mandate before the process started. The deal does not close. The seller restarts the process eighteen months later, with a market that has moved on.",
+      "Sellers occasionally push back on the upfront three weeks. The argument is always some version of: we know what we want, let us just get to market.",
+      "Three months later the founder is on the phone telling us a clean offer from a strategic acquirer is being blocked by a board member who wanted a private equity buyout. The board member's view was reasonable, but no one had aligned the board on a single mandate before the process started. The deal does not close. The seller restarts eighteen months later, with a market that has moved on.",
       "Worth the upfront three weeks every time.",
     ].join('\n\n'),
     author: PG,
     publishedOn: '2026-05-12',
-    readMinutes: 10,
+    readMinutes: 8,
     tag: 'Sell-side process',
     serviceSlugs: ['ma-advisory'],
     thumbnailSrc: '/article-thumbs/first-30-days-of-a-sell-side-process.jpg',
-    reviewerStatus: 'pending',
-  },
-  {
-    slug: 'building-a-target-list-that-produces-real-meetings',
-    title: 'Building a buy-side target list that produces real meetings, not cold outreach',
-    excerpt:
-      'A 40-name target list looks comprehensive in a deck. It produces three meetings. A 12-name list, built with the right path into each name, produces eight.',
-    body: [
-      "Buy-side mandates fail at the target list more often than they fail at the term sheet. This is the most expensive thing a first-time corporate acquirer does not know, and it costs them months of momentum before they realise the list is the problem.",
-      "The pattern is consistent. A long list goes out. Cold approach letters get sent. Most do not receive a response. The few that do produce exploratory conversations that go nowhere. By the time the acquirer recognises that the conversion math is broken, the budget for the mandate is half-spent and the market window has narrowed.",
-      "There is a better way to build a buy-side target list. It produces fewer initial names, more real meetings, and a much higher rate of those meetings turning into transactions.",
-
-      "## Why the wide list fails",
-      "The instinct to build a 40-name target list comes from a reasonable place. The acquirer wants to be thorough. The board wants to see that the universe was considered. The advisor wants to look comprehensive. Forty names checks all three boxes on day one.",
-      "It also produces three problems that compound over the next 90 days.",
-
-      "### Conversion math collapses with cold outreach",
-      "A cold approach letter from an unfamiliar advisor produces a response rate well below ten percent, even when the strategic logic is real. Of the responses, perhaps one in three converts to a first meeting. Of those, perhaps one in three converts to a signed NDA. Of the NDAs, perhaps one in three converts to an indicative offer.",
-      "Run those numbers through forty cold names. You get four responses, one to two first meetings, less than one NDA. The math does not produce a transaction. It produces an activity log that looks busy and a result that is not.",
-
-      "### Attention dilutes across too many names",
-      "The advisor and the acquirer have to maintain a coherent conversation with each name on the list. Forty names means forty tracker rows, forty CRM updates, forty thread histories. The first ten get attention. The next thirty get template emails and stale follow-ups. The acquirer never notices, because no individual name signals strongly enough to be worth a deeper investment.",
-
-      "### The board reads forty as effort, not strategy",
-      "When a forty-name list does not produce a transaction, the conversation with the board is hard. The acquirer can show effort, but cannot defend the strategy. The board sees a list that was not converted and assumes the targets were wrong, not the approach. The next mandate starts with damaged credibility.",
-
-      "## The list that actually works",
-      "The list that produces transactions is built from the inside out. It is shorter, more deliberate, and built around a single test: can we name the person who will introduce us.",
-      "We use three filters to get to the short list.",
-
-      "### Filter one: strategic logic",
-      "Does an acquisition of this kind solve a problem the buyer has been talking about publicly. Annual reports, earnings calls, strategy days, conference keynotes, public press releases about partnerships or organic builds in adjacent areas. If a buyer has been visibly trying to solve a problem through other means, an acquisition that solves it cleanly will get attention.",
-      "If a buyer has not publicly signalled the problem, an acquisition pitch from an outside advisor lands cold. Even if the acquisition makes sense, the corporate development team does not have the internal mandate to act on it. The conversation goes nowhere, slowly.",
-      "Strategic logic is the filter that produces credible meetings. Without it, even a warm introduction wastes everyone's time.",
-
-      "### Filter two: capital posture",
-      "Has the buyer done at least one transaction at this scale in the last twenty-four months. If yes, the corporate development function exists, the capital allocation framework is functional, and the board has demonstrated it will approve transactions of this size.",
-      "If the buyer has not done a transaction at this scale recently, there is real institutional friction. The CFO will have to build the case for the first deal from scratch. The board may not have an active framework for evaluating it. The legal and finance teams may not have the M&A muscle to execute. Even a willing acquirer can take six months to organise themselves around their first transaction in a band.",
-      "Capital posture is not a hard rule, but it is a significant signal. A buyer who has not transacted at the right scale recently belongs on the watchlist, not the active list.",
-
-      "### Filter three: deal-team availability",
-      "Does the buyer have M&A bandwidth right now. The clearest signal is a recent senior hire into corporate development or strategy. The next clearest is a public announcement of a strategic review or a capital deployment plan. The weakest signal is the absence of either, which usually means the deal team is either fully booked on an existing process or does not have the leadership attention to start a new one.",
-      "An acquirer with no current deal-team bandwidth will be polite, take the meeting, and never come back to the conversation. This is the most common reason a target list with strong strategic logic still does not produce meetings.",
-
-      "## The path-in test",
-      "After the three filters, each remaining candidate has to pass one more test: can we name the person who will introduce us. Not LinkedIn warmth. A specific named introducer, identified by name and role, with a credible reason to make the call.",
-      "Five categories of introducer work consistently.",
-
-      "### Investors on both sides",
-      "A common cap-table presence is the strongest signal. If the acquirer and the target share a venture investor, a private equity backer, or even a public-market shareholder of any size, that investor has a reason to want both sides to talk. The introduction comes with implicit pre-qualification.",
-
-      "### Recent transaction bankers",
-      "If the acquirer's last transaction was advised by a particular banker, that banker has a continuing relationship with the deal team. A warm introduction through them carries weight, even if the current mandate is not theirs.",
-
-      "### Former colleagues at portfolio companies",
-      "A senior person at the target who previously worked at an acquirer-owned company, or vice versa, is often the best path in. The relationship is real, the introduction is plausible, and the conversation starts at a level that cold outreach cannot reach.",
-
-      "### Board members in adjacent companies",
-      "Independent directors sit on multiple boards. A director on the acquirer's board who also sits on a board adjacent to the target can make an introduction at the chair-to-chair level. This is the highest-quality introduction for any large transaction.",
-
-      "### Sector-specialist counsel or consultants",
-      "A law firm or strategy consultancy that serves both sides in the sector often has a credible reason to facilitate a conversation. The introduction works best when the firm is genuinely neutral and not pitching to be retained on the deal.",
-      "If we cannot identify the path-in for a candidate, that candidate does not go on the active list. It stays on the watchlist, where it can move up if a credible path materialises.",
-
-      "## What twelve names actually produces",
-      "Twelve names selected through the three filters, each with a named path-in, produces a different shape of dialogue than forty cold names ever could.",
-      "First-meeting conversion runs above seventy percent, because the introducer's credibility carries the meeting before the merits do. NDA conversion runs above fifty percent of meetings, because the conversation reaches commercial substance faster. Indicative-offer conversion runs at one in three NDAs, similar to the cold-list rate, but on a much larger base of real engagements.",
-      "Twelve becomes eight meetings, four NDAs, one or two indicative offers. That is a process the board can read, the acquirer can manage, and the advisor can run with discipline.",
-      "Compared to the forty-name list producing two or three real meetings spread across two months, often with the wrong buyers, the twelve-name list closes faster and converts at a much higher rate.",
-
-      "## The discipline question",
-      "Building a short list is harder than building a long list. The advisor and the acquirer have to defend each name. They have to say no to plausible-looking candidates that do not pass the three filters or do not have a path-in. They have to resist the board's instinct to want a wider universe.",
-      "A short list also forces an honest conversation about strategic fit, capital posture and deal-team availability for every name. A long list lets everyone defer that conversation until after the meetings happen, which is too late.",
-      "We prefer the harder upfront conversation. It saves the acquirer six weeks of avoidable disappointment, and it produces transactions that close.",
-    ].join('\n\n'),
-    author: AK,
-    publishedOn: '2026-05-05',
-    readMinutes: 11,
-    tag: 'Buy-side',
-    serviceSlugs: ['ma-advisory'],
-    thumbnailSrc: '/article-thumbs/building-a-target-list-that-produces-real-meetings.jpg',
-    reviewerStatus: 'pending',
-  },
-  {
-    slug: 'earnouts-in-india-what-works-what-doesnt',
-    title: 'Earnouts in India: what works, what does not, and what to negotiate',
-    excerpt:
-      'Earnouts close deals that valuation gaps would otherwise kill, then cause two years of disputes the seller did not budget for. Here is what actually works in the Indian M&A market.',
-    body: [
-      "An earnout is an honest answer to a real problem. The buyer and the seller disagree on the trajectory of the business. The buyer thinks the seller's growth projections are aspirational. The seller thinks the buyer's discount is excessive. The gap on cash consideration is too wide to bridge by either side moving alone.",
-      "An earnout closes the gap by tying a portion of consideration to the business actually performing as projected. The seller keeps optionality on the upside they believe in. The buyer caps their downside on projections they doubt. Both sides sign.",
-      "Then comes the next two years.",
-      "Almost every earnout we have seen go badly in India failed not because the earnout itself was unreasonable, but because the structure was incomplete. The metric was wrong, the operating control was unprotected, or the dispute path was untenable. Each of these failures is preventable at the term-sheet stage. None are recoverable once the SPA is signed.",
-      "This is what we have learned from running and negotiating earnouts in the Indian M&A market.",
-
-      "## The structural features that make earnouts work",
-      "Three features appear in almost every earnout that ends well: a single unambiguous performance metric, defined operating-control protections for the seller, and a dispute resolution path that does not require a court.",
-      "Conversely, the earnouts that produce litigation almost always lack at least two of the three. The cumulative effect of missing any of these features is not small. Earnout disputes in India routinely take three to five years to resolve through arbitration or commercial courts, and the recovery for the seller, even when they are right on the merits, is often less than the cost of pursuing the dispute.",
-      "Getting the structure right at signing is the single most important decision the seller makes in an earnout.",
-
-      "## Choosing the right performance metric",
-      "The metric is where most earnouts go wrong. The default instinct is to tie the earnout to EBITDA, because EBITDA is the metric the valuation was originally negotiated on. This is the wrong default.",
-
-      "### Why EBITDA earnouts cause problems",
-      "EBITDA is a function of accounting choices, and after closing those choices belong to the buyer. The seller watches expenses migrate, inter-company allocations land on the acquired entity, capitalisation policy shift, depreciation schedules change. Each of these is defensible in isolation. The cumulative effect over an 18-month earnout window can move EBITDA by 15 to 25 percent.",
-      "Worse, the seller has almost no recourse. The buyer's accounting choices are within the buyer's contractual authority post-closing. The seller can argue that the choices were made to defeat the earnout, but proving intent in this kind of dispute is close to impossible. The matter goes to arbitration, the seller's claim is dismissed, and the earnout has been quietly hollowed out.",
-      "An EBITDA earnout in India should be the last choice, not the default.",
-
-      "### Why revenue earnouts work better",
-      "Revenue is much harder to manipulate than EBITDA. Revenue is recognised on invoices issued to customers. The invoices are visible. The customers can be confirmed independently. The seller can verify revenue from the same data the buyer uses to recognise it.",
-      "Revenue earnouts have two limitations to be aware of. First, in a business with seasonal or lumpy revenue, the window of measurement matters: a 12-month window can over-weight a strong quarter or miss a weak one. Second, in a business where the buyer can shift revenue between the acquired entity and a related entity (common in groups with multiple operating entities in similar lines), the same manipulation risk exists. For these cases, the earnout needs to be tied to consolidated revenue across the buyer group, not just the acquired entity.",
-      "For most businesses where revenue is the right top-line metric, a revenue earnout is the cleanest structure.",
-
-      "### When gross-margin earnouts make sense",
-      "In businesses where revenue is volatile but the product mix is stable, a gross-margin earnout can be the right answer. Gross margin captures the underlying unit economics without being exposed to volume swings, and it is much less manipulable than EBITDA because the cost of goods is typically a small set of direct inputs that the seller can verify.",
-      "Gross-margin earnouts are most useful for product businesses with multi-year sales cycles, where revenue can be lumpy but the unit margin reflects the real health of the business.",
-
-      "### The verification test",
-      "The question we ask before agreeing to any metric is: can the seller independently verify this number from a quarterly invoice register or an equivalent source. If yes, the metric is workable. If no, the metric will produce a dispute, and the dispute will favour the buyer.",
-      "This is the test that should drive metric selection, not industry convention or what the buyer first proposes.",
-
-      "## Protecting the seller's operating control",
-      "The second structural feature is operating-control protection. The seller cannot run the business through the earnout period as it was run pre-acquisition without it being written down in the SPA.",
-      "Post-closing, the buyer owns the company. Without contractual restrictions, the buyer can change pricing, cut headcount, reallocate capital away from the acquired business, integrate it into a larger entity in ways that affect its standalone performance, and shift accounting policies. Each of these can move the earnout metric. The buyer does not have to be acting in bad faith for the cumulative effect to be material.",
-
-      "### The short list of protected decisions",
-      "We typically negotiate a short list of operating decisions that require seller consent during the earnout window. The list is deliberately short, because a long list looks adversarial and slows down legitimate post-closing operating decisions. Five categories are usually enough.",
-      "**Pricing changes above a defined band.** A 5 to 10 percent move from baseline pricing requires seller consent. This protects revenue earnouts from buyer-driven price cuts that protect strategic positioning at the expense of acquired-entity revenue.",
-      "**Headcount cuts beyond a threshold.** Reduction in the acquired entity's headcount below a percentage of the pre-closing level requires consent. This protects against integration-driven cost-out programmes that hit the earnout metric.",
-      "**Capital reallocation away from the acquired business.** Capex or marketing budget reallocation below a defined floor requires consent. This protects against starving the acquired entity to fund other parts of the buyer's portfolio.",
-      "**Accounting policy changes.** Changes to revenue recognition, depreciation, or any policy that affects the earnout metric require consent. This is the most directly protective clause for EBITDA-based earnouts.",
-      "**Material change in the acquired entity's structure.** Mergers with sister entities, demergers, or other reorganisations that affect the standalone measurability of the acquired entity require consent.",
-      "Five clauses, all defensible commercially, all routinely accepted by reasonable buyers. The buyers who push back hardest on these clauses are often the ones the seller most needs them with.",
-
-      "## The dispute resolution path",
-      "The third structural feature is dispute resolution. The standard SPA escalation path, through arbitration, is too slow for an earnout dispute that crystallises every quarter or every year.",
-      "An earnout dispute in India that goes to arbitration typically takes 18 to 36 months to resolve, often longer. By the time the dispute is resolved, the earnout window has closed, the seller has spent legal fees that exceed the disputed amount, and the relationship between the parties is irreparable.",
-
-      "### The independent accountant as first stop",
-      "The structural fix is to require an independent accountant as the first stop for accounting-method disputes. The mechanism is straightforward. At closing, the buyer and seller jointly appoint a Big Four or equivalent accounting firm as the independent accountant for the earnout. The appointment is named in the SPA, with successor mechanics if the named firm becomes conflicted.",
-      "Any dispute about an accounting method, an allocation, or a measurement basis goes to the independent accountant first. The accountant's view is binding on the parties. Only disputes about contract interpretation (which clauses apply, how to read a specific protection) go to arbitration.",
-      "The mechanism saves 12 to 18 months and a substantial fraction of legal fees. More importantly, it preserves the commercial relationship by routing technical disputes through a neutral expert rather than an adversarial proceeding.",
-
-      "### Why this clause is rare in Indian deals",
-      "The independent accountant clause is standard in international M&A practice. It is rare in Indian deals because most Indian SPAs are drafted by counsel who default to arbitration for all disputes. The clause is easy to add at the term-sheet stage but often missed.",
-      "We push for it on every earnout. The few buyers who refuse it are usually signalling that they expect to dispute the earnout, which is itself useful information.",
-
-      "## What good earnouts look like in India",
-      "When earnouts work in India, they share a pattern. They are usually one year long, not two or three. They use a single metric, not a basket. The metric is typically revenue or gross margin, not EBITDA. They include a defined floor below which no earnout is payable and a defined cap above which no additional earnout accrues, so both sides know the consideration range. They include the five operating-control protections, and they name an independent accountant for accounting disputes.",
-      "When earnouts fail in India, they share a different pattern. They are two or three years long. They use EBITDA as the metric without operating-control protection. They have no independent accountant, so every dispute goes to arbitration. They lack a floor and cap, so the seller's expectation can drift unboundedly above what the buyer thinks is reasonable.",
-      "The pattern repeats often enough that it is worth structural attention at the term sheet, not after.",
-
-      "## The negotiation moments to push for",
-      "Three moments in the negotiation matter most for earnout outcomes.",
-      "The first is at the indicative offer stage, when the earnout is first proposed. This is when the metric, the duration, the floor, and the cap should be defined. Pushing back at this stage is normal and expected. Accepting an EBITDA-based, multi-year earnout at IOI stage and trying to renegotiate at SPA stage is much harder.",
-      "The second is at the SPA drafting stage, when operating-control protections are inserted. The buyer's first draft will almost never include them. The seller's counsel needs to add them with specific thresholds and bands. This is where most Indian sellers under-negotiate.",
-      "The third is at the closing-mechanics stage, when the independent accountant is appointed. If the appointment is left to be made later, it often is not made. The seller needs to insist on naming the firm at closing, with the appointment letter signed alongside the SPA.",
-      "Get these three moments right, and the earnout protects both sides. Miss any of them, and the earnout becomes the structural feature most likely to produce a dispute the seller does not want to fight.",
-    ].join('\n\n'),
-    author: AK,
-    publishedOn: '2026-04-28',
-    readMinutes: 12,
-    tag: 'Deal structuring',
-    serviceSlugs: ['ma-advisory'],
-    thumbnailSrc: '/article-thumbs/earnouts-in-india-what-works-what-doesnt.jpg',
     reviewerStatus: 'pending',
   },
 ];

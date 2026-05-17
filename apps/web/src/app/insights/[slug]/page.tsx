@@ -40,6 +40,12 @@ export default async function ArticlePage({ params }: Props) {
     <PageShell>
       <main className="home-v3 service-v1">
         <article className="article-page">
+          {article.thumbnailSrc ? (
+            <figure className="article-page-hero">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={article.thumbnailSrc} alt="" loading="eager" />
+            </figure>
+          ) : null}
           <header className="article-page-head">
             <Link href="/insights" className="article-page-back">
               <ArrowLeft size={14} aria-hidden="true" />
