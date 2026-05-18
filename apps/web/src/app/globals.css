@@ -9115,10 +9115,10 @@ main.service-v1 > div > section {
    own rounded corners + shadow; we need a bit of vertical breathing
    room so the shadow isn't sliced off, hence padding rather than
    overflow:hidden directly on the carousel root. */
+/* Carousel viewport clips the sliding track and prevents the next
+   slide from peeking on the right edge. */
 .hub-featured-viewport {
   overflow: hidden;
-  padding: 8px 4px;
-  margin: -8px -4px;
   border-radius: 20px;
 }
 .hub-featured-track {
