@@ -122,8 +122,13 @@ export function FeaturedArticle({
       <div className="hub-featured-viewport">
       <div
         className="hub-featured-track"
-        // Slide via translateX. Each card is full width of the track.
-        style={{ transform: `translateX(-${index * 100}%)` }}
+        // Slide via translateX. Step matches the slide width + gap so
+        // the active card sits flush against the viewport's left edge
+        // and ~14% of the next slide peeks on the right (signal to the
+        // visitor that there's more to scroll). The CSS uses a 84% slide
+        // + 2% gap on desktop, 92% + 3% on mobile — calc() with a CSS
+        // var keeps the JS-side step in sync.
+        style={{ transform: `translateX(calc(${index} * var(--slide-step, -86%)))` }}
         aria-live="polite"
       >
         {items.map((article, i) => {

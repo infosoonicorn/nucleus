@@ -9105,6 +9105,13 @@ main.service-v1 > div > section {
 .hub-featured-carousel {
   position: relative;
   outline: none;
+  /* Step per slide advance: -(slide-width + gap). The track's
+     translateX uses this var so JS doesn't have to know whether
+     we're on desktop or mobile. */
+  --slide-step: -86%;
+}
+@media (max-width: 880px) {
+  .hub-featured-carousel { --slide-step: -95%; }
 }
 .hub-featured-carousel:focus-visible {
   outline: 2px solid rgba(221, 16, 23, 0.5);
@@ -9124,6 +9131,9 @@ main.service-v1 > div > section {
 .hub-featured-track {
   display: flex;
   flex-wrap: nowrap;
+  /* gap between slides — combines with slide width to leave a peek
+     of the next slide on the right edge. */
+  gap: 2%;
   transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
@@ -9131,10 +9141,16 @@ main.service-v1 > div > section {
   .hub-featured-track { transition: none; }
 }
 .hub-featured-slide {
-  flex: 0 0 100%;
+  /* 84% of viewport + 2% gap = 86% step per advance, leaving 14% of
+     the next slide visible as a "more content" cue. */
+  flex: 0 0 84%;
   min-width: 0;
-  /* Inner card already has its own shadow/border; let the slide be a
-     transparent sizing wrapper so the rounded card edges aren't clipped. */
+}
+@media (max-width: 880px) {
+  /* On mobile the peek is too cramped — show slightly more of the
+     active slide and less peek. */
+  .hub-featured-slide { flex: 0 0 92%; }
+  .hub-featured-track { gap: 3%; }
 }
 
 /* Nav arrows — sit outside the card on desktop, overlay on mobile. */
