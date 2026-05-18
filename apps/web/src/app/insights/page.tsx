@@ -15,7 +15,7 @@ import {
   type FilterOption,
 } from '@/components/insights/insights-toolbar';
 import { NewsletterSignup } from '@/components/insights/newsletter-signup';
-import { FeaturedArticle } from '@/components/insights/featured-article';
+import { FeaturedArticle, type FeaturedItem } from '@/components/insights/featured-article';
 
 export const metadata: Metadata = {
   title: 'Insights — Nucleus Advisors',
@@ -61,26 +61,36 @@ export default async function InsightsHubPage({
     allowDrafts ? true : a.reviewerStatus === 'approved',
   );
 
-  // Featured "Start here" article: only surfaced when no filters are
+  // Featured "Start here" carousel: only surfaced when no filters are
   // active (otherwise it would compete with the user's stated intent).
-  // Pick the most-recent article flagged `featured: true`, or the
-  // most-recent visible article overall as a fallback.
+  // Top up to 5 most-recent articles, preferring those flagged
+  // `featured: true`. If no articles are tagged featured, falls back
+  // to the 5 most-recent visible articles overall.
   const noFiltersActive = !serviceFilter && !tagFilter && !authorFilter;
-  const featuredArticle = noFiltersActive
-    ? visible
-        .filter((a) => a.featured)
-        .sort((a, b) => b.publishedOn.localeCompare(a.publishedOn))[0] ??
-      visible.sort((a, b) => b.publishedOn.localeCompare(a.publishedOn))[0] ??
-      null
-    : null;
+  const FEATURED_LIMIT = 5;
+  const featuredArticles = noFiltersActive
+    ? (() => {
+        const flagged = visible
+          .filter((a) => a.featured)
+          .sort((a, b) => b.publishedOn.localeCompare(a.publishedOn));
+        // Pad with the next most-recent articles if fewer than the
+        // limit are explicitly flagged.
+        const flaggedSlugs = new Set(flagged.map((a) => a.slug));
+        const rest = visible
+          .filter((a) => !flaggedSlugs.has(a.slug))
+          .sort((a, b) => b.publishedOn.localeCompare(a.publishedOn));
+        return [...flagged, ...rest].slice(0, FEATURED_LIMIT);
+      })()
+    : [];
+  const featuredSlugs = new Set(featuredArticles.map((a) => a.slug));
 
   const filtered = visible
     .filter((a) => (serviceFilter ? a.serviceSlugs.includes(serviceFilter) : true))
     .filter((a) => (tagFilter ? a.tag === tagFilter : true))
     .filter((a) => (authorFilter ? a.authorSlug === authorFilter : true))
-    // Hide the featured piece from the grid so it doesn't duplicate the
-    // "Start here" slot above.
-    .filter((a) => (featuredArticle ? a.slug !== featuredArticle.slug : true))
+    // Hide featured pieces from the grid so they don't duplicate the
+    // "Start here" carousel above.
+    .filter((a) => !featuredSlugs.has(a.slug))
     .sort((a, b) =>
       sort === 'oldest'
         ? a.publishedOn.localeCompare(b.publishedOn)
@@ -146,6 +156,25 @@ export default async function InsightsHubPage({
   if (tagFilter) descriptionParts.push(`#${tagFilter}`);
   if (activeAuthor) descriptionParts.push(`by ${activeAuthor.name}`);
   const filterDescription = descriptionParts.length > 0 ? descriptionParts.join(' · ') : null;
+
+  const featuredItems: FeaturedItem[] = featuredArticles.map((a) => {
+    const author = getArticleAuthor(a);
+    return {
+      slug: a.slug,
+      title: a.title,
+      excerpt: a.excerpt,
+      tag: a.tag,
+      readMinutes: a.readMinutes,
+      isNew: isRecentArticle(a),
+      thumbnailSrc: a.thumbnailSrc,
+      author: {
+        name: author.name,
+        role: author.role,
+        initials: author.initials,
+        headshotSrc: author.headshotSrc,
+      },
+    };
+  });
 
   const gridArticles: GridArticle[] = filtered.map((a) => {
     const author = getArticleAuthor(a);
@@ -237,11 +266,8 @@ export default async function InsightsHubPage({
           ) : null}
         </section>
 
-        {featuredArticle ? (
-          <FeaturedArticle
-            article={featuredArticle}
-            author={getArticleAuthor(featuredArticle)}
-          />
+        {featuredArticles.length > 0 ? (
+          <FeaturedArticle items={featuredItems} />
         ) : null}
 
         <section className="hub-toolbar-section" aria-label="Filter and sort">
