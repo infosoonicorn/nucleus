@@ -134,6 +134,7 @@ const downloadables: Resource[] = [
     serviceSlugs: ['investment-banking'],
     status: 'available',
   },
+
 ];
 
 function fromReport(r: Report): Resource {
