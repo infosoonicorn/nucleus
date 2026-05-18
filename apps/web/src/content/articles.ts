@@ -28,6 +28,7 @@ type ArticleBase = {
   thumbnailSrc?: string;       // optional path under apps/web/public, e.g. '/article-thumbs/<slug>.jpg'
   thumbnailHook?: string;      // short bait line (≤7 words) rendered onto the thumbnail; see docs/article-thumbnail-hook-guide.md
   thumbnailHookEmphasis?: string; // optional single word from thumbnailHook to render in Nucleus red (forward-looking; not yet applied by autofill)
+  thumbnailMode?: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H'; // visual mode for the background photo; routes to a per-mode photo prompt template. See docs/article-thumbnail-hook-guide.md.
   featured?: boolean;          // when true, eligible for the 'Start here' slot on /insights
   seriesKey?: string;          // kebab-case series identifier — articles with the same key cluster
   seriesTitle?: string;        // display title for the series, e.g. 'The sell-side process'
@@ -140,6 +141,7 @@ export const articles: Article[] = [
     thumbnailSrc: '/article-thumbs/math-of-dilution.jpg',
     thumbnailHook: "Eighty percent becomes forty-four.",
     thumbnailHookEmphasis: 'forty-four',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -163,6 +165,7 @@ export const articles: Article[] = [
     thumbnailSrc: '/article-thumbs/how-investors-read-im.jpg',
     thumbnailHook: "Forty pages they won't read.",
     thumbnailHookEmphasis: 'read',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -188,6 +191,7 @@ export const articles: Article[] = [
     thumbnailSrc: '/article-thumbs/cap-table-hygiene.jpg',
     thumbnailHook: "Your cap table adds to 100.4.",
     thumbnailHookEmphasis: '100.4',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -216,6 +220,7 @@ export const articles: Article[] = [
     thumbnailSrc: '/article-thumbs/term-sheet-line-by-line.jpg',
     thumbnailHook: "The clause you didn't read.",
     thumbnailHookEmphasis: "didn't",
+    thumbnailMode: 'E',
     reviewerStatus: 'pending',
   },
   {
@@ -241,6 +246,7 @@ export const articles: Article[] = [
     thumbnailSrc: '/article-thumbs/anti-dilution-clauses-explained.jpg',
     thumbnailHook: "Full-ratchet doubles the damage.",
     thumbnailHookEmphasis: 'doubles',
+    thumbnailMode: 'D',
     reviewerStatus: 'pending',
   },
   {
@@ -266,6 +272,7 @@ export const articles: Article[] = [
     thumbnailSrc: '/article-thumbs/14-day-pitch-to-term-sheet-myth.jpg',
     thumbnailHook: "Two weeks is a fairy tale.",
     thumbnailHookEmphasis: 'fairy tale',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -294,6 +301,7 @@ export const articles: Article[] = [
     thumbnailSrc: '/article-thumbs/fundraise-readiness-audit.jpg',
     thumbnailHook: "Nine cracks before diligence finds them.",
     thumbnailHookEmphasis: 'Nine',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -317,6 +325,10 @@ export const articles: Article[] = [
     readMinutes: 7,
     tag: 'M&A',
     serviceSlugs: ['investment-banking'],
+    thumbnailSrc: '/article-thumbs/strategic-exit-vs-pe-buyout.jpg',
+    thumbnailHook: "Strategic and PE diverge fast.",
+    thumbnailHookEmphasis: 'diverge',
+    thumbnailMode: 'D',
     reviewerStatus: 'pending',
   },
   {
@@ -340,6 +352,10 @@ export const articles: Article[] = [
     readMinutes: 7,
     tag: 'Cap table',
     serviceSlugs: ['investment-banking'],
+    thumbnailSrc: '/article-thumbs/esop-economics-for-founders.jpg',
+    thumbnailHook: "Half a point at a time.",
+    thumbnailHookEmphasis: 'Half',
+    thumbnailMode: 'H',
     reviewerStatus: 'pending',
   },
   {
@@ -362,6 +378,10 @@ export const articles: Article[] = [
     readMinutes: 6,
     tag: 'Capital strategy',
     serviceSlugs: ['investment-banking'],
+    thumbnailSrc: '/article-thumbs/case-for-outside-banker.jpg',
+    thumbnailHook: "Your network is fifteen names.",
+    thumbnailHookEmphasis: 'fifteen',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -418,6 +438,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Convertibles',
     serviceSlugs: ['investment-banking'],
+    thumbnailSrc: '/article-thumbs/safe-vs-ccps-india.jpg',
+    thumbnailHook: "CCPS is the Indian default.",
+    thumbnailHookEmphasis: 'default',
+    thumbnailMode: 'D',
     reviewerStatus: 'pending',
     references: [
       {
@@ -489,6 +513,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Cap table',
     serviceSlugs: ['investment-banking'],
+    thumbnailSrc: '/article-thumbs/pre-money-vs-post-money-confusion.jpg',
+    thumbnailHook: "One word costs ten percent.",
+    thumbnailHookEmphasis: 'ten percent',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -543,6 +571,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Bridge round',
     serviceSlugs: ['investment-banking'],
+    thumbnailSrc: '/article-thumbs/bridge-rounds-save-or-signal-trouble.jpg',
+    thumbnailHook: "Bridges signal trouble, not relief.",
+    thumbnailHookEmphasis: 'trouble',
+    thumbnailMode: 'D',
     reviewerStatus: 'pending',
   },
   {
@@ -600,6 +632,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Term sheet',
     serviceSlugs: ['investment-banking'],
+    thumbnailSrc: '/article-thumbs/pro-rata-rights-series-b.jpg',
+    thumbnailHook: "Pro-rata bites in Series B.",
+    thumbnailHookEmphasis: 'bites',
+    thumbnailMode: 'E',
     reviewerStatus: 'pending',
   },
   {
@@ -664,6 +700,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Founder economics',
     serviceSlugs: ['investment-banking'],
+    thumbnailSrc: '/article-thumbs/founder-vesting-and-re-vesting.jpg',
+    thumbnailHook: "Re-vesting eats your share.",
+    thumbnailHookEmphasis: 'eats',
+    thumbnailMode: 'D',
     reviewerStatus: 'pending',
     references: [
       {
@@ -754,8 +794,10 @@ export const articles: Article[] = [
     readMinutes: 8,
     tag: 'Sell-side process',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/first-30-days-of-a-sell-side-process.jpg',
     thumbnailHook: "Week one is paperwork.",
     thumbnailHookEmphasis: 'paperwork',
+    thumbnailMode: 'B',
     reviewerStatus: 'pending',
   },
   {
@@ -813,6 +855,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Buyer archetypes',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/four-buyer-archetypes.jpg',
+    thumbnailHook: "Each buyer wants a different deal.",
+    thumbnailHookEmphasis: 'different',
+    thumbnailMode: 'B',
     reviewerStatus: 'pending',
   },
   {
@@ -878,6 +924,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Deal process',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/indicative-to-binding-bid.jpg',
+    thumbnailHook: "Promises that don't bind.",
+    thumbnailHookEmphasis: 'don't',
+    thumbnailMode: 'B',
     reviewerStatus: 'pending',
   },
   {
@@ -945,6 +995,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Earn-outs',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/founder-earn-outs-structure.jpg',
+    thumbnailHook: "Earn-outs you'll regret signing.",
+    thumbnailHookEmphasis: 'regret',
+    thumbnailMode: 'E',
     reviewerStatus: 'pending',
   },
   {
@@ -1923,6 +1977,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Internal audit",
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/five-control-failures-nbfc-internal-audit.jpg',
+    thumbnailHook: "Five gaps we always find.",
+    thumbnailHookEmphasis: 'always',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -3041,6 +3099,7 @@ export const articles: Article[] = [
     thumbnailSrc: '/article-thumbs/gst-refund-procedural-failures.jpg',
     thumbnailHook: "Refunds die in the cover letter.",
     thumbnailHookEmphasis: 'die',
+    thumbnailMode: 'E',
     reviewerStatus: 'pending',
   },
   {
@@ -3977,6 +4036,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Statutory audit",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/statutory-audit-questions-founders-dread.jpg',
+    thumbnailHook: "Four questions, one bad week.",
+    thumbnailHookEmphasis: 'one',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -4830,6 +4893,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "ESOP valuation",
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/esop-valuation-india-409a-playbook.jpg',
+    thumbnailHook: "The US playbook breaks here.",
+    thumbnailHookEmphasis: 'breaks',
+    thumbnailMode: 'E',
     reviewerStatus: 'pending',
   },
   {
@@ -5781,6 +5848,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "vCFO",
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/when-outsourced-finance-beats-hiring-your-first-cfo.jpg',
+    thumbnailHook: "You don't need a CFO yet.",
+    thumbnailHookEmphasis: 'yet',
+    thumbnailMode: 'G',
     reviewerStatus: 'pending',
   },
   {
@@ -6749,6 +6820,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "ROC filings",
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/roc-filings-that-fail-diligence.jpg',
+    thumbnailHook: "Six filings that kill diligence.",
+    thumbnailHookEmphasis: 'kill',
+    thumbnailMode: 'E',
     reviewerStatus: 'pending',
   },
   {
@@ -7725,6 +7800,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "AIF structuring",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/cat-i-vs-cat-ii-aif-structural-choice.jpg',
+    thumbnailHook: "One label you can't undo.",
+    thumbnailHookEmphasis: "can't",
+    thumbnailMode: 'E',
     reviewerStatus: 'pending',
   },
   {
