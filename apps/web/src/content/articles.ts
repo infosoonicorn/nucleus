@@ -2443,6 +2443,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Third-party risk',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/vendor-risk-supplier-incidents.jpg',
+    thumbnailHook: 'One vendor breach. Your incident.',
+    thumbnailHookEmphasis: 'incident',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Verizon Data Breach Investigations Report 2024', href: 'https://www.verizon.com/business/resources/reports/dbir/' },
@@ -2518,6 +2522,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Governance',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/whistleblower-mechanism-first-case.jpg',
+    thumbnailHook: 'First complaint. Real test.',
+    thumbnailHookEmphasis: 'test',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Companies Act 2013, Section 177(9) — Vigil Mechanism', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -2594,6 +2602,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'PE diligence',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/pe-diligence-control-gaps.jpg',
+    thumbnailHook: 'Diligence found it. You didn’t.',
+    thumbnailHookEmphasis: 'didn’t',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Companies Act 2013 — Section 188 (Related Party Transactions) and Section 134 (IFC)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -2673,6 +2685,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Audit scope',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/process-audit-vs-internal-audit.jpg',
+    thumbnailHook: 'Same word. Different jobs.',
+    thumbnailHookEmphasis: 'jobs',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'ICAI Standards on Internal Audit (SIA Framework)', href: 'https://www.icai.org/' },
@@ -2751,6 +2767,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'SaaS audit',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/internal-audit-for-saas.jpg',
+    thumbnailHook: 'AR is fine. Risk lives elsewhere.',
+    thumbnailHookEmphasis: 'elsewhere',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Ind-AS 115 — Revenue from Contracts with Customers', href: 'https://www.mca.gov.in/' },
@@ -2823,6 +2843,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Audit committee',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/audit-committee-five-questions.jpg',
+    thumbnailHook: 'Five questions. One quiet chair.',
+    thumbnailHookEmphasis: 'chair',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Companies Act 2013, Section 177 — Audit Committee', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -2917,6 +2941,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Forensics',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/forensic-accounting-basics.jpg',
+    thumbnailHook: 'Numbers lie. Patterns confess.',
+    thumbnailHookEmphasis: 'confess',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'ICAI Standard on Auditing 240 — The Auditor’s Responsibilities Relating to Fraud', href: 'https://www.icai.org/' },
@@ -2995,6 +3023,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'SOX',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/sox-like-controls-india-gaap.jpg',
+    thumbnailHook: 'Same letters. Different rules.',
+    thumbnailHookEmphasis: 'rules',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'PCAOB Auditing Standard No. 5 — An Audit of Internal Control Over Financial Reporting', href: 'https://pcaobus.org/oversight/standards/auditing-standards' },
@@ -3102,6 +3134,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Audit planning',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/risk-based-audit-planning.jpg',
+    thumbnailHook: 'Limited hours. Spend by risk.',
+    thumbnailHookEmphasis: 'risk',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'IIA International Standards for the Professional Practice of Internal Auditing — Standard 2010 (Planning)', href: 'https://www.theiia.org/' },
@@ -3220,6 +3256,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Angel tax',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/section-56-2-viib-angel-tax-2026.jpg',
+    thumbnailHook: 'Budget cut it. Angel tax survived.',
+    thumbnailHookEmphasis: 'survived',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 56(2)(viib), Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
@@ -3283,6 +3323,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'TP',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/transfer-pricing-tech-startups.jpg',
+    thumbnailHook: 'Files exist. None survive.',
+    thumbnailHookEmphasis: 'survive',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 92 to 92F, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
@@ -3336,6 +3380,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'GST',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/place-of-supply-gst-exports.jpg',
+    thumbnailHook: 'Invoice says export. GST says domestic.',
+    thumbnailHookEmphasis: 'domestic',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 2(6), 13, 16 of the IGST Act, 2017', href: 'https://cbic-gst.gov.in/igst-act.html' },
@@ -3400,6 +3448,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Withholding',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/tds-overseas-15ca-15cb.jpg',
+    thumbnailHook: 'One form. One certificate. Zero panic.',
+    thumbnailHookEmphasis: 'panic',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 195, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
@@ -3462,6 +3514,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'GST notices',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/100-day-gst-notice-playbook.jpg',
+    thumbnailHook: "Notice arrived. Don't escalate.",
+    thumbnailHookEmphasis: 'escalate',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 73 and 74, CGST Act, 2017', href: 'https://cbic-gst.gov.in/cgst-act.html' },
@@ -3520,6 +3576,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Digital tax',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/equalisation-levy-2026.jpg',
+    thumbnailHook: 'Some stayed. Most vanished.',
+    thumbnailHookEmphasis: 'vanished',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Chapter VIII of Finance Act, 2016 (Equalisation Levy)', href: 'https://incometaxindia.gov.in/Pages/acts/finance-acts.aspx' },
@@ -3577,6 +3637,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Int'l tax",
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/poem-and-cbc-global-structures.jpg',
+    thumbnailHook: 'Indian founders. Global exposure.',
+    thumbnailHookEmphasis: 'exposure',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 6(3), Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
@@ -3637,6 +3701,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Startup incentives',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/section-80-iac-tax-holiday.jpg',
+    thumbnailHook: "Holiday looks free. Conditions aren't.",
+    thumbnailHookEmphasis: "aren't",
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 80-IAC, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
@@ -3704,6 +3772,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'GST',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/itc-mismatch-gstr2b-reconcile.jpg',
+    thumbnailHook: "Books match. 2B doesn't.",
+    thumbnailHookEmphasis: "doesn't",
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 16, CGST Act, 2017 (as amended)', href: 'https://cbic-gst.gov.in/cgst-act.html' },
@@ -3770,6 +3842,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'GST',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/gst-search-seizure-first-24-hours.jpg',
+    thumbnailHook: 'They arrived. Twenty-four hours.',
+    thumbnailHookEmphasis: 'hours',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 67, CGST Act, 2017', href: 'https://cbic-gst.gov.in/cgst-act.html' },
@@ -3834,6 +3910,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Int'l tax",
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/international-tax-mauritius-cleanup.jpg',
+    thumbnailHook: 'Mauritius shut. Structures adapt.',
+    thumbnailHookEmphasis: 'adapt',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'India-Mauritius DTAA Protocol, 2016', href: 'https://incometaxindia.gov.in/Pages/international-taxation/dtaa.aspx' },
@@ -3901,6 +3981,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'GST',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/inverted-duty-itc-refund.jpg',
+    thumbnailHook: 'Refund eligible. Department stalls.',
+    thumbnailHookEmphasis: 'stalls',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 54, CGST Act, 2017', href: 'https://cbic-gst.gov.in/cgst-act.html' },
@@ -3969,6 +4053,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Buy-back',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/buy-back-tax-post-2026.jpg',
+    thumbnailHook: 'Buyback looked clean. Tax reshuffled.',
+    thumbnailHookEmphasis: 'reshuffled',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 2(22)(f) and Section 46A, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
@@ -4040,6 +4128,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Tax litigation',
     serviceSlugs: ['tax-regulatory'],
+    thumbnailSrc: '/article-thumbs/faceless-assessment-appellate.jpg',
+    thumbnailHook: 'No officer. Still escalate.',
+    thumbnailHookEmphasis: 'escalate',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 144B and 250, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
@@ -4151,6 +4243,10 @@ export const articles: Article[] = [
     readMinutes: 8,
     tag: "Materiality",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/materiality-in-startup-audits.jpg',
+    thumbnailHook: 'Small number. Big consequence.',
+    thumbnailHookEmphasis: 'consequence',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "ICAI SA 320 — Materiality in Planning and Performing an Audit", href: "https://resource.cdn.icai.org/53789aasb-sa320.pdf" },
@@ -4200,6 +4296,10 @@ export const articles: Article[] = [
     readMinutes: 8,
     tag: "Revenue",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/ind-as-115-revenue-startup-mistakes.jpg',
+    thumbnailHook: 'Revenue booked. Standard disagrees.',
+    thumbnailHookEmphasis: 'disagrees',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "MCA — Ind-AS 115 Revenue from Contracts with Customers", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/accounting-standards.html" },
@@ -4251,6 +4351,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Audit process",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/audit-working-paper-file.jpg',
+    thumbnailHook: 'File looks thick. Evidence thin.',
+    thumbnailHookEmphasis: 'thin',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "ICAI SA 230 — Audit Documentation", href: "https://resource.cdn.icai.org/53789aasb-sa230.pdf" },
@@ -4309,6 +4413,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Going concern",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/going-concern-qualifications.jpg',
+    thumbnailHook: "Books balance. Future doesn't.",
+    thumbnailHookEmphasis: "doesn't",
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "ICAI SA 570 — Going Concern", href: "https://resource.cdn.icai.org/53789aasb-sa570.pdf" },
@@ -4353,6 +4461,10 @@ export const articles: Article[] = [
     readMinutes: 8,
     tag: "Rotation",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/auditor-rotation-companies-act.jpg',
+    thumbnailHook: 'Ten years up. Rotate mandatorily.',
+    thumbnailHookEmphasis: 'mandatorily',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "Companies Act Section 139 — Appointment of Auditors", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
@@ -4411,6 +4523,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "CARO",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/caro-2020-growing-companies.jpg',
+    thumbnailHook: 'Crossed threshold. Reporting expands.',
+    thumbnailHookEmphasis: 'expands',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "MCA — Companies (Auditor's Report) Order 2020", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
@@ -4469,6 +4585,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Group audit",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/group-audits-component-auditors.jpg',
+    thumbnailHook: 'Your sign. Their work.',
+    thumbnailHookEmphasis: 'work',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "ICAI SA 600 — Using the Work of Another Auditor", href: "https://resource.cdn.icai.org/53789aasb-sa600.pdf" },
@@ -4524,6 +4644,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "ESOP audit",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/audit-of-stock-options.jpg',
+    thumbnailHook: 'Grants vested. Expense lurks.',
+    thumbnailHookEmphasis: 'lurks',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "MCA — Ind-AS 102 Share-based Payment", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/accounting-standards.html" },
@@ -4584,6 +4708,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "RPT",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/related-party-disclosure-discipline.jpg',
+    thumbnailHook: "Transaction routine. Disclosure isn't.",
+    thumbnailHookEmphasis: "isn't",
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "MCA — Ind-AS 24 Related Party Disclosures", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/accounting-standards.html" },
@@ -4639,6 +4767,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Fraud reporting",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/section-143-fraud-reporting.jpg',
+    thumbnailHook: 'Spotted fraud. Clock starts.',
+    thumbnailHookEmphasis: 'starts',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "Companies Act Section 143 — Powers and duties of auditors", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
@@ -4703,6 +4835,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "IFC",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/ifc-testing-what-auditor-tests.jpg',
+    thumbnailHook: 'Controls exist. Auditor proves they work.',
+    thumbnailHookEmphasis: 'work',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "Companies Act Section 143(3)(i) — IFC reporting", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
@@ -4771,6 +4907,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Audit report",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/sa-700-audit-reports-for-boards.jpg',
+    thumbnailHook: 'One paragraph. Three risks.',
+    thumbnailHookEmphasis: 'risks',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "ICAI SA 700 — Forming an Opinion and Reporting on Financial Statements", href: "https://resource.cdn.icai.org/53789aasb-sa700.pdf" },
@@ -4828,6 +4968,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Listed co audit",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/quarterly-limited-review-listed.jpg',
+    thumbnailHook: 'Limited review. Unlimited scrutiny.',
+    thumbnailHookEmphasis: 'scrutiny',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "SEBI LODR Regulation 33 — Financial results", href: "https://www.sebi.gov.in/legal/regulations/listing-obligations-and-disclosure-requirements.html" },
@@ -4903,6 +5047,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Audit fees",
     serviceSlugs: ['assurance'],
+    thumbnailSrc: '/article-thumbs/audit-fee-economics.jpg',
+    thumbnailHook: 'Cheap audit. Expensive lessons.',
+    thumbnailHookEmphasis: 'lessons',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: "ICAI SQC 1 — Quality Control for Firms", href: "https://www.icai.org/post/standards-on-quality-control" },
@@ -5012,6 +5160,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'DCF',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/dcf-early-stage-india-tv-dominates.jpg',
+    thumbnailHook: 'Five years math. Terminal wins.',
+    thumbnailHookEmphasis: 'wins',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Rule 11UA, Income Tax Rules 1962', href: 'https://incometaxindia.gov.in/Pages/rules/income-tax-rules-1962.aspx' },
@@ -5063,6 +5215,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Comps',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/comparable-company-peer-set-india.jpg',
+    thumbnailHook: 'Wrong peers. Wrong answer.',
+    thumbnailHookEmphasis: 'answer',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'ICAI Valuation Standards (IVS) 202 — Market Approach', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
@@ -5120,6 +5276,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Convertibles',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/safe-ccps-conversion-price-traps.jpg',
+    thumbnailHook: 'Cheap paper. Brutal conversion.',
+    thumbnailHookEmphasis: 'conversion',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'RBI Master Direction on Foreign Investment in India', href: 'https://rbi.org.in/Scripts/BS_ViewMasDirections.aspx' },
@@ -5177,6 +5337,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Tax valuations',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/section-56-2-x-valuation-avr.jpg',
+    thumbnailHook: 'Below FMV. Tax bites.',
+    thumbnailHookEmphasis: 'bites',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 56(2)(x), Income Tax Act 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
@@ -5234,6 +5398,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Brand value',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/brand-valuation-big-deals.jpg',
+    thumbnailHook: 'Logo on goods. Number on books.',
+    thumbnailHookEmphasis: 'books',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Ind-AS 38 — Intangible Assets', href: 'https://www.mca.gov.in/Ministry/pdf/Ind_AS_38.pdf' },
@@ -5295,6 +5463,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Impairment',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/goodwill-impairment-ind-as-36.jpg',
+    thumbnailHook: 'Acquisition cheered. Impairment arrives.',
+    thumbnailHookEmphasis: 'arrives',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Ind-AS 36 — Impairment of Assets', href: 'https://www.mca.gov.in/Ministry/pdf/Ind_AS_36.pdf' },
@@ -5375,6 +5547,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'IP',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/ip-valuations-patents-software.jpg',
+    thumbnailHook: 'Patent filed. Value unproven.',
+    thumbnailHookEmphasis: 'unproven',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'ICAI Valuation Standard 302 — Intangible Asset Valuation', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
@@ -5440,6 +5616,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'M&A val',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/ma-valuation-bid-ask-gap.jpg',
+    thumbnailHook: "Seller's price. Buyer's flinch.",
+    thumbnailHookEmphasis: 'flinch',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI (Substantial Acquisition of Shares and Takeovers) Regulations, 2011', href: 'https://www.sebi.gov.in/legal/regulations.html' },
@@ -5511,6 +5691,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Liq pref',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/liquidation-preference-economics.jpg',
+    thumbnailHook: 'Founder paper. Investor cash.',
+    thumbnailHookEmphasis: 'cash',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Companies Act 2013, Section 55 — Preference Shares', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -5584,6 +5768,10 @@ export const articles: Article[] = [
     readMinutes: 12,
     tag: 'IBC',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/distressed-valuation-ibc.jpg',
+    thumbnailHook: 'Going concern. Fire sale.',
+    thumbnailHookEmphasis: 'sale',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Insolvency and Bankruptcy Code 2016, Section 36', href: 'https://ibbi.gov.in/legal-framework/act' },
@@ -5656,6 +5844,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Down rounds',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/down-round-ratchet-structuring.jpg',
+    thumbnailHook: 'Cheap stock. Brutal dilution.',
+    thumbnailHookEmphasis: 'dilution',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI ICDR Regulations 2018', href: 'https://www.sebi.gov.in/legal/regulations.html' },
@@ -5728,6 +5920,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Discounts',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/minority-discounts-private-cos.jpg',
+    thumbnailHook: 'Same shares. Different value.',
+    thumbnailHookEmphasis: 'value',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'ICAI Valuation Standard 102 — Premiums and Discounts', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
@@ -5797,6 +5993,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Asset val',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/real-estate-vs-cash-flow-valuation.jpg',
+    thumbnailHook: 'Bricks lie. Cashflow tells.',
+    thumbnailHookEmphasis: 'tells',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'LLP Act 2008', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/llp-act-2008.html' },
@@ -5857,6 +6057,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Founder bias',
     serviceSlugs: ['valuations'],
+    thumbnailSrc: '/article-thumbs/eight-ways-founders-inflate-valuation.jpg',
+    thumbnailHook: 'Pitch dreams. Diligence finds.',
+    thumbnailHookEmphasis: 'finds',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'ICAI Valuation Standard 301 — Business Valuation', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
@@ -5964,6 +6168,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Close',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/month-end-close-five-days.jpg',
+    thumbnailHook: 'Twenty days. Now five.',
+    thumbnailHookEmphasis: 'five',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6027,6 +6235,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Controllership',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/controllership-from-scratch-0-50.jpg',
+    thumbnailHook: 'Zero process. Real control.',
+    thumbnailHookEmphasis: 'control',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6084,6 +6296,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'AP',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/outsourced-ap-when-to-bring-inhouse.jpg',
+    thumbnailHook: 'Vendor calls. Time to insource.',
+    thumbnailHookEmphasis: 'insource',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6150,6 +6366,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Forecasting',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/thirteen-week-cash-flow-forecast.jpg',
+    thumbnailHook: 'Hope monthly. Plan weekly.',
+    thumbnailHookEmphasis: 'weekly',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6218,6 +6438,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Reporting',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/seven-reports-ceo-reads.jpg',
+    thumbnailHook: 'Hundred dashboards. Seven matter.',
+    thumbnailHookEmphasis: 'matter',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6287,6 +6511,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'ESOP ops',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/esop-administration-grant-tracking.jpg',
+    thumbnailHook: 'Loose grants. Tight ledger.',
+    thumbnailHookEmphasis: 'ledger',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6358,6 +6586,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'D2C',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/d2c-inventory-cogs-accounting.jpg',
+    thumbnailHook: 'Four pillars. Tighter margins.',
+    thumbnailHookEmphasis: 'margins',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6416,6 +6648,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Consolidation',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/multi-currency-consolidation-fx.jpg',
+    thumbnailHook: 'Three currencies. One truth.',
+    thumbnailHookEmphasis: 'truth',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6477,6 +6713,10 @@ export const articles: Article[] = [
     readMinutes: 12,
     tag: 'ERP',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/tally-zoho-netsuite-when-each.jpg',
+    thumbnailHook: 'Three tools. Different scale.',
+    thumbnailHookEmphasis: 'scale',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6542,6 +6782,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'KPIs',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/internal-reporting-board-kpis.jpg',
+    thumbnailHook: 'Forty metrics. Ten decide.',
+    thumbnailHookEmphasis: 'decide',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6605,6 +6849,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Org design',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/cfo-doing-ar-followups-cost.jpg',
+    thumbnailHook: 'CFO calling AR. Wrong cost.',
+    thumbnailHookEmphasis: 'cost',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6671,6 +6919,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Variance',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/variance-analysis-monthly-review.jpg',
+    thumbnailHook: 'Eighty lines. Five buckets.',
+    thumbnailHookEmphasis: 'buckets',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6741,6 +6993,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Fractional CFO',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/fractional-cfo-model-pricing.jpg',
+    thumbnailHook: 'Right band. Predictable break.',
+    thumbnailHookEmphasis: 'break',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6812,6 +7068,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Budgeting',
     serviceSlugs: ['finance-outsourcing'],
+    thumbnailSrc: '/article-thumbs/annual-budget-vs-rolling-forecast.jpg',
+    thumbnailHook: 'December plan. June stale.',
+    thumbnailHookEmphasis: 'stale',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       {
@@ -6944,6 +7204,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'FDI/ODI',
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/foreign-subsidiary-registrations.jpg',
+    thumbnailHook: 'Sixty days. FEMA slips.',
+    thumbnailHookEmphasis: 'slips',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Foreign Exchange Management (Overseas Investment) Rules and Regulations, 2022', href: 'https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12381' },
@@ -7001,6 +7265,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'SBO',
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/section-90-sbo-reporting.jpg',
+    thumbnailHook: 'Shareholder list. BEN-2 empty.',
+    thumbnailHookEmphasis: 'empty',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 90, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7057,6 +7325,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Board',
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/board-governance-founder-led.jpg',
+    thumbnailHook: 'Three committees. One real.',
+    thumbnailHookEmphasis: 'real',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Sections 177 and 178, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7119,6 +7391,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Board ops',
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/ten-board-resolutions-template.jpg',
+    thumbnailHook: 'Six template. Four earn.',
+    thumbnailHookEmphasis: 'earn',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 134, Companies Act, 2013 (Directors’ Report)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7174,6 +7450,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Compliance',
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/companies-act-2026-amendments.jpg',
+    thumbnailHook: 'Same forms. New rules.',
+    thumbnailHookEmphasis: 'rules',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Companies (Amendment) Act, 2020', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7239,6 +7519,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Buy-back',
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/buy-back-sh7-bba-forms.jpg',
+    thumbnailHook: 'Three sections. Zero retrofit.',
+    thumbnailHookEmphasis: 'retrofit',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Sections 68 to 70, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7313,6 +7597,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Allotment',
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/section-42-vs-preferential-allotment.jpg',
+    thumbnailHook: 'Two routes. One right.',
+    thumbnailHookEmphasis: 'right',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 42, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7375,6 +7663,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Demat',
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/demat-deadline-private-cos.jpg',
+    thumbnailHook: 'Deadline passed. Shareholders stuck.',
+    thumbnailHookEmphasis: 'stuck',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Rule 9B, Companies (Prospectus and Allotment of Securities) Rules, 2014', href: 'https://www.mca.gov.in/Ministry/pdf/NotificationRule9B_27102023.pdf' },
@@ -7442,6 +7734,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Compounding',
     serviceSlugs: ['corporate-secretarial'],
+    thumbnailSrc: '/article-thumbs/compounding-of-offences.jpg',
+    thumbnailHook: 'Confess early. Penalty shrinks.',
+    thumbnailHookEmphasis: 'shrinks',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Section 441, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7451,6 +7747,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'audit-committee-charter-drafting',
+    thumbnailSrc: '/article-thumbs/audit-committee-charter-drafting.jpg',
+    thumbnailHook: 'Boilerplate charter. Real teeth.',
+    thumbnailHookEmphasis: 'teeth',
+    thumbnailMode: 'A',
     title: "Audit committee charter: drafting one that's not just boilerplate",
     excerpt:
       "Most audit committee charters read the same. They were drafted by copying a template that copied a template. The charter that produces a working audit committee is specific to the company — particularly on scope, dispute resolution, and the executive session with the auditor.",
@@ -7517,6 +7817,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'rpt-section-188-thresholds',
+    thumbnailSrc: '/article-thumbs/rpt-section-188-thresholds.jpg',
+    thumbnailHook: 'Small transfer. Big gate.',
+    thumbnailHookEmphasis: 'gate',
+    thumbnailMode: 'A',
     title: 'RPT approvals under Section 188: the threshold every founder-led board misses',
     excerpt:
       "Section 188 thresholds are written into Rule 15. They look mechanical — 10% of turnover, 10% of net worth, 2.5% for consultancy. The miss we see in founder-led companies is not in the math. It is in identifying the related party, particularly when the relationship runs through an LLP, a family trust, or an indirect shareholding.",
@@ -7593,6 +7897,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'director-kyc-din-disqualification',
+    thumbnailSrc: '/article-thumbs/director-kyc-din-disqualification.jpg',
+    thumbnailHook: 'Miss September. DIN frozen.',
+    thumbnailHookEmphasis: 'frozen',
+    thumbnailMode: 'A',
     title: 'Director KYC and DIN compliance: the calendar that prevents disqualification',
     excerpt:
       "Director KYC is annual, DIN deactivation is automatic, and disqualification under Section 164(2) sits in the background of every dormant subsidiary nobody is paying attention to. The calendar that prevents disqualification is short. The cost of missing it includes the directorships you did not lose on purpose.",
@@ -7664,6 +7972,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'strike-off-dormant-subsidiaries',
+    thumbnailSrc: '/article-thumbs/strike-off-dormant-subsidiaries.jpg',
+    thumbnailHook: 'Two years dormant. Strike fast.',
+    thumbnailHookEmphasis: 'fast',
+    thumbnailMode: 'A',
     title: 'The strike-off route: when to use it for dormant subsidiaries (and when NCLT is faster)',
     excerpt:
       "Most dormant subsidiaries should be struck off rather than wound up. STK-2 is fast, cheap, and quiet. NCLT is the right route only when secured creditors are present, employee dues remain, or regulatory matters are open. The choice between them is usually clear by the second week of the engagement.",
@@ -7738,6 +8050,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'brsr-unlisted-cos-when',
+    thumbnailSrc: '/article-thumbs/brsr-unlisted-cos-when.jpg',
+    thumbnailHook: 'Listed today. Unlisted next.',
+    thumbnailHookEmphasis: 'next',
+    thumbnailMode: 'A',
     title: "BRSR for unlisted companies: when SEBI's ESG net widens beyond listed",
     excerpt:
       "BRSR currently applies to the top 1,000 listed companies by market cap. The unlisted question — when does it extend to large private companies — is being asked by investors before it is being answered by regulators. The companies that wait for the regulation are running a year or two behind their investors.",
@@ -7872,6 +8188,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'sebi-aif-regulations-2026',
+    thumbnailSrc: '/article-thumbs/sebi-aif-regulations-2026.jpg',
+    thumbnailHook: 'Old playbook. New floors.',
+    thumbnailHookEmphasis: 'floors',
+    thumbnailMode: 'A',
     title: "SEBI AIF Regulations: what changed in 2025, and what's coming in 2026",
     excerpt:
       "The AIF rulebook has moved more in the last eighteen months than in the five years before it. Monthly NAV is now table stakes, custodian appointment is now universal, and the 2026 amendment cycle is shaping up to be heavier than what we just absorbed.",
@@ -7917,6 +8237,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'setting-up-cat-iii-aif',
+    thumbnailSrc: '/article-thumbs/setting-up-cat-iii-aif.jpg',
+    thumbnailHook: 'Long-short ambition. Leverage capped.',
+    thumbnailHookEmphasis: 'capped',
+    thumbnailMode: 'A',
     title: "Setting up a Category III AIF: the leverage-and-strategy tradeoffs",
     excerpt:
       "A Category III AIF gives you leverage and strategy flexibility no other AIF category offers. It also costs more to set up, more to run, and gives up the pass-through tax benefit. Whether the trade is worth it depends on the strategy.",
@@ -7972,6 +8296,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'gp-lp-economics-fee-carry-hurdle',
+    thumbnailSrc: '/article-thumbs/gp-lp-economics-fee-carry-hurdle.jpg',
+    thumbnailHook: 'Two and twenty. Hurdle first.',
+    thumbnailHookEmphasis: 'first',
+    thumbnailMode: 'A',
     title: "GP-LP economics: management fee, carry, hurdle — the standard ladder",
     excerpt:
       "Fee, carry, hurdle, catch-up. Four numbers govern how money flows between the GP and the LPs over a ten-year fund. Get them wrong and either the GP starves or the LPs revolt. Get them right and they barely come up after first close.",
@@ -8022,6 +8350,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'side-letters-needle-movers',
+    thumbnailSrc: '/article-thumbs/side-letters-needle-movers.jpg',
+    thumbnailHook: 'MFN clause. Economics flow.',
+    thumbnailHookEmphasis: 'flow',
+    thumbnailMode: 'A',
     title: "Side letters: which LP negotiations actually move the needle",
     excerpt:
       "Anchor LPs ask for side letters. Most of what they ask for is theatre. A few clauses are genuine concessions that change fund economics or governance. Knowing which is which saves time and keeps the LPA defensible.",
@@ -8066,6 +8398,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'lp-onboarding-kyc-accreditation',
+    thumbnailSrc: '/article-thumbs/lp-onboarding-kyc-accreditation.jpg',
+    thumbnailHook: 'First fund. KYC bottleneck.',
+    thumbnailHookEmphasis: 'bottleneck',
+    thumbnailMode: 'A',
     title: "Onboarding LPs: KYC and accreditation for first-time GPs",
     excerpt:
       "Onboarding a Limited Partner is not a form. It is a sequenced documentation exercise that touches SEBI rules, the Income Tax Act, FATCA/CRS, and the fund's own subscription documents. Get one step wrong and the LP cannot be invoiced.",
@@ -8160,6 +8496,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "IC",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/investment-committee-mechanics.jpg',
+    thumbnailHook: 'Five voting partners. Quorum first.',
+    thumbnailHookEmphasis: 'first',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
@@ -8223,6 +8563,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Sub-doc",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/subscription-agreement-clauses.jpg',
+    thumbnailHook: 'Sub-doc page forty. MFN bites.',
+    thumbnailHookEmphasis: 'bites',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
@@ -8291,6 +8635,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Waterfall",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/distribution-waterfall-european-american.jpg',
+    thumbnailHook: 'European waterfall. Catch-up last.',
+    thumbnailHookEmphasis: 'last',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
@@ -8351,6 +8699,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: "Fund admin",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/fund-administration-inhouse-outsourced.jpg',
+    thumbnailHook: 'First fund. Outsource NAV.',
+    thumbnailHookEmphasis: 'NAV',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
@@ -8400,6 +8752,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Impact",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/cat-i-social-impact-irr.jpg',
+    thumbnailHook: 'Impact thesis. IRR moves.',
+    thumbnailHookEmphasis: 'moves',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012 — Regulation 2(b)', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
@@ -8454,6 +8810,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "NAV",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/nav-calculations-pe-quarterly.jpg',
+    thumbnailHook: 'Quarter-end NAV. Marks fresh.',
+    thumbnailHookEmphasis: 'fresh',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
@@ -8517,6 +8877,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Tax",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/tax-pass-through-aif-gp-level.jpg',
+    thumbnailHook: 'Pass-through tax. GP withholds.',
+    thumbnailHookEmphasis: 'withholds',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Income Tax Act, 1961 — Section 115UB', href: 'https://incometaxindia.gov.in/' },
@@ -8595,6 +8959,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Compliance",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/sebi-compliance-monthly-quarterly.jpg',
+    thumbnailHook: 'Tenth of month. NAV due.',
+    thumbnailHookEmphasis: 'due',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012 — Regulation 28 onwards', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
@@ -8653,6 +9021,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: "Skin in the game",
     serviceSlugs: ['aif-fund-management'],
+    thumbnailSrc: '/article-thumbs/sponsor-commitment-skin-in-game.jpg',
+    thumbnailHook: 'Two-five percent. Skin funded.',
+    thumbnailHookEmphasis: 'funded',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012 — Regulation 10', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },

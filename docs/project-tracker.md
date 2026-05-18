@@ -1,471 +1,189 @@
-# Nucleus Advisors Project Tracker
+# Nucleus Advisors — Build Tracker
 
-This is the living dashboard for the Nucleus website and platform build. Every agent must update this file when completing meaningful work.
+The live status of what we're building, in plain English. Renders on the
+internal dashboard at `/project-tracker`. Update this file whenever a
+meaningful milestone ships — partners read this to see where we are.
 
-Source of truth:
+## Current Snapshot
 
-- Strategy/content: `docs/content-master.md`
-- Architecture: `docs/architecture.md`
-- Platform/CMS/backend logic: `docs/content-platform.md`
-- Agent rules: `CLAUDE.md`
-- Current handoff: `HANDOFF.md`
+Last updated: 2026-05-18.
 
-## How To Use This Tracker
+We've built the foundation of a premium public website — a homepage,
+nine service pages (Investment Banking is the bespoke flagship; the other
+eight share an elevated default), a careers section, and an insights hub
+with 135 partner-authored articles filterable by service line. A bento
+navigation with submenus on About, Services, and Insights ties it
+together; every page is mobile-responsive.
 
-Status legend:
+The site lives on `localhost:3000` for partner review. It has not been
+pushed to `nucleusadvisors.in` yet — that domain still shows a "coming
+soon" splash and will be flipped only on Vijay's explicit consent, after
+the brand-asset audit and Vercel quality gate land.
 
-- `[ ]` Not started
-- `[~]` In progress, partially complete, or needs review
-- `[x]` Complete and verified
-- `[!]` Blocked or needs Vijay/team input
-
-Update rules:
-
-- Tick an item only when the acceptance criteria below it are satisfied.
-- Add a short note when something is blocked or intentionally deferred.
-- If a route, component, data model, or workflow changes, update related tracker items in the same change.
-- Do not mark visible work done until it is verified in browser.
-- Keep `HANDOFF.md` aligned after non-trivial tracker changes.
-- All agents must read this tracker before starting work and update it before claiming a meaningful task is complete.
-- If an agent discovers new work, it must be added here instead of staying only in chat.
+Next up: polish About / Careers / Insights detail / Contact to match the
+home + service-page baseline, then go live. Phase 1.5 (forms wired to a
+real Supabase backend) follows immediately.
 
 ## Executive Dashboard
 
 | Area | Status | Completion Signal |
 | --- | --- | --- |
-| Strategy and architecture | `[x]` | Core positioning, service taxonomy, phases, content engine, careers engine, AIF/Soonicorn, M&A deal room documented |
-| Phase 1 static website | `[~]` | Local content-structured site and route set built; deployed gate and approved asset audit remain |
-| Phase 1.5 lightweight backend | `[ ]` | Lead forms, newsletter, gated downloads, job applications stored in backend |
-| Phase 2 CMS/content engine | `[ ]` | CMS, AI drafts, review workflow, knowledge banks, website-to-LinkedIn drafts |
-| Phase 3 portal/deal room | `[ ]` | Client portal and M&A partner deal room with permissions/audit logs |
-| Phase 4 mobile | `[ ]` | Expo app using shared backend APIs |
+| Foundations — strategy, repo, deployment plumbing | `[x]` | Positioning, service taxonomy, content engine, careers engine, AIF/Soonicorn and M&A deal-room scope all documented. |
+| Phase 1 — Public website | `[~]` | Routes built and reviewable locally; brand-asset audit and Vercel go-live remain. |
+| Phase 1.5 — Lead capture backend | `[ ]` | Form submissions log to dev console; Supabase wiring not started. |
+| Phase 2 — Content engine + CMS | `[ ]` | Scope and partner-author workflow designed; build not started. |
+| Phase 3 — Client portal + M&A deal room | `[ ]` | Scope documented; build not started. |
+| Phase 4 — Mobile | `[ ]` | Reuses Phase 3 APIs; not started. |
 
-## Current Snapshot
+## Phase 1: Public Website
 
-Last updated: 2026-05-15 — Investment Banking page is now end-to-end. Most recent landings (in order): FundraiseStages converted from scroll-pinned to timer autoplay; central `/insights` and `/reports` hubs with filterable listings replace the Phase-1 shells; IB sections reordered along the founder reading journey; FAQ rebuilt as 2-column editorial Q&A; unified Resources deck (horizontal scroller, 5 cards, framer-motion stagger) replaces the old LeadMagnet + IndustryReports preview, with a single capture modal (Name / Email / Company / Role) wired to a `/api/resources/request` stub that logs each capture with `resourceSlug` for interest tracking. Next active task is bringing About / Careers / Insights detail / Contact up to the home-v3 + service-v1 baseline.
+A premium, credible front door for prospects, candidates and partners.
+Built ahead of the backend so the firm has a real face on the internet
+while the rest of the platform comes online.
 
-Current branch: `main` (60+ ahead of origin — origin is intentionally untouched while production DNS still points "coming soon"). Push to origin requires explicit Vijay consent.
+### Build sequence
 
-Recent commit landmarks on `main`:
+- [x] Strategy, content scope and phased roadmap documented.
+  - Acceptance: positioning, services, careers, insights, lead engine, SEO, and portal hooks captured in `docs/`.
+- [x] Premium homepage with lifecycle, service universe, firm proof, knowledge engine and careers teaser.
+  - Acceptance: home page communicates the incorporation-to-listing journey and routes visitors to every major surface.
+- [x] All nine service pages built.
+  - Acceptance: Investment Banking, M&A Advisory, Risk Advisory, Tax & Regulatory, Assurance, Valuations, Finance Outsourcing, Corporate Secretarial, and AIF & Fund Management each have a dedicated page with hero, who-needs-this, when-to-engage, how-we-help, process, proof, FAQs and CTA.
+- [x] Investment Banking page is end-to-end (bespoke flagship composition).
+  - Acceptance: founder reading journey from identity through proof to CTA, with an interactive fundraise stages module, partner-signed process dossier, Soonicorn proof callout, resources deck and editorial FAQ.
+- [x] Insights hub with 135 partner-authored long-form articles.
+  - Acceptance: every article is filterable by service line and tag; URL filters are shareable; service pages preview the four most relevant articles with a "see all" link to the hub.
+- [x] Reports hub with filterable industry reports.
+  - Acceptance: `/reports` lists every industry report with chip filters by service line and report type, mirroring the insights hub pattern.
+- [x] About, Team, Careers, Life at Nucleus, Alumni, Clients and Contact pages live.
+  - Acceptance: every nav destination resolves to a real page; no dead clicks.
+- [x] Bento dropdown navigation with submenus on About / Services / Insights.
+  - Acceptance: hover, focus or tap opens a rich mega-menu under the header; About is a two-column firm/join-us bento; Services is a three-column bento across all nine service lines; Insights surfaces a service chip grid plus a "latest article" feature card.
+- [x] Unified Resources deck + lead-capture modal on every service page.
+  - Acceptance: a single modal (Name / Work email / Company / Role) captures requests for every downloadable across the site; each capture is logged with the resource slug for interest tracking.
+- [x] Long-form article infrastructure with reviewer-status gate.
+  - Acceptance: drafts visible only in development; production hides anything not approved by a partner. Article reader at `/insights/{slug}` includes a draft banner for partner preview.
+- [x] Article thumbnail brand template (Canva) wired for batch generation.
+  - Acceptance: one locked editorial-photo template covers every Nucleus article. Brand Template ID and autofill schema verified end-to-end; first proof-of-concept thumbnail live.
+- [x] Mobile-responsive across all public pages.
+  - Acceptance: every page is verified at mobile and desktop widths; the new nav collapses into a hamburger sheet below 960px.
+- [~] About / Careers / Insights detail / Contact polished to the home + service-page baseline.
+  - Acceptance: same typography rhythm, motion, spacing and section primitives as the homepage and Investment Banking page.
+- [ ] Bespoke design centerpieces for the remaining eight service pages.
+  - Acceptance: each service line gets its own brainstorm and bespoke centerpiece, modelled on the Investment Banking pattern. Eight pages currently render the elevated default.
+- [ ] Approved brand assets audited.
+  - Acceptance: usable logos, partner photos, team/culture images and profile visuals identified and approved for production.
+- [ ] Batch-generate thumbnails for the remaining ~80 articles via the brand template.
+  - Acceptance: a one-shot script reads every article with a thumbnail hook, hits Canva autofill, and writes the resulting JPGs into the article registry.
+- [ ] Vercel go-live.
+  - Acceptance: deploy to `nucleusadvisors.in` (currently "coming soon"), end-to-end tests pass against the live URL, partners sign off.
 
-- `f352492 feat(resources): unified deck + capture modal for all downloadables`
-- `018dae7 feat(faq): 2-column layout on web (single column on mobile)`
-- `784dd44 feat(faq): editorial Q&A column matching the dossier brand language`
-- `01e6a1e refactor(ib): reorder sections along founder reading journey`
-- `62efbee feat(insights+reports): central hubs with filters; service pages preview 4`
-- `280b5de fix(ib): autoplay fundraise stages, drop scroll-jacking + tighten rhythm`
-- `c982beb polish(web): unified section rhythm + headers + hairlines on IB page`
+## Phase 1.5: Lead Capture Backend
 
-Current deployed preview:
+Add practical backend storage for the forms already on the site, without
+overbuilding into a full CMS.
 
-- `https://nucleus-bay.vercel.app`
+### Build sequence
 
-Current local app:
-
-- `http://localhost:3000`
-
-Important note:
-
-- `Nucleus_Data For Reference/` is local reference only and must not be pushed.
-- `outputs/` contains generated summaries/screenshots and is not source of truth.
-
-## Phase 0: Strategy, Setup, And Governance
-
-### Repository and Deployment Foundation
-
-- [x] GitHub repository created for Nucleus.
-  - Acceptance: repo exists at `infosoonicorn/nucleus`.
-- [x] Vercel project connected to GitHub.
-  - Acceptance: Vercel project URL documented and deployment working.
-- [x] Cloudflare setup initiated.
-  - Acceptance: nameservers updated and DNS approach documented.
-- [x] Microsoft email DNS protection documented.
-  - Acceptance: `CLAUDE.md` warns not to change MX/SPF/DKIM/DMARC unless Vijay asks.
-- [x] Local reference folder protected.
-  - Acceptance: `Nucleus_Data For Reference/` is in `.gitignore`.
-- [x] Claude/Codex working rules documented.
-  - Acceptance: `CLAUDE.md` and `docs/claude-onboarding.md` exist.
-- [x] Browser verification workflow documented.
-  - Acceptance: `docs/testing.md`, Playwright config, and e2e test exist.
-- [x] Internal visual project tracker route created.
-  - Acceptance: `/project-tracker` renders `docs/project-tracker.md` as a dashboard and is excluded from indexing.
-
-### Strategy Documentation
-
-- [x] Architecture documented.
-  - Acceptance: `docs/architecture.md` contains phased roadmap.
-- [x] Content master documented.
-  - Acceptance: `docs/content-master.md` contains positioning, services, careers, insights, lead engine, SEO, portal hooks.
-- [x] Content platform documented.
-  - Acceptance: `docs/content-platform.md` contains CMS, AI, lead, careers, social, and deal room workflows.
-- [x] Internal one-page summary created.
-  - Acceptance: `outputs/nucleus-strategy-one-pager.pdf` generated for team feedback.
-- [x] AIF & Fund Management added as service line.
-  - Acceptance: content master and platform docs include AIF/Fund Management and Soonicorn proof guardrails.
-- [x] Phase 3 M&A partner deal room added.
-  - Acceptance: architecture/content/platform docs include deal room scope and controls.
-
-## Phase 1: Static Premium Website
-
-Goal:
-
-Launch a premium, credible, fast public website with structured content. It should feel complete to visitors while remaining ready for CMS migration later.
-
-### Phase 1 Build Sequence
-
-- [x] Create structured content source.
-  - Acceptance: services, navigation, homepage sections, proof, careers, insights shell, and CTAs are stored in reusable local content modules/data files rather than scattered hardcoded JSX.
-- [x] Create full route skeleton.
-  - Acceptance: routes exist for `/`, `/about`, `/services`, `/services/[slug]`, `/careers`, `/insights`, `/contact`.
-- [x] Create optional shell routes.
-  - Acceptance: placeholder/shell routes exist for `/careers/life-at-nucleus`, `/careers/alumni`, `/insights/live-updates`, `/downloads`, if included in Phase 1.
-- [x] Build reusable design system components.
-  - Acceptance: header, footer, hero, service cards, proof counters, CTA bands, article cards, form blocks, process/timeline blocks, and section wrappers exist.
-- [x] Build homepage.
-  - Acceptance: homepage clearly communicates incorporation-to-listing lifecycle, service universe, firm proof, Soonicorn/AIF proof, knowledge engine, careers teaser, and CTA.
-- [x] Build services overview page.
-  - Acceptance: all service lines are listed with short positioning, proof angle, and links to service pages.
-- [x] Build reusable service detail layout.
-  - Acceptance: one layout supports hero, who needs this, when to engage, how we help, process, proof, sample documents, knowledge bank, FAQs, lead magnet, related services, CTA.
-- [x] Build all service pages.
-  - Acceptance: pages exist for all core service lines listed below and use the shared layout.
-- [x] Build careers main page.
-  - Acceptance: page covers CA articleship, CA/MBA/graduate roles, learning tracks, Life at Nucleus teaser, alumni teaser, job post placeholder, candidate CTA.
-- [x] Build insights shell.
-  - Acceptance: page introduces knowledge bank, live updates, newsletters, lead magnets, and AI-assisted advisory desk as a future/internal workflow without fake live content.
-- [x] Build contact page.
-  - Acceptance: page includes locations, service-interest form UI, email, and clear consent language.
-- [x] Build footer and navigation.
-  - Acceptance: all visible nav links route correctly and footer includes services, careers, insights, contact, and policy placeholders where needed.
-- [x] Responsive QA.
-  - Acceptance: desktop and mobile views are checked in browser for homepage, service page, careers, insights, and contact.
-- [x] Phase 1 local quality gate.
-  - Acceptance: `pnpm lint`, `pnpm typecheck`, `pnpm build`, and `pnpm test:e2e` pass.
-- [ ] Phase 1 deployed quality gate.
-  - Acceptance: Vercel deployment is checked and `PLAYWRIGHT_BASE_URL=https://nucleus-bay.vercel.app pnpm test:e2e` passes.
-
-### Phase 1 Service Pages
-
-- [x] Investment Banking page.
-  - Acceptance: includes fundraising, modelling, investor readiness, diligence, deal support, lead magnet, FAQs, related experts.
-- [x] M&A Advisory page.
-  - Acceptance: includes buy-side/sell-side, restructuring, due diligence, valuation, transaction process, M&A readiness lead magnet.
-- [x] Risk Advisory page.
-  - Acceptance: includes internal audit, IFC/ICFR, process audit, controls, management action tracker, risk health check.
-- [x] Tax & Regulatory page.
-  - Acceptance: includes direct tax, GST, transfer pricing, international tax, assessments, compliance calendar, source/review disclaimers.
-- [x] Assurance page.
-  - Acceptance: includes statutory audit, limited review, bank audit, Ind AS/IFRS, audit readiness, sample PBC/checklist content.
-- [x] Valuations page.
-  - Acceptance: includes business, ESOP, FDI, brand, IFRS/Ind AS, transaction valuation, valuation readiness lead magnet.
-- [x] Finance Outsourcing page.
-  - Acceptance: includes accounting, MIS, payroll, controllership, vCFO, fixed assets, monthly MIS lead magnet.
-- [x] Corporate Secretarial page.
-  - Acceptance: includes incorporation, ROC, registers, board/shareholder documentation, due diligence, compliance calendar.
-- [x] AIF & Fund Management page.
-  - Acceptance: includes AIF setup, compliance maintenance, investor onboarding, documentation, fund operations, Soonicorn proof with guardrails.
-
-### Phase 1 Visual And Asset Tasks
-
-- [ ] Audit approved brand assets.
-  - Acceptance: usable logos, partner photos, team/culture images, and profile visuals are identified without pushing raw reference folder.
-- [x] Define visual direction.
-  - Acceptance: dark/light mix, fintech-consulting tone, round-edge buttons, animated hero direction, and visual report hooks are implemented consistently.
-- [x] Use real assets where approved.
-  - Acceptance: no fake client logos, fake testimonials, fake team members, or fake live data.
-- [x] Add motion carefully.
-  - Acceptance: animations add premium feel without blocking readability or mobile performance.
-- [x] Homepage motion redesign (Lenis + framer-motion + Lottie slot).
-  - Acceptance: homepage uses Lenis smooth scroll, reusable motion primitives, scoped `.home-v3` design system; reduced-motion respected; lint/typecheck/build/e2e green; Lottie spec captured in `docs/home-hero-lottie-spec.md` (asset itself pending).
-- [ ] Source hero Lottie animation.
-  - Acceptance: a brand-tinted Lottie JSON sourced from LottieFiles or in-house motion artist is placed at `apps/web/public/lottie/nucleus-hero.json`. Spec: `docs/home-hero-lottie-spec.md`.
-- [~] Apply motion / spacing language to remaining public pages.
-  - Acceptance: About, Services overview, Service detail, Careers, Insights, Contact inherit the home-v3 typography rhythm and tasteful motion without a full per-page redesign.
-  - Status (2026-05-15): Investment Banking is end-to-end (Hero, WhenToEngage, HowWeHelp bento, FundraiseStages autoplay, Process dossier, Soonicorn callout, Proof, Insights preview, Resources deck, FAQ 2-col editorial, RelatedServices, ContactBand). The 8 other service pages render the elevated default composition. `/insights` and `/reports` hubs are now real filterable listings (no longer Phase-1 shells). Section primitives in `apps/web/src/components/services/` and `apps/web/src/components/resources/` are ready for About / Careers / Insights detail / Contact slices.
-- [x] Add service-specific proof blocks.
-  - Acceptance: firm-wide counters stay on homepage; service pages use service-specific proof/counter placeholders where verified numbers are pending.
-- [ ] Home page — page-wide unifying spine/thread.
-  - Acceptance: a single visual element (recommended: left-edge numbered spine with red→navy gradient fill tied to scroll, reusing the `§NN` numbering vocabulary; alternatives B/C documented in chat) connects all home sections so the page reads as one journey rather than nine chapters.
-  - Status (2026-05-13): deferred. To revisit after About / Services / Careers / Insights / Contact are at parity.
-  - Note: design options documented in the 2026-05-13 conversation; option A (spine rail) recommended. Decisions still open: spine position (left vs right), label always-on vs hover.
-- [x] Investment Banking service page — bespoke composition.
-  - Acceptance: `/services/investment-banking` renders the bespoke composition with FundraiseStages (autoplay, 6 stages), HowWeHelp bento, Process dossier (4 phases, partner-signed), SoonicornCallout (orbital plate + 12 portfolio logos), ServiceInsights, ResourceDeck, FAQ editorial; lint, typecheck, build pass; manual browser verification clean. Section order follows the founder reading journey (identity → recognition → what → how → why-us → proof → read deeper → ask → CTA).
-- [x] Central editorial hubs — `/insights` and `/reports` with filters.
-  - Acceptance: `/insights` renders all articles across services with chip filters by service line and tag; `/reports` renders all industry reports with chip filters by service and report type; filters are URL-query-driven so views are shareable; service pages show first 4 items + "See all" link to the hub pre-filtered. Replaces the Phase-1 placeholder shells.
-- [x] Long-form Insights articles infrastructure.
-  - Acceptance: `apps/web/src/content/articles.ts` holds 10 IB articles authored by Vijay Singh Rathore (Founding Partner) with reviewer-status gate (drafts visible in dev only). Article reader route at `/insights/[slug]` with metadata, draft banner, back-to-insights link. Content awaits Vijay's per-article review before each `reviewerStatus` flips to `approved`.
-- [x] Unified Resources deck + capture modal.
-  - Acceptance: `apps/web/src/content/resources.ts` aggregates industry reports + lead-magnet checklists by service. `ResourceDeck` renders a horizontal-scroller of cards with framer-motion stagger and prev/next nav. Every "Get this" / "Request the full report" button opens the same `RequestResourceButton` modal (Name / Work email / Company / Role) wired to `POST /api/resources/request`, which validates and logs each capture as structured JSON with `resourceSlug`. Replaces the old separate LeadMagnet section and `/contact?report=…` dead-link pattern.
-- [ ] Bespoke centerpieces for remaining 8 service pages.
-  - Acceptance: each service line gets its own brainstorm + spec + bespoke centerpiece, modelled on the IB pattern. Currently rendering elevated default composition.
-- [ ] Rename `.home-v3` CSS scope to a neutral name (e.g. `.np-base`).
-  - Acceptance: mechanical find-replace across `globals.css` and all home components, builds clean.
-- [ ] Deep-linkable fundraise stages (`?stage=outreach`).
-  - Acceptance: URL param highlights a specific centerpiece stage on load. Partner-side feature (cherry-pick E2 deferred from IB build).
-- [ ] Sector strip on service pages.
-  - Acceptance: single row of covered sectors below hero. Needs approved sector list. (Cherry-pick E3 deferred from IB build.)
-- [ ] Service-tinted hero atmosphere per service.
-  - Acceptance: each service hero gets its own aurora/atmosphere variant. (Cherry-pick E4 deferred from IB build.)
-- [ ] Source SVG of Soonicorn Ventures wordmark (currently PNG).
-  - Acceptance: `apps/web/public/brand/soonicorn-ventures.svg` exists, page references SVG.
-- [x] IB-specific FAQ content (10 Q+A pairs).
-  - Acceptance: `services[].faq` populated for Investment Banking with 10 partner-voice answers covering engagement timing, diligence readiness, compensation, timeline, NDA, differentiation, legal-counsel split, post-close, Soonicorn conflict-of-interest, mandate sizing. Rendered as 2-column editorial Q&A on `/services/investment-banking`. Content still flagged for Vijay's content review before flipping each answer's `reviewerApprovedAt`.
-- [ ] Quarterly review cadence for `insightSources`.
-  - Acceptance: documented review schedule and partner ownership; pending items flipped to approved as confirmed.
-- [ ] Soonicorn callout copy re-approval cycle.
-  - Acceptance: documented re-review cadence; `reviewerApprovedAt` re-stamped on each pass.
-- [ ] ArtefactStack mobile reduced-motion fallback consolidation.
-  - Acceptance: revisit `<ArtefactStack>` so both fan and list paths are unified — currently the motion-on path renders both and toggles via CSS, which works but duplicates the data render.
-- [ ] FundraiseStages reduced-motion hydration flash.
-  - Acceptance: a user with `prefers-reduced-motion` may see a brief flash on first render before the JS `useReducedMotion` hook resolves; address via CSS media-query-driven rendering rather than JS branching.
-- [ ] Phase 1.5 lead-magnet email validation.
-  - Acceptance: when `/api/lead-magnet-stub` is replaced with the real Supabase write, swap `email.includes('@')` for a proper validator (zod schema or RFC-compliant regex).
-- [ ] Lead-magnet stub edge-case tests.
-  - Acceptance: add Playwright tests for empty-string email and malformed-but-present email (currently covered only for missing field).
-- [ ] Pre-existing home.spec.ts nav flake.
-  - Acceptance: investigate and fix the intermittent failure where clicking the "Services" nav link on `/` doesn't navigate. Separate investigation already underway.
-- [ ] Vijay content review of 10 IB long-form articles.
-  - Acceptance: Vijay reads each entry in `apps/web/src/content/articles.ts`, edits as needed, and flips each `reviewerStatus: 'pending'` to `'approved'` with `reviewerApprovedAt: 'YYYY-MM-DD'`. Until then, articles surface only in dev (the production gate hides drafts).
-- [ ] Vijay content review of 10 IB FAQ answers.
-  - Acceptance: Vijay reads each entry in `services[].faq` for Investment Banking. Currently surfaced without a per-answer reviewer stamp — discuss whether to extend the FAQ data model to track `reviewerApprovedAt` per Q or stamp at the service-level.
-- [x] Service-page brand parity pass — service-v1 tokens + eyebrow + title aligned to home-v3.
-  - Acceptance: `--service-accent-red` bumped from `#7a1f1f` to `#dd1017` (matches `--v3-red`); `--service-band-cream` bumped from `#faf6ef` to `#f7f5ef` (matches `--v3-paper`). Every section eyebrow on every service page now uses the home-v3 style — Inter 860 / 0.72rem / 0.18em letter-spacing / vivid red / red pill (22×7) — instead of the old slate mono editorial style. Bare `.eyebrow` (from the shared `SectionHeader` component) gets the pill via `::before`. Section titles clamp to one shared range `clamp(1.7rem, 3vw, 2.4rem)` so the hierarchy is uniform. Italic-red `<em>` emphasis everywhere uses the same vivid token. Hero CTAs + sidebar report items gain a `-1px` hover lift to match deck-card affordance. The old "Unified header treatment" polish block (which used `!important` to enforce the mono editorial style) was removed in favour of a non-`!important` parity layer at the end of `globals.css`. **Replicating to other service pages now requires no extra work** — the default service composition inherits the same tokens and selectors.
-- [x] Investment Banking page — 2-column shell with sticky team / reports / CTA sidebar.
-  - Acceptance: `/services/investment-banking` renders a 1fr | 320px grid on desktop ≥1100px (Hero, WhenToEngage, ClientLogos are full-width; everything else is in the main column alongside the sidebar). Right sidebar holds TeamBlock + SidebarLatestReports + SidebarCTA, is `position: sticky`, scrolls independently on hover. On <1100px, sidebar collapses below main. `apps/web/src/content/team.ts` is the single source of truth for partners + senior team across all services. Initial IB entries: Vijay Singh Rathore (Founding Partner), Samarth Pandey (Senior Associate).
-- [ ] Confirm team-member emails + collect LinkedIn URLs + headshots.
-  - Acceptance: review `apps/web/src/content/team.ts`; the IB emails (`vijay@nucleusadvisors.in`, `samarth@nucleusadvisors.in`) follow the firm convention but need partner confirmation (search for `// TODO confirm`). Add `linkedinUrl` per member so the LinkedIn button surfaces (hidden when empty). Drop headshot photos into `apps/web/public/team/<slug>.jpg` and set `headshotSrc` to replace the initials monogram avatars.
-- [ ] Roll the 2-column shell + sidebar to the other 8 service pages.
-  - Acceptance: update `ServicePageDefault` to wrap in `ServicePageShell` and render the same right sidebar. Empty sidebar slots render nothing (already handled by each block returning null). Tag team members with additional `serviceSlugs` as appropriate.
-- [ ] Left section index / TOC for service pages.
-  - Acceptance: left rail TOC explicitly deferred in this pass (Vijay opted to skip). When revived: clickable section list, sticky position, active-section highlight via IntersectionObserver, scrollIntoView on click, hidden below 1100px.
-- [ ] /team and /team/[slug] pages.
-  - Acceptance: a single "Team" route lists every member from `team.ts` grouped by seniority; each member has a full profile page at `/team/<slug>` with longer bio, services they work on, contact actions. Today the "Read profile" button on team cards opens a modal — Phase 2 swaps to a real route.
-- [ ] Vijay curation of client logos across all 9 service pages.
-  - Acceptance: review the 12 entries in `apps/web/src/content/clients.ts`. The `<ClientLogos>` strip is now wired into both the IB bespoke page AND the default service composition — every service page automatically renders the marquee when at least one client is tagged with its slug (renders nothing otherwise). Partner action: extend each entry's `serviceSlugs` array to include every service the logo legitimately belongs to (e.g. `['investment-banking', 'ma-advisory']`). Also decide which 12 (or other set) belong on IB vs the Soonicorn proof block to avoid the identical list appearing twice on the same page.
-- [ ] Vijay content review of 4 IB industry reports + 1 lead-magnet checklist.
-  - Acceptance: review each entry in `apps/web/src/content/reports.ts` and `apps/web/src/content/resources.ts` (downloadables block). Need actual PDFs to back each title before flipping any to "available" in production — currently the API returns success copy that promises an email, but no PDF delivery exists yet (Phase 1.5).
-- [ ] Pre-fill / acknowledge `report` query param on `/contact`.
-  - Acceptance: if `?report=<slug>` is present, `/contact` shows a small banner ("Report request: <title>") and pre-fills the form's enquiry textarea. The old "Request the full report → /contact?report=…" pattern is now superseded by the Resources modal, but stray inbound links from search/cache may still land here. Either redirect to `/reports?service=…` or honour the param. Low priority.
-- [ ] Local dev: avoid `.next/` cache corruption from OneDrive sync.
-  - Acceptance: project's `.next/` is symlinked to `~/.cache/nucleus-advisors-web/next` on Vijay's machine (manual setup, not git-tracked). Document this in `docs/claude-onboarding.md` or `README.md` so any future agent / new machine setup doesn't hit the recurring `Compaction failed: Another write batch or compaction is already active` Turbopack failure. Long-term fix: move repo out of `~/Documents/` or exclude `.next/` in OneDrive preferences.
-- [ ] Phase 1.5 captures persistence to file (interim before Supabase).
-  - Acceptance: `/api/resources/request` writes each capture line to `~/Library/Application Support/nucleus-advisors/lead-captures.jsonl` so requests survive dev server restarts. Today they only live in stdout. Drop once Supabase is wired.
-- [ ] Consent + privacy copy on Resources modal.
-  - Acceptance: before pushing to origin, add a "By submitting, you agree to be contacted about this resource. See our Privacy Policy" line + checkbox (or unticked-acknowledgement) — required for India/EU GDPR-style follow-ups.
-- [x] Article thumbnails — Canva brand template + autofill source.
-  - Acceptance: one locked editorial-photo template in Canva covers every Nucleus insights article. Template-source design `DAHJ7lHaktM` was cloned from the IM thumbnail `DAHJ7sjNTaM`, headline reset to placeholder, autofill labels `headline` (text) and `background_photo` (image) attached via the Canva API, then published as a Brand Template to Vijay Rathore's team (Canva Brand Hub). **Brand Template ID: `EAHJ7zOuHG4`.** Schema verified via `get-brand-template-dataset`: `{ headline: text, background_photo: image }`. Nucleus wordmark and cream card stay fixed. Batch generation for the remaining ~80 articles can now run programmatically via Canva Connect autofill REST API.
-  - Status (2026-05-17): complete. First end-to-end test thumbnail (`how-investors-read-im.jpg`, headline "Forty pages they won't read.") shipped as the proof of concept and is live at `/article-thumbs/how-investors-read-im.jpg`. The brand-template route was not used for that first thumbnail (it predates the template publish) — re-generating it through the template is a nice-to-have for consistency but not blocking.
-- [ ] Article thumbnail hook field — separate from title.
-  - Acceptance: `apps/web/src/content/articles.ts` (and later the Supabase `articles` table) gets a required `thumbnailHook` field (max ~6 words) authored by the partner. The thumbnail headline NEVER reuses the article title. Validation: zod schema + lint-articles CI check rejects entries without a hook. This learning came from the IM thumbnail iteration on 2026-05-17 — using the title produced a wordy, low-click thumbnail; the dedicated hook (e.g. "Forty pages they won't read.") works as bait.
-- [ ] Batch-generate thumbnails for the existing ~80 articles via brand-template autofill.
-  - Acceptance: once the brand template ID and `thumbnailHook` field exist, a one-shot script (`tools/generate-thumbnails.ts` or similar) reads every article with a hook, hits Canva Connect `POST /v1/autofills` with `{headline, background_photo}`, polls the export job, downloads JPGs to `apps/web/public/article-thumbs/<slug>.jpg`, and writes `thumbnailSrc` back into `articles.ts` (or the DB row). Photo selection strategy is a separate decision (single firm-owned moody-desk photo vs. small curated library of 4–6 photos rotated by tag vs. partner-uploaded per article). Until decided, default to the single photo currently in the template.
-
-## Phase 1.5: Lightweight Backend
-
-Goal:
-
-Add practical backend capture before full CMS, without overbuilding.
-
-- [ ] Supabase project created.
-  - Acceptance: Supabase URL/keys configured safely in env, not committed.
+- [ ] Supabase project provisioned with secure key handling.
+  - Acceptance: Supabase URL and keys configured in env, not committed.
 - [ ] Contact form storage.
-  - Acceptance: consultation enquiries are stored with service interest, consent, source page, and timestamp.
+  - Acceptance: consultation enquiries stored with service interest, consent, source page and timestamp.
 - [ ] Newsletter subscription storage.
   - Acceptance: subscription form captures consent and unsubscribe-ready fields.
 - [~] Gated download capture.
-  - Acceptance: lead magnet form stores lead, asset, service interest, consent, and source.
-  - Status (2026-05-15): Phase 1 stub live — `POST /api/resources/request` validates payload against the central `resources.ts` registry and logs each capture as structured JSON (`resourceSlug, resourceTitle, resourceKind, serviceSlugs, name, email, company, role, receivedAt`) to the server console. Same modal flow is wired to every "Get this" / "Request the full report" CTA across `/services/*` and `/reports`. Phase 1.5 swap: replace the `console.warn` with a Supabase `lead_captures` insert and trigger the partner email delivery; add explicit consent checkbox + privacy-policy link; add rate limiting (Cloudflare Turnstile) before pushing to origin.
-- [ ] Career interest/job application storage.
-  - Acceptance: candidate submissions are separated from client leads.
-- [ ] Basic admin visibility.
-  - Acceptance: team can inspect submissions safely, even if full admin UI waits for Phase 2.
-- [ ] Form testing.
-  - Acceptance: success/error/loading/duplicate/validation states tested.
+  - Acceptance: the Resources modal stores each request (lead, asset, service interest, consent, source) and triggers partner email delivery. The capture flow is live on the site; persistence and email delivery are not yet wired to a backend.
+- [ ] Career interest and job application storage.
+  - Acceptance: candidate submissions stored separately from client leads, with reviewer visibility.
+- [ ] Privacy / terms / disclaimer copy approved.
+  - Acceptance: every form links to approved privacy/consent language; consent checkbox added to lead-capture modals before going live.
+- [ ] Team can inspect submissions safely.
+  - Acceptance: a minimal admin view (or secured database access) so the team can read leads even if the full admin UI waits for Phase 2.
+- [ ] Form QA across all states.
+  - Acceptance: success, error, loading, duplicate and validation states tested in browser.
 
-## Phase 2: CMS, Content Engine, And Distribution
+## Phase 2: Content Engine + CMS
 
-Goal:
+Move from static content to editable content with AI-assisted drafts and
+partner self-serve authoring.
 
-Move from static structured content to editable content, AI-assisted drafts, service knowledge hubs, newsletters, and social distribution.
+### Build sequence
 
-### CMS Foundation
+- [ ] CMS schema, editor roles, publish workflow and audit history.
+  - Acceptance: pages, sections, services, people, articles, lead magnets, media, FAQs, navigation and audit events are documented and migrated; draft / in-review / approved / scheduled / published / archived states all work; edits and reviewer actions are logged.
+- [ ] Partner self-serve article authoring with on-the-fly thumbnail generation.
+  - Acceptance: each partner can log into `/admin`, write a new article in a rich-text editor, and have the brand thumbnail generated automatically before sending the draft to a senior partner for review.
+- [ ] Service-wise knowledge hubs.
+  - Acceptance: articles, FAQs, downloads and case studies are filterable by service line on each service page and in the hub.
+- [ ] Newsletter workflow.
+  - Acceptance: issues can be drafted, reviewed, published and sent or exported.
+- [ ] Website-to-LinkedIn draft pipeline.
+  - Acceptance: approved website content can generate LinkedIn-ready copy and track the posted URL.
+- [ ] AI-assisted advisory desk.
+  - Acceptance: AI drafts articles and live updates from approved official sources (Income Tax, MCA, GST, RBI, SEBI, IBBI, ICAI) with source URL, retrieval date, service tags and SEO metadata. Nothing publishes without explicit partner approval.
+- [ ] Live updates page.
+  - Acceptance: approved regulatory updates surface with source, date, service line, affected audience and next step.
 
-- [ ] CMS schema designed.
-  - Acceptance: pages, sections, services, people, articles, lead magnets, media, FAQs, navigation, audit events documented and migrated.
-- [ ] CMS editor roles created.
-  - Acceptance: admin, editor, reviewer, staff, client roles exist where needed.
-- [ ] Publish workflow implemented.
-  - Acceptance: draft, in_review, approved, scheduled, published, archived states work.
-- [ ] Audit history implemented.
-  - Acceptance: edits, publish/unpublish, reviewer actions, and important changes are logged.
-- [ ] Static content migration plan completed.
-  - Acceptance: Phase 1 content can be migrated into CMS without redesign.
-- [ ] Partner self-serve article authoring + on-the-fly thumbnail generation.
-  - Acceptance: each Nucleus partner logs into `/admin` (Supabase Auth scoped to a slug in `apps/web/src/content/team.ts`) and writes a new article in a rich-text editor. The form requires `title`, `excerpt`, `body`, `tag`, `serviceSlugs`, optional series fields, and a separate `thumbnailHook` (max ~6 words — distinct from title; validated). On save, the server action (a) INSERTs a row into `supabase.articles` with `status='pending'`, (b) calls Canva Connect `POST /v1/autofills` against the locked Nucleus Article Thumbnail brand template (see Phase 1 task) passing `{headline: thumbnailHook, background_photo: <selected_photo_asset_id>}`, (c) polls the export job, (d) downloads the JPG, (e) uploads to Supabase Storage `article-thumbs/<slug>.jpg`, (f) UPDATEs `articles.thumbnail_url`. Reviewer (senior partner) approves via `/admin/articles?status=pending` → status flips to `approved` → `revalidatePath('/insights')` makes it live. Open design decisions: (i) shared firm-owned Canva service account vs. per-partner OAuth (quota, audit-trail trade-off); (ii) photo background — single locked photo, curated library of 4–6 rotated by tag, or partner upload per article; (iii) AI-assisted hook suggestion in the editor (Claude API call that proposes 3 hooks from the article body, partner picks one).
+## Phase 3: Client Portal + M&A Deal Room
 
-### Knowledge And Lead Engine
+Logged-in workflows for clients, the internal team, and external M&A
+deal partners.
 
-- [ ] Service-wise knowledge banks implemented.
-  - Acceptance: articles/FAQs/downloads/case studies can be filtered by service.
-- [ ] Lead magnets implemented.
-  - Acceptance: each service has at least one gated checklist/report/template.
-- [ ] Newsletter workflow implemented.
-  - Acceptance: issues can be drafted, reviewed, published, and sent/exported.
-- [ ] Website-to-LinkedIn draft workflow implemented.
-  - Acceptance: approved website content can generate LinkedIn-ready copy and track posted URL.
-- [ ] Visual report template created.
-  - Acceptance: downloadable reports have a premium reusable design format.
+### Build sequence
 
-### AI-Assisted Advisory Desk
-
-- [ ] Official source monitoring configured.
-  - Acceptance: approved sources are stored and monitored for Income Tax, MCA, GST/CBIC, RBI, SEBI, IBBI, ICAI, etc.
-- [ ] AI draft pipeline implemented.
-  - Acceptance: AI drafts updates/articles with source URL, retrieval date, service tags, SEO metadata, FAQs, CTA.
-- [ ] Partner/reviewer mapping implemented.
-  - Acceptance: drafts route to correct service-line reviewer/partner.
-- [ ] No auto-publish guardrail implemented.
-  - Acceptance: AI-generated content cannot publish without human approval.
-- [ ] Live updates page implemented.
-  - Acceptance: approved updates show source, date, service line, affected audience, and next step.
-
-## Phase 3: Portal And M&A Partner Deal Room
-
-Goal:
-
-Build logged-in workflows for clients, internal team, and approved external deal partners.
-
-### Client/Internal Portal
-
-- [ ] Authentication implemented.
-  - Acceptance: secure login for staff/client roles.
-- [ ] Profiles and organizations implemented.
-  - Acceptance: users belong to organizations/entities with role-based access.
-- [ ] Client tasks module.
-  - Acceptance: internal team can assign tasks; clients see only approved/client-visible tasks.
-- [ ] Documents module.
-  - Acceptance: signed URLs/private storage; internal/client visibility separated.
-- [ ] Billing/invoice module.
-  - Acceptance: invoices/billing records visible according to permissions.
-- [ ] Attendance/internal team module.
-  - Acceptance: internal staff workflows are private from clients.
-- [ ] Client updates module.
-  - Acceptance: client-specific updates can be posted and audited.
-
-### M&A Partner Deal Room
-
-- [ ] Deal opportunity model.
-  - Acceptance: internal M&A team can create draft/review/live/paused/closed/archived deals.
-- [ ] External partner profiles.
-  - Acceptance: partner type, organization, interests, ticket size, geography, NDA status, access level captured.
-- [ ] Deal-level access controls.
-  - Acceptance: partners see only permitted deals and documents.
-- [ ] NDA/approval gates.
-  - Acceptance: CIM/data room/sensitive docs require NDA or explicit approval.
-- [ ] Interest tracking.
-  - Acceptance: partners can express interest, request docs, ask questions, decline.
-- [ ] Q&A and follow-up workflow.
-  - Acceptance: internal team can respond, track status, and assign follow-ups.
-- [ ] Audit logs.
-  - Acceptance: views, downloads, access changes, NDA events, and status changes are logged.
-- [ ] Confidentiality QA.
-  - Acceptance: no public indexing, no cross-deal leakage, no internal notes visible externally.
+- [ ] Authentication and role-based access.
+  - Acceptance: secure login for staff and client roles, with role-based visibility across all portal surfaces.
+- [ ] Client portal core modules.
+  - Acceptance: tasks, documents, billing/invoices and client updates work end-to-end. Internal staff workflows (attendance, internal notes) stay private from clients.
+- [ ] M&A deal opportunity model.
+  - Acceptance: internal M&A team can create draft / review / live / paused / closed / archived deals with structured metadata.
+- [ ] External M&A partner profiles.
+  - Acceptance: partner type, organization, interests, ticket size, geography, NDA status and access level captured for every external deal partner.
+- [ ] Deal-level access controls and NDA gates.
+  - Acceptance: partners see only permitted deals and documents; CIM, data room and sensitive docs require NDA or explicit approval.
+- [ ] Interest tracking and Q&A flow.
+  - Acceptance: partners can express interest, request documents, ask questions or decline; internal team responds and tracks status.
+- [ ] Audit logs across all portal activity.
+  - Acceptance: views, downloads, access changes, NDA events and status changes are logged for compliance review.
 
 ## Phase 4: Mobile
 
-Goal:
+Reuse the Phase 3 APIs in a mobile app once the web portal is stable.
 
-Reuse the same backend APIs for mobile when web portal workflows are stable.
+### Build sequence
 
 - [ ] Mobile app architecture confirmed.
-  - Acceptance: Expo/React Native app plan documented.
-- [ ] Shared API/contracts ready.
-  - Acceptance: mobile can reuse packages/types/validation.
-- [ ] Mobile auth flow.
-  - Acceptance: users can securely log in.
+  - Acceptance: Expo / React Native app plan documented; shared API contracts ready.
+- [ ] Mobile authentication flow.
+  - Acceptance: users can securely log in on iOS and Android.
 - [ ] Mobile client portal MVP.
-  - Acceptance: tasks, updates, and documents work on mobile.
-
-## Cross-Cutting Completion Gates
-
-### Content Quality
-
-- [ ] No fake content.
-  - Acceptance: no fake clients, fake testimonials, fake invoices, fake team members, or fake activity.
-- [ ] Regulatory wording reviewed.
-  - Acceptance: tax/legal/AIF content uses review disclaimers and avoids improper claims.
-- [ ] Soonicorn positioning reviewed.
-  - Acceptance: Nucleus/Soonicorn relationship is clear without fund solicitation.
-- [ ] Partner attribution reviewed.
-  - Acceptance: no partner is shown as author/reviewer without approval.
-- [ ] Case study approval policy followed.
-  - Acceptance: case studies are anonymised unless explicit approval exists.
-
-### SEO And Analytics
-
-- [ ] Metadata complete.
-  - Acceptance: every public page has title, description, canonical intent, and OG image plan.
-- [ ] Sitemap and robots checked.
-  - Acceptance: public pages indexable; private portal/deal room non-indexable.
-- [ ] Schema added where relevant.
-  - Acceptance: Organization, Service, Person, Article, FAQPage, BreadcrumbList considered.
-- [ ] Analytics plan implemented.
-  - Acceptance: traffic/conversion events tracked without violating consent rules.
-
-### Privacy, Consent, And Security
-
-- [ ] Privacy policy placeholder or page.
-  - Acceptance: contact/download/newsletter/career forms link to privacy/consent language.
-- [ ] Consent captured.
-  - Acceptance: newsletter, lead, candidate, and download consent stored with timestamp/version once backend exists.
-- [ ] Private routes protected.
-  - Acceptance: client portal and M&A deal room cannot be indexed or accessed publicly.
-- [ ] Secrets protected.
-  - Acceptance: no env/secrets committed.
-
-### Verification
-
-- [ ] Local quality gate.
-  - Acceptance: `pnpm lint`, `pnpm typecheck`, `pnpm build`, `pnpm test:e2e` pass.
-- [ ] Browser QA.
-  - Acceptance: desktop and mobile screenshots reviewed for key public routes.
-- [ ] Deployed QA.
-  - Acceptance: Vercel URL tested after deployment.
-- [ ] Handoff updated.
-  - Acceptance: `HANDOFF.md` reflects current status, changed files, tests, blockers, and next step.
+  - Acceptance: tasks, updates and documents work on mobile.
 
 ## Open Inputs Needed From Vijay/Team
 
-- [ ] Confirm approved service-specific counters.
-  - Needed for: service proof blocks.
-- [ ] Confirm partner photos and bios for website use.
-  - Needed for: team/service author pages.
-- [ ] Confirm client logos that can be publicly shown.
-  - Needed for: proof sections.
-- [ ] Confirm approved offsite/culture images.
+- [ ] Approved service-specific counters.
+  - Needed for: service proof blocks on each service page.
+- [ ] Partner photos and approved bios.
+  - Needed for: team page and service author bylines.
+- [ ] Approved client logos.
+  - Needed for: client marquee on service pages and the homepage proof strip.
+- [ ] Approved offsite / culture images.
   - Needed for: Life at Nucleus.
-- [ ] Confirm alumni names/photos/outcomes with consent.
-  - Needed for: alumni wall.
-- [ ] Confirm final contact numbers and office addresses.
+- [ ] Alumni names, photos and outcomes with consent.
+  - Needed for: alumni wall on `/careers/alumni`.
+- [ ] Final office addresses and phone numbers.
   - Needed for: contact page and LocalBusiness schema.
-- [ ] Confirm AIF/Soonicorn wording.
-  - Needed for: AIF & Fund Management page.
-- [ ] Confirm privacy/terms/disclaimer wording.
-  - Needed for: forms, insights, downloads.
-- [ ] Source hero Lottie file.
-  - Needed for: hero "Advisory coverage" canvas accent (`apps/web/public/lottie/nucleus-hero.json`). Spec in `docs/home-hero-lottie-spec.md`.
-- [x] Reviewer-approved entries in `apps/web/src/content/insights-sources.ts` for Investment Banking.
-  - Resolution (2026-05-14): all 4 IB regulatory entries approved with `reviewerApprovedAt: '2026-05-14'`; RBI source URL corrected. The Regulatory Updates surface is currently deferred to Phase 2 (needs dynamic monitoring) — the panel is not shown on the IB page; `ServiceInsights` now renders long-form articles instead.
-
-## Parking Lot
-
-Ideas intentionally deferred until after Phase 1:
-
-- Full Supabase CMS.
-- AI-assisted source monitoring.
-- Public calculators/tools.
-- Automated newsletter sending.
-- LinkedIn API posting.
-- Full client portal.
-- M&A partner deal room.
-- Mobile app.
+- [ ] AIF / Soonicorn wording sign-off.
+  - Needed for: AIF & Fund Management service page and Soonicorn proof callout.
+- [ ] Privacy, terms and disclaimer wording.
+  - Needed for: every form, insights hub and download flow before go-live.
+- [ ] Hero animation source file.
+  - Needed for: homepage hero motion accent.
+- [ ] Vijay's content review of 10 Investment Banking long-form articles.
+  - Needed for: flipping each article's reviewer status from pending to approved so it surfaces in production.
+- [ ] Vijay's content review of 10 Investment Banking FAQ answers.
+  - Needed for: production confidence in the FAQ block; decision pending on whether to track reviewer approval per question or per service.
+- [ ] Vijay's curation of client logos across all nine service pages.
+  - Needed for: each client logo to appear on the correct service-line marquees.
+- [ ] Vijay's content review of four Investment Banking industry reports + one lead-magnet checklist.
+  - Needed for: actual PDFs to back each title before flipping reports to "available" in production.

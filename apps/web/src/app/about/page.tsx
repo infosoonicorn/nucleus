@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ContactBand, ProofBar, SectionHeader } from '@/components/sections';
 import { PageShell } from '@/components/site-chrome';
-import { clientArchetypes, site } from '@/content/site';
+import { clientSegments, site } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'About Nucleus Advisors | Full-Spectrum Consulting Firm in India',
@@ -103,10 +103,25 @@ export default function AboutPage() {
           </div>
         </section>
         <section className="section">
-          <SectionHeader eyebrow="Built for" title="Where Nucleus is designed to help." />
-          <div className="pill-grid">
-            {clientArchetypes.map((archetype) => (
-              <span key={archetype.slug}>{archetype.name}</span>
+          <SectionHeader eyebrow="Who we serve" title="Built for both sides of the capital table." />
+          <div className="builtfor-columns">
+            {clientSegments.map((segment) => (
+              <div className="builtfor-column" key={segment.slug}>
+                <p className="builtfor-column-label">{segment.label}</p>
+                <ul className="builtfor-list">
+                  {segment.items.map((item) => (
+                    <li key={item.slug} className="builtfor-item">
+                      <span className="builtfor-item-icon" aria-hidden="true">
+                        <item.icon size={18} />
+                      </span>
+                      <div className="builtfor-item-body">
+                        <span className="builtfor-item-name">{item.name}</span>
+                        <span className="builtfor-item-context">{item.context}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </section>

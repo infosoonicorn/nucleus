@@ -1,32 +1,38 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Linkedin, Mail } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 import { navigation, services, site } from '@/content/site';
+import { articles, getArticleAuthor } from '@/content/articles';
+import { SiteNav, type NavLatestArticle } from './site-nav';
+
+function pickLatestArticle(): NavLatestArticle | null {
+  const allowDrafts = process.env.NODE_ENV !== 'production';
+  const visible = articles.filter((a) =>
+    allowDrafts ? true : a.reviewerStatus === 'approved',
+  );
+  if (visible.length === 0) return null;
+  const latest = [...visible].sort((a, b) =>
+    b.publishedOn.localeCompare(a.publishedOn),
+  )[0];
+  let authorName = '';
+  try {
+    authorName = getArticleAuthor(latest).name;
+  } catch {
+    authorName = '';
+  }
+  return {
+    slug: latest.slug,
+    title: latest.title,
+    tag: latest.tag,
+    publishedOn: latest.publishedOn,
+    readMinutes: latest.readMinutes,
+    thumbnailSrc: latest.thumbnailSrc ?? null,
+    authorName,
+  };
+}
 
 export function Header() {
-  return (
-    <header className="site-header">
-      <Link className="brand" href="/" aria-label="Nucleus Advisors home">
-        <Image src="/brand/nucleus-logo.png" alt="" width={181} height={60} priority />
-      </Link>
-      <nav className="primary-nav" aria-label="Primary navigation">
-        {navigation.map((item) => (
-          <Link key={item.href} href={item.href}>
-            {item.label}
-          </Link>
-        ))}
-      </nav>
-      <div className="header-actions">
-        <a className="icon-link" href={site.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-          <Linkedin aria-hidden="true" size={18} />
-        </a>
-        <Link className="button button-small" href="/contact">
-          Contact
-          <ArrowUpRight aria-hidden="true" size={16} />
-        </Link>
-      </div>
-    </header>
-  );
+  return <SiteNav latestArticle={pickLatestArticle()} />;
 }
 
 export function Footer() {
