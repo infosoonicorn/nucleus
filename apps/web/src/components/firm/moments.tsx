@@ -8,7 +8,7 @@ import { Reveal } from '@/components/motion-primitives';
 
 const ROTATE_INTERVAL_MS = 5400;
 
-export function HomeMomentsMarquee() {
+export function FirmMoments() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
