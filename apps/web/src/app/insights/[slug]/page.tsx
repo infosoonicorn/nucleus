@@ -244,8 +244,9 @@ export default async function ArticlePage({ params }: Props) {
                   )}
                 </span>
                 <span>
+                  <span className="article-page-author-eyebrow">Written by</span>
                   <span className="article-page-author-name">{author.name}</span>
-                  <span className="article-page-author-role">{author.role}</span>
+                  <span className="article-page-author-role">{author.role} · Nucleus Advisors</span>
                 </span>
               </div>
             </header>

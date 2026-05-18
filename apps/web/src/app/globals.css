@@ -8508,6 +8508,14 @@ html.lenis body {
   font: 500 0.75rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.04em;
 }
+.article-page-author-eyebrow {
+  display: block;
+  font: 600 0.66rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(20, 24, 40, 0.5);
+  margin: 0 0 4px;
+}
 .article-page-author-name {
   display: block;
   font-weight: 600;
