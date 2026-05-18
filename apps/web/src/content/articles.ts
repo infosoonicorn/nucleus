@@ -926,7 +926,7 @@ export const articles: Article[] = [
     serviceSlugs: ['ma-advisory'],
     thumbnailSrc: '/article-thumbs/indicative-to-binding-bid.jpg',
     thumbnailHook: "Promises that don't bind.",
-    thumbnailHookEmphasis: 'don't',
+    thumbnailHookEmphasis: "don't",
     thumbnailMode: 'B',
     reviewerStatus: 'pending',
   },
@@ -1070,6 +1070,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Closing mechanics',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/working-capital-adjustment-sandbagging.jpg',
+    thumbnailHook: 'Five percent quietly disappears.',
+    thumbnailHookEmphasis: 'disappears',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -1131,6 +1135,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Deal process',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/why-sell-side-ma-fails-india.jpg',
+    thumbnailHook: 'One in five never closes.',
+    thumbnailHookEmphasis: 'never',
+    thumbnailMode: 'B',
     reviewerStatus: 'pending',
     references: [
       {
@@ -1220,6 +1228,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Risk allocation',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/reps-and-warranties-insurance.jpg',
+    thumbnailHook: 'The premium worth paying.',
+    thumbnailHookEmphasis: 'worth',
+    thumbnailMode: 'D',
     reviewerStatus: 'pending',
   },
   {
@@ -1305,6 +1317,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Carve-outs',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/carve-out-sales-mechanics.jpg',
+    thumbnailHook: 'Sell one limb, keep walking.',
+    thumbnailHookEmphasis: 'keep',
+    thumbnailMode: 'B',
     reviewerStatus: 'pending',
     references: [
       {
@@ -1396,6 +1412,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Information sharing',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/pre-loi-diligence-share-or-hold.jpg',
+    thumbnailHook: 'Founders share too much.',
+    thumbnailHookEmphasis: 'much',
+    thumbnailMode: 'E',
     reviewerStatus: 'pending',
   },
   {
@@ -1482,6 +1502,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Cross-border',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/cross-border-closing-india.jpg',
+    thumbnailHook: 'Ninety days to fall apart.',
+    thumbnailHookEmphasis: 'fall',
+    thumbnailMode: 'B',
     reviewerStatus: 'pending',
     references: [
       {
@@ -1558,6 +1582,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Integration',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/post-close-integration-playbook.jpg',
+    thumbnailHook: 'Day one decides year one.',
+    thumbnailHookEmphasis: 'one',
+    thumbnailMode: 'F',
     reviewerStatus: 'pending',
   },
   {
@@ -1645,6 +1673,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Buy-side',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/buy-side-target-list-construction.jpg',
+    thumbnailHook: 'Most target lists never close.',
+    thumbnailHookEmphasis: 'never',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -1725,6 +1757,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Valuation',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/closing-valuation-expectation-gap.jpg',
+    thumbnailHook: 'Thirty percent stands between us.',
+    thumbnailHookEmphasis: 'between',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
   },
   {
@@ -1818,6 +1854,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Distressed',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/distressed-ma-under-ibc.jpg',
+    thumbnailHook: 'Resolution rewards the prepared.',
+    thumbnailHookEmphasis: 'prepared',
+    thumbnailMode: 'D',
     reviewerStatus: 'pending',
     references: [
       {
@@ -1918,6 +1958,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Exit structuring',
     serviceSlugs: ['ma-advisory'],
+    thumbnailSrc: '/article-thumbs/reverse-merger-vs-direct-sale.jpg',
+    thumbnailHook: 'Two doors, one regret.',
+    thumbnailHookEmphasis: 'regret',
+    thumbnailMode: 'D',
     reviewerStatus: 'pending',
     references: [
       {
@@ -2042,6 +2086,10 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'ICFR',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/icfr-ipo-prep-checklist.jpg',
+    thumbnailHook: 'Ninety days, or never list.',
+    thumbnailHookEmphasis: 'never',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'Companies Act 2013, Section 134(5)(e) and Section 143(3)(i)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -2107,6 +2155,10 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'NBFC audit',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/nbfc-concurrent-audit-rbi-2026.jpg',
+    thumbnailHook: 'RBI inspectors arrive informed.',
+    thumbnailHookEmphasis: 'informed',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'RBI Master Direction on Internal Audit Function in NBFCs (Risk-Based Internal Audit)', href: 'https://rbi.org.in/Scripts/bs_viewmasdirections.aspx' },
@@ -2177,6 +2229,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Fraud',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/fraud-risk-assessment-framework.jpg',
+    thumbnailHook: 'Ticking boxes catches nothing.',
+    thumbnailHookEmphasis: 'nothing',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'ICAI Standard on Auditing 240 — The Auditor’s Responsibilities Relating to Fraud', href: 'https://www.icai.org/' },
@@ -2244,6 +2300,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Treasury',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/treasury-controls-automate.jpg',
+    thumbnailHook: 'Four reconciliations run themselves.',
+    thumbnailHookEmphasis: 'themselves',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'ACFE Report to the Nations 2024 — Occupational Fraud Schemes', href: 'https://www.acfe.com/report-to-the-nations' },
@@ -2309,6 +2369,10 @@ export const articles: Article[] = [
     readMinutes: 11,
     tag: 'Cyber',
     serviceSlugs: ['risk-advisory'],
+    thumbnailSrc: '/article-thumbs/cybersecurity-audits-fintechs.jpg',
+    thumbnailHook: 'The certificate proves nothing.',
+    thumbnailHookEmphasis: 'nothing',
+    thumbnailMode: 'A',
     reviewerStatus: 'pending',
     references: [
       { label: 'RBI Master Direction on IT Governance, Risk, Controls and Assurance Practices (Nov 2023)', href: 'https://rbi.org.in/Scripts/bs_viewmasdirections.aspx' },
