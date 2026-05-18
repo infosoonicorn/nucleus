@@ -47,7 +47,7 @@ function useHasMounted() {
   return useSyncExternalStore(subscribeNoop, getClientSnapshotTrue, getServerSnapshotFalse);
 }
 
-export function HomeLifecycle() {
+export function FirmLifecycle() {
   return (
     <section className="home-v3-lifecycle" id="business-lifecycle" aria-label="Business lifecycle">
       <Reveal>
