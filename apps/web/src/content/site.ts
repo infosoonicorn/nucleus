@@ -3,7 +3,6 @@ import {
   BriefcaseBusiness,
   Building2,
   ClipboardCheck,
-  Coins,
   Crown,
   Factory,
   FileCheck2,
@@ -12,6 +11,7 @@ import {
   Rocket,
   Scale,
   ShieldCheck,
+  Wallet,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -2450,55 +2450,90 @@ export const services: Service[] = [
   },
 ];
 
-export type ClientArchetype = {
+export type ClientType = {
   slug: string;
   name: string;
-  valueLine: string;
+  context: string;
   icon: LucideIcon;
-  accent?: 'red' | 'navy';
+};
+
+export type ClientSegment = {
+  slug: string;
+  label: string;
+  items: ClientType[];
 };
 
 /**
- * The five operating contexts the Nucleus bench is configured for.
- * Replaces the older flat `industries` list; the about page and homepage both
- * render from this single source.
+ * Nucleus client universe, grouped into operating businesses and
+ * financial institutions. Two columns of equal weight — no "featured"
+ * treatment. The homepage and About page render from this single source.
  */
-export const clientArchetypes: ClientArchetype[] = [
+export const clientSegments: ClientSegment[] = [
   {
-    slug: 'manufacturing',
-    name: 'Manufacturing',
-    valueLine:
-      'Capital intensity, working capital, plant accounting and audit complexity.',
-    icon: Factory,
-    accent: 'red',
+    slug: 'operating-businesses',
+    label: 'Operating businesses',
+    items: [
+      {
+        slug: 'listed',
+        name: 'Listed companies',
+        context: 'Statutory audit, board reporting, IFC / ICFR, transactional advisory.',
+        icon: Building2,
+      },
+      {
+        slug: 'unlisted',
+        name: 'Privately-held companies',
+        context: 'Audit, tax, governance, succession and restructuring.',
+        icon: BriefcaseBusiness,
+      },
+      {
+        slug: 'manufacturing',
+        name: 'Manufacturing',
+        context: 'Capital intensity, working capital, plant accounting and audit complexity.',
+        icon: Factory,
+      },
+      {
+        slug: 'services',
+        name: 'Services',
+        context: 'Revenue recognition, contract economics, MIS and people-cost discipline.',
+        icon: BarChart3,
+      },
+      {
+        slug: 'startups',
+        name: 'Founder-led startups',
+        context: 'Fundraise readiness, runway, valuation, board reporting and ESOP.',
+        icon: Rocket,
+      },
+    ],
   },
   {
-    slug: 'services',
-    name: 'Services',
-    valueLine:
-      'Revenue recognition, contract economics, MIS and people-cost discipline.',
-    icon: BriefcaseBusiness,
-  },
-  {
-    slug: 'funded-tech',
-    name: 'Funded tech',
-    valueLine:
-      'Fundraise readiness, runway, valuation, board reporting and ESOP.',
-    icon: Rocket,
-  },
-  {
-    slug: 'family-business',
-    name: 'Family business',
-    valueLine:
-      'Governance, succession, restructuring and quiet professional rigour.',
-    icon: Crown,
-  },
-  {
-    slug: 'funds-and-investors',
-    name: 'Funds & investors',
-    valueLine:
-      'AIF setup, fund operations, portfolio diligence and reporting.',
-    icon: Coins,
+    slug: 'financial-institutions',
+    label: 'Financial institutions',
+    items: [
+      {
+        slug: 'banks',
+        name: 'Banks',
+        context: 'Concurrent, statutory and branch audits; regulatory reviews.',
+        icon: Landmark,
+      },
+      {
+        slug: 'nbfcs',
+        name: 'NBFCs',
+        context: 'Statutory audit, IFC, RBI compliance and securitisation review.',
+        icon: Wallet,
+      },
+      {
+        slug: 'funds',
+        name: 'Funds & AIFs',
+        context: 'Fund setup, NAV, investor reporting and regulatory compliance.',
+        icon: LineChart,
+      },
+      {
+        slug: 'family-offices',
+        name: 'Family offices',
+        context: 'Portfolio diligence, governance, reporting and restructuring.',
+        icon: Crown,
+      },
+    ],
   },
 ];
 
