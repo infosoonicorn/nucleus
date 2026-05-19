@@ -13978,32 +13978,26 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   max-width: 680px;
 }
 
-.about-hero-proof {
-  align-items: center;
+.about-hero-established {
   border-top: 1px solid var(--v3-line, #e1dbce);
-  color: var(--v3-ink, #111827);
-  display: inline-flex;
-  flex-wrap: wrap;
-  font-size: 0.86rem;
-  font-weight: 760;
-  gap: 0.75rem;
-  justify-content: center;
-  letter-spacing: 0.01em;
-  margin: 0 auto;
-  max-width: 720px;
+  color: var(--v3-ink-muted, #5d6472);
+  font-family: var(--v3-serif, Georgia, 'Times New Roman', serif);
+  font-size: clamp(0.94rem, 1.2vw, 1.04rem);
+  letter-spacing: 0.005em;
+  margin: 1.6rem auto 0;
+  max-width: 640px;
   padding-top: 1.4rem;
 }
 
-.about-hero-proof span[aria-hidden='true'] {
-  color: var(--v3-ink-muted, #5d6472);
+.about-hero-established em {
+  color: var(--v3-ink, #111827);
+  font-style: italic;
   font-weight: 600;
-  opacity: 0.6;
 }
 
 @media (max-width: 640px) {
-  .about-hero-proof {
-    gap: 0.5rem;
-    font-size: 0.78rem;
+  .about-hero-established {
+    font-size: 0.88rem;
   }
 }
 
@@ -14019,12 +14013,25 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   text-align: center;
 }
 
+.about-philosophy-mark {
+  color: var(--v3-red, #dd1017);
+  display: block;
+  font-family: var(--v3-serif, Georgia, 'Times New Roman', serif);
+  font-size: clamp(3.5rem, 7vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.7;
+  margin: 0 auto 0.4rem;
+  opacity: 0.32;
+  user-select: none;
+}
+
 .about-philosophy-rule {
   background: var(--v3-red, #dd1017);
   border-radius: 2px;
   display: block;
   height: 3px;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 1.4rem;
   width: 48px;
 }
 
@@ -14043,9 +14050,30 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   font-size: clamp(1.7rem, 3.2vw, 2.4rem);
   font-weight: 700;
   letter-spacing: -0.012em;
-  line-height: 1.18;
+  line-height: 1.22;
   margin: 0 auto 1.6rem;
-  max-width: 720px;
+  max-width: 760px;
+}
+
+.about-philosophy-quote-word {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+.about-philosophy-quote-word.is-key {
+  color: var(--v3-red, #dd1017);
+  font-style: italic;
+  position: relative;
+}
+
+.about-philosophy-quote-word.is-key::after {
+  background: linear-gradient(90deg, rgba(221, 16, 23, 0) 0%, rgba(221, 16, 23, 0.55) 50%, rgba(221, 16, 23, 0) 100%);
+  bottom: -0.04em;
+  content: '';
+  height: 2px;
+  left: 0;
+  position: absolute;
+  right: 0;
 }
 
 .about-philosophy-body {
@@ -14054,6 +14082,12 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   line-height: 1.7;
   margin: 0 auto;
   max-width: 680px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-philosophy-quote-word {
+    will-change: auto;
+  }
 }
 
 .about-offices {
@@ -14186,6 +14220,47 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   .about-offices-city {
     transition: none;
   }
+}
+
+.about-leadership {
+  background: #ffffff;
+  padding: clamp(4rem, 7vw, 6rem) clamp(1rem, 4vw, 3rem);
+}
+
+.about-leadership-header {
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  max-width: 760px;
+  text-align: center;
+}
+
+.about-leadership-eyebrow {
+  color: var(--v3-red, #dd1017);
+  font-size: 0.74rem;
+  font-weight: 860;
+  letter-spacing: 0.16em;
+  margin: 0 0 0.8rem;
+  text-transform: uppercase;
+}
+
+.about-leadership-heading {
+  color: var(--v3-ink, #111827);
+  font-family: var(--v3-serif, Georgia, 'Times New Roman', serif);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 720;
+  letter-spacing: -0.012em;
+  margin: 0 0 0.7rem;
+}
+
+.about-leadership-sub {
+  color: var(--v3-ink-muted, #5d6472);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.about-leadership .team-page-grid {
+  margin: 0 auto;
+  max-width: 1080px;
 }
 
 .about-leadership-foot {

@@ -16,16 +16,8 @@ export function AboutHero() {
             generations — connecting transaction work, controls, compliance
             and reporting as one decision surface.
           </p>
-          <p className="about-hero-proof">
-            <span>8 partners</span>
-            <span aria-hidden="true">·</span>
-            <span>90+ team</span>
-            <span aria-hidden="true">·</span>
-            <span>130+ clients</span>
-            <span aria-hidden="true">·</span>
-            <span>50+ deals advised</span>
-            <span aria-hidden="true">·</span>
-            <span>5 offices across India</span>
+          <p className="about-hero-established">
+            <em>Established 2019.</em> Headquartered in Gurugram, with offices across India.
           </p>
         </div>
       </Reveal>
