@@ -5,7 +5,7 @@ import { PageShell } from '@/components/site-chrome';
 import { AboutHero } from '@/components/about/about-hero';
 import { AboutPhilosophy } from '@/components/about/philosophy';
 import { AboutClients } from '@/components/about/clients-summary';
-import { AboutOfficesMap } from '@/components/about/offices-map';
+import { AboutOffices } from '@/components/about/offices';
 import { FirmMoments } from '@/components/firm/moments';
 import { FirmLifecycle } from '@/components/firm/lifecycle';
 import { WhoWeServe } from '@/components/firm/who-we-serve';
@@ -55,7 +55,7 @@ export default function AboutPage() {
 
         <AboutClients />
         <WhoWeServe />
-        <AboutOfficesMap />
+        <AboutOffices />
         <HomeClosingCta />
       </main>
     </PageShell>
