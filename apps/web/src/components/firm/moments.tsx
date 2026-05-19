@@ -11,6 +11,7 @@ const ROTATE_INTERVAL_MS = 5400;
 export function FirmMoments() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -18,15 +19,38 @@ export function FirmMoments() {
   const current = decisiveMoments[index] ?? '';
   const words = current.split(' ');
 
+  // Whether the autoplay rotation should be running right now.
+  // True only when the section is in view AND not paused by hover/click.
+  const active = inView && !paused;
+
+  // Hold the rotator at Stage 1 until the user actually scrolls to this
+  // section. Without this, the page-load timer runs in the background
+  // while the section is below the fold, so by the time the user
+  // arrives they see a "random" stage. IntersectionObserver flips
+  // `inView` on enter/leave so the timer only runs when the section
+  // is on screen.
   useEffect(() => {
-    if (paused) return;
+    const node = sectionRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold: 0.35 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!active) return;
     timerRef.current = setInterval(() => {
       setIndex((prev) => (prev + 1) % total);
     }, ROTATE_INTERVAL_MS);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [paused, total]);
+  }, [active, total]);
 
   function pauseBriefly() {
     setPaused(true);
@@ -103,12 +127,12 @@ export function FirmMoments() {
 
         <div className="home-v3-moments-progress" aria-hidden="true">
           <motion.span
-            key={`progress-${index}-${paused}`}
+            key={`progress-${index}-${active}`}
             className="home-v3-moments-progress-fill"
             initial={{ scaleX: 0 }}
-            animate={{ scaleX: paused ? 0 : 1 }}
+            animate={{ scaleX: active ? 1 : 0 }}
             transition={{
-              duration: paused ? 0 : ROTATE_INTERVAL_MS / 1000,
+              duration: active ? ROTATE_INTERVAL_MS / 1000 : 0,
               ease: 'linear',
             }}
             style={{ transformOrigin: '0% 50%' }}
