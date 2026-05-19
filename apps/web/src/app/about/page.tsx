@@ -4,6 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
 import { AboutHero } from '@/components/about/about-hero';
 import { AboutPhilosophy } from '@/components/about/philosophy';
+import { AboutClients } from '@/components/about/clients-summary';
 import { AboutOfficesMap } from '@/components/about/offices-map';
 import { FirmMoments } from '@/components/firm/moments';
 import { FirmLifecycle } from '@/components/firm/lifecycle';
@@ -52,6 +53,7 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <AboutClients />
         <WhoWeServe />
         <AboutOfficesMap />
         <HomeClosingCta />
