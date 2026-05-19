@@ -2,8 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ArrowUpRight } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
-import { AboutHero } from '@/components/about/about-hero';
-import { AboutPhilosophy } from '@/components/about/philosophy';
+import { AboutIntro } from '@/components/about/about-intro';
 import { AboutClients } from '@/components/about/clients-summary';
 import { AboutOffices } from '@/components/about/offices';
 import { FirmMoments } from '@/components/firm/moments';
@@ -25,8 +24,7 @@ export default function AboutPage() {
   return (
     <PageShell>
       <main className="home-v3">
-        <AboutHero />
-        <AboutPhilosophy />
+        <AboutIntro />
         <FirmMoments />
         <FirmLifecycle />
 
