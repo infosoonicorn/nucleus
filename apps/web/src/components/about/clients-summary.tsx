@@ -18,7 +18,7 @@ export function AboutClients() {
       <Reveal>
         <div className="about-clients-inner">
           <header className="about-clients-header">
-            <p className="about-clients-eyebrow">Clients</p>
+            <p className="home-v3-section-eyebrow about-clients-eyebrow">Clients</p>
             <h2 id="about-clients-heading" className="about-clients-heading">
               Founders, funds, family offices and corporates &mdash; on both sides of the table.
             </h2>

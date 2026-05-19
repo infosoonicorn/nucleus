@@ -68,7 +68,7 @@ export function AboutIntro() {
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
       >
-        <motion.p className="about-intro-eyebrow" variants={item}>
+        <motion.p className="home-v3-section-eyebrow about-intro-eyebrow" variants={item}>
           About
         </motion.p>
 
@@ -88,7 +88,7 @@ export function AboutIntro() {
           variants={rule}
         />
 
-        <motion.p className="about-intro-eyebrow" variants={item}>
+        <motion.p className="home-v3-section-eyebrow about-intro-eyebrow" variants={item}>
           Our philosophy
         </motion.p>
 

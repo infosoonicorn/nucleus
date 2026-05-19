@@ -29,7 +29,7 @@ export default function AboutPage() {
 
         <section className="about-leadership" aria-labelledby="about-leadership-heading">
           <div className="about-leadership-header">
-            <p className="about-leadership-eyebrow">Leadership</p>
+            <p className="home-v3-section-eyebrow about-leadership-eyebrow">Leadership</p>
             <h2 id="about-leadership-heading" className="about-leadership-heading">
               Partners who run the mandates end-to-end.
             </h2>

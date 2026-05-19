@@ -13953,11 +13953,11 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 }
 
 .about-intro-eyebrow {
-  color: var(--service-accent-red, #dd1017);
-  font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.16em;
+  /* Visual styling inherits from the co-applied .home-v3-section-eyebrow
+     class (font, red pill ::before, letter-spacing). This rule only
+     provides the block-level spacing under the eyebrow within the
+     centered intro container. */
   margin: 0 0 1.1rem;
-  text-transform: uppercase;
 }
 
 .about-intro-headline {
@@ -14079,11 +14079,8 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 }
 
 .about-offices-eyebrow {
-  color: var(--service-accent-red, #dd1017);
-  font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.16em;
+  /* Spacing-only stub; visual styling comes from .home-v3-section-eyebrow. */
   margin: 0 0 0.8rem;
-  text-transform: uppercase;
 }
 
 .about-offices-heading {
@@ -14357,11 +14354,8 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 }
 
 .about-clients-eyebrow {
-  color: var(--service-accent-red, #dd1017);
-  font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.16em;
+  /* Spacing-only stub; visual styling comes from .home-v3-section-eyebrow. */
   margin: 0 0 0.8rem;
-  text-transform: uppercase;
 }
 
 .about-clients-heading {
@@ -14477,11 +14471,8 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 }
 
 .about-leadership-eyebrow {
-  color: var(--service-accent-red, #dd1017);
-  font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.16em;
+  /* Spacing-only stub; visual styling comes from .home-v3-section-eyebrow. */
   margin: 0 0 0.8rem;
-  text-transform: uppercase;
 }
 
 .about-leadership-heading {

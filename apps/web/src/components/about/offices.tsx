@@ -45,7 +45,7 @@ export function AboutOffices() {
   return (
     <section className="about-offices" aria-labelledby="about-offices-heading">
       <div className="about-offices-header">
-        <p className="about-offices-eyebrow">Offices</p>
+        <p className="home-v3-section-eyebrow about-offices-eyebrow">Offices</p>
         <h2 id="about-offices-heading" className="about-offices-heading">
           Five offices across India.
         </h2>
