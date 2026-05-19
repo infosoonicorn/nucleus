@@ -14056,3 +14056,135 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   max-width: 680px;
 }
 
+.about-offices {
+  background: var(--v3-paper, #f7f5ef);
+  padding: clamp(4rem, 7vw, 6rem) clamp(1rem, 4vw, 3rem);
+}
+
+.about-offices-header {
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  max-width: 760px;
+  text-align: center;
+}
+
+.about-offices-eyebrow {
+  color: var(--v3-red, #dd1017);
+  font-size: 0.74rem;
+  font-weight: 860;
+  letter-spacing: 0.16em;
+  margin: 0 0 0.8rem;
+  text-transform: uppercase;
+}
+
+.about-offices-heading {
+  color: var(--v3-ink, #111827);
+  font-family: var(--v3-serif, Georgia, 'Times New Roman', serif);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 720;
+  letter-spacing: -0.012em;
+  margin: 0 0 0.7rem;
+}
+
+.about-offices-sub {
+  color: var(--v3-ink-muted, #5d6472);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.about-offices-grid {
+  align-items: center;
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  grid-template-columns: minmax(260px, 1fr) minmax(220px, 0.6fr);
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
+.about-offices-map {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.about-offices-map svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.about-offices-map-outline {
+  fill: var(--v3-line, #e1dbce);
+  stroke: rgba(21, 34, 73, 0.08);
+  stroke-width: 1.5;
+}
+
+.about-offices-dot {
+  fill: var(--v3-red, #dd1017);
+  fill-opacity: 0.85;
+  transition: r 0.18s ease, fill-opacity 0.18s ease, transform 0.18s ease;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.about-offices-list {
+  display: grid;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-offices-city {
+  border-radius: 10px;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  padding: 0.7rem 0.9rem;
+  transition: background-color 0.18s ease;
+}
+
+.about-offices-city:hover {
+  background: rgba(21, 34, 73, 0.05);
+}
+
+.about-offices-city-name {
+  color: var(--v3-ink, #111827);
+  font-size: 1.02rem;
+  font-weight: 760;
+  letter-spacing: -0.005em;
+}
+
+.about-offices-city-state {
+  color: var(--v3-ink-muted, #5d6472);
+  font-size: 0.84rem;
+}
+
+/* Hover-sync: hovering a city in the list pulses the matching dot.
+   Uses :has() in the parent grid so we can target the dot by data-office. */
+.about-offices-grid:has(.about-offices-city[data-office='gurugram']:hover)
+  .about-offices-dot[data-office='gurugram'],
+.about-offices-grid:has(.about-offices-city[data-office='faridabad']:hover)
+  .about-offices-dot[data-office='faridabad'],
+.about-offices-grid:has(.about-offices-city[data-office='jaipur']:hover)
+  .about-offices-dot[data-office='jaipur'],
+.about-offices-grid:has(.about-offices-city[data-office='bhatinda']:hover)
+  .about-offices-dot[data-office='bhatinda'],
+.about-offices-grid:has(.about-offices-city[data-office='bangalore']:hover)
+  .about-offices-dot[data-office='bangalore'] {
+  fill-opacity: 1;
+  transform: scale(1.6);
+}
+
+@media (max-width: 760px) {
+  .about-offices-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-offices-dot,
+  .about-offices-city {
+    transition: none;
+  }
+}
+
