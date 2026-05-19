@@ -13933,3 +13933,77 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   }
 }
 
+/* ============================================================
+   About page — editorial manifesto hero + supporting sections
+   ============================================================ */
+
+.about-hero {
+  background: var(--v3-paper, #f7f5ef);
+  border-bottom: 1px solid var(--v3-line, #e1dbce);
+  padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 4vw, 3rem);
+  position: relative;
+}
+
+.about-hero-inner {
+  margin: 0 auto;
+  max-width: 860px;
+  text-align: center;
+}
+
+.about-hero-eyebrow {
+  color: var(--v3-red, #dd1017);
+  font-size: 0.78rem;
+  font-weight: 860;
+  letter-spacing: 0.16em;
+  margin: 0 0 1.5rem;
+  text-transform: uppercase;
+}
+
+.about-hero-headline {
+  color: var(--v3-ink, #111827);
+  font-family: var(--v3-serif, Georgia, 'Times New Roman', serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 720;
+  letter-spacing: -0.018em;
+  line-height: 1.1;
+  margin: 0 auto 1.4rem;
+  max-width: 720px;
+}
+
+.about-hero-lede {
+  color: var(--v3-ink-muted, #5d6472);
+  font-size: clamp(1.04rem, 1.6vw, 1.18rem);
+  line-height: 1.6;
+  margin: 0 auto 2rem;
+  max-width: 680px;
+}
+
+.about-hero-proof {
+  align-items: center;
+  border-top: 1px solid var(--v3-line, #e1dbce);
+  color: var(--v3-ink, #111827);
+  display: inline-flex;
+  flex-wrap: wrap;
+  font-size: 0.86rem;
+  font-weight: 760;
+  gap: 0.75rem;
+  justify-content: center;
+  letter-spacing: 0.01em;
+  margin: 0 auto;
+  max-width: 720px;
+  padding-top: 1.4rem;
+}
+
+.about-hero-proof span[aria-hidden='true'] {
+  color: var(--v3-ink-muted, #5d6472);
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+@media (max-width: 640px) {
+  .about-hero-proof {
+    gap: 0.5rem;
+    font-size: 0.78rem;
+  }
+}
+
