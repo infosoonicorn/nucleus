@@ -40,15 +40,6 @@ const rule: Variants = {
   },
 };
 
-const mark: Variants = {
-  hidden: { opacity: 0, scale: 0.7 },
-  visible: {
-    opacity: 0.5,
-    scale: 1,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 const quoteContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.05, delayChildren: 0.12 } },
@@ -82,7 +73,7 @@ export function AboutIntro() {
         </motion.p>
 
         <motion.h1 className="about-intro-headline" variants={item}>
-          We&rsquo;re built for the decisions that matter.
+          We&rsquo;re built for the decisions that <em>matter</em>.
         </motion.h1>
 
         <motion.p className="about-intro-lede" variants={item}>
@@ -91,13 +82,11 @@ export function AboutIntro() {
           listing, and with families across generations.
         </motion.p>
 
-        <div className="about-intro-divider" aria-hidden="true">
-          <motion.span className="about-intro-divider-rule" variants={rule} />
-          <motion.span className="about-intro-divider-mark" variants={mark}>
-            &ldquo;
-          </motion.span>
-          <motion.span className="about-intro-divider-rule" variants={rule} />
-        </div>
+        <motion.span
+          className="about-intro-divider-rule"
+          aria-hidden="true"
+          variants={rule}
+        />
 
         <motion.p className="about-intro-eyebrow" variants={item}>
           Our philosophy
@@ -124,8 +113,7 @@ export function AboutIntro() {
         </motion.p>
 
         <motion.p className="about-intro-established" variants={item}>
-          <em>Established 2019.</em> Headquartered in Gurugram, with offices
-          across India.
+          Established 2019 &middot; Headquartered in Gurugram, with offices across India.
         </motion.p>
       </motion.div>
     </section>
