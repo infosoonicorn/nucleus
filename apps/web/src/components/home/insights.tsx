@@ -46,8 +46,6 @@ export function HomeInsights() {
   // yet. Avoids a blank section on partner go-live.
   if (cards.length === 0) return null;
 
-  const [featured, ...rest] = cards;
-
   return (
     <section className="home-v3-insights" aria-label="Insights from Nucleus partners">
       <Reveal>
@@ -61,7 +59,7 @@ export function HomeInsights() {
         </div>
       </Reveal>
 
-      <HomeInsightsGrid featured={featured} side={rest} />
+      <HomeInsightsGrid cards={cards} />
 
       <div className="home-v3-insights-foot">
         <Link
