@@ -26,7 +26,6 @@ export default function AboutPage() {
       <main className="home-v3">
         <AboutIntro />
         <FirmMoments />
-        <FirmLifecycle />
 
         <section className="about-leadership" aria-labelledby="about-leadership-heading">
           <div className="about-leadership-header">
@@ -50,6 +49,8 @@ export default function AboutPage() {
             </Link>
           </div>
         </section>
+
+        <FirmLifecycle />
 
         <AboutClients />
         <WhoWeServe />
