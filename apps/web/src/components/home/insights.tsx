@@ -22,10 +22,17 @@ function pickInsights(): InsightCard[] {
 
   return sorted.slice(0, CARD_LIMIT).map((a) => {
     let authorName = '';
+    let authorHeadshotSrc: string | null = null;
+    let authorInitials = 'N';
     try {
-      authorName = getArticleAuthor(a).name;
+      const author = getArticleAuthor(a);
+      authorName = author.name;
+      authorHeadshotSrc = author.headshotSrc ?? null;
+      authorInitials = author.initials || 'N';
     } catch {
-      authorName = '';
+      // Author lookup can throw if the article's authorSlug doesn't
+      // match team.ts — UI already has graceful fallbacks for missing
+      // headshot and falls back to 'Nucleus Advisors' for missing name.
     }
     return {
       slug: a.slug,
@@ -36,6 +43,8 @@ function pickInsights(): InsightCard[] {
       readMinutes: a.readMinutes,
       thumbnailSrc: a.thumbnailSrc ?? null,
       authorName,
+      authorHeadshotSrc,
+      authorInitials,
     };
   });
 }
@@ -49,27 +58,23 @@ export function HomeInsights() {
   return (
     <section className="home-v3-insights" aria-label="Insights from Nucleus partners">
       <Reveal>
-        <div className="home-v3-section-header">
-          <span className="home-v3-section-eyebrow">Insights</span>
-          <h2>Long-form writing from Nucleus partners.</h2>
-          <p>
-            Practitioner-authored deep-dives across our nine practices — the
-            same partners who run mandates writing about how they think.
-          </p>
+        <div className="home-v3-insights-header">
+          <div className="home-v3-section-header">
+            <span className="home-v3-section-eyebrow">Insights</span>
+            <h2>Long-form writing from Nucleus partners.</h2>
+            <p>
+              Practitioner-authored deep-dives across our nine practices &mdash; the
+              same partners who run mandates writing about how they think.
+            </p>
+          </div>
+          <Link className="home-v3-insights-see-all" href="/insights">
+            See all insights
+            <ArrowRight aria-hidden="true" size={15} />
+          </Link>
         </div>
       </Reveal>
 
       <HomeInsightsGrid cards={cards} />
-
-      <div className="home-v3-insights-foot">
-        <Link
-          className="home-v3-button home-v3-button-primary home-v3-insights-cta"
-          href="/insights"
-        >
-          See all insights
-          <ArrowRight aria-hidden="true" size={18} />
-        </Link>
-      </div>
     </section>
   );
 }
