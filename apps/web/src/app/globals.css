@@ -14014,6 +14014,7 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 
 .about-intro-quote-word {
   display: inline-block;
+  white-space: pre;
   will-change: transform, opacity, filter;
 }
 
