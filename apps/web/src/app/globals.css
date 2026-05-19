@@ -14188,3 +14188,35 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   }
 }
 
+.about-leadership-foot {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.about-leadership-more {
+  align-items: center;
+  background: var(--v3-navy, #152249);
+  border-radius: 999px;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 0.92rem;
+  font-weight: 780;
+  gap: 0.45rem;
+  padding: 0.7rem 1.2rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.about-leadership-more:hover,
+.about-leadership-more:focus-visible {
+  box-shadow: 0 12px 24px -16px rgba(21, 34, 73, 0.55);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-leadership-more {
+    transition: none;
+  }
+}
+
