@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { ArrowRight, Link2, Sparkles } from 'lucide-react';
 import { services } from '@/content/site';
+import { getTeamForService } from '@/content/team';
 
 const subscribeNoop = () => () => {};
 const getClientSnapshot = () => true;
@@ -25,6 +26,12 @@ const RELATED: Record<string, string[]> = {
   'aif-fund-management': ['corporate-secretarial', 'investment-banking'],
 };
 
+// Build the orbital data once at module load. Experts are derived from
+// team.ts via getTeamForService(slug) so adding / removing a team
+// member or editing their serviceSlugs propagates here automatically
+// — no second list to maintain. Deliverables count from each service's
+// deliverables[] array, which is itself the source of truth for what
+// the practice ships.
 const orbitItems = services.map((service, idx) => ({
   id: idx + 1,
   slug: service.slug,
@@ -32,7 +39,7 @@ const orbitItems = services.map((service, idx) => ({
   summary: service.summary,
   icon: service.icon,
   deliverables: service.deliverables.length,
-  experts: service.experts.length,
+  experts: getTeamForService(service.slug).length,
   relatedIds: (RELATED[service.slug] ?? [])
     .map((slug) => services.findIndex((s) => s.slug === slug) + 1)
     .filter((id) => id > 0),
