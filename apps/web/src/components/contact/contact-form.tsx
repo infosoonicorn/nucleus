@@ -16,6 +16,13 @@ const SERVICE_CHOICES: ServiceChoice[] = [
   { slug: 'general', label: 'General enquiry' },
 ];
 
+const BRIEF_PLACEHOLDER = [
+  'A few sentences are enough. For example —',
+  '• Series A fundraise, target $8M, looking to start in 6 weeks.',
+  '• Statutory audit for FY ending March; current auditor rotating out.',
+  '• AIF setup for an early-stage thesis; need help on structuring and SEBI compliance.',
+].join('\n');
+
 const CITIES: { value: string; label: string }[] = [
   { value: 'any', label: 'Any office' },
   { value: 'gurugram', label: 'Gurugram (HQ)' },
@@ -47,7 +54,6 @@ export function ContactForm() {
   const reduceMotion = useReducedMotion();
   const [status, setStatus] = useState<Status>('idle');
   const [message, setMessage] = useState<string>('');
-  const [service, setService] = useState<string>('');
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -58,7 +64,7 @@ export function ContactForm() {
       company: String(fd.get('company') ?? ''),
       email: String(fd.get('email') ?? ''),
       phone: String(fd.get('phone') ?? ''),
-      serviceInterest: service,
+      serviceInterest: String(fd.get('serviceInterest') ?? ''),
       preferredCity: String(fd.get('preferredCity') ?? ''),
       message: String(fd.get('message') ?? ''),
       consent: fd.get('consent') === 'on',
@@ -124,9 +130,7 @@ export function ContactForm() {
           >
             <motion.div className="contact-form-head" variants={fieldVariants}>
               <h2>Tell us what you&rsquo;re working on.</h2>
-              <p>
-                A partner reads every brief. We respond within one working day.
-              </p>
+              <p>We&rsquo;ll reach out to you within 24 hours.</p>
             </motion.div>
 
             <motion.div className="contact-field-row" variants={fieldVariants}>
@@ -180,33 +184,26 @@ export function ContactForm() {
               </label>
             </motion.div>
 
-            <motion.fieldset className="contact-services" variants={fieldVariants}>
-              <legend className="contact-field-label">What&rsquo;s the work?</legend>
-              <div className="contact-chip-grid">
-                {SERVICE_CHOICES.map((choice) => {
-                  const checked = service === choice.slug;
-                  return (
-                    <label
-                      key={choice.slug}
-                      className={`contact-chip${checked ? ' is-active' : ''}`}
-                    >
-                      <input
-                        type="radio"
-                        name="serviceInterest"
-                        value={choice.slug}
-                        checked={checked}
-                        onChange={() => setService(choice.slug)}
-                        disabled={status === 'submitting'}
-                      />
-                      <span>{choice.label}</span>
-                    </label>
-                  );
-                })}
-              </div>
-            </motion.fieldset>
-
             <motion.div className="contact-field-row" variants={fieldVariants}>
-              <label className="contact-field contact-field-full">
+              <label className="contact-field">
+                <span className="contact-field-label">What&rsquo;s the work?</span>
+                <select
+                  name="serviceInterest"
+                  defaultValue=""
+                  required
+                  disabled={status === 'submitting'}
+                >
+                  <option value="" disabled>
+                    Select a practice
+                  </option>
+                  {SERVICE_CHOICES.map((choice) => (
+                    <option key={choice.slug} value={choice.slug}>
+                      {choice.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="contact-field">
                 <span className="contact-field-label">Preferred office</span>
                 <select
                   name="preferredCity"
@@ -229,10 +226,10 @@ export function ContactForm() {
               <span className="contact-field-label">Brief</span>
               <textarea
                 name="message"
-                rows={5}
+                rows={6}
                 required
                 minLength={20}
-                placeholder="What decision or workstream are you bringing to us?"
+                placeholder={BRIEF_PLACEHOLDER}
                 disabled={status === 'submitting'}
               />
             </motion.label>

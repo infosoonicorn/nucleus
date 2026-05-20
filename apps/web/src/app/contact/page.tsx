@@ -9,7 +9,7 @@ import { ContactForm } from '@/components/contact/contact-form';
 export const metadata: Metadata = {
   title: 'Contact | Nucleus Advisors',
   description:
-    'Bring the decision in front of you. A partner at Nucleus Advisors will respond within one working day. Offices in Gurugram, Jaipur, Bhatinda, Faridabad and Bengaluru.',
+    'Bring the decision in front of you. Nucleus Advisors will reach out to you within 24 hours. Offices in Gurugram, Jaipur, Bhatinda, Faridabad and Bengaluru.',
 };
 
 export default function ContactPage() {
@@ -27,8 +27,8 @@ export default function ContactPage() {
                 Bring the decision. We&rsquo;ll bring the <em>partner</em>.
               </h1>
               <p className="contact-lede">
-                One brief, one practitioner, one workplan. A partner reads every
-                enquiry and responds within one working day.
+                One brief, one practitioner, one workplan. We&rsquo;ll reach out
+                to you within 24 hours.
               </p>
 
               <ul className="contact-channels" aria-label="Direct channels">

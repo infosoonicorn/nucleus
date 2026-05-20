@@ -61,8 +61,8 @@ export function HomeClosingCta() {
           </span>
         </h2>
         <p>
-          One brief, one practitioner, one workplan. Tell us what you are working through and a
-          partner will respond within one working day.
+          One brief, one practitioner, one workplan. Tell us what you are
+          working through and we&rsquo;ll reach out to you within 24 hours.
         </p>
         <div className="home-v3-closing-actions">
           <Magnetic strength={0.24}>

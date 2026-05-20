@@ -134,6 +134,6 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    message: `Thanks, ${name.split(' ')[0]}. A partner will respond to ${email} within one working day.`,
+    message: `Thanks, ${name.split(' ')[0]}. We'll reach out to ${email} within 24 hours.`,
   });
 }
