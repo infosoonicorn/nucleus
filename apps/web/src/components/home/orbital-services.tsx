@@ -222,7 +222,7 @@ export function HomeOrbitalServices() {
                         Practice {String(item.id).padStart(2, '0')}
                       </span>
                       <span className="home-v3-orbital-card-slug">
-                        {item.deliverables} deliverables
+                        {item.deliverables} {item.deliverables === 1 ? 'deliverable' : 'deliverables'}
                       </span>
                     </header>
                     <h3>{item.title}</h3>
@@ -231,9 +231,9 @@ export function HomeOrbitalServices() {
                       <span className="home-v3-orbital-card-meta-icon" aria-hidden="true">
                         <Sparkles size={11} />
                       </span>
-                      <span>{item.experts} experts</span>
+                      <span>{item.experts} {item.experts === 1 ? 'expert' : 'experts'}</span>
                       <span className="home-v3-orbital-card-meta-rule" aria-hidden="true" />
-                      <span>{item.deliverables} deliverables</span>
+                      <span>{item.deliverables} {item.deliverables === 1 ? 'deliverable' : 'deliverables'}</span>
                     </div>
 
                     {item.relatedIds.length > 0 ? (
