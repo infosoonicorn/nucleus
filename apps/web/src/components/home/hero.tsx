@@ -11,7 +11,7 @@ import {
   useReducedMotion,
   type MotionValue,
 } from 'framer-motion';
-import { ArrowRight, ArrowUp, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ArrowUp, ArrowUpRight } from 'lucide-react';
 import { FadeIn, Magnetic, WordReveal } from '@/components/motion-primitives';
 
 const TRACK_SPRING = { stiffness: 90, damping: 18, mass: 0.6 };
@@ -48,7 +48,6 @@ export function HomeHero() {
   const contentScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 0.5, 0]);
   const shapesY = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const cueOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
 
   function handleMove(event: React.MouseEvent<HTMLElement>) {
     if (reduceMotion) return;
@@ -148,8 +147,6 @@ export function HomeHero() {
           </div>
         </FadeIn>
       </motion.div>
-
-      <ScrollCue opacity={cueOpacity} reduceMotion={!!reduceMotion} />
     </section>
   );
 }
@@ -263,31 +260,6 @@ function ParticleStream({ reduceMotion }: Readonly<{ reduceMotion: boolean }>) {
         />
       ))}
     </ul>
-  );
-}
-
-function ScrollCue({
-  opacity,
-  reduceMotion,
-}: Readonly<{ opacity: MotionValue<number>; reduceMotion: boolean }>) {
-  return (
-    <motion.div
-      className="home-v3-hero-scrollcue"
-      style={{ opacity }}
-      initial={{ y: -8, opacity: 0 }}
-      animate={{ y: 0, opacity: 0.65 }}
-      transition={{ duration: 0.7, delay: 1.9, ease: [0.22, 1, 0.36, 1] }}
-      aria-hidden="true"
-    >
-      <motion.span
-        className="home-v3-hero-scrollcue-chev"
-        animate={reduceMotion ? undefined : { y: [0, 6, 0] }}
-        transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <ChevronDown size={20} strokeWidth={2.2} aria-hidden="true" />
-      </motion.span>
-      <span>Scroll to see how we organise</span>
-    </motion.div>
   );
 }
 
