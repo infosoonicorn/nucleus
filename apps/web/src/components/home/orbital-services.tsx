@@ -140,10 +140,10 @@ export function HomeOrbitalServices() {
             <span className="home-v3-orbital-core-ring home-v3-orbital-core-ring-b" />
             <span className="home-v3-orbital-core-inner">
               <Image
-                src="/brand/nucleus-logo.png"
+                src="/brand/nucleus-mark.png"
                 alt=""
-                width={181}
-                height={60}
+                width={133}
+                height={144}
                 className="home-v3-orbital-core-logo"
                 priority
               />
