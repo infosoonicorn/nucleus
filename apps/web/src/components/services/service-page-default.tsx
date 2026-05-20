@@ -1,5 +1,6 @@
 // Default service-page composition — used by every service that doesn't
 // have a bespoke route (currently IB + M&A). See companion notes below.
+import type { ReactNode } from 'react';
 import type { Service } from '@/content/site';
 import { getClientsForService } from '@/content/clients';
 import { getTeamForService } from '@/content/team';
@@ -44,7 +45,16 @@ import { ResourceDeck } from '@/components/resources/resource-deck';
  * Each section renders nothing when its data is empty, so a service
  * page surfaces only what's been filled in.
  */
-export function ServicePageDefault({ service }: Readonly<{ service: Service }>) {
+export function ServicePageDefault({
+  service,
+  extraSection,
+}: Readonly<{
+  service: Service;
+  /** Optional service-specific block rendered in the main column after
+   *  Proof and before ServiceInsights. Used today by AIF to inject the
+   *  operating-proof block; future bespoke add-ons can use the same slot. */
+  extraSection?: ReactNode;
+}>) {
   const clients = getClientsForService(service.slug);
   const team = getTeamForService(service.slug);
   const resources = getResourcesForService(service.slug);
@@ -105,6 +115,9 @@ export function ServicePageDefault({ service }: Readonly<{ service: Service }>) 
 
           {/* Evidence — only renders when data exists */}
           <Proof service={service} />
+
+          {/* Optional service-specific add-on (e.g. AIF operating-proof) */}
+          {extraSection}
 
           {/* ●05 Editorial */}
           <ServiceInsights service={service} ordinal={ord.insights} />

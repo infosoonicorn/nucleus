@@ -2,7 +2,7 @@ import { PageShell } from '@/components/site-chrome';
 import { HomeHero } from '@/components/home/hero';
 import { HomeOrbitalServices } from '@/components/home/orbital-services';
 import { HomeProofStrip } from '@/components/home/proof-strip';
-import { HomeDepth } from '@/components/home/depth';
+import { HomeSoonicorn } from '@/components/home/soonicorn';
 import { HomeInsights } from '@/components/home/insights';
 import { HomeTeaserRow } from '@/components/home/teaser-row';
 import { HomeTestimonials } from '@/components/home/testimonials';
@@ -15,7 +15,7 @@ export default function Home() {
         <HomeHero />
         <HomeOrbitalServices />
         <HomeProofStrip />
-        <HomeDepth />
+        <HomeSoonicorn />
         <HomeInsights />
         <HomeTeaserRow />
         <HomeTestimonials />
