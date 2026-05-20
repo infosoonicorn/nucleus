@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { ArrowRight, Link2, Sparkles } from 'lucide-react';
 import { services } from '@/content/site';
@@ -24,26 +25,10 @@ const RELATED: Record<string, string[]> = {
   'aif-fund-management': ['corporate-secretarial', 'investment-banking'],
 };
 
-function shortLabel(title: string) {
-  const map: Record<string, string> = {
-    'Investment Banking': 'IB',
-    'M&A Advisory': 'M&A',
-    'Risk Advisory': 'Risk',
-    'Tax & Regulatory': 'Tax',
-    Assurance: 'Assurance',
-    Valuations: 'Valuations',
-    'Finance Outsourcing': 'Finance Ops',
-    'Corporate Secretarial': 'CoSec',
-    'AIF & Fund Management': 'AIF',
-  };
-  return map[title] ?? title;
-}
-
 const orbitItems = services.map((service, idx) => ({
   id: idx + 1,
   slug: service.slug,
   title: service.title,
-  short: shortLabel(service.title),
   summary: service.summary,
   icon: service.icon,
   deliverables: service.deliverables.length,
@@ -153,7 +138,16 @@ export function HomeOrbitalServices() {
           <div className="home-v3-orbital-core" aria-hidden="true">
             <span className="home-v3-orbital-core-ring home-v3-orbital-core-ring-a" />
             <span className="home-v3-orbital-core-ring home-v3-orbital-core-ring-b" />
-            <span className="home-v3-orbital-core-inner">N</span>
+            <span className="home-v3-orbital-core-inner">
+              <Image
+                src="/brand/nucleus-logo.png"
+                alt=""
+                width={181}
+                height={60}
+                className="home-v3-orbital-core-logo"
+                priority
+              />
+            </span>
           </div>
           <div
             className="home-v3-orbital-track"
@@ -210,7 +204,7 @@ export function HomeOrbitalServices() {
                 <span
                   className={`home-v3-orbital-node-label ${isExpanded ? 'is-expanded' : ''}`}
                 >
-                  {item.short}
+                  {item.title}
                 </span>
 
                 {isExpanded ? (
