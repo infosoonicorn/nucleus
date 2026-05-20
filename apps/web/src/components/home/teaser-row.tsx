@@ -15,10 +15,10 @@ const careerTracks = [
 ];
 
 const lifeAttributes = [
-  'Partner-led',
-  'Real mandates',
-  'Cross-practice',
-  'Five offices',
+  'Openness',
+  'Mentorship',
+  'Annual offsites',
+  'Equal voice',
 ];
 
 // Internal panel identifier — kept as 'insights' so the CSS class
@@ -75,10 +75,11 @@ export function HomeTeaserRow() {
           <div className="home-v3-teaser-body">
             <header>
               <span className="home-v3-teaser-eyebrow">Life at Nucleus</span>
-              <h3>Partner-led from your first mandate.</h3>
+              <h3>A bench built on craft &mdash; kept by culture.</h3>
               <p>
-                Articles, graduates and analysts run real engagements with the partners
-                who own them &mdash; across audit, tax, deals and advisory.
+                Openness across seniority, partner mentorship without hierarchy,
+                annual offsites, and a working norm that every voice in the room
+                gets heard &mdash; article or partner.
               </p>
             </header>
             <ul className="home-v3-teaser-chips" aria-label="Life at Nucleus highlights">
