@@ -6235,13 +6235,16 @@ html.lenis body {
    ============================================================= */
 
 .service-v1-soonicorn {
-  --soonicorn-paper: var(--service-band-cream);
+  /* Fallbacks added so the block renders standalone on /home (which
+     wraps in .home-v3, not .service-v1, so --service-band-cream and
+     --service-accent-red wouldn't otherwise resolve). */
+  --soonicorn-paper: var(--service-band-cream, var(--np-cream, #f7f5ef));
   --soonicorn-paper-2: #f7f1e6;
   --soonicorn-ink: #141828;
   --soonicorn-ink-2: #1c2540;
   --soonicorn-ink-mute: rgba(20, 24, 40, 0.55);
   --soonicorn-ink-soft: rgba(20, 24, 40, 0.42);
-  --soonicorn-red: var(--service-accent-red);
+  --soonicorn-red: var(--service-accent-red, var(--np-red, #dd1017));
   --soonicorn-red-soft: #c45a52;
   --soonicorn-rule: rgba(20, 24, 40, 0.12);
 }

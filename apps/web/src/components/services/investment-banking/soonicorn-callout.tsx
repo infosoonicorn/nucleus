@@ -32,7 +32,16 @@ function placeOnRing(count: number, radius: number, index: number): { x: number;
 export function SoonicornCallout({
   service,
   ordinal,
-}: Readonly<{ service: Service; ordinal?: string }>) {
+  hideEyebrow,
+}: Readonly<{
+  service: Service;
+  ordinal?: string;
+  /** Hide the section-level "●NN In-house capital..." eyebrow header.
+   *  Used by HomeSoonicorn (home page) which supplies its own
+   *  Home-canonical eyebrow above this block; the service-page
+   *  ordinal convention reads inconsistent on /home. */
+  hideEyebrow?: boolean;
+}>) {
   const cross = service.crossLink;
   if (!cross) return null;
 
@@ -50,13 +59,15 @@ export function SoonicornCallout({
         </p>
       ) : null}
 
-      <header className="service-v1-soonicorn-head">
-        <p className="service-v1-soonicorn-eyebrow">
-          <span className="service-v1-soonicorn-eyebrow-num">●{ordinal ?? '04'}</span>
-          <span aria-hidden="true" className="service-v1-soonicorn-eyebrow-bar" />
-          <span>In-house capital, alongside advisory</span>
-        </p>
-      </header>
+      {hideEyebrow ? null : (
+        <header className="service-v1-soonicorn-head">
+          <p className="service-v1-soonicorn-eyebrow">
+            <span className="service-v1-soonicorn-eyebrow-num">●{ordinal ?? '04'}</span>
+            <span aria-hidden="true" className="service-v1-soonicorn-eyebrow-bar" />
+            <span>In-house capital, alongside advisory</span>
+          </p>
+        </header>
+      )}
 
       <article className="service-v1-soonicorn-card">
         {/* LEFT: animated orbital plate */}
