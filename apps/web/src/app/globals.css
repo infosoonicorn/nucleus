@@ -1154,7 +1154,6 @@ body {
 .band-actions,
 .text-link,
 .card-link,
-.contact-email,
 .site-footer a {
   align-items: center;
   display: inline-flex;
@@ -1378,7 +1377,6 @@ body {
 .mini-panel,
 .service-fact-panel,
 .lead-magnet,
-.contact-form,
 .signal-stack > div,
 .timeline > div,
 .faq-grid details {
@@ -1488,7 +1486,8 @@ body {
 
 .split-section,
 .feature-row,
-.contact-layout {
+.split-section,
+.feature-row {
   align-items: start;
   display: grid;
   gap: clamp(1.5rem, 4vw, 3rem);
@@ -1509,7 +1508,7 @@ body {
 
 .check-list svg,
 .signal-stack svg,
-.contact-email svg {
+ {
   color: var(--site-red);
   flex: 0 0 auto;
 }
@@ -1593,54 +1592,6 @@ body {
 .portal-preview h2,
 .portal-preview p {
   color: #fff;
-}
-
-.contact-form {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.contact-form label {
-  color: var(--site-navy);
-  display: grid;
-  font-size: 0.86rem;
-  font-weight: 800;
-  gap: 0.45rem;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  background: #fbfaf7;
-  border: 1px solid var(--site-line);
-  border-radius: 8px;
-  color: var(--site-ink);
-  font: inherit;
-  padding: 0.85rem;
-  width: 100%;
-}
-
-.full-field {
-  grid-column: 1 / -1;
-}
-
-.consent {
-  align-items: flex-start;
-  display: flex !important;
-  font-weight: 620 !important;
-}
-
-.consent input {
-  margin-top: 0.2rem;
-  width: auto;
-}
-
-.contact-email {
-  color: var(--site-red);
-  font-weight: 840;
-  gap: 0.45rem;
-  margin-top: 1.2rem;
 }
 
 .linked-panel {
@@ -1752,8 +1703,7 @@ body {
   .signal-stack,
   .people-grid,
   .faq-grid,
-  .footer-grid,
-  .contact-form {
+  .footer-grid {
     grid-template-columns: 1fr;
   }
 
@@ -14963,10 +14913,14 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 }
 
 .contact-page .contact-form {
-  display: grid;
+  background: transparent;     /* override the panel bg legacy rule */
+  border: 0;                   /* override the legacy panel border */
+  border-radius: 0;
+  display: flex;               /* one row per field group, vertical flow */
+  flex-direction: column;
   gap: 1.1rem;
-  max-width: none; /* override any legacy .contact-form caps */
-  padding: 0;     /* and any legacy paddings */
+  max-width: none;
+  padding: 0;
 }
 
 .contact-form-head {
@@ -15036,12 +14990,22 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   border: 1px solid var(--v3-line, #e1dbce);
   border-radius: 10px;
   color: var(--v3-ink, #111827);
-  font: inherit;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 0.94rem;
+  font-weight: 440;
+  letter-spacing: -0.001em;
+  line-height: 1.4;
   padding: 0.7rem 0.85rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease,
     background-color 0.2s ease;
   width: 100%;
+}
+
+.contact-page .contact-field input::placeholder,
+.contact-page .contact-field textarea::placeholder {
+  color: rgba(20, 24, 40, 0.4);
+  font-weight: 440;
+  opacity: 1;
 }
 
 .contact-page .contact-field textarea {
@@ -15134,12 +15098,17 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 
 .contact-consent {
   align-items: flex-start;
-  color: rgba(20, 24, 40, 0.7);
+  color: rgba(20, 24, 40, 0.62);
   display: flex;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
+  font-weight: 440;
   gap: 0.55rem;
   line-height: 1.5;
   margin: 0.2rem 0 0;
+}
+
+.contact-consent span {
+  font-weight: 440;
 }
 
 .contact-consent input[type='checkbox'] {
@@ -15176,12 +15145,12 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   color: #ffffff;
   cursor: pointer;
   display: inline-flex;
-  font: inherit;
-  font-size: 0.95rem;
-  font-weight: 800;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 660;
   gap: 0.5rem;
   letter-spacing: 0.005em;
-  padding: 0.85rem 1.4rem;
+  padding: 0.75rem 1.25rem;
   transition: transform 0.18s ease, box-shadow 0.22s ease,
     background-color 0.2s ease;
 }
@@ -15200,13 +15169,14 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
 }
 
 .contact-submit-aside {
-  color: rgba(20, 24, 40, 0.6);
-  font-size: 0.85rem;
+  color: rgba(20, 24, 40, 0.55);
+  font-size: 0.84rem;
+  font-weight: 440;
 }
 
 .contact-submit-aside a {
   color: var(--v3-ink, #111827);
-  font-weight: 700;
+  font-weight: 560;
   text-decoration: underline;
   text-decoration-color: rgba(221, 16, 23, 0.4);
   text-underline-offset: 3px;
