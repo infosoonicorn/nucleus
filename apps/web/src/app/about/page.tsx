@@ -11,11 +11,17 @@ import { WhoWeServe } from '@/components/firm/who-we-serve';
 import { TeamPageCard } from '@/components/team/team-page-card';
 import { HomeClosingCta } from '@/components/home/closing-cta';
 import { getTeamGrouped } from '@/content/team';
+import { getProofBySlug } from '@/content/site';
+
+const partnersCount = getProofBySlug('partners').value;
+const teamCount = getProofBySlug('team');
+const clientsCount = getProofBySlug('clients');
+const dealsCount = getProofBySlug('deals');
+const officesCount = getProofBySlug('offices').value;
 
 export const metadata: Metadata = {
   title: 'About Nucleus Advisors | Senior-led advisory firm in India',
-  description:
-    'Nucleus Advisors is a senior-led firm covering audit, tax, transactions and advisory. Established 2019. 8 partners, 90+ team, 130+ clients, 50+ deals advised, 5 offices across India.',
+  description: `Nucleus Advisors is a senior-led firm covering audit, tax, transactions and advisory. Established 2019. ${partnersCount} partners, ${teamCount.value}${teamCount.suffix} team, ${clientsCount.value}${clientsCount.suffix} clients, ${dealsCount.value}${dealsCount.suffix} deals advised, ${officesCount} offices across India.`,
 };
 
 export default function AboutPage() {

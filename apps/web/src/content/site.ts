@@ -134,20 +134,36 @@ export const navigation = [
   { label: 'Contact', href: '/contact' },
 ];
 
+import { team } from './team';
+
 export type ProofPoint = {
+  /** Stable identifier for lookup by consumers (e.g. the /team hero
+   *  hand-picks specific counters without relying on array position). */
+  slug: 'partners' | 'team' | 'clients' | 'deals' | 'offices' | 'experience';
   value: number;
   suffix: string;
   label: string;
 };
 
+// Partner count is derived from team.ts: every leadership-group member
+// is a partner. Add or remove a partner there and every proof bar +
+// metadata description that reads from `proof` updates automatically.
+const partnerCount = team.filter((m) => m.group === 'leadership').length;
+
 export const proof: ProofPoint[] = [
-  { value: 8, suffix: '', label: 'Partners' },
-  { value: 90, suffix: '+', label: 'Team members' },
-  { value: 130, suffix: '+', label: 'Clients served' },
-  { value: 50, suffix: '+', label: 'Deals closed' },
-  { value: 5, suffix: '', label: 'Offices' },
-  { value: 100, suffix: '+', label: 'Years combined experience' },
+  { slug: 'partners',   value: partnerCount, suffix: '', label: 'Partners' },
+  { slug: 'team',       value: 90,           suffix: '+', label: 'Team members' },
+  { slug: 'clients',    value: 300,          suffix: '+', label: 'Clients served' },
+  { slug: 'deals',      value: 100,          suffix: '+', label: 'Deals closed' },
+  { slug: 'offices',    value: 5,            suffix: '', label: 'Offices' },
+  { slug: 'experience', value: 100,          suffix: '+', label: 'Years combined experience' },
 ];
+
+export function getProofBySlug(slug: ProofPoint['slug']): ProofPoint {
+  const found = proof.find((p) => p.slug === slug);
+  if (!found) throw new Error(`proof missing slug "${slug}"`);
+  return found;
+}
 
 // Manual review date for proof figures. Bump when the headcount/deals/offices
 // numbers above are re-validated by partners. Surfaced on the proof strip.

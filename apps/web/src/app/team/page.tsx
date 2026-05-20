@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PageShell } from '@/components/site-chrome';
 import { TeamPageCard } from '@/components/team/team-page-card';
 import { getTeamGrouped } from '@/content/team';
+import { getProofBySlug } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Team — Nucleus Advisors',
@@ -11,6 +12,10 @@ export const metadata: Metadata = {
 
 export default function TeamPage() {
   const { leadership, executive } = getTeamGrouped();
+  const experience = getProofBySlug('experience');
+  const clients = getProofBySlug('clients');
+  const deals = getProofBySlug('deals');
+  const offices = getProofBySlug('offices');
 
   return (
     <PageShell>
@@ -27,19 +32,31 @@ export default function TeamPage() {
           </p>
           <div className="team-page-hero-stats" aria-label="Firm stats">
             <div className="team-page-hero-stat">
-              <span className="team-page-hero-stat-num">100+</span>
+              <span className="team-page-hero-stat-num">
+                {experience.value}
+                {experience.suffix}
+              </span>
               <span className="team-page-hero-stat-label">years combined experience</span>
             </div>
             <div className="team-page-hero-stat">
-              <span className="team-page-hero-stat-num">130+</span>
+              <span className="team-page-hero-stat-num">
+                {clients.value}
+                {clients.suffix}
+              </span>
               <span className="team-page-hero-stat-label">clients across sectors</span>
             </div>
             <div className="team-page-hero-stat">
-              <span className="team-page-hero-stat-num">50+</span>
+              <span className="team-page-hero-stat-num">
+                {deals.value}
+                {deals.suffix}
+              </span>
               <span className="team-page-hero-stat-label">deals advised</span>
             </div>
             <div className="team-page-hero-stat">
-              <span className="team-page-hero-stat-num">5</span>
+              <span className="team-page-hero-stat-num">
+                {offices.value}
+                {offices.suffix}
+              </span>
               <span className="team-page-hero-stat-label">offices across India</span>
             </div>
           </div>
