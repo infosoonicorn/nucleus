@@ -48,12 +48,18 @@ import { ResourceDeck } from '@/components/resources/resource-deck';
 export function ServicePageDefault({
   service,
   extraSection,
+  hideProof,
 }: Readonly<{
   service: Service;
   /** Optional service-specific block rendered in the main column after
    *  Proof and before ServiceInsights. Used today by AIF to inject the
    *  operating-proof block; future bespoke add-ons can use the same slot. */
   extraSection?: ReactNode;
+  /** When true, suppress the default <Proof> block. The service.proof
+   *  array stays intact in site.ts; this just hides the render. Used by
+   *  AIF, where the operating-proof story is told by the migrated
+   *  HomeDepth block instead. */
+  hideProof?: boolean;
 }>) {
   const clients = getClientsForService(service.slug);
   const team = getTeamForService(service.slug);
@@ -113,8 +119,8 @@ export function ServicePageDefault({
             dossier={service.processDossier}
           />
 
-          {/* Evidence — only renders when data exists */}
-          <Proof service={service} />
+          {/* Evidence — only renders when data exists AND not suppressed */}
+          {hideProof ? null : <Proof service={service} />}
 
           {/* Optional service-specific add-on (e.g. AIF operating-proof) */}
           {extraSection}

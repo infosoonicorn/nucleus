@@ -19,5 +19,11 @@ export function generateMetadata(): Metadata {
 export default function AifFundManagementPage() {
   const service = services.find((item) => item.slug === SLUG);
   if (!service) notFound();
-  return <ServicePageDefault service={service} extraSection={<HomeDepth />} />;
+  return (
+    <ServicePageDefault
+      service={service}
+      extraSection={<HomeDepth />}
+      hideProof
+    />
+  );
 }
