@@ -4,83 +4,98 @@ import { macroForClient, macroTitle } from '@/content/industry-taxonomy';
 
 type Props = Readonly<{
   serviceSlug: ServiceSlug;
-  /** How many logos go into the scroll strip. Default 12 (two swipes of 6). */
-  stripCount?: number;
 }>;
 
 /**
- * "Businesses we've worked with" — compact horizontal scroller for a
- * single service page. Six cells visible at desktop width; user swipes
- * or scrolls horizontally for the rest. A `See all N →` link below
- * jumps to the filtered clients hub when the practice has more
- * companies than fit in the strip.
+ * "Businesses we've worked with" — auto-scrolling marquee band placed
+ * inline on every service page right before <ServiceInsights>.
  *
- * Placed inline in the main column (NOT full-bleed) right before
- * `<ServiceInsights>`. Track-record metrics live separately at the
- * top of the page via `<TrackRecordBand>`.
+ * Brand spec:
+ *   - Eyebrow with bullet + label (matches the rest of the service page)
+ *   - Newsreader heading with italic emphasis on "worked with"
+ *   - Solid-white strip behind the logos so client logos with white
+ *     backgrounds (most of them) land seamlessly without grey halos
+ *   - CSS-only marquee (no JS) — duplicated track for seamless loop;
+ *     pauses on hover/focus; respects prefers-reduced-motion
+ *   - 'See all N companies →' link below the strip → /clients hub
+ *
+ * The component is universal — every service-page composition uses
+ * the same render. Sort puts single-service clients first so the IB
+ * page surfaces fundraising portfolio names before multi-service ones.
  */
-export function ServiceClients({ serviceSlug, stripCount = 12 }: Props) {
+export function ServiceClients({ serviceSlug }: Props) {
   const all = CLIENTS.filter((c) => c.services.includes(serviceSlug));
   if (all.length === 0) return null;
 
-  // Sort: clients for whom this service is the primary (only) engagement
-  // surface first. Within that tier, alphabetical. Deterministic.
   all.sort(
     (a, b) =>
       a.services.length - b.services.length || a.name.localeCompare(b.name),
   );
-
-  const strip = all.slice(0, stripCount);
   const total = all.length;
-  const hasMore = total > strip.length;
 
   return (
-    <section className="businesses-strip-section" aria-labelledby="businesses-strip-title">
-      <header className="businesses-strip-head">
-        <h2 id="businesses-strip-title" className="businesses-strip-title">
-          Businesses we&rsquo;ve <em>worked with</em>
-        </h2>
-        <p className="businesses-strip-count">
-          {total} {total === 1 ? 'company' : 'companies'}
-          {hasMore ? ` · scrolling ${strip.length}` : ''}
+    <section
+      className="service-v1-section businesses-band-section"
+      aria-labelledby="businesses-band-title"
+    >
+      <header className="businesses-band-head">
+        <p className="businesses-band-eyebrow">
+          <span className="businesses-band-eyebrow-bar" aria-hidden="true" />
+          <span>Businesses on the desk</span>
         </p>
+        <h2 id="businesses-band-title" className="businesses-band-title">
+          Businesses we&rsquo;ve <em>worked with</em>.
+        </h2>
       </header>
 
-      <div className="businesses-strip-scroller" tabIndex={0} aria-label="Client logos — scroll horizontally">
-        <ul className="businesses-strip-track">
-          {strip.map((c) => {
-            const macroSlug = macroForClient(c.slug, c.industrySlug);
-            const industry = macroTitle(macroSlug);
-            return (
-              <li
-                key={c.slug + '-' + c.industrySlug}
-                className="businesses-strip-cell"
-                title={`${c.name} · ${industry}`}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={c.logoSrc}
-                  alt={c.name}
-                  className="businesses-strip-logo"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-            );
-          })}
-        </ul>
+      <div className="businesses-band-strip" aria-label={`${total} client logos`}>
+        <div className="businesses-band-track">
+          {all.map((c) => (
+            <LogoCell key={c.slug + '-' + c.industrySlug} client={c} />
+          ))}
+          {/* Duplicated for seamless CSS loop. aria-hidden so screen
+              readers don't announce the same companies twice. */}
+          {all.map((c) => (
+            <LogoCell key={c.slug + '-' + c.industrySlug + '-dup'} client={c} ariaHidden />
+          ))}
+        </div>
       </div>
 
-      {hasMore ? (
-        <div className="businesses-strip-more">
-          <Link
-            href={`/clients?service=${serviceSlug}`}
-            className="businesses-strip-more-link"
-          >
-            See all {total} companies in this practice →
-          </Link>
-        </div>
-      ) : null}
+      <div className="businesses-band-more">
+        <Link
+          href={`/clients?service=${serviceSlug}`}
+          className="businesses-band-more-link"
+        >
+          See all {total} {total === 1 ? 'company' : 'companies'} in this practice →
+        </Link>
+      </div>
     </section>
+  );
+}
+
+function LogoCell({
+  client,
+  ariaHidden = false,
+}: Readonly<{
+  client: (typeof CLIENTS)[number];
+  ariaHidden?: boolean;
+}>) {
+  const macroSlug = macroForClient(client.slug, client.industrySlug);
+  const industry = macroTitle(macroSlug);
+  return (
+    <div
+      className="businesses-band-cell"
+      aria-hidden={ariaHidden || undefined}
+      title={`${client.name} · ${industry}`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={client.logoSrc}
+        alt={ariaHidden ? '' : client.name}
+        className="businesses-band-logo"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
   );
 }

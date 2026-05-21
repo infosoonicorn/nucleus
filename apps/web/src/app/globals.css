@@ -16221,118 +16221,6 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   .client-card-logo-img { max-height: 52px !important; max-width: 130px !important; }
 }
 
-/* ============================================================
-   Service page — "Businesses we've worked with" compact scroller
-   (placed inline in the main column right before ServiceInsights).
-   6 cells visible at desktop width; horizontal scroll for the rest.
-   ============================================================ */
-
-.businesses-strip-section {
-  margin: 36px 0 28px;
-}
-.businesses-strip-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.businesses-strip-title {
-  margin: 0;
-  font-family: Newsreader, ui-serif, Georgia, serif;
-  font-weight: 500;
-  font-size: clamp(1.25rem, 2vw, 1.55rem);
-  letter-spacing: -0.01em;
-  color: rgb(20, 24, 40);
-}
-.businesses-strip-title em {
-  font-style: italic;
-  color: var(--service-accent-red, #c8262f);
-}
-.businesses-strip-count {
-  margin: 0;
-  font: 500 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(20, 24, 40, 0.45);
-}
-
-/* Scroller — fade mask on the right edge hints there's more. */
-.businesses-strip-scroller {
-  position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
-  /* Hide the native scrollbar (still scrollable via wheel/touch/drag) */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(20, 24, 40, 0.18) transparent;
-  -webkit-mask-image: linear-gradient(to right, #000 0, #000 92%, transparent 100%);
-          mask-image: linear-gradient(to right, #000 0, #000 92%, transparent 100%);
-}
-.businesses-strip-scroller::-webkit-scrollbar { height: 6px; }
-.businesses-strip-scroller::-webkit-scrollbar-thumb {
-  background: rgba(20, 24, 40, 0.15);
-  border-radius: 999px;
-}
-
-.businesses-strip-track {
-  list-style: none;
-  margin: 0;
-  padding: 2px 24px 14px 0;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 80px) / 6);
-  gap: 10px;
-}
-.businesses-strip-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 76px;
-  padding: 10px 14px;
-  background: #fff;
-  border: 1px solid rgba(20, 24, 40, 0.08);
-  border-radius: 10px;
-  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-}
-.businesses-strip-cell:hover {
-  border-color: rgba(20, 24, 40, 0.2);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(20, 24, 40, 0.05);
-}
-.businesses-strip-logo {
-  max-height: 42px !important;
-  max-width: 110px !important;
-  width: auto !important;
-  height: auto !important;
-  object-fit: contain;
-}
-
-.businesses-strip-more {
-  margin-top: 14px;
-  text-align: right;
-}
-.businesses-strip-more-link {
-  display: inline-block;
-  font: 500 0.82rem/1.4 Inter, ui-sans-serif, system-ui, sans-serif;
-  color: var(--service-accent-red, #c8262f);
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
-  transition: opacity 0.15s ease;
-}
-.businesses-strip-more-link:hover { opacity: 0.7; }
-
-@media (max-width: 960px) {
-  .businesses-strip-track { grid-auto-columns: calc((100% - 50px) / 4); }
-}
-@media (max-width: 640px) {
-  .businesses-strip-track { grid-auto-columns: calc((100% - 30px) / 3); }
-  .businesses-strip-cell { height: 64px; padding: 8px 10px; }
-  .businesses-strip-logo { max-height: 36px !important; max-width: 90px !important; }
-  .businesses-strip-more { text-align: left; }
-}
-
 /* ─── Coming Soon pages (Careers, Life at Nucleus, Alumni) ──────────── */
 .coming-soon-page {
   margin: 0 auto;
@@ -16665,4 +16553,145 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   border-color: rgba(255, 255, 255, 0.18);
   color: #f7f5ef;
   backdrop-filter: blur(6px);
+}
+
+/* ============================================================
+   Service page — "Businesses we've worked with" auto-marquee
+   Universal across every service page. Solid-white strip so logos
+   with white backgrounds blend cleanly; CSS-only marquee, no JS.
+   ============================================================ */
+
+.businesses-band-section {
+  margin: clamp(36px, 5vw, 56px) 0 clamp(32px, 4vw, 44px);
+}
+
+.businesses-band-head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.businesses-band-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 860;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--service-accent-red, #c8262f);
+}
+.businesses-band-eyebrow-bar {
+  display: inline-block;
+  width: 1.4rem;
+  height: 0.42rem;
+  background: var(--service-accent-red, #c8262f);
+  border-radius: 999px;
+}
+.businesses-band-title {
+  margin: 0;
+  font-family: Newsreader, ui-serif, Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: rgb(20, 24, 40);
+}
+.businesses-band-title em {
+  font-style: italic;
+  color: var(--service-accent-red, #c8262f);
+}
+
+/* Solid white strip — gives transparent-bg logos and white-bg logos
+   a uniform canvas to land on. Subtle hairline border so the band
+   reads as a contained surface against the page cream. */
+.businesses-band-strip {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(20, 24, 40, 0.07);
+  border-radius: 14px;
+  /* Soft edge fade so logos dissolve into the white strip rather than
+     getting clipped at hard edges. The mask still keeps the background
+     opaque white. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.businesses-band-track {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  padding: 18px 32px;
+  width: max-content;
+  animation: businessesBandScroll 60s linear infinite;
+}
+.businesses-band-strip:hover .businesses-band-track,
+.businesses-band-strip:focus-within .businesses-band-track {
+  animation-play-state: paused;
+}
+@keyframes businessesBandScroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.businesses-band-cell {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  padding: 8px 14px;
+  transition: transform 0.25s ease;
+}
+.businesses-band-cell:hover {
+  transform: translateY(-2px);
+}
+.businesses-band-logo {
+  width: auto !important;
+  height: auto !important;
+  max-height: 56px !important;
+  max-width: 170px !important;
+  object-fit: contain;
+}
+
+.businesses-band-more {
+  margin-top: 18px;
+  text-align: right;
+}
+.businesses-band-more-link {
+  display: inline-block;
+  font: 500 0.86rem/1.4 Inter, ui-sans-serif, system-ui, sans-serif;
+  color: var(--service-accent-red, #c8262f);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: opacity 0.15s ease;
+}
+.businesses-band-more-link:hover { opacity: 0.7; }
+
+/* Reduced motion: stop the animation, fall back to a wrapping grid so
+   every logo is visible without movement. */
+@media (prefers-reduced-motion: reduce) {
+  .businesses-band-strip {
+    -webkit-mask-image: none;
+            mask-image: none;
+  }
+  .businesses-band-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 24px 36px;
+    padding: 18px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .businesses-band-track { gap: 40px; padding: 14px 20px; }
+  .businesses-band-cell { height: 58px; padding: 6px 10px; }
+  .businesses-band-logo { max-height: 44px !important; max-width: 130px !important; }
+  .businesses-band-more { text-align: left; }
 }
