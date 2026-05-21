@@ -51,7 +51,7 @@ export function TeamPageCard({ member }: Readonly<{ member: TeamMember }>) {
             <p className="team-page-card-role">{member.role}</p>
             <h3 className="team-page-card-name">{member.name}</h3>
             <ul className="team-page-card-expertise" aria-label="Expertise">
-              {member.expertise.slice(0, 3).map((e) => (
+              {member.expertise.map((e) => (
                 <li key={e} className="team-page-card-pill">
                   {e}
                 </li>
