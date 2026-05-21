@@ -68,7 +68,9 @@ while the rest of the platform comes online.
 - [x] Mobile-responsive across all public pages.
   - Acceptance: every page is verified at mobile and desktop widths; the new nav collapses into a hamburger sheet below 960px.
 - [x] Service ↔ team mapping data layer (Phase 1).
-  - Acceptance: every service line has a typed `lead` + optional `coLeads` in `team.ts`'s exported `SERVICE_LEADS`; service-page dossier band renders real names live (no more `partnerLabel` placeholder); `getTeamForService` sorts lead → co-leads → seniority and filters to leadership; `serviceSlugs[]` reconciled across all 12 team members; build-time validator `pnpm lint:team` gates every commit; spec at `docs/superpowers/specs/2026-05-21-service-team-mapping-design.md`. Phase 2 (article `authorSlug` reassignment) deferred.
+  - Acceptance: every service line has a typed `lead` + optional `coLeads` in `team.ts`'s exported `SERVICE_LEADS`; service-page dossier band renders real names live (no more `partnerLabel` placeholder); `getTeamForService` sorts lead → co-leads → seniority and filters to leadership; `serviceSlugs[]` reconciled across all 12 team members; build-time validator `pnpm lint:team` gates every commit; spec at `docs/superpowers/specs/2026-05-21-service-team-mapping-design.md`.
+- [x] Service ↔ team mapping — article reauthoring (Phase 2).
+  - Acceptance: all 135 articles' `authorSlug` reassigned from placeholders to real leadership partners per `SERVICE_LEADS`; executives (Astha, Samarth, Geetanjali, V. K. Choudhary) removed as authors; new validator `pnpm lint:articles:authors` checks every article author is a leadership partner whose `serviceSlugs[]` covers the article's service; leadership `expertise` tags realigned so `/team` cards no longer surface mismatched service signals. Phase 3 (`/team` profile enrichment, lead/co-lead avatar/link in dossier band) deferred.
 - [~] About / Careers / Insights detail / Contact polished to the home + service-page baseline.
   - Acceptance: same typography rhythm, motion, spacing and section primitives as the homepage and Investment Banking page.
 - [ ] Bespoke design centerpieces for the remaining eight service pages.
@@ -167,8 +169,13 @@ Reuse the Phase 3 APIs in a mobile app once the web portal is stable.
   - Needed for: service proof blocks on each service page.
 - [ ] Partner photos and approved bios.
   - Needed for: team page and service author bylines.
-- [ ] Approved client logos.
-  - Needed for: client marquee on service pages and the homepage proof strip.
+- [~] Approved client logos.
+  - 118 client logos extracted from `Nucleus Profile 2026.pdf` and staged under
+    `apps/web/public/brand/clients/<service-line>/` on 2026-05-21. See
+    `apps/web/public/brand/clients/README.md` for the inventory and the 5 logos
+    flagged for confirmation.
+  - Awaiting: Vijay's confirmation of the 5 unknowns, plus any reassignments
+    across service lines. Then we can wire the per-service marquees.
 - [ ] Approved offsite / culture images.
   - Needed for: Life at Nucleus.
 - [ ] Alumni names, photos and outcomes with consent.
@@ -185,7 +192,8 @@ Reuse the Phase 3 APIs in a mobile app once the web portal is stable.
   - Needed for: flipping each article's reviewer status from pending to approved so it surfaces in production.
 - [ ] Vijay's content review of 10 Investment Banking FAQ answers.
   - Needed for: production confidence in the FAQ block; decision pending on whether to track reviewer approval per question or per service.
-- [ ] Vijay's curation of client logos across all nine service pages.
-  - Needed for: each client logo to appear on the correct service-line marquees.
+- [~] Vijay's curation of client logos across all nine service pages.
+  - First pass done: 118 logos bucketed by sector under
+    `apps/web/public/brand/clients/`. Awaiting Vijay's confirmation/reassignment.
 - [ ] Vijay's content review of four Investment Banking industry reports + one lead-magnet checklist.
   - Needed for: actual PDFs to back each title before flipping reports to "available" in production.

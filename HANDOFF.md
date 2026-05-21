@@ -2,6 +2,15 @@
 
 ## Active task
 
+**Client-logo asset audit — 118 logos extracted from Nucleus Profile 2026.pdf and staged under `apps/web/public/brand/clients/<service-line>/` on 2026-05-21.**
+
+- Source: `Nucleus_Data For Reference/Profile/Nucleus Profile 2026.pdf` (pp.18–23).
+- Inventory + 5 unknowns flagged in `apps/web/public/brand/clients/README.md`.
+- Coverage: Automobiles/Tools (5), Other Mfg (5), QSR/Hospitality (5), Energy/Power (5), Non-Profits (3), Healthcare (1), Infrastructure (5), Telecom (2), BFSI (10), Publishing (2), Agriculture (6), Pharmaceutical (2), E-Commerce (1), IT (5), Fashion (4), Transaction Advisory (8); plus Fundraising (52) bucketed by sub-sector.
+- Next: Vijay reviews and reassigns any miscategorized logos by moving files between folders; then wire per-service marquees to read from these folders.
+
+## Previous task
+
 **Investment Banking page — section-by-section visual polish landed on top of the IB slice.**
 
 - Slice spec: `docs/superpowers/specs/2026-05-14-services-ib-design.md`
@@ -48,6 +57,8 @@
 **Next slice (queued):** apply the same primitives to About / Careers / Insights / Contact via separate brainstorm + spec.
 
 ## Last Action
+
+**Service ↔ team mapping — Phase 2 landed (2026-05-21).** Reauthored all 135 articles per `SERVICE_LEADS`. New distribution (final): Abhishek 35 (Assurance 15 + Finance Outsourcing 15 + Tax 5), V. S. Rathore 30 (IB 15 + Valuations 15), Neha Rathore 30 (Corp Sec 15 + AIF 15), Ashish 15 (Risk), Pravesh 12 (M&A — kept his existing 12 per Vijay), Aakash 3 (M&A — Astha's 1 moved), Hemendra 5 + Rajat 5 (Tax — V. K. Choudhary's 3 distributed across lead + co-leads). All 4 executives (Astha, Samarth, Geetanjali, V. K. Choudhary) removed as authors — they're not on service pages so their bylines would orphan. Also realigned leadership `expertise` tags so the `/team` cards no longer surface mismatched signals (Pravesh, Ashish, Abhishek, Aakash, Hemendra, Neha, Rajat — 7 partners updated; V. S. Rathore unchanged). Added new build-time validator `lint:articles:authors` wired into `pnpm lint` chain — checks every article's `authorSlug` is a real leadership team member whose `serviceSlugs[]` includes the article's service. 9 atomic commits, one per service line, plus 1 validator commit + 1 expertise commit. Phase 3 (`/team` profile enrichment, lead/co-lead avatar/link upgrade in dossier band) still deferred.
 
 **Service ↔ team mapping — Phase 1 landed (2026-05-21).** Promoted the hidden `SERVICE_LEAD_PARTNER` const in `team.ts` to an exported, typed `SERVICE_LEADS: Record<ServiceSlug, { lead; coLeads? }>` covering all 9 service lines per the firm's confirmed assignment (Abhishek Gupta leads Assurance + Tax & Regulatory + Finance Outsourcing; V. S. Rathore leads Investment Banking + Valuations; Pravesh Goel leads M&A with Aakash Kalra co-lead; Ashish Gupta leads Risk Advisory; Neha Rathore leads Corporate Secretarial + AIF; Hemendra Chauhan and Rajat Singla co-lead Tax & Regulatory). Deleted the 9 placeholder `partnerLabel: 'Lead: V. S. Rathore, Partner'` strings from `ProcessDossier` and the `Service` entries that previously wallpapered every service page. Service-page dossier band now resolves the lead/co-leads live and renders "Lead: CA Abhishek Gupta · with CA Hemendra Chauhan, CA Rajat Singla" style labels. Reconciled `serviceSlugs[]` on 3 leadership partners (+Abhishek finance-outsourcing; −Hemendra and −Rajat finance-outsourcing) and stripped `serviceSlugs[]` on all 4 executives so service pages are leadership-only. Added build-time validator `apps/web/scripts/lint-team-services.mjs` wired into `pnpm lint` (runs before `lint:articles` so the team gate isn't shadowed by pre-existing article-corpus debt). `getTeamForService` now sorts lead → co-leads → seniority and filters to `group === 'leadership'`. Spec + plan at `docs/superpowers/specs/2026-05-21-service-team-mapping-design.md` and `docs/superpowers/plans/2026-05-21-service-team-mapping.md`. Phase 2 (reassign `authorSlug` on ~140 articles whose current placeholder is `vijay-singh-rathore`) and Phase 3 (`/team` profile enrichment, lead/co-lead avatar/link upgrade in dossier band) explicitly deferred.
 
