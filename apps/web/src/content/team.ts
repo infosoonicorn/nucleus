@@ -112,7 +112,7 @@ export const team: TeamMember[] = [
     initials: 'PG',
     headshotSrc: '/team/pravesh-goel.jpg',
     // email TODO confirm
-    expertise: ['M&A', 'Buy-side / Sell-side', 'Deal Structuring'],
+    expertise: ['M&A', 'Buy-side / Sell-side', 'Deal Structuring', 'Transfer Pricing'],
     experienceYears: 20,
     pastEmployers: [
       { name: 'Deloitte', src: '/team/logos/deloitte.png' },
@@ -126,7 +126,9 @@ export const team: TeamMember[] = [
       'Pravesh leads the M&A, vCFO and Process Re-engineering division at Nucleus, focusing on driving growth and addressing challenges for startups and SMEs. His work is pivotal in helping these businesses navigate complex mergers, acquisitions, and disputes, ensuring their continued success and strategic development.',
       'Having worked extensively in the area of Statutory Audits, Internal Audits, Risk Management, and Taxation, he brings expertise, experience and wisdom to the firm through overall supervision and assurance of the quality of work delivered across these assignments.',
     ].join('\n\n'),
-    serviceSlugs: ['ma-advisory'],
+    serviceSlugs: ['ma-advisory', 'tax-regulatory', 'finance-outsourcing'],
+    linkedinUrl: 'https://www.linkedin.com/in/praveshgoel/',
+    email: 'pkg@nucleusadvisors.in',
   },
   {
     slug: 'vijay-singh-rathore',
@@ -136,7 +138,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'VSR',
     headshotSrc: '/team/vijay-singh-rathore.jpg',
-    email: 'vijay@nucleusadvisors.in', // TODO confirm
+    email: 'vr@nucleusadvisors.in',
     expertise: ['Financial Due Diligence', 'Valuations', 'Startup Fundraising'],
     experienceYears: 10,
     pastEmployers: [
@@ -151,6 +153,7 @@ export const team: TeamMember[] = [
       'Previously, Vijay served as an Internal Auditor at ICICI Bank, focusing on the Retail Liabilities Group. During his tenure, he conducted audits across 65 locations in North India, gaining expertise in anti-money laundering (AML), compliance, credit, forex, and remittance processes.',
     ].join('\n\n'),
     serviceSlugs: ['investment-banking', 'valuations'],
+    linkedinUrl: 'https://www.linkedin.com/in/vijayrathorenucleus/',
   },
   {
     slug: 'ashish-gupta',
@@ -160,7 +163,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'AG',
     headshotSrc: '/team/ashish-gupta.jpg',
-    expertise: ['Internal Audit', 'ICFR', 'Risk Management'],
+    expertise: ['Internal Audit', 'BFSI Advisory', 'Risk Management'],
     experienceYears: 13,
     pastEmployers: [
       { name: 'ICICI Bank', src: '/team/logos/icici-bank.png' },
@@ -176,6 +179,8 @@ export const team: TeamMember[] = [
       'His work spans a diverse range of clients, from large banks to emerging NBFCs, ensuring each institution can navigate complex risk environments with confidence.',
     ].join('\n\n'),
     serviceSlugs: ['risk-advisory'],
+    linkedinUrl: 'https://www.linkedin.com/in/caashishgupta/',
+    email: 'ag@nucleusadvisors.in',
   },
   {
     slug: 'abhishek-gupta',
@@ -185,7 +190,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'ABG',
     headshotSrc: '/team/abhishek-gupta.jpg',
-    expertise: ['Statutory Audit', 'Direct Tax', 'Controllership'],
+    expertise: ['Statutory Audit', 'Direct Tax', 'IFC & Process Re-engineering', 'IndAS'],
     experienceYears: 6,
     pastEmployers: [
       { name: 'ACME', src: '/team/logos/acme.png' },
@@ -198,7 +203,9 @@ export const team: TeamMember[] = [
       'His work spans assurance services such as utilisation certificates, RBI and FEMA compliance, and buy-back related requirements. He has also handled internal audits, process re-engineering, internal financial controls, physical verifications, income tax audits, and litigation.',
       'Focused on building trust and delivering value, he helps clients navigate regulatory complexities, enhance processes, and achieve their objectives effectively.',
     ].join('\n\n'),
-    serviceSlugs: ['assurance', 'tax-regulatory', 'finance-outsourcing'],
+    serviceSlugs: ['assurance', 'tax-regulatory', 'risk-advisory'],
+    linkedinUrl: 'https://www.linkedin.com/in/abhishekgupta4084/',
+    email: 'abhishek@nucleusadvisors.in',
   },
   {
     slug: 'aakash-kalra',
@@ -222,7 +229,9 @@ export const team: TeamMember[] = [
       'Having professional M&A experience from Deloitte and PwC, he has handled inbound and outbound restructuring and business consulting on M&A structures and arrangements (mergers, demergers, etc.).',
       'He holds professional experience across multiple clients in due diligence, FP&A, deal advisory and extensive deal running experience across ecommerce, auto ancillary, fintech, IT, and the consumer sector.',
     ].join('\n\n'),
-    serviceSlugs: ['ma-advisory'],
+    serviceSlugs: ['ma-advisory', 'finance-outsourcing'],
+    linkedinUrl: 'https://www.linkedin.com/in/aakash-kalra-85b0371b/',
+    email: 'ak@nucleusadvisors.in',
   },
   {
     slug: 'hemendra-chauhan',
@@ -232,7 +241,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'HC',
     headshotSrc: '/team/hemendra-chauhan.jpg',
-    expertise: ['GST', 'Income Tax', 'Compliance'],
+    expertise: ['GST', 'Controllership'],
     experienceYears: 8,
     qualifications: ['Chartered Accountant'],
     shortBio:
@@ -242,6 +251,8 @@ export const team: TeamMember[] = [
       'In the realm of financial management, he excels in maintaining accurate and compliant books of accounts, streamlining compliance processes, and implementing strategic frameworks to support startups in optimising their finance and accounts functions. His expertise ensures regulatory adherence, operational efficiency, and sustainable growth, contributing to the firm\'s reputation for delivering excellence.',
     ].join('\n\n'),
     serviceSlugs: ['tax-regulatory'],
+    linkedinUrl: 'https://www.linkedin.com/in/hemendra-chauhan-410256b2/',
+    email: 'hemendra@nucleusadvisors.in',
   },
   {
     slug: 'neha-rathore',
@@ -261,6 +272,8 @@ export const team: TeamMember[] = [
       'Her responsibilities include managing companies\' compliance with laws such as the Companies Act, overseeing the proper filing of documents, and ensuring timely submission of required forms with authorities like the Registrar of Companies. She also provides expert legal guidance ranging from contract drafting to dispute resolution, offering essential support for mergers and acquisitions.',
     ].join('\n\n'),
     serviceSlugs: ['corporate-secretarial', 'aif-fund-management'],
+    linkedinUrl: 'https://www.linkedin.com/in/neha-rathore-30128654/',
+    email: 'neha@nucleusadvisors.in',
   },
   {
     slug: 'rajat-singla',
@@ -270,10 +283,12 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'RS',
     headshotSrc: '/team/rajat-singla.jpg',
-    expertise: ['GST', 'Income Tax', 'TDS'],
+    expertise: ['GST', 'Direct Tax', 'Controllership', 'Debt Sourcing'],
     experienceYears: 3,
     qualifications: ['Chartered Accountant'],
-    serviceSlugs: ['tax-regulatory'],
+    serviceSlugs: ['tax-regulatory', 'finance-outsourcing'],
+    linkedinUrl: 'https://www.linkedin.com/in/ca-rajat-singla-3374b61a6/',
+    email: 'rajat@nucleusadvisors.in',
   },
 
   // ─── Executive Team ────────────────────────────────────────────────
@@ -281,29 +296,16 @@ export const team: TeamMember[] = [
     slug: 'geetanjali-virmani',
     name: 'Geetanjali Virmani',
     role: 'Senior Network Partner',
-    group: 'executive',
-    seniority: 'senior',
+    group: 'leadership',
+    seniority: 'partner',
     initials: 'GV',
     headshotSrc: '/team/geetanjali-virmani.jpg',
-    expertise: ['Accounting & Compliance', 'Controllership', 'Internal Audit'],
+    expertise: ['Accounting & Compliance', 'Controllership'],
     experienceYears: 15,
     pastEmployers: ['Genpact'],
     qualifications: ['Chartered Accountant'],
-    serviceSlugs: [],
-  },
-  {
-    slug: 'vijay-k-choudhary',
-    name: 'Vijay K. Choudhary',
-    role: 'Advisor to the Board',
-    group: 'executive',
-    seniority: 'senior',
-    initials: 'VKC',
-    headshotSrc: '/team/vijay-k-choudhary.jpg',
-    expertise: ['Special Situations', 'Income Tax', 'IBC'],
-    experienceYears: 40,
-    pastEmployers: ['NABARD (Board Member)'],
-    qualifications: ['Chartered Accountant'],
-    serviceSlugs: [],
+    serviceSlugs: ['finance-outsourcing'],
+    linkedinUrl: 'https://www.linkedin.com/in/geetanjali-bajaj-94909687/',
   },
   {
     slug: 'samarth-pandey',
@@ -313,7 +315,7 @@ export const team: TeamMember[] = [
     seniority: 'senior',
     initials: 'SP',
     headshotSrc: '/team/samarth-pandey.jpg',
-    email: 'samarth@nucleusadvisors.in', // TODO confirm
+    email: 'samarth.pandey@nucleusadvisors.in',
     expertise: ['SV - AIF', 'Transaction Advisory', 'Investment Banking'],
     experienceYears: 2,
     qualifications: ['B.Com', 'CFA (Pursuing)'],
@@ -324,6 +326,7 @@ export const team: TeamMember[] = [
       'He owns the day-to-day cadence with founders, the investor-map maintenance, and the issue tracker that holds every diligence ask accountable to closure. On most mandates he is the person you exchange the most emails with.',
     ].join('\n\n'),
     serviceSlugs: [],
+    linkedinUrl: 'https://www.linkedin.com/in/samarth-pandey-14b5601a5/',
   },
   {
     slug: 'astha-kumar',
@@ -337,6 +340,8 @@ export const team: TeamMember[] = [
     experienceYears: 2,
     qualifications: ['BA LLB', 'LLM'],
     serviceSlugs: [],
+    email: 'legal@nucleusadvisors.in',
+    linkedinUrl: 'https://www.linkedin.com/in/astha-kumar-a5a961173/',
   },
 ];
 
@@ -371,7 +376,7 @@ export const SERVICE_LEADS: Record<ServiceSlug, ServiceLead> = {
   'risk-advisory':         { lead: 'ashish-gupta' },
   'tax-regulatory':        { lead: 'abhishek-gupta', coLeads: ['hemendra-chauhan', 'rajat-singla'] },
   'corporate-secretarial': { lead: 'neha-rathore' },
-  'finance-outsourcing':   { lead: 'abhishek-gupta' },
+  'finance-outsourcing':   { lead: 'pravesh-goel', coLeads: ['aakash-kalra', 'rajat-singla'] },
   'aif-fund-management':   { lead: 'neha-rathore' },
 };
 
