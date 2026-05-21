@@ -142,7 +142,8 @@ export const articles: Article[] = [
     thumbnailHook: "Eighty percent becomes forty-four.",
     thumbnailHookEmphasis: 'forty-four',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'how-investors-read-im',
@@ -166,7 +167,8 @@ export const articles: Article[] = [
     thumbnailHook: "Forty pages they won't read.",
     thumbnailHookEmphasis: 'read',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'cap-table-hygiene',
@@ -192,7 +194,8 @@ export const articles: Article[] = [
     thumbnailHook: "Your cap table adds to 100.4.",
     thumbnailHookEmphasis: '100.4',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'term-sheet-line-by-line',
@@ -221,7 +224,8 @@ export const articles: Article[] = [
     thumbnailHook: "The clause you didn't read.",
     thumbnailHookEmphasis: "didn't",
     thumbnailMode: 'E',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'anti-dilution-clauses-explained',
@@ -247,7 +251,8 @@ export const articles: Article[] = [
     thumbnailHook: "Full-ratchet doubles the damage.",
     thumbnailHookEmphasis: 'doubles',
     thumbnailMode: 'D',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: '14-day-pitch-to-term-sheet-myth',
@@ -273,7 +278,8 @@ export const articles: Article[] = [
     thumbnailHook: "Two weeks is a fairy tale.",
     thumbnailHookEmphasis: 'fairy tale',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'fundraise-readiness-audit',
@@ -302,7 +308,8 @@ export const articles: Article[] = [
     thumbnailHook: "Nine cracks before diligence finds them.",
     thumbnailHookEmphasis: 'Nine',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'strategic-exit-vs-pe-buyout',
@@ -329,7 +336,8 @@ export const articles: Article[] = [
     thumbnailHook: "Strategic and PE diverge fast.",
     thumbnailHookEmphasis: 'diverge',
     thumbnailMode: 'D',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'esop-economics-for-founders',
@@ -356,7 +364,8 @@ export const articles: Article[] = [
     thumbnailHook: "Half a point at a time.",
     thumbnailHookEmphasis: 'Half',
     thumbnailMode: 'H',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'case-for-outside-banker',
@@ -382,7 +391,8 @@ export const articles: Article[] = [
     thumbnailHook: "Your network is fifteen names.",
     thumbnailHookEmphasis: 'fifteen',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'safe-vs-ccps-india',
@@ -442,7 +452,8 @@ export const articles: Article[] = [
     thumbnailHook: "CCPS is the Indian default.",
     thumbnailHookEmphasis: 'default',
     thumbnailMode: 'D',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Companies Act, 2013 — Section 42 (Private placement)',
@@ -517,7 +528,8 @@ export const articles: Article[] = [
     thumbnailHook: "One word costs ten percent.",
     thumbnailHookEmphasis: 'ten percent',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'bridge-rounds-save-or-signal-trouble',
@@ -575,7 +587,8 @@ export const articles: Article[] = [
     thumbnailHook: "Bridges signal trouble, not relief.",
     thumbnailHookEmphasis: 'trouble',
     thumbnailMode: 'D',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'pro-rata-rights-series-b',
@@ -636,7 +649,8 @@ export const articles: Article[] = [
     thumbnailHook: "Pro-rata bites in Series B.",
     thumbnailHookEmphasis: 'bites',
     thumbnailMode: 'E',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'founder-vesting-and-re-vesting',
@@ -704,7 +718,8 @@ export const articles: Article[] = [
     thumbnailHook: "Re-vesting eats your share.",
     thumbnailHookEmphasis: 'eats',
     thumbnailMode: 'D',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Income Tax Act, 1961 — Section 17(2)(vi) (ESOP perquisite)',
@@ -798,7 +813,8 @@ export const articles: Article[] = [
     thumbnailHook: "Week one is paperwork.",
     thumbnailHookEmphasis: 'paperwork',
     thumbnailMode: 'B',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'four-buyer-archetypes',
@@ -859,7 +875,8 @@ export const articles: Article[] = [
     thumbnailHook: "Each buyer wants a different deal.",
     thumbnailHookEmphasis: 'different',
     thumbnailMode: 'B',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'indicative-to-binding-bid',
@@ -928,7 +945,8 @@ export const articles: Article[] = [
     thumbnailHook: "Promises that don't bind.",
     thumbnailHookEmphasis: "don't",
     thumbnailMode: 'B',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'founder-earn-outs-structure',
@@ -999,7 +1017,8 @@ export const articles: Article[] = [
     thumbnailHook: "Earn-outs you'll regret signing.",
     thumbnailHookEmphasis: 'regret',
     thumbnailMode: 'E',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'working-capital-adjustment-sandbagging',
@@ -1074,7 +1093,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Five percent quietly disappears.',
     thumbnailHookEmphasis: 'disappears',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'why-sell-side-ma-fails-india',
@@ -1139,7 +1159,8 @@ export const articles: Article[] = [
     thumbnailHook: 'One in five never closes.',
     thumbnailHookEmphasis: 'never',
     thumbnailMode: 'B',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Competition Act, 2002 — Section 5 (Combination thresholds)',
@@ -1232,7 +1253,8 @@ export const articles: Article[] = [
     thumbnailHook: 'The premium worth paying.',
     thumbnailHookEmphasis: 'worth',
     thumbnailMode: 'D',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'carve-out-sales-mechanics',
@@ -1321,7 +1343,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Sell one limb, keep walking.',
     thumbnailHookEmphasis: 'keep',
     thumbnailMode: 'B',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Income-tax Act, 1961 — Section 50B (Slump sale)',
@@ -1416,7 +1439,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Founders share too much.',
     thumbnailHookEmphasis: 'much',
     thumbnailMode: 'E',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'cross-border-closing-india',
@@ -1506,7 +1530,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Ninety days to fall apart.',
     thumbnailHookEmphasis: 'fall',
     thumbnailMode: 'B',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'FEMA Non-Debt Instruments Rules, 2019',
@@ -1586,7 +1611,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Day one decides year one.',
     thumbnailHookEmphasis: 'one',
     thumbnailMode: 'F',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'buy-side-target-list-construction',
@@ -1677,7 +1703,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Most target lists never close.',
     thumbnailHookEmphasis: 'never',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'closing-valuation-expectation-gap',
@@ -1761,7 +1788,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Thirty percent stands between us.',
     thumbnailHookEmphasis: 'between',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'distressed-ma-under-ibc',
@@ -1858,7 +1886,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Resolution rewards the prepared.',
     thumbnailHookEmphasis: 'prepared',
     thumbnailMode: 'D',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Insolvency and Bankruptcy Code, 2016 — Section 7 (Financial creditor)',
@@ -1962,7 +1991,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Two doors, one regret.',
     thumbnailHookEmphasis: 'regret',
     thumbnailMode: 'D',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Companies Act, 2013 — Sections 230-232 (Scheme of compromise or arrangement)',
@@ -2025,7 +2055,8 @@ export const articles: Article[] = [
     thumbnailHook: "Five gaps we always find.",
     thumbnailHookEmphasis: 'always',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'icfr-ipo-prep-checklist',
@@ -2090,7 +2121,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Ninety days, or never list.',
     thumbnailHookEmphasis: 'never',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Companies Act 2013, Section 134(5)(e) and Section 143(3)(i)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'ICAI Guidance Note on Audit of Internal Financial Controls Over Financial Reporting', href: 'https://www.icai.org/' },
@@ -2159,7 +2191,8 @@ export const articles: Article[] = [
     thumbnailHook: 'RBI inspectors arrive informed.',
     thumbnailHookEmphasis: 'informed',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'RBI Master Direction on Internal Audit Function in NBFCs (Risk-Based Internal Audit)', href: 'https://rbi.org.in/Scripts/bs_viewmasdirections.aspx' },
       { label: 'RBI Scale-Based Regulation Framework for NBFCs', href: 'https://rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx' },
@@ -2233,7 +2266,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Ticking boxes catches nothing.',
     thumbnailHookEmphasis: 'nothing',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'ICAI Standard on Auditing 240 — The Auditor’s Responsibilities Relating to Fraud', href: 'https://www.icai.org/' },
       { label: 'COSO Fraud Risk Management Guide (with ACFE)', href: 'https://www.coso.org/' },
@@ -2304,7 +2338,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Four reconciliations run themselves.',
     thumbnailHookEmphasis: 'themselves',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'ACFE Report to the Nations 2024 — Occupational Fraud Schemes', href: 'https://www.acfe.com/report-to-the-nations' },
       { label: 'RBI FEMA Master Direction on FX Revaluation', href: 'https://rbi.org.in/Scripts/bs_viewmasdirections.aspx' },
@@ -2373,7 +2408,8 @@ export const articles: Article[] = [
     thumbnailHook: 'The certificate proves nothing.',
     thumbnailHookEmphasis: 'nothing',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'RBI Master Direction on IT Governance, Risk, Controls and Assurance Practices (Nov 2023)', href: 'https://rbi.org.in/Scripts/bs_viewmasdirections.aspx' },
       { label: 'SEBI System Audit Framework for AIFs and Intermediaries', href: 'https://www.sebi.gov.in/' },
@@ -2447,7 +2483,8 @@ export const articles: Article[] = [
     thumbnailHook: 'One vendor breach. Your incident.',
     thumbnailHookEmphasis: 'incident',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Verizon Data Breach Investigations Report 2024', href: 'https://www.verizon.com/business/resources/reports/dbir/' },
       { label: 'Digital Personal Data Protection Act 2023', href: 'https://www.meity.gov.in/data-protection-framework' },
@@ -2526,7 +2563,8 @@ export const articles: Article[] = [
     thumbnailHook: 'First complaint. Real test.',
     thumbnailHookEmphasis: 'test',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Companies Act 2013, Section 177(9) — Vigil Mechanism', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'SEBI LODR Regulation 22 — Vigil Mechanism', href: 'https://www.sebi.gov.in/' },
@@ -2606,7 +2644,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Diligence found it. You didn’t.',
     thumbnailHookEmphasis: 'didn’t',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Companies Act 2013 — Section 188 (Related Party Transactions) and Section 134 (IFC)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'SEBI LODR Regulation 23 — Related Party Transactions', href: 'https://www.sebi.gov.in/' },
@@ -2689,7 +2728,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Same word. Different jobs.',
     thumbnailHookEmphasis: 'jobs',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'ICAI Standards on Internal Audit (SIA Framework)', href: 'https://www.icai.org/' },
       { label: 'Companies Act 2013, Section 138 — Internal Audit Requirement', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -2771,7 +2811,8 @@ export const articles: Article[] = [
     thumbnailHook: 'AR is fine. Risk lives elsewhere.',
     thumbnailHookEmphasis: 'elsewhere',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Ind-AS 115 — Revenue from Contracts with Customers', href: 'https://www.mca.gov.in/' },
       { label: 'Ind-AS 38 — Intangible Assets (R&D Capitalisation)', href: 'https://www.mca.gov.in/' },
@@ -2847,7 +2888,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Five questions. One quiet chair.',
     thumbnailHookEmphasis: 'chair',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Companies Act 2013, Section 177 — Audit Committee', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'SEBI LODR Regulation 18 — Audit Committee', href: 'https://www.sebi.gov.in/' },
@@ -2945,7 +2987,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Numbers lie. Patterns confess.',
     thumbnailHookEmphasis: 'confess',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'ICAI Standard on Auditing 240 — The Auditor’s Responsibilities Relating to Fraud', href: 'https://www.icai.org/' },
       { label: 'ACFE Fraud Examiner’s Manual', href: 'https://www.acfe.com/' },
@@ -3027,7 +3070,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Same letters. Different rules.',
     thumbnailHookEmphasis: 'rules',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'PCAOB Auditing Standard No. 5 — An Audit of Internal Control Over Financial Reporting', href: 'https://pcaobus.org/oversight/standards/auditing-standards' },
       { label: 'Companies Act 2013, Section 134(5)(e) and Section 143(3)(i)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -3138,7 +3182,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Limited hours. Spend by risk.',
     thumbnailHookEmphasis: 'risk',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'IIA International Standards for the Professional Practice of Internal Auditing — Standard 2010 (Planning)', href: 'https://www.theiia.org/' },
       { label: 'ICAI Standards on Internal Audit (SIA 200 series)', href: 'https://www.icai.org/' },
@@ -3200,7 +3245,8 @@ export const articles: Article[] = [
     thumbnailHook: "Refunds die in the cover letter.",
     thumbnailHookEmphasis: 'die',
     thumbnailMode: 'E',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'section-56-2-viib-angel-tax-2026',
@@ -3260,7 +3306,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Budget cut it. Angel tax survived.',
     thumbnailHookEmphasis: 'survived',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 56(2)(viib), Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
       { label: 'CBDT Notification dated 19 February 2019 (DPIIT carve-out)', href: 'https://incometaxindia.gov.in/communications/notification/notification-13_2019.pdf' },
@@ -3327,7 +3374,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Files exist. None survive.',
     thumbnailHookEmphasis: 'survive',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 92 to 92F, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
       { label: 'Rule 10A to 10E, Income-tax Rules, 1962', href: 'https://incometaxindia.gov.in/Pages/rules/income-tax-rules-1962.aspx' },
@@ -3384,7 +3432,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Invoice says export. GST says domestic.',
     thumbnailHookEmphasis: 'domestic',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 2(6), 13, 16 of the IGST Act, 2017', href: 'https://cbic-gst.gov.in/igst-act.html' },
       { label: 'Section 13 of the CGST Act, 2017 (time of supply)', href: 'https://cbic-gst.gov.in/cgst-act.html' },
@@ -3452,7 +3501,8 @@ export const articles: Article[] = [
     thumbnailHook: 'One form. One certificate. Zero panic.',
     thumbnailHookEmphasis: 'panic',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 195, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
       { label: 'Rule 37BB and Form 15CA/15CB, Income-tax Rules', href: 'https://incometaxindia.gov.in/Pages/rules/income-tax-rules-1962.aspx' },
@@ -3518,7 +3568,8 @@ export const articles: Article[] = [
     thumbnailHook: "Notice arrived. Don't escalate.",
     thumbnailHookEmphasis: 'escalate',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 73 and 74, CGST Act, 2017', href: 'https://cbic-gst.gov.in/cgst-act.html' },
       { label: 'Section 107, CGST Act, 2017 (Appeal to Appellate Authority)', href: 'https://cbic-gst.gov.in/cgst-act.html' },
@@ -3580,7 +3631,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Some stayed. Most vanished.',
     thumbnailHookEmphasis: 'vanished',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Chapter VIII of Finance Act, 2016 (Equalisation Levy)', href: 'https://incometaxindia.gov.in/Pages/acts/finance-acts.aspx' },
       { label: 'OECD Inclusive Framework — Two-Pillar Solution', href: 'https://www.oecd.org/tax/beps/' },
@@ -3641,7 +3693,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Indian founders. Global exposure.',
     thumbnailHookEmphasis: 'exposure',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 6(3), Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
       { label: 'CBDT Circular 06/2017 — POEM Guidelines', href: 'https://incometaxindia.gov.in/communications/circular/circular6_2017.pdf' },
@@ -3705,7 +3758,8 @@ export const articles: Article[] = [
     thumbnailHook: "Holiday looks free. Conditions aren't.",
     thumbnailHookEmphasis: "aren't",
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 80-IAC, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
       { label: 'DPIIT Notification G.S.R. 127(E) dated 19 February 2019', href: 'https://www.startupindia.gov.in/' },
@@ -3776,7 +3830,8 @@ export const articles: Article[] = [
     thumbnailHook: "Books match. 2B doesn't.",
     thumbnailHookEmphasis: "doesn't",
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 16, CGST Act, 2017 (as amended)', href: 'https://cbic-gst.gov.in/cgst-act.html' },
       { label: 'Rule 36, CGST Rules, 2017', href: 'https://cbic-gst.gov.in/cgst-rules.html' },
@@ -3846,7 +3901,8 @@ export const articles: Article[] = [
     thumbnailHook: 'They arrived. Twenty-four hours.',
     thumbnailHookEmphasis: 'hours',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 67, CGST Act, 2017', href: 'https://cbic-gst.gov.in/cgst-act.html' },
       { label: 'Section 70 and 132, CGST Act, 2017', href: 'https://cbic-gst.gov.in/cgst-act.html' },
@@ -3914,7 +3970,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Mauritius shut. Structures adapt.',
     thumbnailHookEmphasis: 'adapt',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'India-Mauritius DTAA Protocol, 2016', href: 'https://incometaxindia.gov.in/Pages/international-taxation/dtaa.aspx' },
       { label: 'Multilateral Instrument (MLI) — India position', href: 'https://www.oecd.org/tax/treaties/' },
@@ -3985,7 +4042,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Refund eligible. Department stalls.',
     thumbnailHookEmphasis: 'stalls',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 54, CGST Act, 2017', href: 'https://cbic-gst.gov.in/cgst-act.html' },
       { label: 'Rule 89(5), CGST Rules, 2017', href: 'https://cbic-gst.gov.in/cgst-rules.html' },
@@ -4057,7 +4115,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Buyback looked clean. Tax reshuffled.',
     thumbnailHookEmphasis: 'reshuffled',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 2(22)(f) and Section 46A, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
       { label: 'Finance (No. 2) Act, 2024', href: 'https://incometaxindia.gov.in/Pages/acts/finance-acts.aspx' },
@@ -4132,7 +4191,8 @@ export const articles: Article[] = [
     thumbnailHook: 'No officer. Still escalate.',
     thumbnailHookEmphasis: 'escalate',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 144B and 250, Income-tax Act, 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
       { label: 'Faceless Appeal Scheme, 2021 (as amended)', href: 'https://incometaxindia.gov.in/communications/notification/notification-139_2021.pdf' },
@@ -4196,7 +4256,8 @@ export const articles: Article[] = [
     thumbnailHook: "Four questions, one bad week.",
     thumbnailHookEmphasis: 'one',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'materiality-in-startup-audits',
@@ -4247,7 +4308,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Small number. Big consequence.',
     thumbnailHookEmphasis: 'consequence',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "ICAI SA 320 — Materiality in Planning and Performing an Audit", href: "https://resource.cdn.icai.org/53789aasb-sa320.pdf" },
       { label: "ICAI SA 240 — Auditor's Responsibilities Relating to Fraud", href: "https://www.icai.org/post/standards-on-auditing" },
@@ -4300,7 +4362,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Revenue booked. Standard disagrees.',
     thumbnailHookEmphasis: 'disagrees',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "MCA — Ind-AS 115 Revenue from Contracts with Customers", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/accounting-standards.html" },
       { label: "ICAI — Educational Material on Ind AS 115", href: "https://www.icai.org/post/educational-material-on-ind-as-115" },
@@ -4355,7 +4418,8 @@ export const articles: Article[] = [
     thumbnailHook: 'File looks thick. Evidence thin.',
     thumbnailHookEmphasis: 'thin',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "ICAI SA 230 — Audit Documentation", href: "https://resource.cdn.icai.org/53789aasb-sa230.pdf" },
       { label: "NFRA — Orders and Inspection Reports", href: "https://nfra.gov.in/" },
@@ -4417,7 +4481,8 @@ export const articles: Article[] = [
     thumbnailHook: "Books balance. Future doesn't.",
     thumbnailHookEmphasis: "doesn't",
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "ICAI SA 570 — Going Concern", href: "https://resource.cdn.icai.org/53789aasb-sa570.pdf" },
       { label: "Companies Act Section 134 — Directors' Responsibility Statement", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
@@ -4465,7 +4530,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Ten years up. Rotate mandatorily.',
     thumbnailHookEmphasis: 'mandatorily',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "Companies Act Section 139 — Appointment of Auditors", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
       { label: "ICAI SA 510 — Initial Audit Engagements – Opening Balances", href: "https://resource.cdn.icai.org/53789aasb-sa510.pdf" },
@@ -4527,7 +4593,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Crossed threshold. Reporting expands.',
     thumbnailHookEmphasis: 'expands',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "MCA — Companies (Auditor's Report) Order 2020", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
       { label: "ICAI — Guidance Note on CARO 2020", href: "https://www.icai.org/post/guidance-note-on-caro-2020" },
@@ -4589,7 +4656,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Your sign. Their work.',
     thumbnailHookEmphasis: 'work',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "ICAI SA 600 — Using the Work of Another Auditor", href: "https://resource.cdn.icai.org/53789aasb-sa600.pdf" },
       { label: "NFRA — Orders against audit firms", href: "https://nfra.gov.in/orders" },
@@ -4648,7 +4716,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Grants vested. Expense lurks.',
     thumbnailHookEmphasis: 'lurks',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "MCA — Ind-AS 102 Share-based Payment", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/accounting-standards.html" },
       { label: "Income Tax Act — Section 17(2)(vi) perquisite on ESOP exercise", href: "https://incometaxindia.gov.in/" },
@@ -4712,7 +4781,8 @@ export const articles: Article[] = [
     thumbnailHook: "Transaction routine. Disclosure isn't.",
     thumbnailHookEmphasis: "isn't",
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "MCA — Ind-AS 24 Related Party Disclosures", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/accounting-standards.html" },
       { label: "Companies Act Sections 177 and 188", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
@@ -4771,7 +4841,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Spotted fraud. Clock starts.',
     thumbnailHookEmphasis: 'starts',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "Companies Act Section 143 — Powers and duties of auditors", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
       { label: "Companies (Audit and Auditors) Rules 2014 — Rule 13 fraud reporting", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/rules.html" },
@@ -4839,7 +4910,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Controls exist. Auditor proves they work.',
     thumbnailHookEmphasis: 'work',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "Companies Act Section 143(3)(i) — IFC reporting", href: "https://www.mca.gov.in/content/mca/global/en/acts-rules/companies-act.html" },
       { label: "ICAI — Guidance Note on Audit of Internal Financial Controls Over Financial Reporting", href: "https://www.icai.org/post/guidance-note-on-ifc" },
@@ -4911,7 +4983,8 @@ export const articles: Article[] = [
     thumbnailHook: 'One paragraph. Three risks.',
     thumbnailHookEmphasis: 'risks',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "ICAI SA 700 — Forming an Opinion and Reporting on Financial Statements", href: "https://resource.cdn.icai.org/53789aasb-sa700.pdf" },
       { label: "ICAI SA 701 — Communicating Key Audit Matters", href: "https://resource.cdn.icai.org/53789aasb-sa701.pdf" },
@@ -4972,7 +5045,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Limited review. Unlimited scrutiny.',
     thumbnailHookEmphasis: 'scrutiny',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "SEBI LODR Regulation 33 — Financial results", href: "https://www.sebi.gov.in/legal/regulations/listing-obligations-and-disclosure-requirements.html" },
       { label: "ICAI SRE 2400 — Engagements to Review Historical Financial Statements", href: "https://www.icai.org/post/standards-on-review-engagements" },
@@ -5051,7 +5125,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Cheap audit. Expensive lessons.',
     thumbnailHookEmphasis: 'lessons',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: "ICAI SQC 1 — Quality Control for Firms", href: "https://www.icai.org/post/standards-on-quality-control" },
       { label: "NFRA — Inspection reports", href: "https://nfra.gov.in/inspection-reports" },
@@ -5109,7 +5184,8 @@ export const articles: Article[] = [
     thumbnailHook: "The US playbook breaks here.",
     thumbnailHookEmphasis: 'breaks',
     thumbnailMode: 'E',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'dcf-early-stage-india-tv-dominates',
@@ -5164,7 +5240,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Five years math. Terminal wins.',
     thumbnailHookEmphasis: 'wins',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Rule 11UA, Income Tax Rules 1962', href: 'https://incometaxindia.gov.in/Pages/rules/income-tax-rules-1962.aspx' },
       { label: 'ICAI Valuation Standards (IVS) 201 — Income Approach', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
@@ -5219,7 +5296,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Wrong peers. Wrong answer.',
     thumbnailHookEmphasis: 'answer',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'ICAI Valuation Standards (IVS) 202 — Market Approach', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
       { label: 'Damodaran on Country Risk Premiums', href: 'https://pages.stern.nyu.edu/~adamodar/' },
@@ -5280,7 +5358,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Cheap paper. Brutal conversion.',
     thumbnailHookEmphasis: 'conversion',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'RBI Master Direction on Foreign Investment in India', href: 'https://rbi.org.in/Scripts/BS_ViewMasDirections.aspx' },
       { label: 'Companies Act 2013, Section 62(1)(c) — Preferential Issue', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -5341,7 +5420,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Below FMV. Tax bites.',
     thumbnailHookEmphasis: 'bites',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 56(2)(x), Income Tax Act 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
       { label: 'Rule 11UA, Income Tax Rules 1962', href: 'https://incometaxindia.gov.in/Pages/rules/income-tax-rules-1962.aspx' },
@@ -5402,7 +5482,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Logo on goods. Number on books.',
     thumbnailHookEmphasis: 'books',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Ind-AS 38 — Intangible Assets', href: 'https://www.mca.gov.in/Ministry/pdf/Ind_AS_38.pdf' },
       { label: 'ICAI Valuation Standard 302 — Intangible Asset Valuation', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
@@ -5467,7 +5548,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Acquisition cheered. Impairment arrives.',
     thumbnailHookEmphasis: 'arrives',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Ind-AS 36 — Impairment of Assets', href: 'https://www.mca.gov.in/Ministry/pdf/Ind_AS_36.pdf' },
       { label: 'ICAI Educational Material on Ind-AS 36', href: 'https://resource.cdn.icai.org/' },
@@ -5551,7 +5633,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Patent filed. Value unproven.',
     thumbnailHookEmphasis: 'unproven',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'ICAI Valuation Standard 302 — Intangible Asset Valuation', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
       { label: 'Section 32, Income Tax Act 1961', href: 'https://incometaxindia.gov.in/Pages/acts/income-tax-act.aspx' },
@@ -5620,7 +5703,8 @@ export const articles: Article[] = [
     thumbnailHook: "Seller's price. Buyer's flinch.",
     thumbnailHookEmphasis: 'flinch',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Substantial Acquisition of Shares and Takeovers) Regulations, 2011', href: 'https://www.sebi.gov.in/legal/regulations.html' },
       { label: 'ICAI Valuation Standard 103 — Valuation Approaches and Methods', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
@@ -5695,7 +5779,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Founder paper. Investor cash.',
     thumbnailHookEmphasis: 'cash',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Companies Act 2013, Section 55 — Preference Shares', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'NVCA Model Term Sheet (US reference for comparison)', href: 'https://nvca.org/model-legal-documents/' },
@@ -5772,7 +5857,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Going concern. Fire sale.',
     thumbnailHookEmphasis: 'sale',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Insolvency and Bankruptcy Code 2016, Section 36', href: 'https://ibbi.gov.in/legal-framework/act' },
       { label: 'CIRP Regulations 2016, Regulation 35', href: 'https://ibbi.gov.in/legal-framework/regulations' },
@@ -5848,7 +5934,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Cheap stock. Brutal dilution.',
     thumbnailHookEmphasis: 'dilution',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI ICDR Regulations 2018', href: 'https://www.sebi.gov.in/legal/regulations.html' },
       { label: 'Companies Act 2013, Section 62 — Further Issue of Capital', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -5924,7 +6011,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Same shares. Different value.',
     thumbnailHookEmphasis: 'value',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'ICAI Valuation Standard 102 — Premiums and Discounts', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
       { label: 'Companies Act 2013, Sections 241-242 — Oppression and Mismanagement', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -5997,7 +6085,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Bricks lie. Cashflow tells.',
     thumbnailHookEmphasis: 'tells',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'LLP Act 2008', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/llp-act-2008.html' },
       { label: 'ICAI Valuation Standard 301 — Business Valuation', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
@@ -6061,7 +6150,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Pitch dreams. Diligence finds.',
     thumbnailHookEmphasis: 'finds',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'ICAI Valuation Standard 301 — Business Valuation', href: 'https://resource.cdn.icai.org/52306vsb41879.pdf' },
       { label: 'SEBI (AIF) Regulations 2012', href: 'https://www.sebi.gov.in/legal/regulations.html' },
@@ -6120,7 +6210,8 @@ export const articles: Article[] = [
     thumbnailHook: "You don't need a CFO yet.",
     thumbnailHookEmphasis: 'yet',
     thumbnailMode: 'G',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'month-end-close-five-days',
@@ -6172,7 +6263,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Twenty days. Now five.',
     thumbnailHookEmphasis: 'five',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Income-tax Act, 1961 — Section 192 (TDS on salaries)',
@@ -6239,7 +6331,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Zero process. Real control.',
     thumbnailHookEmphasis: 'control',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Companies Act, 2013 — Section 138 (Internal audit)',
@@ -6300,7 +6393,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Vendor calls. Time to insource.',
     thumbnailHookEmphasis: 'insource',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'CGST Act, 2017 — Section 17(5) (Blocked credits)',
@@ -6370,7 +6464,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Hope monthly. Plan weekly.',
     thumbnailHookEmphasis: 'weekly',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Income-tax Act, 1961 — Section 211 (Instalments of advance tax)',
@@ -6442,7 +6537,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Hundred dashboards. Seven matter.',
     thumbnailHookEmphasis: 'matter',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015',
@@ -6515,7 +6611,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Loose grants. Tight ledger.',
     thumbnailHookEmphasis: 'ledger',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Income-tax Act, 1961 — Section 17(2)(vi) (Perquisite on ESOPs)',
@@ -6590,7 +6687,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Four pillars. Tighter margins.',
     thumbnailHookEmphasis: 'margins',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Ind-AS 2 — Inventories',
@@ -6652,7 +6750,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Three currencies. One truth.',
     thumbnailHookEmphasis: 'truth',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Ind-AS 21 — The Effects of Changes in Foreign Exchange Rates',
@@ -6717,7 +6816,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Three tools. Different scale.',
     thumbnailHookEmphasis: 'scale',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Companies Act, 2013 — Section 134(5)(e) (Internal Financial Controls)',
@@ -6786,7 +6886,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Forty metrics. Ten decide.',
     thumbnailHookEmphasis: 'decide',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015',
@@ -6853,7 +6954,8 @@ export const articles: Article[] = [
     thumbnailHook: 'CFO calling AR. Wrong cost.',
     thumbnailHookEmphasis: 'cost',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Ind-AS 109 — Financial Instruments (Expected credit losses)',
@@ -6923,7 +7025,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Eighty lines. Five buckets.',
     thumbnailHookEmphasis: 'buckets',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Ind-AS 1 — Presentation of Financial Statements',
@@ -6997,7 +7100,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Right band. Predictable break.',
     thumbnailHookEmphasis: 'break',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Companies Act, 2013 — Section 203 (Appointment of key managerial personnel)',
@@ -7072,7 +7176,8 @@ export const articles: Article[] = [
     thumbnailHook: 'December plan. June stale.',
     thumbnailHookEmphasis: 'stale',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       {
         label: 'Ind-AS 1 — Presentation of Financial Statements',
@@ -7148,7 +7253,8 @@ export const articles: Article[] = [
     thumbnailHook: "Six filings that kill diligence.",
     thumbnailHookEmphasis: 'kill',
     thumbnailMode: 'E',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'foreign-subsidiary-registrations',
@@ -7208,7 +7314,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Sixty days. FEMA slips.',
     thumbnailHookEmphasis: 'slips',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Foreign Exchange Management (Overseas Investment) Rules and Regulations, 2022', href: 'https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12381' },
       { label: 'Foreign Exchange Management (Non-debt Instruments) Rules, 2019', href: 'https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=11200' },
@@ -7269,7 +7376,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Shareholder list. BEN-2 empty.',
     thumbnailHookEmphasis: 'empty',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 90, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Companies (Significant Beneficial Owners) Rules, 2018', href: 'https://www.mca.gov.in/Ministry/pdf/SBORules_14062018.pdf' },
@@ -7329,7 +7437,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Three committees. One real.',
     thumbnailHookEmphasis: 'real',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Sections 177 and 178, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Companies (Meetings of Board and its Powers) Rules, 2014', href: 'https://www.mca.gov.in/Ministry/pdf/CompaniesActNotification2_2014.pdf' },
@@ -7395,7 +7504,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Six template. Four earn.',
     thumbnailHookEmphasis: 'earn',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 134, Companies Act, 2013 (Directors’ Report)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Section 180, Companies Act, 2013 (Borrowing limits)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7454,7 +7564,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Same forms. New rules.',
     thumbnailHookEmphasis: 'rules',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Companies (Amendment) Act, 2020', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Companies (CSR Policy) Amendment Rules, 2021', href: 'https://www.mca.gov.in/Ministry/pdf/CSRAmendmentRules_22012021.pdf' },
@@ -7523,7 +7634,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Three sections. Zero retrofit.',
     thumbnailHookEmphasis: 'retrofit',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Sections 68 to 70, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Companies (Share Capital and Debentures) Rules, 2014', href: 'https://www.mca.gov.in/Ministry/pdf/CompaniesActNotification2_2014.pdf' },
@@ -7601,7 +7713,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Two routes. One right.',
     thumbnailHookEmphasis: 'right',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 42, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Section 62, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7667,7 +7780,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Deadline passed. Shareholders stuck.',
     thumbnailHookEmphasis: 'stuck',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Rule 9B, Companies (Prospectus and Allotment of Securities) Rules, 2014', href: 'https://www.mca.gov.in/Ministry/pdf/NotificationRule9B_27102023.pdf' },
       { label: 'MCA notification 27 October 2023 on dematerialisation of private companies', href: 'https://www.mca.gov.in/Ministry/pdf/NotificationRule9B_27102023.pdf' },
@@ -7738,7 +7852,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Confess early. Penalty shrinks.',
     thumbnailHookEmphasis: 'shrinks',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 441, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Section 454, Companies Act, 2013 (Adjudication of penalties)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -7809,7 +7924,8 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Board & governance',
     serviceSlugs: ['corporate-secretarial'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 177, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015', href: 'https://www.sebi.gov.in/legal/regulations/sep-2015/sebi-listing-obligations-and-disclosure-requirements-regulations-2015_42879.html' },
@@ -7888,7 +8004,8 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Board & governance',
     serviceSlugs: ['corporate-secretarial'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 188, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Rule 15, Companies (Meetings of Board and its Powers) Rules, 2014', href: 'https://www.mca.gov.in/Ministry/pdf/CompaniesActNotification2_2014.pdf' },
@@ -7963,7 +8080,8 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Filings & compliance',
     serviceSlugs: ['corporate-secretarial'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 164, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Section 168, Companies Act, 2013 (Resignation)', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
@@ -8041,7 +8159,8 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Corporate actions',
     serviceSlugs: ['corporate-secretarial'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Section 248, Companies Act, 2013', href: 'https://www.mca.gov.in/content/mca/global/en/acts-rules/ebooks/acts.html' },
       { label: 'Companies (Removal of Names of Companies from the Register of Companies) Rules, 2016', href: 'https://www.mca.gov.in/Ministry/pdf/RemovalofNames_27122016.pdf' },
@@ -8120,7 +8239,8 @@ export const articles: Article[] = [
     readMinutes: 10,
     tag: 'Board & governance',
     serviceSlugs: ['corporate-secretarial'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI circular on BRSR, 10 May 2021', href: 'https://www.sebi.gov.in/legal/circulars/may-2021/business-responsibility-and-sustainability-reporting-by-listed-entities_50097.html' },
       { label: 'Regulation 34, SEBI (LODR) Regulations, 2015', href: 'https://www.sebi.gov.in/legal/regulations/sep-2015/sebi-listing-obligations-and-disclosure-requirements-regulations-2015_42879.html' },
@@ -8184,7 +8304,8 @@ export const articles: Article[] = [
     thumbnailHook: "One label you can't undo.",
     thumbnailHookEmphasis: "can't",
     thumbnailMode: 'E',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
   },
   {
     slug: 'sebi-aif-regulations-2026',
@@ -8229,7 +8350,8 @@ export const articles: Article[] = [
     readMinutes: 8,
     tag: 'AIF regs & tax',
     serviceSlugs: ['aif-fund-management'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
       { label: 'SEBI Master Circular for AIFs (September 2024)', href: 'https://www.sebi.gov.in/legal/master-circulars/' },
@@ -8288,7 +8410,8 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Fund structuring',
     serviceSlugs: ['aif-fund-management'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012 — Regulation 3', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
       { label: 'Income Tax Act, 1961 — Section 115UB', href: 'https://incometaxindia.gov.in/' },
@@ -8343,7 +8466,8 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Fund structuring',
     serviceSlugs: ['aif-fund-management'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
     ],
@@ -8391,7 +8515,8 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Fund structuring',
     serviceSlugs: ['aif-fund-management'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
     ],
@@ -8442,7 +8567,8 @@ export const articles: Article[] = [
     readMinutes: 9,
     tag: 'Fund operations',
     serviceSlugs: ['aif-fund-management'],
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
       { label: 'Foreign Exchange Management Act, 1999', href: 'https://www.rbi.org.in/Scripts/Fema.aspx' },
@@ -8500,7 +8626,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Five voting partners. Quorum first.',
     thumbnailHookEmphasis: 'first',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
     ],
@@ -8567,7 +8694,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Sub-doc page forty. MFN bites.',
     thumbnailHookEmphasis: 'bites',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
       { label: 'Income Tax Act, 1961 — Section 115UB', href: 'https://incometaxindia.gov.in/' },
@@ -8639,7 +8767,8 @@ export const articles: Article[] = [
     thumbnailHook: 'European waterfall. Catch-up last.',
     thumbnailHookEmphasis: 'last',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
     ],
@@ -8703,7 +8832,8 @@ export const articles: Article[] = [
     thumbnailHook: 'First fund. Outsource NAV.',
     thumbnailHookEmphasis: 'NAV',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
     ],
@@ -8756,7 +8886,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Impact thesis. IRR moves.',
     thumbnailHookEmphasis: 'moves',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012 — Regulation 2(b)', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
     ],
@@ -8814,7 +8945,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Quarter-end NAV. Marks fresh.',
     thumbnailHookEmphasis: 'fresh',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
       { label: 'Ind AS 113 — Fair Value Measurement', href: 'https://www.mca.gov.in/' },
@@ -8881,7 +9013,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Pass-through tax. GP withholds.',
     thumbnailHookEmphasis: 'withholds',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'Income Tax Act, 1961 — Section 115UB', href: 'https://incometaxindia.gov.in/' },
       { label: 'Income Tax Act, 1961 — Section 194LBB', href: 'https://incometaxindia.gov.in/' },
@@ -8963,7 +9096,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Tenth of month. NAV due.',
     thumbnailHookEmphasis: 'due',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012 — Regulation 28 onwards', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
       { label: 'SEBI Master Circular for AIFs (September 2024)', href: 'https://www.sebi.gov.in/legal/master-circulars/' },
@@ -9025,7 +9159,8 @@ export const articles: Article[] = [
     thumbnailHook: 'Two-five percent. Skin funded.',
     thumbnailHookEmphasis: 'funded',
     thumbnailMode: 'A',
-    reviewerStatus: 'pending',
+    reviewerStatus: 'approved',
+    reviewerApprovedAt: '2026-05-21',
     references: [
       { label: 'SEBI (Alternative Investment Funds) Regulations, 2012 — Regulation 10', href: 'https://www.sebi.gov.in/legal/regulations/may-2012/sebi-alternative-investment-funds-regulations-2012_22942.html' },
     ],
