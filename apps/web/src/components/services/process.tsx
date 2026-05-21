@@ -4,6 +4,11 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import type { ProcessDossier } from '@/content/site';
 import { SectionHeader } from '@/components/sections';
+import {
+  SERVICE_LEADS,
+  getTeamMemberBySlug,
+  type ServiceSlug,
+} from '@/content/team';
 
 type ProcessProps = Readonly<{
   serviceTitle: string;
@@ -11,6 +16,7 @@ type ProcessProps = Readonly<{
   title?: string;
   phases?: { name: string; text: string }[];
   dossier?: ProcessDossier;
+  serviceSlug: ServiceSlug;
 }>;
 
 const GENERIC_PHASES = [
@@ -23,7 +29,7 @@ const GENERIC_PHASES = [
 const AUTOPLAY_MS = 4200;
 const RESUME_AFTER_USER_MS = 8000;
 
-export function Process({ serviceTitle, ordinal, title, phases, dossier }: ProcessProps) {
+export function Process({ serviceTitle, ordinal, title, phases, dossier, serviceSlug }: ProcessProps) {
   if (dossier) {
     return (
       <DossierProcess
@@ -31,6 +37,7 @@ export function Process({ serviceTitle, ordinal, title, phases, dossier }: Proce
         title={title ?? 'Process'}
         serviceTitle={serviceTitle}
         dossier={dossier}
+        serviceSlug={serviceSlug}
       />
     );
   }
@@ -74,12 +81,29 @@ function DossierProcess({
   title,
   serviceTitle,
   dossier,
-}: Readonly<{ ordinal: string; title: string; serviceTitle: string; dossier: ProcessDossier }>) {
+  serviceSlug,
+}: Readonly<{
+  ordinal: string;
+  title: string;
+  serviceTitle: string;
+  dossier: ProcessDossier;
+  serviceSlug: ServiceSlug;
+}>) {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const stages = dossier.phases;
   const stagesLen = stages.length;
+  const leads = SERVICE_LEADS[serviceSlug];
+  const leadMember = getTeamMemberBySlug(leads.lead);
+  const coLeadMembers = (leads.coLeads ?? [])
+    .map((slug) => getTeamMemberBySlug(slug))
+    .filter((m): m is NonNullable<typeof m> => Boolean(m));
+  const leadLabel = leadMember
+    ? coLeadMembers.length > 0
+      ? `Lead: ${leadMember.name} · with ${coLeadMembers.map((m) => m.name).join(', ')}`
+      : `Lead: ${leadMember.name}`
+    : '';
 
   const advance = useCallback(() => {
     setActive((i) => (i + 1) % stagesLen);
@@ -146,7 +170,7 @@ function DossierProcess({
           </div>
           <div className="service-v1-dossier-doc-meta">
             <span>{dossier.engagementType}</span>
-            <span>{dossier.partnerLabel}</span>
+            <span>{leadLabel}</span>
             <span className="service-v1-dossier-chip">
               <span className="service-v1-dossier-chip-pulse" aria-hidden="true" />
               <span>{currentStage.ordinal} · in review</span>
