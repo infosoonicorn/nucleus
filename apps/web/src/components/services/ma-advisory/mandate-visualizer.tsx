@@ -184,7 +184,6 @@ export function MAMandateVisualizer({ ordinal }: Props) {
     <section className="service-v1-section ma-mandate" aria-labelledby="ma-mandate-heading">
       <header className="ma-mandate-head">
         <p className="ma-mandate-eyebrow">
-          <span className="ma-mandate-eyebrow-num">●{ordinal}</span>
           <span aria-hidden="true" className="ma-mandate-eyebrow-bar" />
           <span>Two mandates · two postures</span>
         </p>

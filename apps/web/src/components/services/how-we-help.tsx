@@ -49,7 +49,6 @@ export function HowWeHelp({ ordinal, flat, detailed }: HowWeHelpProps) {
     <section className="service-v1-section service-v1-help">
       <header className="service-v1-help-header">
         <p className="service-v1-help-eyebrow">
-          <span>●{ordinal}</span>
           <span aria-hidden="true" className="service-v1-help-eyebrow-rule" />
           <span>How we help</span>
         </p>

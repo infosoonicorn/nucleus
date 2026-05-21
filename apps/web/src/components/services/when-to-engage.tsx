@@ -68,7 +68,6 @@ export function WhenToEngage({ ordinal, moments }: WhenToEngageProps) {
     <section className="service-v1-section service-v1-when">
       <header className="service-v1-when-header">
         <p className="service-v1-when-eyebrow">
-          <span className="service-v1-when-eyebrow-num">●{ordinal}</span>
           <span aria-hidden="true" className="service-v1-when-eyebrow-bar" />
           <span>When to engage</span>
         </p>

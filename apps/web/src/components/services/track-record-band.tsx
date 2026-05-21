@@ -20,7 +20,6 @@ export function TrackRecordBand({ ordinal, metrics }: Props) {
     >
       <header className="client-logos-head">
         <p id="track-record-eyebrow" className="client-logos-eyebrow">
-          <span className="client-logos-eyebrow-num">●{ordinal}</span>
           <span className="client-logos-eyebrow-bar" aria-hidden="true" />
           <span>Track record</span>
         </p>

@@ -84,7 +84,6 @@ export function Faq({ ordinal, serviceTitle, faq }: FaqProps) {
       <header className="service-v1-faq-head">
         <div>
           <p className="service-v1-faq-eyebrow">
-            <span className="service-v1-faq-eyebrow-num">●{ordinal}</span>
             <span className="service-v1-faq-eyebrow-bar" aria-hidden="true" />
             <span>FAQs · On the record</span>
           </p>

@@ -25,7 +25,6 @@ export function ServiceInsights({
     <section className="service-v1-section service-v1-articles">
       <header className="service-v1-articles-header">
         <p className="service-v1-articles-eyebrow">
-          <span className="service-v1-articles-eyebrow-num">●{ord}</span>
           <span aria-hidden="true" className="service-v1-articles-eyebrow-bar" />
           <span>Insights</span>
         </p>

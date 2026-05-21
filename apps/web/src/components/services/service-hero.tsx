@@ -84,7 +84,7 @@ export function ServiceHero({
           <FadeIn duration={0.55}>
             <p className="home-v3-eyebrow">
               <span aria-hidden="true" />
-              ●{ordinal} / {title}
+              {title}
             </p>
           </FadeIn>
 
@@ -161,7 +161,7 @@ export function ServiceHero({
               }
             >
               {c.stamp ? <span className="svc-hero-card-stamp">{c.stamp}</span> : null}
-              <span className="svc-hero-card-eyebrow">{c.ordinal} {c.label}</span>
+              <span className="svc-hero-card-eyebrow">{c.label}</span>
               <p className="svc-hero-card-meta">{c.meta}</p>
               <span className="svc-hero-card-line" aria-hidden="true" />
               <span className="svc-hero-card-line svc-hero-card-line-half" aria-hidden="true" />

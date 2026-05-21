@@ -262,7 +262,6 @@ function FundraiseHeader({ ordinal }: Readonly<{ ordinal: string }>) {
   return (
     <header className="service-v1-fundraise-header">
       <p className="service-v1-fundraise-eyebrow">
-        <span>●{ordinal}</span>
         <span aria-hidden="true" className="service-v1-fundraise-eyebrow-rule" />
         <span>Fundraise</span>
       </p>

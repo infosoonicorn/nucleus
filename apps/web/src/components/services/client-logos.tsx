@@ -29,7 +29,6 @@ export function ClientLogos({ ordinal, clients, metrics }: Props) {
     <section className="service-v1-section client-logos-section" aria-labelledby="client-logos-eyebrow">
       <header className="client-logos-head">
         <p id="client-logos-eyebrow" className="client-logos-eyebrow">
-          <span className="client-logos-eyebrow-num">●{ordinal}</span>
           <span className="client-logos-eyebrow-bar" aria-hidden="true" />
           <span>Track record</span>
         </p>

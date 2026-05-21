@@ -64,7 +64,7 @@ export default function TeamPage() {
 
         <section className="team-page-section" aria-labelledby="leadership-heading">
           <header className="team-page-section-head">
-            <p className="team-page-section-eyebrow">●01</p>
+            <p className="team-page-section-eyebrow">Leadership</p>
             <h2 id="leadership-heading" className="team-page-section-title">
               Leadership.
             </h2>
@@ -81,7 +81,7 @@ export default function TeamPage() {
 
         <section className="team-page-section" aria-labelledby="executive-heading">
           <header className="team-page-section-head">
-            <p className="team-page-section-eyebrow">●02</p>
+            <p className="team-page-section-eyebrow">Executive team</p>
             <h2 id="executive-heading" className="team-page-section-title">
               Executive team.
             </h2>
