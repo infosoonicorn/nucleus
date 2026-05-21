@@ -347,25 +347,6 @@ const SENIORITY_ORDER: Record<TeamMember['seniority'], number> = {
 };
 
 /**
- * Lead partner per service line. The named partner here always appears
- * first on the corresponding service page's team sidebar, ahead of
- * other partners tagged for the same service. This matches the firm's
- * declared owner-of-practice mapping so the right face anchors each
- * service line; other tagged partners stack below by seniority.
- */
-const SERVICE_LEAD_PARTNER: Record<string, string> = {
-  'investment-banking':    'vijay-singh-rathore',
-  'ma-advisory':           'pravesh-goel',        // Aakash second
-  'risk-advisory':         'ashish-gupta',
-  'tax-regulatory':        'abhishek-gupta',
-  'assurance':             'abhishek-gupta',
-  'valuations':            'vijay-singh-rathore',
-  'finance-outsourcing':   'rajat-singla',
-  'corporate-secretarial': 'neha-rathore',
-  'aif-fund-management':   'neha-rathore',
-};
-
-/**
  * Literal-union of every team member's slug. Used to type-check
  * `SERVICE_LEADS`.
  */
