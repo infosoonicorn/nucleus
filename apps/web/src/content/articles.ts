@@ -157,7 +157,7 @@ export const articles: Article[] = [
       "The hardest section is the FAQ pack. We sit with the founder for half a day and write every question an investor will ask. Why is gross margin so low. Why does CAC look like that. Why did the previous CFO leave. Why is your largest customer also your largest shareholder. The questions are the awkward ones. The answers are honest, with the underlying numbers shown.",
       "Founders sometimes resist this. They worry that surfacing every concern up front kills the deal. The opposite is true. The investor was going to find it anyway in week three of diligence, in a far more damaging way. Showing it on page eight of the IM with the data already laid out turns a possible deal-killer into a non-event. That's the whole job of the IM.",
     ].join('\n\n'),
-    authorSlug: 'samarth-pandey',
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2025-12-29',
     readMinutes: 6,
     tag: 'Investor narrative',
