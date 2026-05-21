@@ -71,6 +71,8 @@ while the rest of the platform comes online.
   - Acceptance: every service line has a typed `lead` + optional `coLeads` in `team.ts`'s exported `SERVICE_LEADS`; service-page dossier band renders real names live (no more `partnerLabel` placeholder); `getTeamForService` sorts lead → co-leads → seniority and filters to leadership; `serviceSlugs[]` reconciled across all 12 team members; build-time validator `pnpm lint:team` gates every commit; spec at `docs/superpowers/specs/2026-05-21-service-team-mapping-design.md`.
 - [x] Service ↔ team mapping — article reauthoring (Phase 2).
   - Acceptance: all 135 articles' `authorSlug` reassigned from placeholders to real leadership partners per `SERVICE_LEADS`; executives (Astha, Samarth, Geetanjali, V. K. Choudhary) removed as authors; new validator `pnpm lint:articles:authors` checks every article author is a leadership partner whose `serviceSlugs[]` covers the article's service; leadership `expertise` tags realigned so `/team` cards no longer surface mismatched service signals. Phase 3 (`/team` profile enrichment, lead/co-lead avatar/link in dossier band) deferred.
+- [x] Article tag canonicalisation.
+  - Acceptance: every article's `tag` is one of 31 canonical entries (3–4 per service line); `/insights` filter chip cloud reads as a real filter (each chip lands on 2–8 articles); build-time validator `pnpm lint:articles:tags` locks the vocabulary; spec'd in handoff.
 - [~] About / Careers / Insights detail / Contact polished to the home + service-page baseline.
   - Acceptance: same typography rhythm, motion, spacing and section primitives as the homepage and Investment Banking page.
 - [ ] Bespoke design centerpieces for the remaining eight service pages.
