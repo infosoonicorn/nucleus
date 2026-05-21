@@ -1927,7 +1927,7 @@ export const services: Service[] = [
       'Expense verification report.',
       'Fixed asset register.',
     ],
-    experts: ['CA Pravesh Goel', 'CA Aakash Kalra', 'CA Rajat Singla', 'Geetanjali Virmani'],
+    experts: ['CA Pravesh Goel', 'CA Aakash Kalra', 'CA Rajat Singla', 'CA Hemendra Chauhan', 'Geetanjali Virmani'],
     leadMagnet: 'Monthly MIS Template for Founders',
     cta: 'Strengthen finance operations',
     icon: BarChart3,
