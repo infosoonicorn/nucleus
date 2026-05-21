@@ -129,7 +129,7 @@ export function HomeHero() {
               <WordReveal text="From incorporation" />
             </span>
             <span
-              className="home-v3-headline-row home-v3-headline-row-em"
+              className="home-v3-headline-row home-v3-headline-row-em-light"
               aria-hidden="true"
             >
               <WordReveal text="to listing readiness." delay={0.35} />

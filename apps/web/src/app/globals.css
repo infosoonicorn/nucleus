@@ -2196,11 +2196,12 @@ html.lenis body {
 /* ---------- lifecycle ladder (right column of hero) ---------- */
 
 .home-v3-ladder {
-  --ladder-height: clamp(420px, 56vh, 560px);
+  --ladder-height: clamp(460px, 60vh, 600px);
   --ladder-dot: 36px;
-  display: grid;
-  gap: 0.6rem;
+  display: flex;
+  flex-direction: column;
   height: var(--ladder-height);
+  justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
   max-width: 360px;
@@ -2260,13 +2261,12 @@ html.lenis body {
 }
 
 .home-v3-ladder-list {
-  align-content: space-between;
-  display: grid;
-  gap: 0;
-  grid-template-rows: repeat(9, 1fr);
-  height: calc(var(--ladder-height) - 4.5rem);
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: space-between;
   list-style: none;
-  margin: 2.25rem 0;
+  margin: 1.25rem 0;
   padding: 0;
   position: relative;
   z-index: 2;
@@ -2276,7 +2276,9 @@ html.lenis body {
   align-items: center;
   display: grid;
   gap: 0.7rem;
+  grid-auto-flow: dense;
   grid-template-columns: 1fr var(--ladder-dot) 1fr;
+  grid-template-rows: auto;
   opacity: 0;
   animation: ladderStopIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -2289,12 +2291,14 @@ html.lenis body {
 
 .home-v3-ladder-stop:nth-child(odd) .home-v3-ladder-stop-label {
   grid-column: 1;
+  grid-row: 1;
   justify-self: end;
   text-align: right;
 }
 
 .home-v3-ladder-stop:nth-child(even) .home-v3-ladder-stop-label {
   grid-column: 3;
+  grid-row: 1;
   justify-self: start;
   text-align: left;
 }
@@ -2340,24 +2344,19 @@ html.lenis body {
 
 .home-v3-ladder-stage {
   align-items: center;
+  align-self: center;
   color: var(--v3-muted);
   display: inline-flex;
   font-size: 0.7rem;
   font-weight: 800;
   gap: 0.45rem;
-  justify-self: center;
   letter-spacing: 0.18em;
   position: relative;
   text-transform: uppercase;
   z-index: 2;
 }
 
-.home-v3-ladder-stage-top {
-  align-self: start;
-}
-
 .home-v3-ladder-stage-bottom {
-  align-self: end;
   color: var(--v3-red);
 }
 
@@ -2747,14 +2746,14 @@ html.lenis body {
 }
 
 .home-v3-orbital-card-slug {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--v3-muted);
   font-feature-settings: "tnum" 1;
   font-size: 0.74rem;
   font-weight: 700;
 }
 
 .home-v3-orbital-card h3 {
-  color: #fff;
+  color: var(--v3-ink);
   font-size: 1.08rem;
   font-weight: 740;
   letter-spacing: -0.005em;
@@ -2763,7 +2762,7 @@ html.lenis body {
 }
 
 .home-v3-orbital-card p {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--v3-muted);
   font-size: 0.86rem;
   line-height: 1.5;
   margin: 0;
@@ -2771,8 +2770,8 @@ html.lenis body {
 
 .home-v3-orbital-card-meta {
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid var(--v3-line);
+  color: var(--v3-ink-2);
   display: flex;
   font-size: 0.76rem;
   font-weight: 680;
@@ -2782,18 +2781,18 @@ html.lenis body {
 
 .home-v3-orbital-card-meta-icon {
   align-items: center;
-  color: var(--v3-red-soft);
+  color: var(--v3-red);
   display: flex;
 }
 
 .home-v3-orbital-card-meta-rule {
-  background: rgba(255, 255, 255, 0.22);
+  background: var(--v3-line-strong);
   height: 10px;
   width: 1px;
 }
 
 .home-v3-orbital-card-related {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid var(--v3-line);
   display: grid;
   gap: 0.5rem;
   padding-top: 0.7rem;
@@ -2801,7 +2800,7 @@ html.lenis body {
 
 .home-v3-orbital-card-related h4 {
   align-items: center;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--v3-muted);
   display: flex;
   font-size: 0.64rem;
   font-weight: 800;
@@ -2820,9 +2819,9 @@ html.lenis body {
 .home-v3-orbital-card-related-pill {
   align-items: center;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--v3-line-strong);
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--v3-ink-2);
   cursor: pointer;
   display: inline-flex;
   font: inherit;
@@ -2838,15 +2837,15 @@ html.lenis body {
 
 .home-v3-orbital-card-related-pill:hover,
 .home-v3-orbital-card-related-pill:focus-visible {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.42);
-  color: #fff;
+  background: rgba(221, 16, 23, 0.06);
+  border-color: var(--v3-red);
+  color: var(--v3-red);
   outline: none;
 }
 
 .home-v3-orbital-card-cta {
   align-items: center;
-  color: var(--v3-red-soft);
+  color: var(--v3-red);
   display: inline-flex;
   font-size: 0.82rem;
   font-weight: 760;
@@ -2855,7 +2854,7 @@ html.lenis body {
 }
 
 .home-v3-orbital-card-cta:hover {
-  color: #fff;
+  color: var(--v3-navy);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5183,7 +5182,6 @@ html.lenis body {
     transform: none !important;
   }
 
-  .home-v3-hero-shape,
   .home-v3-hero-particle {
     animation: none !important;
     transform: none !important;
