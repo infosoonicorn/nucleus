@@ -2,15 +2,16 @@
 // have a bespoke route (currently IB + M&A). See companion notes below.
 import type { ReactNode } from 'react';
 import type { Service } from '@/content/site';
-import { getClientsForService } from '@/content/clients';
 import { getTeamForService } from '@/content/team';
 import { getResourcesForService } from '@/content/resources';
 import { DEFAULT_SECTION_ORDINAL } from '@/content/section-ordinals';
+import type { ServiceSlug } from '@/content/clients-roster';
 import { PageShell } from '@/components/site-chrome';
 import { ServiceHero } from './service-hero';
 import { deriveHeroCards } from './hero-cards';
 import { WhenToEngage } from './when-to-engage';
-import { ClientLogos } from './client-logos';
+import { ServiceClients } from './service-clients';
+import { TrackRecordBand } from './track-record-band';
 import { HowWeHelp } from './how-we-help';
 import { ServiceInsights } from './service-insights';
 import { Process } from './process';
@@ -61,7 +62,6 @@ export function ServicePageDefault({
    *  HomeDepth block instead. */
   hideProof?: boolean;
 }>) {
-  const clients = getClientsForService(service.slug);
   const team = getTeamForService(service.slug);
   const resources = getResourcesForService(service.slug);
   const ord = DEFAULT_SECTION_ORDINAL;
@@ -84,10 +84,10 @@ export function ServicePageDefault({
                 liveStrip={service.heroLive}
               />
 
-              {/* ●01 Track record — counter row + scrolling logo strip */}
-              <ClientLogos
+              {/* ●01 Track record — 4-metric counter row only. The
+                  client logo strip moved down to before Insights. */}
+              <TrackRecordBand
                 ordinal={ord.clientLogos}
-                clients={clients}
                 metrics={service.metrics}
               />
             </>
@@ -125,6 +125,10 @@ export function ServicePageDefault({
 
           {/* Optional service-specific add-on (e.g. AIF operating-proof) */}
           {extraSection}
+
+          {/* Businesses we've worked with — compact horizontal scroller,
+              6 visible at a time, "See all N" to the filtered clients hub. */}
+          <ServiceClients serviceSlug={service.slug as ServiceSlug} />
 
           {/* ●05 Editorial */}
           <ServiceInsights service={service} ordinal={ord.insights} />

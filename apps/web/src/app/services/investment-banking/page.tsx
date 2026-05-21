@@ -4,7 +4,9 @@ import { PageShell } from '@/components/site-chrome';
 import { services } from '@/content/site';
 import { ServiceHero } from '@/components/services/service-hero';
 import { WhenToEngage } from '@/components/services/when-to-engage';
-import { ClientLogos } from '@/components/services/client-logos';
+import { ServiceClients } from '@/components/services/service-clients';
+import { TrackRecordBand } from '@/components/services/track-record-band';
+import type { ServiceSlug } from '@/content/clients-roster';
 import { HowWeHelp } from '@/components/services/how-we-help';
 import { ServiceInsights } from '@/components/services/service-insights';
 import { Process } from '@/components/services/process';
@@ -19,7 +21,6 @@ import { ServicePageShell } from '@/components/services/service-page-shell';
 import { SidebarLatestReports, SidebarCTA } from '@/components/services/sidebar-blocks';
 import { TeamBlock } from '@/components/team/team-block';
 import { getResourcesForService } from '@/content/resources';
-import { getClientsForService } from '@/content/clients';
 import { getTeamForService } from '@/content/team';
 import { IB_SECTION_ORDINAL } from '@/content/section-ordinals';
 import { deriveHeroCards } from '@/components/services/hero-cards';
@@ -40,7 +41,6 @@ export default function InvestmentBankingPage() {
   const service = services.find((s) => s.slug === SERVICE_SLUG);
   if (!service) notFound();
   const resources = getResourcesForService(service.slug);
-  const clients = getClientsForService(service.slug);
   const team = getTeamForService(service.slug);
 
   return (
@@ -64,10 +64,10 @@ export default function InvestmentBankingPage() {
                 heroCards={deriveHeroCards(service.processDossier)}
                 liveStrip={service.heroLive}
               />
-              {/* ●01 Track record — 4-metric counter row + scrolling logo strip */}
-              <ClientLogos
+              {/* ●01 Track record — 4-metric counter row. Logo strip
+                  moved into the main column before Insights. */}
+              <TrackRecordBand
                 ordinal={SECTION_ORDINAL.clientLogos}
-                clients={clients}
                 metrics={service.metrics}
               />
             </>
@@ -108,6 +108,9 @@ export default function InvestmentBankingPage() {
 
           {/* Evidence — no eyebrow number; only renders if data exists */}
           <Proof service={service} />
+
+          {/* Businesses we've worked with — compact scroller (6 visible). */}
+          <ServiceClients serviceSlug={service.slug as ServiceSlug} />
 
           {/* ●07 Read deeper — editorial */}
           <ServiceInsights service={service} ordinal={SECTION_ORDINAL.insights} />

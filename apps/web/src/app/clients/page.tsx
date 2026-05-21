@@ -1,21 +1,59 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { PageShell } from '@/components/site-chrome';
-import { clients } from '@/content/clients';
 import { services } from '@/content/site';
+import { CLIENTS, type ServiceSlug } from '@/content/clients-roster';
+import { MACRO_INDUSTRIES, macroForClient, macroTitle } from '@/content/industry-taxonomy';
+
+// Augment each client with a macro-industry slug. Keep the raw sub-sector
+// title around for the hover-tooltip context.
+const ENRICHED = CLIENTS.map((c) => ({
+  ...c,
+  macroSlug: macroForClient(c.slug, c.industrySlug),
+  subSectorTitle: c.industry, // the raw sub-sector e.g. "Drone Tech"
+  industryTitle: macroTitle(macroForClient(c.slug, c.industrySlug)),
+}));
 
 export const metadata: Metadata = {
   title: 'Clients — Nucleus Advisors',
   description:
-    'Founders and companies Nucleus Advisors has worked with, grouped by service line.',
+    'Companies Nucleus has advised, audited, or helped raise capital. Filter by service line or industry.',
 };
 
-type SearchParams = Promise<{ service?: string | string[] }>;
+type SearchParams = Promise<{ service?: string | string[]; industry?: string | string[] }>;
 
-function pickFirst(value: string | string[] | undefined): string | undefined {
-  if (Array.isArray(value)) return value[0];
-  return value;
+function pickFirst(v: string | string[] | undefined): string | undefined {
+  return Array.isArray(v) ? v[0] : v;
+}
+
+function isService(s: string | undefined): s is ServiceSlug {
+  return !!s && services.some((svc) => svc.slug === s);
+}
+
+const SERVICE_TITLE: Record<ServiceSlug, string> = Object.fromEntries(
+  services.map((s) => [s.slug, s.title]),
+) as Record<ServiceSlug, string>;
+
+const INDUSTRY_TITLE: Record<string, string> = Object.fromEntries(
+  MACRO_INDUSTRIES.map((m) => [m.slug, m.title]),
+);
+
+function chipUrl(
+  params: { service?: string; industry?: string; toggle?: 'service' | 'industry'; value?: string },
+): string {
+  const next = new URLSearchParams();
+  let svc = params.service;
+  let ind = params.industry;
+  if (params.toggle === 'service') {
+    svc = svc === params.value ? undefined : params.value;
+  }
+  if (params.toggle === 'industry') {
+    ind = ind === params.value ? undefined : params.value;
+  }
+  if (svc) next.set('service', svc);
+  if (ind) next.set('industry', ind);
+  const qs = next.toString();
+  return qs ? `/clients?${qs}` : '/clients';
 }
 
 export default async function ClientsHubPage({
@@ -24,20 +62,38 @@ export default async function ClientsHubPage({
   searchParams: SearchParams;
 }) {
   const raw = await searchParams;
-  const serviceFilter = pickFirst(raw.service);
+  const rawService = pickFirst(raw.service);
+  const rawIndustry = pickFirst(raw.industry);
+  const activeService = isService(rawService) ? rawService : undefined;
+  const activeIndustry = rawIndustry && INDUSTRY_TITLE[rawIndustry] ? rawIndustry : undefined;
 
-  // Build "service slug → clients" map from the central clients list.
-  // Only services that have at least one tagged client get a section.
-  const grouped: { service: (typeof services)[number]; entries: typeof clients }[] = services
-    .map((svc) => ({
-      service: svc,
-      entries: clients.filter((c) => c.serviceSlugs.includes(svc.slug)),
-    }))
-    .filter((g) => g.entries.length > 0)
-    .filter((g) => (serviceFilter ? g.service.slug === serviceFilter : true));
+  // Filter
+  const filtered = ENRICHED.filter((c) => {
+    if (activeService && !c.services.includes(activeService)) return false;
+    if (activeIndustry && c.macroSlug !== activeIndustry) return false;
+    return true;
+  });
 
-  const totalClientsAcross = clients.length;
-  const totalShown = grouped.reduce((n, g) => n + g.entries.length, 0);
+  // Service counts (respect active industry — toggling a service shows
+  // every match within the currently-selected industry).
+  const serviceCounts: Record<ServiceSlug, number> = {} as Record<ServiceSlug, number>;
+  for (const svc of services) serviceCounts[svc.slug as ServiceSlug] = 0;
+  for (const c of ENRICHED) {
+    if (activeIndustry && c.macroSlug !== activeIndustry) continue;
+    for (const s of c.services) serviceCounts[s] = (serviceCounts[s] ?? 0) + 1;
+  }
+
+  // Industry counts (respect active service).
+  const industryCounts: Record<string, number> = {};
+  for (const c of ENRICHED) {
+    if (activeService && !c.services.includes(activeService)) continue;
+    industryCounts[c.macroSlug] = (industryCounts[c.macroSlug] ?? 0) + 1;
+  }
+  const industriesSorted = Object.entries(industryCounts)
+    .filter(([, n]) => n > 0)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+
+  const totalAcross = ENRICHED.length;
 
   return (
     <PageShell>
@@ -45,100 +101,174 @@ export default async function ClientsHubPage({
         <section className="hub-hero">
           <p className="hub-eyebrow">Clients</p>
           <h1 className="hub-title">
-            Founders we&rsquo;ve <em>worked with</em>.
+            Companies we&rsquo;ve <em>worked with</em>.
           </h1>
           <p className="hub-lede">
-            Companies Nucleus has advised or invested in, grouped by service line. One
-            company can appear under more than one service when it&rsquo;s worked with us
-            on multiple workstreams.
+            {totalAcross}{' '}companies across our nine service lines. Filter by service
+            to see who we&rsquo;ve delivered for, by industry to see depth in a sector,
+            or combine both.
           </p>
         </section>
 
-        <section className="hub-filters" aria-label="Filter clients">
-          <div className="hub-filter-row">
-            <span className="hub-filter-label">Service —</span>
+        <section className="clients-filterbar" aria-label="Filter clients">
+          <div className="clients-filter-row">
+            <span className="clients-filter-label">Service</span>
             <FilterChip
-              href="/clients"
-              active={!serviceFilter}
-              label={`All · ${totalClientsAcross}`}
+              href={chipUrl({ industry: activeIndustry })}
+              active={!activeService}
+              label="All services"
+              count={
+                activeIndustry
+                  ? ENRICHED.filter((c) => c.macroSlug === activeIndustry).length
+                  : totalAcross
+              }
             />
             {services
-              .map((s) => ({
-                slug: s.slug,
-                title: s.title,
-                count: clients.filter((c) => c.serviceSlugs.includes(s.slug)).length,
+              .map((svc) => ({
+                slug: svc.slug as ServiceSlug,
+                title: svc.title,
+                count: serviceCounts[svc.slug as ServiceSlug] ?? 0,
               }))
-              .filter((s) => s.count > 0)
-              .sort((a, b) => b.count - a.count)
+              .filter((s) => s.count > 0 || s.slug === activeService)
+              .sort((a, b) => b.count - a.count || a.title.localeCompare(b.title))
               .map((s) => (
                 <FilterChip
                   key={s.slug}
-                  href={`/clients?service=${s.slug}`}
-                  active={serviceFilter === s.slug}
-                  label={`${s.title} · ${s.count}`}
+                  href={chipUrl({
+                    service: activeService,
+                    industry: activeIndustry,
+                    toggle: 'service',
+                    value: s.slug,
+                  })}
+                  active={activeService === s.slug}
+                  label={s.title}
+                  count={s.count}
                 />
               ))}
           </div>
+
+          <details className="clients-filter-row clients-filter-industry" open={!!activeIndustry}>
+            <summary>
+              <span className="clients-filter-label">Industry</span>
+              <span className="clients-filter-summary-hint">
+                {activeIndustry
+                  ? INDUSTRY_TITLE[activeIndustry]
+                  : `All ${industriesSorted.length} industries`}
+              </span>
+            </summary>
+            <div className="clients-filter-industry-chips">
+              <FilterChip
+                href={chipUrl({ service: activeService })}
+                active={!activeIndustry}
+                label="All industries"
+                count={activeService ? filtered.length : totalAcross}
+              />
+              {industriesSorted.map(([slug, count]) => (
+                <FilterChip
+                  key={slug}
+                  href={chipUrl({
+                    service: activeService,
+                    industry: activeIndustry,
+                    toggle: 'industry',
+                    value: slug,
+                  })}
+                  active={activeIndustry === slug}
+                  label={INDUSTRY_TITLE[slug]}
+                  count={count}
+                />
+              ))}
+            </div>
+          </details>
+
+          {(activeService || activeIndustry) && (
+            <div className="clients-filter-active">
+              <span className="clients-filter-active-label">Showing</span>
+              <strong>{filtered.length}</strong>
+              <span>
+                {filtered.length === 1 ? 'company' : 'companies'}
+                {activeService ? ` in ${SERVICE_TITLE[activeService]}` : ''}
+                {activeIndustry ? ` × ${INDUSTRY_TITLE[activeIndustry]}` : ''}
+              </span>
+              <Link href="/clients" className="clients-filter-clear">
+                Clear filters →
+              </Link>
+            </div>
+          )}
         </section>
 
-        <section className="hub-grid-section">
-          {grouped.length === 0 ? (
+        <section className="clients-grid-section">
+          {filtered.length === 0 ? (
             <div className="hub-empty">
-              <p>No clients tagged for this service yet.</p>
+              <p>No companies match this combination.</p>
               <Link href="/clients" className="hub-empty-reset">
-                Clear filter
+                Clear filters
               </Link>
             </div>
           ) : (
-            <div className="clients-hub-groups">
-              {grouped.map((g) => (
-                <section key={g.service.slug} className="clients-hub-group">
-                  <header className="clients-hub-group-head">
-                    <div>
-                      <p className="clients-hub-group-eyebrow">
-                        <span className="clients-hub-group-eyebrow-bar" aria-hidden="true" />
-                        <span>{g.service.title}</span>
-                      </p>
-                      <p className="clients-hub-group-count">
-                        {g.entries.length} {g.entries.length === 1 ? 'company' : 'companies'}
-                      </p>
-                    </div>
-                    <Link
-                      href={`/services/${g.service.slug}`}
-                      className="clients-hub-group-link"
-                    >
-                      Visit {g.service.title} →
-                    </Link>
-                  </header>
-
-                  <ul className="clients-hub-grid">
-                    {g.entries.map((c) => (
-                      <li key={`${g.service.slug}-${c.slug}`} className="clients-hub-cell">
-                        <div className="clients-hub-logo-wrap" aria-hidden="true">
-                          <Image
-                            src={c.logoSrc}
-                            alt=""
-                            width={120}
-                            height={48}
-                            className="clients-hub-logo"
-                            sizes="120px"
-                          />
-                        </div>
-                        <p className="clients-hub-name">{c.name}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
+            <ul className="clients-roster-grid">
+              {filtered.map((c) => (
+                <li key={c.slug + '-' + c.macroSlug} className="client-card">
+                  <div className="client-card-logo">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={c.logoSrc}
+                      alt={c.name}
+                      className="client-card-logo-img"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div className="client-card-body">
+                    <p className="client-card-name">{c.name}</p>
+                    <p className="client-card-meta">
+                      <Link
+                        href={chipUrl({
+                          service: activeService,
+                          toggle: 'industry',
+                          value: c.macroSlug,
+                        })}
+                        className={`client-card-meta-link client-card-industry${activeIndustry === c.macroSlug ? ' is-active' : ''}`}
+                        title={
+                          c.subSectorTitle && c.subSectorTitle !== c.industryTitle
+                            ? `Sub-sector: ${c.subSectorTitle}`
+                            : c.industryTitle
+                        }
+                      >
+                        {c.industryTitle}
+                      </Link>
+                      {c.services.length > 0 && (
+                        <>
+                          <span className="client-card-meta-sep" aria-hidden="true">·</span>
+                          {c.services.map((svc, i) => (
+                            <span key={svc} className="client-card-service-wrap">
+                              {i > 0 && (
+                                <span className="client-card-meta-sep" aria-hidden="true">·</span>
+                              )}
+                              <Link
+                                href={chipUrl({
+                                  industry: activeIndustry,
+                                  toggle: 'service',
+                                  value: svc,
+                                })}
+                                className={`client-card-meta-link client-card-service${activeService === svc ? ' is-active' : ''}`}
+                                title={
+                                  c.rawServiceLabels.length
+                                    ? `Engagements: ${c.rawServiceLabels.join(', ')}`
+                                    : SERVICE_TITLE[svc]
+                                }
+                              >
+                                {SERVICE_TITLE[svc]}
+                              </Link>
+                            </span>
+                          ))}
+                        </>
+                      )}
+                    </p>
+                  </div>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
-
-          {!serviceFilter ? (
-            <p className="clients-hub-footnote">
-              Showing {totalShown} {totalShown === 1 ? 'tagging' : 'taggings'} across{' '}
-              {grouped.length} {grouped.length === 1 ? 'service line' : 'service lines'}.
-            </p>
-          ) : null}
         </section>
       </main>
     </PageShell>
@@ -149,14 +279,16 @@ function FilterChip({
   href,
   active,
   label,
-}: Readonly<{ href: string; active: boolean; label: string }>) {
+  count,
+}: Readonly<{ href: string; active: boolean; label: string; count: number }>) {
   return (
     <Link
       href={href}
-      className={`hub-chip ${active ? 'is-active' : ''}`}
+      className={`clients-chip ${active ? 'is-active' : ''}`}
       aria-current={active ? 'page' : undefined}
     >
-      {label}
+      <span>{label}</span>
+      <span className="clients-chip-count">{count}</span>
     </Link>
   );
 }
