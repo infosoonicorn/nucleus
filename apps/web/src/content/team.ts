@@ -289,7 +289,7 @@ export const team: TeamMember[] = [
     experienceYears: 15,
     pastEmployers: ['Genpact'],
     qualifications: ['Chartered Accountant'],
-    serviceSlugs: ['finance-outsourcing', 'assurance'],
+    serviceSlugs: [],
   },
   {
     slug: 'vijay-k-choudhary',
@@ -303,7 +303,7 @@ export const team: TeamMember[] = [
     experienceYears: 40,
     pastEmployers: ['NABARD (Board Member)'],
     qualifications: ['Chartered Accountant'],
-    serviceSlugs: ['tax-regulatory'],
+    serviceSlugs: [],
   },
   {
     slug: 'samarth-pandey',
@@ -323,7 +323,7 @@ export const team: TeamMember[] = [
       'Samarth works alongside Vijay on the investment banking bench. He drives the build phase of every mandate — three-statement model, base/bull/bear scenarios, narrative deck, information memorandum, data room scoping and the FAQ pack that fronts the diligence call.',
       'He owns the day-to-day cadence with founders, the investor-map maintenance, and the issue tracker that holds every diligence ask accountable to closure. On most mandates he is the person you exchange the most emails with.',
     ].join('\n\n'),
-    serviceSlugs: ['investment-banking', 'aif-fund-management'],
+    serviceSlugs: [],
   },
   {
     slug: 'astha-kumar',
@@ -336,7 +336,7 @@ export const team: TeamMember[] = [
     expertise: ['Agreement Drafting', 'M&A Documentation', 'AIF Compliance'],
     experienceYears: 2,
     qualifications: ['BA LLB', 'LLM'],
-    serviceSlugs: ['ma-advisory', 'corporate-secretarial', 'aif-fund-management'],
+    serviceSlugs: [],
   },
 ];
 
