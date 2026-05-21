@@ -5155,7 +5155,7 @@ export const articles: Article[] = [
       "If you are a founder going into a fundraise or an acquisition discussion, knowing that terminal value dominates changes how you negotiate. The buyer's pushback will come on the exit multiple and the discount rate. Those are where you need your evidence ready: listed-peer trading multiples, transaction comparables, sector-specific WACC studies.",
       "The buyer who tries to chip away at your year-three revenue assumption is wasting their leverage. The buyer who pushes back on a 12x exit multiple when listed peers trade at 14x is asking the right question. Be ready for the second conversation.",
     ].join('\n\n'),
-    authorSlug: 'samarth-pandey',
+    authorSlug: 'vijay-singh-rathore',
     publishedOn: '2026-03-09',
     readMinutes: 10,
     tag: 'DCF',
