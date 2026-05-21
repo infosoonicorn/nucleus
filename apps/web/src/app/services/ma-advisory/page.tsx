@@ -92,6 +92,7 @@ export default function MAAdvisoryPage() {
             title={service.processTitle}
             phases={service.process}
             dossier={service.processDossier}
+            serviceSlug={service.slug}
           />
 
           {/* Evidence — renders only if data exists */}

@@ -117,6 +117,7 @@ export function ServicePageDefault({
             title={service.processTitle}
             phases={service.process}
             dossier={service.processDossier}
+            serviceSlug={service.slug}
           />
 
           {/* Evidence — only renders when data exists AND not suppressed */}

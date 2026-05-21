@@ -100,6 +100,7 @@ export default function InvestmentBankingPage() {
             title={service.processTitle}
             phases={service.process}
             dossier={service.processDossier}
+            serviceSlug={service.slug}
           />
 
           {/* ●06 Differentiator — in-house Soonicorn fund */}
