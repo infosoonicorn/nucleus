@@ -112,7 +112,7 @@ export const team: TeamMember[] = [
     initials: 'PG',
     headshotSrc: '/team/pravesh-goel.jpg',
     // email TODO confirm
-    expertise: ['M&A', 'vCFO', 'Process Re-engineering'],
+    expertise: ['M&A', 'Buy-side / Sell-side', 'Deal Structuring'],
     experienceYears: 20,
     pastEmployers: [
       { name: 'Deloitte', src: '/team/logos/deloitte.png' },
@@ -160,7 +160,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'AG',
     headshotSrc: '/team/ashish-gupta.jpg',
-    expertise: ['Internal Audit', 'vCFO (NBFC)', 'Bank Audits'],
+    expertise: ['Internal Audit', 'ICFR', 'Risk Management'],
     experienceYears: 13,
     pastEmployers: [
       { name: 'ICICI Bank', src: '/team/logos/icici-bank.png' },
@@ -185,7 +185,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'ABG',
     headshotSrc: '/team/abhishek-gupta.jpg',
-    expertise: ['Statutory Audit', 'IFC & Process Re-engineering', 'Ind-AS'],
+    expertise: ['Statutory Audit', 'Direct Tax', 'Controllership'],
     experienceYears: 6,
     pastEmployers: [
       { name: 'ACME', src: '/team/logos/acme.png' },
@@ -208,7 +208,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'AK',
     headshotSrc: '/team/aakash-kalra.jpg',
-    expertise: ['Deals', 'M&A', 'vCFO'],
+    expertise: ['Deals', 'M&A', 'Diligence'],
     experienceYears: 10,
     pastEmployers: [
       { name: 'Deloitte', src: '/team/logos/deloitte.png' },
@@ -232,7 +232,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'HC',
     headshotSrc: '/team/hemendra-chauhan.jpg',
-    expertise: ['GST', 'Controllership', 'Compliance'],
+    expertise: ['GST', 'Income Tax', 'Compliance'],
     experienceYears: 8,
     qualifications: ['Chartered Accountant'],
     shortBio:
@@ -251,7 +251,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'NR',
     headshotSrc: '/team/neha-rathore.jpg',
-    expertise: ['Secretarial Compliance', 'Due Diligence', 'AIF Compliance'],
+    expertise: ['Secretarial Compliance', 'AIF Compliance', 'FEMA & ROC'],
     experienceYears: 7,
     qualifications: ['Company Secretary'],
     shortBio:
@@ -270,7 +270,7 @@ export const team: TeamMember[] = [
     seniority: 'partner',
     initials: 'RS',
     headshotSrc: '/team/rajat-singla.jpg',
-    expertise: ['GST', 'Controllership', 'Income Tax'],
+    expertise: ['GST', 'Income Tax', 'TDS'],
     experienceYears: 3,
     qualifications: ['Chartered Accountant'],
     serviceSlugs: ['tax-regulatory'],
