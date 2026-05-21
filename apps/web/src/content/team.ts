@@ -394,17 +394,19 @@ export const SERVICE_LEADS: Record<ServiceSlug, ServiceLead> = {
   'aif-fund-management':   { lead: 'neha-rathore' },
 };
 
-export function getTeamForService(slug: string): TeamMember[] {
-  const leadSlug = SERVICE_LEAD_PARTNER[slug];
+export function getTeamForService(slug: ServiceSlug): TeamMember[] {
+  const entry = SERVICE_LEADS[slug];
+  const leadOrder: TeamSlug[] = entry ? [entry.lead, ...(entry.coLeads ?? [])] : [];
   return team
-    .filter((m) => m.serviceSlugs.includes(slug))
+    .filter((m) => m.group === 'leadership' && m.serviceSlugs.includes(slug))
     .sort((a, b) => {
-      // Declared lead partner wins.
-      if (leadSlug) {
-        if (a.slug === leadSlug && b.slug !== leadSlug) return -1;
-        if (b.slug === leadSlug && a.slug !== leadSlug) return 1;
+      const ai = leadOrder.indexOf(a.slug as TeamSlug);
+      const bi = leadOrder.indexOf(b.slug as TeamSlug);
+      if (ai !== -1 || bi !== -1) {
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
       }
-      // Then by seniority.
       return SENIORITY_ORDER[a.seniority] - SENIORITY_ORDER[b.seniority];
     });
 }
