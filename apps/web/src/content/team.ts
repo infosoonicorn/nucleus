@@ -198,7 +198,7 @@ export const team: TeamMember[] = [
       'His work spans assurance services such as utilisation certificates, RBI and FEMA compliance, and buy-back related requirements. He has also handled internal audits, process re-engineering, internal financial controls, physical verifications, income tax audits, and litigation.',
       'Focused on building trust and delivering value, he helps clients navigate regulatory complexities, enhance processes, and achieve their objectives effectively.',
     ].join('\n\n'),
-    serviceSlugs: ['assurance', 'tax-regulatory'],
+    serviceSlugs: ['assurance', 'tax-regulatory', 'finance-outsourcing'],
   },
   {
     slug: 'aakash-kalra',
@@ -241,7 +241,7 @@ export const team: TeamMember[] = [
       'Hemendra specialises in GST and Finance Controllership, with a focus on Indirect Taxation (GST). He has a remarkable track record of helping companies secure hassle-free GST refunds and managing GST compliances in a way that minimises litigation matters.',
       'In the realm of financial management, he excels in maintaining accurate and compliant books of accounts, streamlining compliance processes, and implementing strategic frameworks to support startups in optimising their finance and accounts functions. His expertise ensures regulatory adherence, operational efficiency, and sustainable growth, contributing to the firm\'s reputation for delivering excellence.',
     ].join('\n\n'),
-    serviceSlugs: ['tax-regulatory', 'finance-outsourcing'],
+    serviceSlugs: ['tax-regulatory'],
   },
   {
     slug: 'neha-rathore',
@@ -273,7 +273,7 @@ export const team: TeamMember[] = [
     expertise: ['GST', 'Controllership', 'Income Tax'],
     experienceYears: 3,
     qualifications: ['Chartered Accountant'],
-    serviceSlugs: ['finance-outsourcing', 'tax-regulatory'],
+    serviceSlugs: ['tax-regulatory'],
   },
 
   // ─── Executive Team ────────────────────────────────────────────────
