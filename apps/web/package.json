@@ -7,9 +7,10 @@
     "dev:turbo": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings=0 && pnpm lint:team && pnpm lint:articles:authors && pnpm lint:articles",
+    "lint": "eslint . --max-warnings=0 && pnpm lint:team && pnpm lint:articles:authors && pnpm lint:articles:tags && pnpm lint:articles",
     "lint:articles": "node scripts/lint-articles.mjs",
     "lint:articles:authors": "node scripts/lint-article-authors.mjs",
+    "lint:articles:tags": "node scripts/lint-article-tags.mjs",
     "lint:team": "node scripts/lint-team-services.mjs",
     "new-article": "node scripts/new-article.mjs",
     "typecheck": "tsc --noEmit"
