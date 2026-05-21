@@ -24,6 +24,10 @@
  * - LinkedIn URLs left empty until each partner provides them.
  */
 
+import type { Service } from './site';
+
+export type ServiceSlug = Service['slug'];
+
 /**
  * Past employer entry. `name` is required and is used as both the text-
  * pill label (default render) and the alt-text when a logo image is
@@ -359,6 +363,35 @@ const SERVICE_LEAD_PARTNER: Record<string, string> = {
   'finance-outsourcing':   'rajat-singla',
   'corporate-secretarial': 'neha-rathore',
   'aif-fund-management':   'neha-rathore',
+};
+
+/**
+ * Literal-union of every team member's slug. Used to type-check
+ * `SERVICE_LEADS`.
+ */
+export type TeamSlug = (typeof team)[number]['slug'];
+
+export type ServiceLead = {
+  lead: TeamSlug;
+  coLeads?: readonly TeamSlug[];
+};
+
+/**
+ * Single source of truth for who leads (and co-leads) each service line.
+ * Consumed by `getTeamForService` for sort order and by `process.tsx` for
+ * the rendered partner block. Validated at build time by
+ * `scripts/lint-team-services.mjs` (added in a later task in this plan).
+ */
+export const SERVICE_LEADS: Record<ServiceSlug, ServiceLead> = {
+  'investment-banking':    { lead: 'vijay-singh-rathore' },
+  'ma-advisory':           { lead: 'pravesh-goel', coLeads: ['aakash-kalra'] },
+  'valuations':            { lead: 'vijay-singh-rathore' },
+  'assurance':             { lead: 'abhishek-gupta' },
+  'risk-advisory':         { lead: 'ashish-gupta' },
+  'tax-regulatory':        { lead: 'abhishek-gupta', coLeads: ['hemendra-chauhan', 'rajat-singla'] },
+  'corporate-secretarial': { lead: 'neha-rathore' },
+  'finance-outsourcing':   { lead: 'abhishek-gupta' },
+  'aif-fund-management':   { lead: 'neha-rathore' },
 };
 
 export function getTeamForService(slug: string): TeamMember[] {
