@@ -373,7 +373,7 @@ export const SERVICE_LEADS: Record<ServiceSlug, ServiceLead> = {
   'ma-advisory':           { lead: 'pravesh-goel', coLeads: ['aakash-kalra'] },
   'valuations':            { lead: 'vijay-singh-rathore' },
   'assurance':             { lead: 'abhishek-gupta' },
-  'risk-advisory':         { lead: 'ashish-gupta' },
+  'risk-advisory':         { lead: 'ashish-gupta', coLeads: ['abhishek-gupta'] },
   'tax-regulatory':        { lead: 'pravesh-goel', coLeads: ['abhishek-gupta', 'hemendra-chauhan', 'rajat-singla'] },
   'corporate-secretarial': { lead: 'neha-rathore' },
   'finance-outsourcing':   { lead: 'pravesh-goel', coLeads: ['aakash-kalra', 'hemendra-chauhan', 'rajat-singla'] },
