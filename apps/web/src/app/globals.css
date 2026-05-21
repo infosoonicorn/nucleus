@@ -14465,121 +14465,159 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   }
 }
 
-/* ----- journey timeline ----- */
+/* =============================================================
+   AboutJourney — dedicated section on the About page.
+   People-only timeline: partner avatars + capability pills,
+   Nucleus logo punctuating the 2019 founding,
+   closing "how it started vs how it's going" image.
+   Sits between AboutHero and WhoWeServe.
+   ============================================================= */
 
-.about-hero-journey {
-  margin: clamp(4rem, 7vw, 6rem) auto 0;
-  max-width: 880px;
+.about-journey {
+  background: linear-gradient(
+    180deg,
+    var(--v3-paper-2, #efeadc) 0%,
+    var(--v3-paper, #f7f5ef) 30%,
+    #ffffff 100%
+  );
+  border-bottom: 1px solid var(--v3-line, #e1dbce);
+  color: var(--v3-ink, #0c1024);
+  padding: clamp(3.5rem, 6vw, 5.5rem) clamp(1rem, 4vw, 3rem) clamp(3rem, 5vw, 4.5rem);
   position: relative;
-  z-index: 2;
 }
 
-.about-hero-journey-header {
-  display: grid;
-  gap: 0.7rem;
-  margin: 0 auto clamp(2rem, 3.5vw, 3rem);
-  max-width: 660px;
+.about-journey-inner {
+  --year-col: 64px;
+  --dot-col: 24px;
+  --gutter: 0.85rem;
+  margin: 0 auto;
+  max-width: 920px;
+  position: relative;
+}
+
+.about-journey-header {
+  margin-bottom: clamp(2rem, 3.5vw, 3rem);
   text-align: center;
 }
 
-.about-hero-journey-header h2 {
+.about-journey-eyebrow {
+  color: var(--v3-red, #dd1017);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin: 0 0 0.6rem;
+  text-transform: uppercase;
+}
+
+.about-journey-title {
   color: var(--v3-ink, #0c1024);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
   font-weight: 680;
   letter-spacing: -0.018em;
   line-height: 1.1;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 600px;
   text-wrap: balance;
 }
 
-.about-hero-journey-header p {
-  color: var(--v3-muted, #5d6472);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0 auto;
-  max-width: 540px;
-}
-
-.about-hero-journey-rail {
-  padding-left: clamp(1.5rem, 3vw, 2rem);
+.about-journey-rail {
   position: relative;
 }
 
-.about-hero-journey-axis,
-.about-hero-journey-axis-fill {
+.about-journey-axis,
+.about-journey-axis-fill {
   border-radius: 999px;
-  bottom: 0;
-  left: clamp(8px, 1.6vw, 12px);
+  left: calc(var(--year-col) + var(--gutter) + (var(--dot-col) / 2) - 1px);
   position: absolute;
-  top: 0;
   width: 2px;
 }
 
-.about-hero-journey-axis {
+.about-journey-axis {
   background: var(--v3-line-strong, #cbc1aa);
+  bottom: 0;
   opacity: 0.7;
+  top: 0;
 }
 
-.about-hero-journey-axis-fill {
+.about-journey-axis-fill {
   background: linear-gradient(
     180deg,
-    rgba(21, 34, 73, 0.4) 0%,
+    rgba(21, 34, 73, 0.45) 0%,
     var(--v3-red, #dd1017) 100%
   );
-  bottom: auto;
   height: 0%;
+  top: 0;
   z-index: 1;
 }
 
-.about-hero-journey-list {
+.about-journey-entry {
   display: grid;
-  gap: clamp(1.4rem, 2.4vw, 2.2rem);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  z-index: 2;
+  gap: 0 var(--gutter);
+  grid-template-columns: var(--year-col) var(--dot-col) 1fr;
+  margin-bottom: clamp(1rem, 1.8vw, 1.5rem);
 }
 
-.about-hero-journey-item {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: auto 1fr;
-  position: relative;
+.about-journey-year {
+  color: var(--v3-red, #dd1017);
+  font-feature-settings: "tnum" 1;
+  font-size: 0.86rem;
+  font-weight: 800;
+  grid-column: 1;
+  letter-spacing: 0.08em;
+  padding-top: 0.05rem;
+  text-align: right;
+  white-space: nowrap;
 }
 
-.about-hero-journey-dot {
-  background: var(--v3-paper, #f7f5ef);
-  border: 2px solid var(--v3-navy, #152249);
-  border-radius: 999px;
-  height: 18px;
-  margin-left: calc(clamp(1.5rem, 3vw, 2rem) * -1 + clamp(8px, 1.6vw, 12px) - 8px);
-  margin-top: 0.45rem;
+.about-journey-year.is-cont {
+  visibility: hidden;
+}
+
+.about-journey-dot-col {
+  align-self: start;
+  display: flex;
+  grid-column: 2;
+  justify-content: center;
+  padding-top: 0.55rem;
   position: relative;
-  transition: border-color 0.3s ease, transform 0.3s ease,
-    box-shadow 0.3s ease;
-  width: 18px;
   z-index: 3;
 }
 
-.about-hero-journey-item.is-today .about-hero-journey-dot {
+.about-journey-dot {
+  background: var(--v3-paper, #f7f5ef);
+  border: 2px solid var(--v3-navy, #152249);
+  border-radius: 999px;
+  display: block;
+  height: 12px;
+  position: relative;
+  width: 12px;
+}
+
+.about-journey-entry.is-founded .about-journey-dot {
+  background: var(--v3-ink, #0c1024);
+  border-color: var(--v3-ink, #0c1024);
+  height: 14px;
+  width: 14px;
+}
+
+.about-journey-entry.is-today .about-journey-dot {
   background: var(--v3-red, #dd1017);
   border-color: var(--v3-red, #dd1017);
   box-shadow: 0 0 0 5px rgba(221, 16, 23, 0.15);
 }
 
-.about-hero-journey-dot-pulse {
+.about-journey-entry.is-today .about-journey-dot::after {
+  animation: aboutJourneyPulse 2.4s ease-out infinite;
   background: rgba(221, 16, 23, 0.45);
   border-radius: 999px;
+  content: "";
   inset: -8px;
-  pointer-events: none;
   position: absolute;
-  animation: aboutHeroPulse 2.4s ease-out infinite;
 }
 
-@keyframes aboutHeroPulse {
+@keyframes aboutJourneyPulse {
   0% {
-    opacity: 0.65;
+    opacity: 0.6;
     transform: scale(0.7);
   }
   100% {
@@ -14588,36 +14626,237 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   }
 }
 
-.about-hero-journey-card {
-  display: grid;
-  gap: 0.4rem;
+.about-journey-body {
+  grid-column: 3;
+  min-width: 0;
 }
 
-.about-hero-journey-year {
+/* ---- 2019 founded mark: Nucleus logo + headline above the bubble ---- */
+.about-journey-founded {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--v3-line, #e1dbce);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px -10px rgba(21, 34, 73, 0.12);
+  display: grid;
+  gap: 0.95rem;
+  grid-template-columns: auto 1fr;
+  margin-bottom: 0.7rem;
+  padding: 0.95rem 1.1rem;
+}
+
+.about-journey-founded-mark {
+  align-items: center;
+  background: var(--v3-paper, #f7f5ef);
+  border: 1px solid var(--v3-line, #e1dbce);
+  border-radius: 8px;
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  width: 132px;
+}
+
+.about-journey-founded-mark :is(img, picture) {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.about-journey-founded-label {
   color: var(--v3-red, #dd1017);
-  font-feature-settings: "tnum" 1;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.14em;
-  margin: 0;
+  margin: 0 0 0.25rem;
   text-transform: uppercase;
 }
 
-.about-hero-journey-card h3 {
+.about-journey-founded-title {
   color: var(--v3-ink, #0c1024);
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-size: 1.02rem;
   font-weight: 720;
   letter-spacing: -0.005em;
   line-height: 1.25;
   margin: 0;
 }
 
-.about-hero-journey-card p {
+.about-journey-founded-sub {
   color: var(--v3-muted, #5d6472);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin: 0.35rem 0 0;
+}
+
+/* ---- partner bubble ---- */
+.about-journey-person {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.55rem;
+}
+
+.about-journey-avatar {
+  align-items: center;
+  background: var(--v3-paper-2, #efeadc);
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px -4px rgba(21, 34, 73, 0.25),
+    0 0 0 1px var(--v3-line-strong, #cbc1aa);
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 38px;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 38px;
+}
+
+.about-journey-avatar :is(img, picture) {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.about-journey-person:hover .about-journey-avatar {
+  box-shadow: 0 4px 14px -4px rgba(221, 16, 23, 0.35),
+    0 0 0 1px var(--v3-red, #dd1017);
+  transform: translateY(-1px);
+}
+
+.about-journey-person-name {
+  color: var(--v3-ink, #0c1024);
+  display: block;
   font-size: 0.96rem;
-  line-height: 1.6;
-  margin: 0;
-  max-width: 580px;
+  font-weight: 720;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+}
+
+.about-journey-person-micro {
+  color: var(--v3-muted, #5d6472);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 0.1rem;
+}
+
+/* ---- capability pills (uniform grey) ---- */
+.about-journey-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.55rem;
+}
+
+.about-journey-pill {
+  align-items: center;
+  background: rgba(21, 34, 73, 0.04);
+  border: 1px solid var(--v3-line-strong, #cbc1aa);
+  border-radius: 999px;
+  color: var(--v3-ink-2, #1b2240);
+  display: inline-flex;
+  font-size: 0.7rem;
+  font-weight: 720;
+  gap: 0.3rem;
+  padding: 0.22rem 0.6rem 0.24rem;
+}
+
+.about-journey-pill::before {
+  content: "+";
+  font-weight: 800;
+  opacity: 0.7;
+}
+
+/* ---- closing punchline: how it started vs how it's going ---- */
+.about-journey-closing {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.about-journey-closing-eyebrow {
+  color: var(--v3-red, #dd1017);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  margin: 0 0 0.55rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.about-journey-closing-title {
+  color: var(--v3-ink, #0c1024);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 680;
+  letter-spacing: -0.018em;
+  line-height: 1.15;
+  margin: 0 auto 1.1rem;
+  max-width: 600px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.about-journey-closing-card {
+  background: var(--v3-ink, #0c1024);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px -22px rgba(12, 16, 36, 0.5);
+  overflow: hidden;
+  position: relative;
+}
+
+.about-journey-closing-card :is(img, picture) {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.about-journey-closing-card::after {
+  background: linear-gradient(
+    180deg,
+    rgba(12, 16, 36, 0) 60%,
+    rgba(12, 16, 36, 0.35) 100%
+  );
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media (max-width: 720px) {
+  .about-journey-inner {
+    --year-col: 50px;
+  }
+  .about-journey-founded {
+    grid-template-columns: 1fr;
+  }
+  .about-journey-founded-mark {
+    width: 100%;
+  }
+}
+
+/* ----- aftermath wrapper for Philosophy + Moments when they sit as
+   standalone sections AFTER the AboutJourney block. Cream paper background
+   matches the hero palette so the page reads as one continuous flow. ----- */
+
+.about-aftermath {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    var(--v3-paper, #f7f5ef) 60%,
+    var(--v3-paper-2, #efeadc) 100%
+  );
+  border-bottom: 1px solid var(--v3-line, #e1dbce);
+  color: var(--v3-ink, #0c1024);
+  padding: clamp(3rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+  position: relative;
+}
+
+.about-aftermath > * {
+  margin: 0 auto;
 }
 
 /* ----- philosophy quote callout ----- */

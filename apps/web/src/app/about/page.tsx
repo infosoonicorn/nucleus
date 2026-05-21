@@ -2,10 +2,14 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ArrowUpRight } from 'lucide-react';
 import { PageShell } from '@/components/site-chrome';
-import { AboutIntro } from '@/components/about/about-intro';
+import {
+  AboutHero,
+  AboutPhilosophy,
+  AboutMoments,
+} from '@/components/about/about-hero';
+import { AboutJourney } from '@/components/about/about-journey';
 import { AboutClients } from '@/components/about/clients-summary';
 import { AboutOffices } from '@/components/about/offices';
-import { FirmMoments } from '@/components/firm/moments';
 import { FirmLifecycle } from '@/components/firm/lifecycle';
 import { WhoWeServe } from '@/components/firm/who-we-serve';
 import { TeamPageCard } from '@/components/team/team-page-card';
@@ -30,8 +34,10 @@ export default function AboutPage() {
   return (
     <PageShell>
       <main className="home-v3">
-        <AboutIntro />
-        <FirmMoments />
+        <AboutHero />
+        <AboutJourney />
+        <AboutPhilosophy />
+        <AboutMoments />
         <WhoWeServe />
 
         <section className="about-leadership" aria-labelledby="about-leadership-heading">
