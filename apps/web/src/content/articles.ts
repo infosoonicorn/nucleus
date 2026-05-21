@@ -919,7 +919,7 @@ export const articles: Article[] = [
       "Binding offer signed at or within 3-5% of the indicative price. Working capital target negotiated, not imposed. Escrow at 10-15% of headline price for 18-24 months, with specific indemnities carved separately. CP list closed and signed. Regulatory filings drafted and ready to file at signing.",
       "Anything materially worse than this means the indicative window was negotiated from a position of weakness — usually because the seller treated the IOI as the deal, not as the option to negotiate the deal.",
     ].join('\n\n'),
-    authorSlug: 'astha-kumar',
+    authorSlug: 'aakash-kalra',
     publishedOn: '2026-01-13',
     readMinutes: 10,
     tag: 'Deal process',
