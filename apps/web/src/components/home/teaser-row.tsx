@@ -1,9 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowUpRight, GraduationCap, Users } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/motion-primitives';
 
 // Short, comparable labels so both panels read with the same density.
@@ -104,22 +104,19 @@ export function HomeTeaserRow() {
 
 function CareersCanvas() {
   return (
-    <span className="home-v3-teaser-canvas home-v3-teaser-canvas-careers" aria-hidden="true">
-      <span className="home-v3-teaser-canvas-gradient" />
-      <span className="home-v3-teaser-canvas-grid" />
-      <motion.span
-        className="home-v3-teaser-canvas-orb home-v3-teaser-canvas-orb-a"
-        animate={{ y: [-12, 10, -12] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+    <span
+      className="home-v3-teaser-canvas home-v3-teaser-canvas-careers home-v3-teaser-canvas-photo"
+      aria-hidden="true"
+    >
+      <Image
+        src="/brand/home/careers.jpg"
+        alt=""
+        fill
+        sizes="(max-width: 960px) 100vw, 50vw"
+        className="home-v3-teaser-canvas-image"
+        priority={false}
       />
-      <motion.span
-        className="home-v3-teaser-canvas-orb home-v3-teaser-canvas-orb-b"
-        animate={{ y: [10, -8, 10] }}
-        transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <span className="home-v3-teaser-canvas-mark" aria-hidden="true">
-        <GraduationCap size={20} />
-      </span>
+      <span className="home-v3-teaser-canvas-photo-overlay" />
       <span className="home-v3-teaser-canvas-corner" aria-hidden="true">
         Talent
       </span>
@@ -129,22 +126,19 @@ function CareersCanvas() {
 
 function LifeCanvas() {
   return (
-    <span className="home-v3-teaser-canvas home-v3-teaser-canvas-insights" aria-hidden="true">
-      <span className="home-v3-teaser-canvas-gradient" />
-      <span className="home-v3-teaser-canvas-grid" />
-      <motion.span
-        className="home-v3-teaser-canvas-orb home-v3-teaser-canvas-orb-a"
-        animate={{ y: [-10, 12, -10] }}
-        transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut' }}
+    <span
+      className="home-v3-teaser-canvas home-v3-teaser-canvas-insights home-v3-teaser-canvas-photo"
+      aria-hidden="true"
+    >
+      <Image
+        src="/brand/home/life-at-nucleus.jpg"
+        alt=""
+        fill
+        sizes="(max-width: 960px) 100vw, 50vw"
+        className="home-v3-teaser-canvas-image"
+        priority={false}
       />
-      <motion.span
-        className="home-v3-teaser-canvas-orb home-v3-teaser-canvas-orb-b"
-        animate={{ y: [12, -6, 12] }}
-        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <span className="home-v3-teaser-canvas-mark" aria-hidden="true">
-        <Users size={20} />
-      </span>
+      <span className="home-v3-teaser-canvas-photo-overlay" />
       <span className="home-v3-teaser-canvas-corner" aria-hidden="true">
         Culture
       </span>

@@ -1,34 +1,23 @@
 import type { Metadata } from 'next';
-import { ContactBand, SectionHeader } from '@/components/sections';
 import { PageShell } from '@/components/site-chrome';
+import { ComingSoon } from '@/components/coming-soon';
+import { getComingSoonInsights } from '@/components/coming-soon-data';
 
 export const metadata: Metadata = {
   title: 'Alumni | Nucleus Advisors',
-  description: 'Nucleus Advisors alumni shell for approved future alumni stories.',
+  description:
+    'The Nucleus Advisors alumni network — coming soon. Approved journeys and reconnect pathways for former Nucleus colleagues across audit, transactions, tax and advisory.',
 };
 
 export default function AlumniPage() {
   return (
     <PageShell>
-      <main>
-        <section className="subpage-hero">
-          <div>
-            <p className="eyebrow">Careers</p>
-            <h1>Nucleus alumni network.</h1>
-            <p>
-              A future alumni wall can celebrate approved journeys, learning tracks and role moves
-              without inventing profiles.
-            </p>
-          </div>
-        </section>
-        <section className="section">
-          <SectionHeader
-            eyebrow="Future module"
-            title="Alumni stories will appear after approval and consent."
-          />
-        </section>
-        <ContactBand title="Want to reconnect with Nucleus?" />
-      </main>
+      <ComingSoon
+        eyebrow="Alumni"
+        title="Once Nucleus, always part of the network."
+        body="A home for former Nucleus colleagues — where they are now, what they are building, and how to reconnect. We will populate the alumni wall only with approved stories and explicit consent."
+        insights={getComingSoonInsights()}
+      />
     </PageShell>
   );
 }

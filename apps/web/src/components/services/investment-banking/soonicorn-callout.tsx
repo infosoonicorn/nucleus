@@ -2,15 +2,18 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import type { Service } from '@/content/site';
 
-// Portfolio companies on the orbital rings. Inner ring = 5, outer ring = 7 = 12 total.
-// Mix across mobility, energy, AI, climate, edtech, fintech. Highlight one as
-// "live commitment" on each ring (the `highlight` flag) — pure stylistic accent.
+// Portfolio companies on the orbital rings. Inner ring = 7, outer ring = 11 = 18 total.
+// Mix across mobility, energy, AI, climate, edtech, fintech, aerospace, D2C.
+// Highlight one as "live commitment" on each ring (the `highlight` flag) — pure
+// stylistic accent.
 const INNER = [
   { name: 'Burger Singh',  src: '/brand/portfolio/burger-singh.png', highlight: false },
   { name: 'Kredily',       src: '/brand/portfolio/Kredily.png',      highlight: true  },
   { name: 'Limechat',      src: '/brand/portfolio/Limechat.png',     highlight: false },
   { name: 'Cusmat',        src: '/brand/portfolio/Cusmat.png',       highlight: false },
   { name: 'Wherehouse',    src: '/brand/portfolio/wherehouse.jpg',   highlight: false },
+  { name: 'DaveAI',        src: '/brand/portfolio/dave-ai.png',      highlight: false },
+  { name: 'Savart',        src: '/brand/portfolio/savart.png',       highlight: false },
 ];
 
 const OUTER = [
@@ -21,6 +24,10 @@ const OUTER = [
   { name: 'TSAW',          src: '/brand/portfolio/TSAW.jpg',         highlight: true  },
   { name: 'Pickmywork',    src: '/brand/portfolio/pickmywork.png',   highlight: false },
   { name: 'Skyeair',       src: '/brand/portfolio/skyeair.jpg',      highlight: false },
+  { name: 'Brainwired',    src: '/brand/portfolio/brainwired.png',   highlight: false },
+  { name: 'Astrophel',     src: '/brand/portfolio/astrophel.png',    highlight: false },
+  { name: 'Indrones',      src: '/brand/portfolio/indrones.png',     highlight: false },
+  { name: 'Trezi',         src: '/brand/portfolio/trezi.png',        highlight: false },
 ];
 
 function placeOnRing(count: number, radius: number, index: number): { x: number; y: number } {

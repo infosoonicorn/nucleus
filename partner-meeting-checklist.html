@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nucleus Advisors — Partner Verification Checklist</title>
+<style>
+  :root {
+    --paper: #f7f5ef;
+    --paper-deep: #efeadc;
+    --ink: #111827;
+    --muted: #5d6472;
+    --navy: #152249;
+    --navy-deep: #0c1535;
+    --red: #dd1017;
+    --line: #e1dbce;
+    --panel: #ffffff;
+    --ok: #2f7a44;
+    --warn: #b3680a;
+    --block: #b22227;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 36px 40px 80px; }
+
+  header.top {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px; margin-bottom: 28px;
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 20px;
+  }
+  header.top h1 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-weight: 600; font-size: 30px; letter-spacing: -0.01em;
+    margin: 0 0 6px; color: var(--navy-deep);
+  }
+  header.top .sub { color: var(--muted); font-size: 14px; }
+  header.top .meta {
+    text-align: right; font-size: 12px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  header.top .meta strong { color: var(--ink); font-weight: 600; }
+
+  h2 {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 20px; font-weight: 600; color: var(--navy);
+    margin: 36px 0 14px;
+    border-left: 3px solid var(--red); padding-left: 10px;
+  }
+  h2 .tag {
+    font: 600 11px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--paper-deep); color: var(--muted);
+    padding: 4px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle;
+  }
+  p.lead { color: var(--muted); margin: 0 0 14px; font-size: 14px; }
+
+  .status-band {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 10px; margin-bottom: 8px;
+  }
+  .stat {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 8px; padding: 12px 14px;
+  }
+  .stat .n { font-family: "Times New Roman", Georgia, serif; font-size: 24px; font-weight: 600; color: var(--navy-deep); line-height: 1; }
+  .stat .l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+
+  table {
+    width: 100%; border-collapse: collapse;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    font-size: 14px;
+  }
+  th, td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+  th { background: var(--paper-deep); color: var(--ink); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  tr:last-child td { border-bottom: 0; }
+  td.partner { white-space: nowrap; font-weight: 600; }
+  td.role { color: var(--muted); font-size: 13px; }
+  td.svc { color: var(--navy); font-size: 13px; }
+
+  .chk {
+    display: inline-block; width: 14px; height: 14px; border: 1.5px solid var(--muted);
+    border-radius: 3px; vertical-align: -2px; margin-right: 6px;
+  }
+
+  .pill {
+    display: inline-block; padding: 2px 8px; font-size: 11px; font-weight: 600;
+    border-radius: 99px; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .pill.ok    { background: #e2f0e6; color: var(--ok); }
+  .pill.warn  { background: #fbecd2; color: var(--warn); }
+  .pill.block { background: #fbe1e2; color: var(--block); }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .card h3 { margin: 0 0 8px; font-size: 14px; font-weight: 700; color: var(--navy-deep); text-transform: uppercase; letter-spacing: 0.06em; }
+  .card ul { margin: 0; padding-left: 18px; }
+  .card li { margin-bottom: 4px; }
+
+  .decision {
+    background: #fff8ec; border: 1px solid #f0d499; border-left: 3px solid var(--warn);
+    border-radius: 6px; padding: 10px 14px; margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .decision strong { color: var(--navy-deep); }
+  .decision .yn {
+    float: right; color: var(--muted); font-size: 11px; font-weight: 700;
+    background: #fff; border: 1px solid var(--line); padding: 3px 10px; border-radius: 99px;
+    cursor: pointer; user-select: none; min-width: 64px; text-align: center;
+    letter-spacing: 0.05em;
+  }
+  .decision .yn:hover { border-color: var(--navy); }
+  .decision .yn.state-yes { background: var(--ok); color: #fff; border-color: var(--ok); }
+  .decision .yn.state-no  { background: var(--block); color: #fff; border-color: var(--block); }
+  .decision .yn.state-hold { background: var(--warn); color: #fff; border-color: var(--warn); }
+  .decision .dec-note {
+    display: block; width: 100%; margin-top: 8px; padding: 5px 8px;
+    border: 1px dashed var(--line); background: #fff; border-radius: 5px;
+    font: inherit; font-size: 13px;
+  }
+  .decision .dec-note:focus { outline: none; border-color: var(--navy); }
+
+  footer {
+    margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: 12px; color: var(--muted); display: flex; justify-content: space-between;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .wrap { padding: 18px 24px; max-width: none; }
+    h2 { page-break-after: avoid; }
+    table, .card, .decision, .stat { page-break-inside: avoid; }
+    .no-print { display: none; }
+  }
+  @media (max-width: 800px) {
+    .status-band { grid-template-columns: repeat(2, 1fr); }
+    .grid2 { grid-template-columns: 1fr; }
+    .wrap { padding: 20px; }
+  }
+
+  .print-btn {
+    position: fixed; top: 16px; right: 16px;
+    background: var(--navy); color: #fff; border: 0; padding: 8px 14px;
+    border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .print-btn:hover { background: var(--navy-deep); }
+
+  /* Partner cards */
+  .partner-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  }
+  .pcard {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px 12px; position: relative;
+    display: flex; flex-direction: column;
+  }
+  .pcard .name {
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 17px; font-weight: 600; color: var(--navy-deep);
+    line-height: 1.2;
+  }
+  .pcard .role {
+    font-size: 11px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-top: 3px;
+  }
+  .pcard .svc {
+    margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line);
+    font-size: 12px; color: var(--navy);
+  }
+  .pcard .svc .label { color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10px; display: block; margin-bottom: 2px; }
+  .pcard .checks {
+    margin-top: 10px; display: flex; flex-direction: column; gap: 6px;
+  }
+  .pcard .check {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+    padding: 7px 9px; font-size: 12.5px;
+  }
+  .pcard .check .box {
+    flex: 0 0 14px; width: 14px; height: 14px; margin-top: 1px;
+    border: 1.5px solid var(--navy); border-radius: 3px; background: #fff;
+  }
+  .pcard .check .lbl { flex: 1; }
+  .pcard .check .lbl b { display: block; color: var(--navy-deep); font-size: 12.5px; font-weight: 700; }
+  .pcard .check .lbl span { color: var(--muted); font-size: 11.5px; }
+  .pcard.no-svc .svc { color: var(--muted); font-style: italic; }
+  .pcard.no-svc .check.svc-check { background: #fff8ec; border-color: #f0d499; }
+
+  /* Interactive states */
+  .pcard .check { cursor: pointer; transition: background 120ms, border-color 120ms; user-select: none; }
+  .pcard .check:hover { border-color: var(--navy); }
+  .pcard .check.state-ok { background: #e2f0e6; border-color: #b6dac0; }
+  .pcard .check.state-ok .box { background: var(--ok); border-color: var(--ok); position: relative; }
+  .pcard .check.state-ok .box::after {
+    content: ""; position: absolute; left: 3px; top: 0px;
+    width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg);
+  }
+  .pcard .check.state-issue { background: #fbe1e2; border-color: #f0b8ba; }
+  .pcard .check.state-issue .box {
+    background: var(--block); border-color: var(--block); position: relative;
+  }
+  .pcard .check.state-issue .box::after {
+    content: "!"; position: absolute; inset: 0; color: #fff; font-weight: 800;
+    font-size: 11px; text-align: center; line-height: 12px;
+  }
+  .pcard .status-hint {
+    font-size: 10px; color: var(--muted); margin-top: 1px; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .pcard .notes {
+    width: 100%; margin-top: 8px; padding: 6px 8px; font: inherit; font-size: 12px;
+    border: 1px dashed var(--line); border-radius: 6px; background: var(--paper);
+    color: var(--ink); resize: vertical; min-height: 32px;
+  }
+  .pcard .notes:focus { outline: none; border-color: var(--navy); background: #fff; }
+  .pcard .notes::placeholder { color: var(--muted); font-style: italic; }
+
+  .toolbar {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 14px; margin: 10px 0 16px;
+    font-size: 13px;
+  }
+  .toolbar .progress { flex: 1; min-width: 180px; color: var(--muted); }
+  .toolbar .progress strong { color: var(--navy-deep); }
+  .toolbar button {
+    background: var(--paper); border: 1px solid var(--line); color: var(--ink);
+    padding: 6px 12px; border-radius: 5px; font: inherit; font-size: 12px; cursor: pointer;
+  }
+  .toolbar button:hover { border-color: var(--navy); }
+  .toolbar button.primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .toolbar .legend { color: var(--muted); font-size: 11px; }
+  .toolbar .legend .sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: -1px; margin: 0 4px 0 8px; }
+  .toolbar .legend .sw.ok { background: var(--ok); }
+  .toolbar .legend .sw.issue { background: var(--block); }
+  .toolbar .legend .sw.open { background: #fff; border: 1.5px solid var(--navy); }
+
+  @media (max-width: 1000px) {
+    .partner-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .partner-grid { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .partner-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .pcard { padding: 10px 12px; }
+    .pcard .check { padding: 5px 7px; }
+  }
+</style>
+</head>
+<body>
+<button class="print-btn no-print" onclick="window.print()">Print / Save as PDF</button>
+
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <h1>Nucleus Advisors</h1>
+      <div class="sub">Partner Verification Checklist — pre-launch sign-off for the public website</div>
+    </div>
+    <div class="meta">
+      <div>Partner Meeting</div>
+      <div><strong>21 May 2026 · 4 PM</strong></div>
+    </div>
+  </header>
+
+  <!-- A. STATE OF THE BUILD -->
+  <h2>A. Where the build stands today</h2>
+  <p class="lead">Live on local preview only. <strong>Domain <code>nucleusadvisors.in</code> still shows the "coming soon" splash</strong> and will be flipped only after sign-off.</p>
+  <div class="status-band">
+    <div class="stat"><div class="n">9</div><div class="l">Service pages</div></div>
+    <div class="stat"><div class="n">11</div><div class="l">Team profiles</div></div>
+    <div class="stat"><div class="n">135</div><div class="l">Articles authored</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">Articles approved</div></div>
+    <div class="stat"><div class="n">121</div><div class="l">Client logos mapped</div></div>
+    <div class="stat"><div class="n">7 / 9</div><div class="l">Service lines with logos</div></div>
+  </div>
+
+  <!-- B. PARTNER SELF-CHECK -->
+  <h2>B. Per-partner self-check <span class="tag">3 boxes each</span></h2>
+  <p class="lead">Every partner verifies <strong>three things</strong> on the preview site: their service page (counters, content, client logos), their personal bio &amp; image, and their articles. <strong>Click a box to cycle: open → approved → flagged.</strong> Add a note inside each card for anything to fix. Responses auto-save to this browser.</p>
+
+  <div class="toolbar no-print">
+    <div class="progress" id="progress">Approved <strong>0</strong> · Flagged <strong>0</strong> · Open <strong>0</strong> of <strong>0</strong></div>
+    <div class="legend">
+      Legend:
+      <span class="sw open"></span>Open
+      <span class="sw ok"></span>Approved
+      <span class="sw issue"></span>Flagged
+    </div>
+    <button onclick="exportResponses()">Export responses</button>
+    <button onclick="resetResponses()">Reset</button>
+  </div>
+
+  <div class="partner-grid">
+
+    <div class="pcard" data-partner="pravesh-goel">
+      <div class="name">CA Pravesh Goel</div>
+      <div class="role">Managing Partner</div>
+      <div class="svc"><span class="label">Service line</span>M&amp;A Advisory</div>
+      <div class="checks">
+        <div class="check" data-key="pravesh-goel/service"><span class="box"></span><span class="lbl"><b>Service page</b><span>M&amp;A · 6 logos · counters &amp; case studies TODO</span></span></div>
+        <div class="check" data-key="pravesh-goel/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, past employers (Deloitte/PwC/SAIPEM)</span></span></div>
+        <div class="check" data-key="pravesh-goel/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>12 articles to review &amp; approve</span></span></div>
+      </div>
+      <textarea class="notes" data-key="pravesh-goel/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard" data-partner="vijay-singh-rathore">
+      <div class="name">CA Vijay Singh Rathore</div>
+      <div class="role">Founding Partner</div>
+      <div class="svc"><span class="label">Service lines</span>Investment Banking · Valuations</div>
+      <div class="checks">
+        <div class="check" data-key="vijay-singh-rathore/service"><span class="box"></span><span class="lbl"><b>Service pages</b><span>IB · 59 logos (signed off) &nbsp;|&nbsp; Valuations · 5 logos · counters TODO</span></span></div>
+        <div class="check" data-key="vijay-singh-rathore/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, ICICI Bank logo</span></span></div>
+        <div class="check" data-key="vijay-singh-rathore/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>30 articles to review &amp; approve</span></span></div>
+      </div>
+      <textarea class="notes" data-key="vijay-singh-rathore/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard" data-partner="ashish-gupta">
+      <div class="name">CA Ashish Gupta</div>
+      <div class="role">Senior Partner</div>
+      <div class="svc"><span class="label">Service line</span>Risk Advisory</div>
+      <div class="checks">
+        <div class="check" data-key="ashish-gupta/service"><span class="box"></span><span class="lbl"><b>Service page</b><span>Risk Advisory · 34 logos · counters &amp; case studies TODO</span></span></div>
+        <div class="check" data-key="ashish-gupta/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, ICICI/Yes/AU SFB logos</span></span></div>
+        <div class="check" data-key="ashish-gupta/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>15 articles to review &amp; approve</span></span></div>
+      </div>
+      <textarea class="notes" data-key="ashish-gupta/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard" data-partner="abhishek-gupta">
+      <div class="name">CA Abhishek Gupta</div>
+      <div class="role">Partner</div>
+      <div class="svc"><span class="label">Service lines</span>Assurance · Tax &amp; Regulatory · Finance Outsourcing</div>
+      <div class="checks">
+        <div class="check" data-key="abhishek-gupta/service"><span class="box"></span><span class="lbl"><b>Service pages</b><span>Assurance · 18 &nbsp;|&nbsp; Tax &amp; Reg · 18 &nbsp;|&nbsp; FinOut · 13 logos · counters &amp; case studies TODO</span></span></div>
+        <div class="check" data-key="abhishek-gupta/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, ACME logo</span></span></div>
+        <div class="check" data-key="abhishek-gupta/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>35 articles to review &amp; approve</span></span></div>
+      </div>
+      <textarea class="notes" data-key="abhishek-gupta/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard" data-partner="aakash-kalra">
+      <div class="name">CA Aakash Kalra</div>
+      <div class="role">Partner</div>
+      <div class="svc"><span class="label">Service line</span>M&amp;A Advisory</div>
+      <div class="checks">
+        <div class="check" data-key="aakash-kalra/service"><span class="box"></span><span class="lbl"><b>Service page</b><span>M&amp;A · 6 logos · counters &amp; case studies TODO</span></span></div>
+        <div class="check" data-key="aakash-kalra/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, Deloitte/PwC logos</span></span></div>
+        <div class="check" data-key="aakash-kalra/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>3 articles to review &amp; approve</span></span></div>
+      </div>
+      <textarea class="notes" data-key="aakash-kalra/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard" data-partner="hemendra-chauhan">
+      <div class="name">CA Hemendra Chauhan</div>
+      <div class="role">Partner</div>
+      <div class="svc"><span class="label">Service line</span>Tax &amp; Regulatory</div>
+      <div class="checks">
+        <div class="check" data-key="hemendra-chauhan/service"><span class="box"></span><span class="lbl"><b>Service page</b><span>Tax &amp; Reg · 18 logos · counters &amp; case studies TODO</span></span></div>
+        <div class="check" data-key="hemendra-chauhan/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, past employers</span></span></div>
+        <div class="check" data-key="hemendra-chauhan/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>5 articles to review &amp; approve</span></span></div>
+      </div>
+      <textarea class="notes" data-key="hemendra-chauhan/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard" data-partner="neha-rathore">
+      <div class="name">CS Neha Rathore</div>
+      <div class="role">Partner</div>
+      <div class="svc"><span class="label">Service lines</span>Corporate Secretarial · AIF &amp; Fund Management</div>
+      <div class="checks">
+        <div class="check svc-check" data-key="neha-rathore/service"><span class="box"></span><span class="lbl"><b>Service pages</b><span>Corp Sec · 0 logos &nbsp;|&nbsp; AIF · 0 logos · <strong>logos missing</strong></span></span></div>
+        <div class="check" data-key="neha-rathore/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, past employers</span></span></div>
+        <div class="check" data-key="neha-rathore/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>30 articles to review &amp; approve</span></span></div>
+      </div>
+      <textarea class="notes" data-key="neha-rathore/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard" data-partner="rajat-singla">
+      <div class="name">CA Rajat Singla</div>
+      <div class="role">Partner</div>
+      <div class="svc"><span class="label">Service line</span>Tax &amp; Regulatory</div>
+      <div class="checks">
+        <div class="check" data-key="rajat-singla/service"><span class="box"></span><span class="lbl"><b>Service page</b><span>Tax &amp; Reg · 18 logos · counters &amp; case studies TODO</span></span></div>
+        <div class="check" data-key="rajat-singla/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, past employers</span></span></div>
+        <div class="check" data-key="rajat-singla/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>5 articles to review &amp; approve</span></span></div>
+      </div>
+      <textarea class="notes" data-key="rajat-singla/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard no-svc" data-partner="geetanjali-virmani">
+      <div class="name">Geetanjali Virmani</div>
+      <div class="role">Senior Network Partner</div>
+      <div class="svc"><span class="label">Service line</span>Not yet assigned</div>
+      <div class="checks">
+        <div class="check svc-check" data-key="geetanjali-virmani/service"><span class="box"></span><span class="lbl"><b>Service page mapping</b><span>Confirm which service line(s) to surface on</span></span></div>
+        <div class="check" data-key="geetanjali-virmani/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, past employers</span></span></div>
+        <div class="check" data-key="geetanjali-virmani/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>No articles authored yet</span></span></div>
+      </div>
+      <textarea class="notes" data-key="geetanjali-virmani/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard no-svc" data-partner="vijay-k-choudhary">
+      <div class="name">Vijay K. Choudhary</div>
+      <div class="role">Advisor to the Board</div>
+      <div class="svc"><span class="label">Service line</span>Advisor — no service tag</div>
+      <div class="checks">
+        <div class="check" data-key="vijay-k-choudhary/service"><span class="box"></span><span class="lbl"><b>Placement</b><span>Confirm where the Advisor profile should appear</span></span></div>
+        <div class="check" data-key="vijay-k-choudhary/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, past employers</span></span></div>
+        <div class="check" data-key="vijay-k-choudhary/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>No articles authored yet</span></span></div>
+      </div>
+      <textarea class="notes" data-key="vijay-k-choudhary/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+    <div class="pcard no-svc" data-partner="samarth-pandey">
+      <div class="name">Samarth Pandey</div>
+      <div class="role">Principal, Investments</div>
+      <div class="svc"><span class="label">Service line</span>Not yet assigned</div>
+      <div class="checks">
+        <div class="check svc-check" data-key="samarth-pandey/service"><span class="box"></span><span class="lbl"><b>Service page mapping</b><span>Confirm which service line(s) to surface on</span></span></div>
+        <div class="check" data-key="samarth-pandey/bio"><span class="box"></span><span class="lbl"><b>Personal bio &amp; image</b><span>Profile copy, headshot, past employers</span></span></div>
+        <div class="check" data-key="samarth-pandey/articles"><span class="box"></span><span class="lbl"><b>Articles</b><span>No articles authored yet</span></span></div>
+      </div>
+      <textarea class="notes" data-key="samarth-pandey/notes" placeholder="Notes / what to fix…"></textarea>
+    </div>
+
+  </div>
+
+  <!-- C. SERVICE LINE DELIVERABLES -->
+  <h2>C. Service-line deliverables <span class="tag">2-week deadline</span></h2>
+  <p class="lead">Today: counters and client logos are signed off only for Investment Banking. Every other service page shows zero client logos and unverified counters. Assign owners now.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:24%">Service line</th>
+        <th style="width:30%">Owner(s)</th>
+        <th>Owed</th>
+        <th style="width:12%">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="partner">Investment Banking</td><td>Vijay Singh Rathore</td><td><strong>59 logos</strong> mapped · counters signed off</td><td><span class="pill ok">Validate</span></td></tr>
+      <tr><td class="partner">Risk Advisory</td><td>Ashish Gupta</td><td><strong>34 logos</strong> mapped · counters TODO · case studies TODO</td><td><span class="pill warn">Review</span></td></tr>
+      <tr><td class="partner">Assurance</td><td>Abhishek Gupta</td><td><strong>18 logos</strong> mapped · counters TODO · case studies TODO</td><td><span class="pill warn">Review</span></td></tr>
+      <tr><td class="partner">Tax &amp; Regulatory</td><td>Abhishek + Hemendra + Rajat</td><td><strong>18 logos</strong> mapped · counters TODO · case studies TODO</td><td><span class="pill warn">Review</span></td></tr>
+      <tr><td class="partner">Finance Outsourcing</td><td>Abhishek Gupta</td><td><strong>13 logos</strong> mapped · counters TODO · case studies TODO</td><td><span class="pill warn">Review</span></td></tr>
+      <tr><td class="partner">M&amp;A Advisory</td><td>Pravesh Goel + Aakash Kalra</td><td><strong>6 logos</strong> mapped · counters TODO · case studies TODO</td><td><span class="pill warn">Review</span></td></tr>
+      <tr><td class="partner">Valuations</td><td>Vijay Singh Rathore</td><td><strong>5 logos</strong> mapped · counters TODO · 1 case study TODO</td><td><span class="pill warn">Review</span></td></tr>
+      <tr><td class="partner">Corporate Secretarial</td><td>Neha Rathore</td><td><strong>0 logos</strong> · counters TODO · case studies TODO</td><td><span class="pill block">Logos missing</span></td></tr>
+      <tr><td class="partner">AIF &amp; Fund Management</td><td>Neha Rathore</td><td><strong>0 logos</strong> · counters TODO · Soonicorn tie-in TODO</td><td><span class="pill block">Logos missing</span></td></tr>
+    </tbody>
+  </table>
+
+  <!-- D. ARTICLES -->
+  <h2>D. Articles awaiting partner review <span class="tag">134 of 135 pending</span></h2>
+  <p class="lead">Production hides every article not marked <code>approved</code>. Until partners review their pile, the Insights hub launches empty. Bulk of the load sits with the top 5 authors.</p>
+  <table>
+    <thead>
+      <tr><th>Partner</th><th>Articles owed</th><th>Suggested deadline</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="partner">Abhishek Gupta</td><td>35</td><td>4 weeks</td></tr>
+      <tr><td class="partner">Vijay Singh Rathore</td><td>30</td><td>4 weeks</td></tr>
+      <tr><td class="partner">Neha Rathore</td><td>30</td><td>4 weeks</td></tr>
+      <tr><td class="partner">Ashish Gupta</td><td>15</td><td>3 weeks</td></tr>
+      <tr><td class="partner">Pravesh Goel</td><td>12</td><td>3 weeks</td></tr>
+      <tr><td class="partner">Rajat Singla</td><td>5</td><td>2 weeks</td></tr>
+      <tr><td class="partner">Hemendra Chauhan</td><td>5</td><td>2 weeks</td></tr>
+      <tr><td class="partner">Aakash Kalra</td><td>3</td><td>1 week</td></tr>
+      <tr><td class="partner" style="color:var(--muted)">Geetanjali Virmani · Vijay K. Choudhary · Samarth Pandey · Astha Kumar</td><td>0</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <!-- E. GO / NO-GO DECISIONS -->
+  <h2>E. Go / no-go decisions needed today</h2>
+  <div class="decision"><span class="yn" data-key="decision/1">YES / NO</span><strong>1. Launch with 8 service pages on the elevated default template?</strong><br />Only Investment Banking is bespoke today. Alternative: hold launch for bespoke designs on the other 8. <input class="dec-note" data-key="decision/1/note" placeholder="Decision / owner…" /></div>
+  <div class="decision"><span class="yn" data-key="decision/2">YES / NO</span><strong>2. Launch with lead forms logging to console only?</strong><br />Supabase backend (Phase 1.5) not wired yet. Alternative: hold launch until forms persist + email partners on each lead. <input class="dec-note" data-key="decision/2/note" placeholder="Decision / owner…" /></div>
+  <div class="decision"><span class="yn" data-key="decision/3">YES / NO</span><strong>3. Launch with auto-generated article thumbnails?</strong><br />Brand template wired; ~80 thumbnails pending batch generation. Alternative: review template style first. <input class="dec-note" data-key="decision/3/note" placeholder="Decision / owner…" /></div>
+  <div class="decision"><span class="yn" data-key="decision/4">WHO</span><strong>4. Who signs off on the domain flip from "coming soon" to live?</strong><br />Microsoft 365 MX / SPF / DKIM / DMARC records remain untouched per policy. <input class="dec-note" data-key="decision/4/note" placeholder="Owner name…" /></div>
+  <div class="decision"><span class="yn" data-key="decision/5">WHO</span><strong>5. Privacy / consent / disclaimer copy — who drafts and approves?</strong><br />Required before any form goes live in production. <input class="dec-note" data-key="decision/5/note" placeholder="Owner name…" /></div>
+
+  <!-- F. NEXT STEPS -->
+  <h2>F. Next steps after the meeting</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>This week</h3>
+      <ul>
+        <li>Spin up a password-protected Vercel preview URL (<code>*.vercel.app</code>) for partners to walk through individually.</li>
+        <li>Send each partner the direct link to their team profile + service page(s).</li>
+        <li>Brand-asset audit kicked off (logos, headshots, photography).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Recurring</h3>
+      <ul>
+        <li>Weekly partner standup until launch — <strong>same day, same time?</strong></li>
+        <li>Shared tracker at <code>/project-tracker</code> updated after every milestone.</li>
+        <li>Each service-line owner owns their counters, logos, case studies.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <div>Nucleus Advisors · Internal · Not for distribution</div>
+    <div>Source of truth: <code>docs/project-tracker.md</code></div>
+  </footer>
+</div>
+<script>
+(function () {
+  const STORAGE_KEY = 'nucleus-partner-meeting-2026-05-21';
+  const CHECK_STATES = ['', 'state-ok', 'state-issue']; // open → approved → flagged
+  const DECISION_STATES = ['', 'state-yes', 'state-no', 'state-hold'];
+  const DECISION_LABELS = { '': 'YES / NO', 'state-yes': 'YES', 'state-no': 'NO', 'state-hold': 'HOLD' };
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { return {}; }
+  }
+  function save(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  const state = load();
+
+  // Wire up partner check boxes
+  document.querySelectorAll('.check[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    const cls = state[key] || '';
+    if (cls) el.classList.add(cls);
+    el.addEventListener('click', (e) => {
+      if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+      const current = CHECK_STATES.indexOf(state[key] || '');
+      const next = CHECK_STATES[(current + 1) % CHECK_STATES.length];
+      CHECK_STATES.forEach(c => c && el.classList.remove(c));
+      if (next) el.classList.add(next);
+      state[key] = next;
+      save(state);
+      updateProgress();
+    });
+  });
+
+  // Wire up notes textareas + decision-note inputs
+  document.querySelectorAll('textarea[data-key], input.dec-note[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    if (state[key]) el.value = state[key];
+    el.addEventListener('input', () => {
+      state[key] = el.value;
+      save(state);
+    });
+  });
+
+  // Wire up decision YES/NO/HOLD pills
+  document.querySelectorAll('.decision .yn[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    const cls = state[key] || '';
+    if (cls) el.classList.add(cls);
+    el.textContent = DECISION_LABELS[cls];
+    el.addEventListener('click', () => {
+      const current = DECISION_STATES.indexOf(state[key] || '');
+      const next = DECISION_STATES[(current + 1) % DECISION_STATES.length];
+      DECISION_STATES.forEach(c => c && el.classList.remove(c));
+      if (next) el.classList.add(next);
+      el.textContent = DECISION_LABELS[next];
+      state[key] = next;
+      save(state);
+    });
+  });
+
+  function updateProgress() {
+    const checks = document.querySelectorAll('.check[data-key]');
+    let ok = 0, issue = 0, open = 0;
+    checks.forEach(el => {
+      if (el.classList.contains('state-ok')) ok++;
+      else if (el.classList.contains('state-issue')) issue++;
+      else open++;
+    });
+    const total = checks.length;
+    const p = document.getElementById('progress');
+    if (p) p.innerHTML = `Approved <strong>${ok}</strong> · Flagged <strong>${issue}</strong> · Open <strong>${open}</strong> of <strong>${total}</strong>`;
+  }
+  updateProgress();
+
+  // Export & reset
+  window.exportResponses = function () {
+    const rows = [['key', 'value']];
+    Object.entries(state).forEach(([k, v]) => rows.push([k, String(v).replace(/\r?\n/g, ' / ')]));
+    const csv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `nucleus-partner-meeting-${new Date().toISOString().slice(0,10)}.csv`;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  };
+  window.resetResponses = function () {
+    if (!confirm('Reset all responses on this page? This cannot be undone.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  };
+})();
+</script>
+</body>
+</html>

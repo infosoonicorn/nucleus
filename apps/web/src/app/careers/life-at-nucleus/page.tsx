@@ -1,34 +1,23 @@
 import type { Metadata } from 'next';
-import { ContactBand, SectionHeader } from '@/components/sections';
 import { PageShell } from '@/components/site-chrome';
+import { ComingSoon } from '@/components/coming-soon';
+import { getComingSoonInsights } from '@/components/coming-soon-data';
 
 export const metadata: Metadata = {
   title: 'Life at Nucleus | Nucleus Advisors',
-  description: 'Life at Nucleus shell for approved culture, learning and team content.',
+  description:
+    'Life at Nucleus — coming soon. Culture, learning moments and team stories from across our offices, told only through approved imagery and real voices.',
 };
 
 export default function LifeAtNucleusPage() {
   return (
     <PageShell>
-      <main>
-        <section className="subpage-hero">
-          <div>
-            <p className="eyebrow">Careers</p>
-            <h1>Life at Nucleus.</h1>
-            <p>
-              This shell is ready for approved culture images, first-day moments, learning stories
-              and team events. No fake people or testimonials are rendered.
-            </p>
-          </div>
-        </section>
-        <section className="section">
-          <SectionHeader
-            eyebrow="Coming content"
-            title="Culture content will be added only from approved assets."
-          />
-        </section>
-        <ContactBand title="Interested in the Nucleus learning environment?" />
-      </main>
+      <ComingSoon
+        eyebrow="Life at Nucleus"
+        title="The texture of how we actually work together."
+        body="First days, learning moments, offsites, late-night deal rooms and the small rituals that hold a partner-led firm together. We are gathering approved imagery and team voices before this lives on the website."
+        insights={getComingSoonInsights()}
+      />
     </PageShell>
   );
 }

@@ -221,9 +221,6 @@ export function HomeOrbitalServices() {
                       <span className="home-v3-orbital-card-badge">
                         Practice {String(item.id).padStart(2, '0')}
                       </span>
-                      <span className="home-v3-orbital-card-slug">
-                        {item.deliverables} {item.deliverables === 1 ? 'deliverable' : 'deliverables'}
-                      </span>
                     </header>
                     <h3>{item.title}</h3>
                     <p>{item.summary}</p>

@@ -13,9 +13,9 @@ const STAGE_SERVICES: string[][] = [
   ['corporate-secretarial'], // Incorporation and early compliance
   ['finance-outsourcing', 'tax-regulatory'], // First finance stack
   ['investment-banking', 'valuations'], // Fundraising and investor readiness
-  ['risk-advisory', 'tax-regulatory'], // Growth and control building
+  ['risk-advisory', 'tax-regulatory', 'assurance'], // Growth and control building
   ['ma-advisory', 'valuations', 'corporate-secretarial'], // Transactions and restructuring
-  ['assurance', 'risk-advisory'], // Scale and listing readiness
+  ['risk-advisory'], // Scale and listing readiness
 ];
 
 function findService(slug: string) {

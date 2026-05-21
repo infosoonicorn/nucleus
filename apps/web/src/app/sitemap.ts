@@ -29,9 +29,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/about', priority: 0.7, freq: 'monthly' },
     { path: '/services', priority: 0.8, freq: 'monthly' },
     { path: '/team', priority: 0.8, freq: 'monthly' },
-    { path: '/careers', priority: 0.5, freq: 'monthly' },
-    { path: '/careers/life-at-nucleus', priority: 0.4, freq: 'monthly' },
-    { path: '/careers/alumni', priority: 0.4, freq: 'monthly' },
+    // Coming-soon shells — keep indexable but low priority until built.
+    { path: '/careers', priority: 0.3, freq: 'monthly' },
+    { path: '/careers/life-at-nucleus', priority: 0.2, freq: 'monthly' },
+    { path: '/careers/alumni', priority: 0.2, freq: 'monthly' },
     { path: '/insights', priority: 0.9, freq: 'weekly' },
     { path: '/insights/live-updates', priority: 0.5, freq: 'weekly' },
     { path: '/downloads', priority: 0.5, freq: 'monthly' },
