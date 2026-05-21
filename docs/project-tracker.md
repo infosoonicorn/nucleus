@@ -67,6 +67,8 @@ while the rest of the platform comes online.
   - Acceptance: one locked editorial-photo template covers every Nucleus article. Brand Template ID and autofill schema verified end-to-end; first proof-of-concept thumbnail live.
 - [x] Mobile-responsive across all public pages.
   - Acceptance: every page is verified at mobile and desktop widths; the new nav collapses into a hamburger sheet below 960px.
+- [x] Service ↔ team mapping data layer (Phase 1).
+  - Acceptance: every service line has a typed `lead` + optional `coLeads` in `team.ts`'s exported `SERVICE_LEADS`; service-page dossier band renders real names live (no more `partnerLabel` placeholder); `getTeamForService` sorts lead → co-leads → seniority and filters to leadership; `serviceSlugs[]` reconciled across all 12 team members; build-time validator `pnpm lint:team` gates every commit; spec at `docs/superpowers/specs/2026-05-21-service-team-mapping-design.md`. Phase 2 (article `authorSlug` reassignment) deferred.
 - [~] About / Careers / Insights detail / Contact polished to the home + service-page baseline.
   - Acceptance: same typography rhythm, motion, spacing and section primitives as the homepage and Investment Banking page.
 - [ ] Bespoke design centerpieces for the remaining eight service pages.
