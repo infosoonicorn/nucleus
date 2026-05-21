@@ -13,15 +13,31 @@ import {
 } from 'framer-motion';
 import { ArrowRight, ArrowUp, ArrowUpRight } from 'lucide-react';
 import { FadeIn, Magnetic, WordReveal } from '@/components/motion-primitives';
+import { services } from '@/content/site';
 
 const TRACK_SPRING = { stiffness: 90, damping: 18, mass: 0.6 };
-const PARTICLE_COUNT = 28;
+const PARTICLE_COUNT = 22;
+
+// Lifecycle order — maps the 9 practices to the journey the headline names:
+// "from incorporation to listing readiness." Slugs are matched against
+// services[] so this list stays in sync with site.ts ordering.
+const LIFECYCLE_ORDER: string[] = [
+  'corporate-secretarial',
+  'finance-outsourcing',
+  'tax-regulatory',
+  'assurance',
+  'risk-advisory',
+  'valuations',
+  'investment-banking',
+  'ma-advisory',
+  'aif-fund-management',
+];
 
 export function HomeHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
 
-  // Cursor parallax (atmosphere layers)
+  // Cursor parallax — kept, but tuned down for the lighter palette.
   const normX = useMotionValue(0);
   const normY = useMotionValue(0);
   const pointerX = useMotionValue(-9999);
@@ -31,23 +47,19 @@ export function HomeHero() {
   const smoothX = useSpring(normX, TRACK_SPRING);
   const smoothY = useSpring(normY, TRACK_SPRING);
 
-  const auroraRedX = useTransform(smoothX, [-1, 1], [-60, 60]);
-  const auroraRedY = useTransform(smoothY, [-1, 1], [-40, 40]);
-  const auroraNavyX = useTransform(smoothX, [-1, 1], [40, -40]);
-  const auroraNavyY = useTransform(smoothY, [-1, 1], [30, -30]);
-  const gridShiftX = useTransform(smoothX, [-1, 1], [-10, 10]);
-  const gridShiftY = useTransform(smoothY, [-1, 1], [-6, 6]);
+  const auroraRedX = useTransform(smoothX, [-1, 1], [-40, 40]);
+  const auroraRedY = useTransform(smoothY, [-1, 1], [-26, 26]);
+  const auroraNavyX = useTransform(smoothX, [-1, 1], [28, -28]);
+  const auroraNavyY = useTransform(smoothY, [-1, 1], [20, -20]);
+  const gridShiftX = useTransform(smoothX, [-1, 1], [-8, 8]);
+  const gridShiftY = useTransform(smoothY, [-1, 1], [-5, 5]);
 
-  // Scroll-driven exit — content lifts + fades; auroras drift further as user
-  // scrolls out, creating a "tunneling into the next section" feel.
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
   });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, -140]);
-  const contentScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 0.5, 0]);
-  const shapesY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.65, 1], [1, 0.55, 0]);
 
   function handleMove(event: React.MouseEvent<HTMLElement>) {
     if (reduceMotion) return;
@@ -73,7 +85,7 @@ export function HomeHero() {
   return (
     <section
       ref={sectionRef}
-      className="home-v3-hero home-v3-hero-dark home-v3-hero-fullscreen"
+      className="home-v3-hero home-v3-hero-light home-v3-hero-fullscreen"
       aria-label="Nucleus Advisors lifecycle positioning"
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
@@ -90,122 +102,141 @@ export function HomeHero() {
         spotlightOpacity={spotlightOpacity}
       />
 
-      <ElegantShapes reduceMotion={!!reduceMotion} shapesY={shapesY} />
       <ParticleStream reduceMotion={!!reduceMotion} />
 
       <motion.div
-        className="home-v3-hero-stage"
-        style={{ y: contentY, scale: contentScale, opacity: contentOpacity }}
+        className="home-v3-hero-split"
+        style={{ y: contentY, opacity: contentOpacity }}
       >
-        <FadeIn duration={0.55}>
-          <p className="home-v3-hero-tag">
-            <ArrowUp size={14} aria-hidden="true" strokeWidth={2.5} />
-            Always upward
-          </p>
-        </FadeIn>
+        <div className="home-v3-hero-text">
+          <FadeIn duration={0.55}>
+            <p className="home-v3-hero-tag home-v3-hero-tag-light">
+              <ArrowUp size={14} aria-hidden="true" strokeWidth={2.5} />
+              Always upward
+            </p>
+          </FadeIn>
 
-        <FadeIn duration={0.65} delay={0.18}>
-          <p className="home-v3-eyebrow home-v3-eyebrow-on-dark">
-            <span aria-hidden="true" />
-            Full-spectrum advisory firm
-          </p>
-        </FadeIn>
+          <FadeIn duration={0.65} delay={0.15}>
+            <p className="home-v3-eyebrow">
+              <span aria-hidden="true" />
+              Full-spectrum advisory firm
+            </p>
+          </FadeIn>
 
-        <h1 className="home-v3-headline home-v3-headline-display">
-          <span className="home-v3-sr-only">From incorporation to listing readiness.</span>
-          <span className="home-v3-headline-row" aria-hidden="true">
-            <WordReveal text="From incorporation" />
-          </span>
-          <span
-            className="home-v3-headline-row home-v3-headline-row-em-light"
-            aria-hidden="true"
-          >
-            <WordReveal text="to listing readiness." delay={0.35} />
-          </span>
-        </h1>
+          <h1 className="home-v3-headline home-v3-headline-display">
+            <span className="home-v3-sr-only">From incorporation to listing readiness.</span>
+            <span className="home-v3-headline-row" aria-hidden="true">
+              <WordReveal text="From incorporation" />
+            </span>
+            <span
+              className="home-v3-headline-row home-v3-headline-row-em"
+              aria-hidden="true"
+            >
+              <WordReveal text="to listing readiness." delay={0.35} />
+            </span>
+          </h1>
 
-        <FadeIn delay={0.95} duration={0.9}>
-          <p className="home-v3-lede home-v3-lede-on-dark">
-            Nucleus Advisors helps founders, boards, investors, promoters and finance teams
-            move through capital, controls, compliance, reporting and transaction decisions
-            with clarity.
-          </p>
-        </FadeIn>
+          <FadeIn delay={0.9} duration={0.85}>
+            <p className="home-v3-lede">
+              Nucleus Advisors helps founders, boards, investors, promoters and finance teams
+              move through capital, controls, compliance, reporting and transaction decisions
+              with clarity.
+            </p>
+          </FadeIn>
 
-        <FadeIn delay={1.2} duration={0.7}>
-          <div className="home-v3-cta-row home-v3-hero-cta-row">
-            <Magnetic strength={0.18}>
-              <Link className="home-v3-button home-v3-button-primary" href="/contact">
-                Start a conversation
-                <ArrowRight aria-hidden="true" size={18} />
+          <FadeIn delay={1.15} duration={0.7}>
+            <div className="home-v3-cta-row">
+              <Magnetic strength={0.18}>
+                <Link className="home-v3-button home-v3-button-primary" href="/contact">
+                  Start a conversation
+                  <ArrowRight aria-hidden="true" size={18} />
+                </Link>
+              </Magnetic>
+              <Link className="home-v3-button home-v3-button-ghost" href="/services">
+                Explore services
+                <ArrowUpRight aria-hidden="true" size={18} />
               </Link>
-            </Magnetic>
-            <Link className="home-v3-button home-v3-button-ghost-light" href="/services">
-              Explore services
-              <ArrowUpRight aria-hidden="true" size={18} />
-            </Link>
-          </div>
+            </div>
+          </FadeIn>
+        </div>
+
+        <FadeIn duration={0.9} delay={0.45}>
+          <LifecycleLadder reduceMotion={!!reduceMotion} />
         </FadeIn>
       </motion.div>
     </section>
   );
 }
 
-// ----- background layers -----
+// ----- Lifecycle ladder (right column) -----
+//
+// Visual story for the headline: nine practice icons arrayed along a vertical
+// path from "Incorporation" at the top to "Listing readiness" at the bottom.
+// A glowing dot travels down the path on a loop, reinforcing the "always
+// upward" / always-in-motion brand cue but in the journey direction.
+function LifecycleLadder({ reduceMotion }: Readonly<{ reduceMotion: boolean }>) {
+  const stops = useMemo(() => {
+    return LIFECYCLE_ORDER.map((slug, idx) => {
+      const svc = services.find((s) => s.slug === slug);
+      if (!svc) return null;
+      return {
+        slug,
+        title: svc.title,
+        Icon: svc.icon,
+        idx,
+      };
+    }).filter(Boolean) as Array<{
+      slug: string;
+      title: string;
+      Icon: React.ComponentType<{ size?: number; strokeWidth?: number; 'aria-hidden'?: boolean }>;
+      idx: number;
+    }>;
+  }, []);
 
-function ElegantShapes({
-  reduceMotion,
-  shapesY,
-}: Readonly<{ reduceMotion: boolean; shapesY: MotionValue<number> }>) {
-  // Five rotated capsule shapes drift gently, layered behind content. Each
-  // shape bobs on its own loop; the whole group also parallaxes on scroll.
-  const shapes = [
-    { className: 'home-v3-hero-shape-1', range: [-14, 18], rotate: 12, duration: 13 },
-    { className: 'home-v3-hero-shape-2', range: [16, -10], rotate: -15, duration: 11 },
-    { className: 'home-v3-hero-shape-3', range: [-10, 14], rotate: -8, duration: 14 },
-    { className: 'home-v3-hero-shape-4', range: [12, -8], rotate: 20, duration: 9 },
-    { className: 'home-v3-hero-shape-5', range: [-8, 12], rotate: -22, duration: 10 },
-  ];
+  const total = stops.length;
 
   return (
-    <motion.div
-      className="home-v3-hero-shapes"
-      style={{ y: shapesY }}
-      aria-hidden="true"
-    >
-      {shapes.map((shape) => (
-        <motion.span
-          key={shape.className}
-          className={`home-v3-hero-shape ${shape.className}`}
-          initial={reduceMotion ? undefined : { opacity: 0, y: -120, rotate: shape.rotate - 12 }}
-          animate={
-            reduceMotion
-              ? { opacity: 0.7 }
-              : {
-                  opacity: 0.85,
-                  rotate: shape.rotate,
-                  y: shape.range,
-                }
-          }
-          transition={
-            reduceMotion
-              ? { duration: 0 }
-              : {
-                  opacity: { duration: 1.6, ease: [0.22, 1, 0.36, 1] },
-                  rotate: { duration: 1.6, ease: [0.22, 1, 0.36, 1] },
-                  y: {
-                    duration: shape.duration,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: 1.4,
-                  },
-                }
-          }
-        />
-      ))}
-    </motion.div>
+    <div className="home-v3-ladder" aria-hidden="true">
+      <span className="home-v3-ladder-axis" />
+      {!reduceMotion ? <span className="home-v3-ladder-traveler" /> : null}
+
+      <span className="home-v3-ladder-stage home-v3-ladder-stage-top">
+        <span className="home-v3-ladder-stage-dot" />
+        Incorporation
+      </span>
+
+      <ul className="home-v3-ladder-list">
+        {stops.map((stop, idx) => {
+          const Icon = stop.Icon;
+          return (
+            <li
+              key={stop.slug}
+              className="home-v3-ladder-stop"
+              style={{ animationDelay: `${0.6 + idx * 0.08}s` }}
+            >
+              <span className="home-v3-ladder-stop-dot">
+                <Icon size={14} strokeWidth={2} aria-hidden />
+              </span>
+              <span className="home-v3-ladder-stop-label">{stop.title}</span>
+            </li>
+          );
+        })}
+      </ul>
+
+      <span className="home-v3-ladder-stage home-v3-ladder-stage-bottom">
+        <span className="home-v3-ladder-stage-dot home-v3-ladder-stage-dot-end" />
+        Listing readiness
+      </span>
+
+      <span className="home-v3-sr-only">
+        Nine practices across the company lifecycle, from incorporation to listing readiness.
+      </span>
+      <span style={{ display: 'none' }}>{total}</span>
+    </div>
   );
 }
+
+// ----- background layers -----
 
 type Particle = {
   id: number;
@@ -214,7 +245,7 @@ type Particle = {
   delay: number;
   duration: number;
   rise: number;
-  tone: 'red' | 'cream';
+  tone: 'red' | 'ink';
 };
 
 function ParticleStream({ reduceMotion }: Readonly<{ reduceMotion: boolean }>) {
@@ -224,14 +255,12 @@ function ParticleStream({ reduceMotion }: Readonly<{ reduceMotion: boolean }>) {
       const r = seed / 233280;
       const r2 = ((index * 17) % 13) / 13;
       const r3 = ((index * 31) % 7) / 7;
-      // Spread across the full hero width
       const left = 4 + r * 92;
-      const size = 1.4 + r2 * 2.8;
-      const duration = 5 + r3 * 4;
+      const size = 1.2 + r2 * 2.2;
+      const duration = 6 + r3 * 4;
       const delay = (index / PARTICLE_COUNT) * duration;
-      // Particles rise nearly the full hero height
-      const rise = 620 + r * 160;
-      const tone: Particle['tone'] = index % 5 === 0 ? 'red' : 'cream';
+      const rise = 580 + r * 180;
+      const tone: Particle['tone'] = index % 4 === 0 ? 'red' : 'ink';
       return { id: index, left, size, delay, duration, rise, tone };
     });
   }, []);
@@ -248,7 +277,7 @@ function ParticleStream({ reduceMotion }: Readonly<{ reduceMotion: boolean }>) {
           initial={{ y: 0, opacity: 0 }}
           animate={{
             y: -p.rise,
-            opacity: [0, 0.75, 0.75, 0],
+            opacity: [0, 0.55, 0.55, 0],
           }}
           transition={{
             duration: p.duration,

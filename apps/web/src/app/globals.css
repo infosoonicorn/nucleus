@@ -1902,12 +1902,16 @@ html.lenis body {
   position: relative;
 }
 
-.home-v3-hero-dark {
+/* Light hero — paper background, soft red+navy radial blooms layered above
+   so the headline reads on a calm cream surface. Replaces the prior dark
+   space-y treatment. */
+.home-v3-hero-light {
   background:
-    radial-gradient(circle at 50% 30%, rgba(55, 90, 158, 0.18), transparent 30rem),
-    linear-gradient(180deg, #050a1f 0%, var(--v3-navy-deep) 55%, #050a1f 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  color: #f6f4ed;
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(221, 16, 23, 0.07), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 10% 110%, rgba(55, 90, 158, 0.08), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, var(--v3-paper) 60%, var(--v3-paper-2) 100%);
+  border-bottom: 1px solid var(--v3-line);
+  color: var(--v3-ink);
   padding: clamp(4.5rem, 8vw, 7.5rem) clamp(1rem, 4vw, 3rem)
     clamp(3.5rem, 6vw, 5rem);
 }
@@ -1920,13 +1924,11 @@ html.lenis body {
 }
 
 .home-v3-hero-svg-grid {
-  color: rgba(21, 34, 73, 0.08);
+  color: rgba(21, 34, 73, 0.07);
   inset: -8% -6%;
   position: absolute;
-}
-
-.home-v3-hero-dark .home-v3-hero-svg-grid {
-  color: rgba(255, 255, 255, 0.06);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 85%);
 }
 
 .home-v3-hero-svg-grid svg {
@@ -1937,29 +1939,29 @@ html.lenis body {
 
 .home-v3-hero-aurora {
   border-radius: 999px;
-  filter: blur(72px);
-  height: 38rem;
+  filter: blur(82px);
+  height: 36rem;
   pointer-events: none;
   position: absolute;
-  width: 38rem;
+  width: 36rem;
 }
 
 .home-v3-hero-aurora-red {
-  background: radial-gradient(circle, rgba(221, 16, 23, 0.32), transparent 70%);
-  right: -10%;
-  top: -15%;
+  background: radial-gradient(circle, rgba(221, 16, 23, 0.16), transparent 70%);
+  right: -12%;
+  top: -18%;
 }
 
 .home-v3-hero-aurora-navy {
-  background: radial-gradient(circle, rgba(55, 90, 158, 0.32), transparent 70%);
-  bottom: -18%;
-  height: 34rem;
-  left: -8%;
-  width: 34rem;
+  background: radial-gradient(circle, rgba(55, 90, 158, 0.14), transparent 70%);
+  bottom: -22%;
+  height: 32rem;
+  left: -10%;
+  width: 32rem;
 }
 
 .home-v3-hero-spotlight {
-  background: radial-gradient(circle, rgba(221, 16, 23, 0.16), transparent 60%);
+  background: radial-gradient(circle, rgba(221, 16, 23, 0.1), transparent 60%);
   border-radius: 999px;
   filter: blur(20px);
   height: 22rem;
@@ -1973,23 +1975,6 @@ html.lenis body {
   width: 22rem;
   will-change: transform, opacity;
   mix-blend-mode: multiply;
-}
-
-.home-v3-hero-dark .home-v3-hero-spotlight {
-  background: radial-gradient(circle, rgba(221, 16, 23, 0.28), transparent 60%);
-  mix-blend-mode: screen;
-}
-
-.home-v3-hero-dark .home-v3-hero-aurora-red {
-  background: radial-gradient(circle, rgba(221, 16, 23, 0.4), transparent 70%);
-}
-
-.home-v3-hero-dark .home-v3-hero-aurora-navy {
-  background: radial-gradient(circle, rgba(93, 131, 200, 0.32), transparent 70%);
-}
-
-.home-v3-hero-dark .home-v3-hero-corner {
-  background: rgba(221, 16, 23, 0.55);
 }
 
 .home-v3-hero-corner {
@@ -2045,12 +2030,48 @@ html.lenis body {
   max-width: 100%;
 }
 
+/* Split layout for the light hero — text column left, animated lifecycle
+   ladder right. Stacks vertically below the lg breakpoint. */
+.home-v3-hero-split {
+  align-items: center;
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+.home-v3-hero-text {
+  display: grid;
+  gap: clamp(1.2rem, 2vw, 1.7rem);
+  justify-items: start;
+  text-align: left;
+}
+
+.home-v3-hero-text > * {
+  max-width: 100%;
+}
+
+@media (max-width: 980px) {
+  .home-v3-hero-split {
+    gap: clamp(2.4rem, 6vw, 3rem);
+    grid-template-columns: 1fr;
+  }
+
+  .home-v3-hero-text {
+    justify-items: start;
+  }
+}
+
 .home-v3-hero-tag {
   align-items: center;
-  background: rgba(221, 16, 23, 0.1);
-  border: 1px solid rgba(221, 16, 23, 0.4);
+  background: rgba(221, 16, 23, 0.08);
+  border: 1px solid rgba(221, 16, 23, 0.3);
   border-radius: 999px;
-  color: #ff8d92;
+  color: var(--v3-red);
   display: inline-flex;
   font-size: 0.74rem;
   font-weight: 760;
@@ -2062,8 +2083,14 @@ html.lenis body {
   width: fit-content;
 }
 
+.home-v3-hero-tag-light {
+  background: rgba(221, 16, 23, 0.06);
+  border-color: rgba(221, 16, 23, 0.28);
+  color: var(--v3-red);
+}
+
 .home-v3-hero-tag svg {
-  color: #ff5a61;
+  color: var(--v3-red);
 }
 
 .home-v3-eyebrow {
@@ -2106,37 +2133,24 @@ html.lenis body {
 }
 
 .home-v3-headline-row-em-light {
-  color: #ff8d92;
+  color: var(--v3-red);
   font-style: normal;
   font-weight: 720;
 }
 
 .home-v3-headline-display {
-  font-size: clamp(2.8rem, 7vw, 6.4rem);
+  font-size: clamp(2.4rem, 5.6vw, 4.8rem);
   font-weight: 680;
   letter-spacing: -0.022em;
-  line-height: 0.96;
-}
-
-.home-v3-hero-dark .home-v3-headline {
-  color: #fbf8f0;
-}
-
-.home-v3-eyebrow-on-dark {
-  color: rgba(246, 244, 237, 0.78);
+  line-height: 1.02;
 }
 
 .home-v3-lede {
   color: var(--v3-muted);
-  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  font-size: clamp(1.05rem, 1.6vw, 1.22rem);
   line-height: 1.6;
   margin: 0;
-  max-width: 620px;
-}
-
-.home-v3-lede-on-dark {
-  color: rgba(246, 244, 237, 0.78);
-  max-width: 680px;
+  max-width: 560px;
 }
 
 .home-v3-cta-row {
@@ -2145,85 +2159,10 @@ html.lenis body {
   gap: 0.85rem;
 }
 
-.home-v3-hero-cta-row {
-  justify-content: center;
-}
+/* ---------- hero atmosphere extras (particles + lifecycle ladder) ---------- */
 
-/* ---------- hero atmosphere extras (shapes + particles + scroll cue) ---------- */
-
-/* Elegant capsule shapes layered behind the headline for depth. They drift
-   gently on individual loops and parallax with the cursor + scroll. */
-
-.home-v3-hero-shapes {
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-}
-
-.home-v3-hero-shape {
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  display: block;
-  position: absolute;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 30px 80px -30px rgba(0, 0, 0, 0.4);
-}
-
-.home-v3-hero-shape::after {
-  border-radius: 999px;
-  content: "";
-  inset: 0;
-  position: absolute;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.18), transparent 70%);
-}
-
-.home-v3-hero-shape-1 {
-  background: linear-gradient(120deg, rgba(221, 16, 23, 0.22), transparent 75%);
-  height: 130px;
-  left: -6%;
-  top: 18%;
-  width: 580px;
-}
-
-.home-v3-hero-shape-2 {
-  background: linear-gradient(120deg, rgba(55, 90, 158, 0.32), transparent 75%);
-  height: 110px;
-  right: -4%;
-  top: 64%;
-  width: 480px;
-}
-
-.home-v3-hero-shape-3 {
-  background: linear-gradient(120deg, rgba(138, 56, 132, 0.28), transparent 75%);
-  bottom: 10%;
-  height: 70px;
-  left: 8%;
-  width: 280px;
-}
-
-.home-v3-hero-shape-4 {
-  background: linear-gradient(120deg, rgba(255, 141, 146, 0.18), transparent 75%);
-  height: 50px;
-  right: 14%;
-  top: 8%;
-  width: 200px;
-}
-
-.home-v3-hero-shape-5 {
-  background: linear-gradient(120deg, rgba(91, 116, 173, 0.22), transparent 75%);
-  height: 36px;
-  left: 22%;
-  top: 4%;
-  width: 140px;
-}
-
-/* upward particle stream — ambient "always upward" brand motion across the
-   full hero width. No core / no beam — just particles drifting up through
-   the entire viewport. */
+/* Ambient particle stream — "always upward" brand motion. On the light hero
+   particles read as ink/red dust on cream paper. */
 
 .home-v3-hero-particles {
   bottom: 0;
@@ -2244,14 +2183,194 @@ html.lenis body {
   will-change: transform, opacity;
 }
 
-.home-v3-hero-particle-cream {
-  background: linear-gradient(180deg, rgba(246, 244, 237, 0.9), rgba(255, 141, 146, 0.25));
-  box-shadow: 0 0 5px rgba(246, 244, 237, 0.45);
+.home-v3-hero-particle-ink {
+  background: linear-gradient(180deg, rgba(21, 34, 73, 0.55), rgba(21, 34, 73, 0.1));
+  box-shadow: 0 0 4px rgba(21, 34, 73, 0.18);
 }
 
 .home-v3-hero-particle-red {
-  background: linear-gradient(180deg, #ff8d92, rgba(221, 16, 23, 0.4));
-  box-shadow: 0 0 7px rgba(221, 16, 23, 0.65);
+  background: linear-gradient(180deg, var(--v3-red), rgba(221, 16, 23, 0.25));
+  box-shadow: 0 0 6px rgba(221, 16, 23, 0.4);
+}
+
+/* ---------- lifecycle ladder (right column of hero) ---------- */
+
+.home-v3-ladder {
+  --ladder-height: clamp(420px, 56vh, 560px);
+  --ladder-dot: 36px;
+  display: grid;
+  gap: 0.6rem;
+  height: var(--ladder-height);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 360px;
+  padding: 0 1.5rem;
+  position: relative;
+  width: 100%;
+}
+
+.home-v3-ladder-axis {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(21, 34, 73, 0.18) 12%,
+    rgba(21, 34, 73, 0.22) 50%,
+    rgba(221, 16, 23, 0.32) 88%,
+    transparent 100%
+  );
+  height: 100%;
+  left: 50%;
+  margin-left: -1px;
+  position: absolute;
+  top: 0;
+  width: 2px;
+  z-index: 0;
+}
+
+.home-v3-ladder-traveler {
+  background: radial-gradient(circle, rgba(221, 16, 23, 0.9) 0%, rgba(221, 16, 23, 0) 70%);
+  border-radius: 999px;
+  filter: blur(2px);
+  height: 28px;
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  z-index: 1;
+  animation: ladderTravel 6.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes ladderTravel {
+  0% {
+    top: 8%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 92%;
+    opacity: 0;
+  }
+}
+
+.home-v3-ladder-list {
+  align-content: space-between;
+  display: grid;
+  gap: 0;
+  grid-template-rows: repeat(9, 1fr);
+  height: calc(var(--ladder-height) - 4.5rem);
+  list-style: none;
+  margin: 2.25rem 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.home-v3-ladder-stop {
+  align-items: center;
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: 1fr var(--ladder-dot) 1fr;
+  opacity: 0;
+  animation: ladderStopIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes ladderStopIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.home-v3-ladder-stop:nth-child(odd) .home-v3-ladder-stop-label {
+  grid-column: 1;
+  justify-self: end;
+  text-align: right;
+}
+
+.home-v3-ladder-stop:nth-child(even) .home-v3-ladder-stop-label {
+  grid-column: 3;
+  justify-self: start;
+  text-align: left;
+}
+
+.home-v3-ladder-stop-dot {
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(21, 34, 73, 0.2);
+  border-radius: 999px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 4px 12px -6px rgba(21, 34, 73, 0.18);
+  color: var(--v3-navy);
+  display: flex;
+  grid-column: 2;
+  height: var(--ladder-dot);
+  justify-content: center;
+  justify-self: center;
+  position: relative;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+  width: var(--ladder-dot);
+  z-index: 3;
+}
+
+.home-v3-ladder-stop:hover .home-v3-ladder-stop-dot {
+  border-color: var(--v3-red);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 6px 18px -6px rgba(221, 16, 23, 0.28);
+  color: var(--v3-red);
+}
+
+.home-v3-ladder-stop-label {
+  color: var(--v3-ink-2);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+}
+
+.home-v3-ladder-stage {
+  align-items: center;
+  color: var(--v3-muted);
+  display: inline-flex;
+  font-size: 0.7rem;
+  font-weight: 800;
+  gap: 0.45rem;
+  justify-self: center;
+  letter-spacing: 0.18em;
+  position: relative;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.home-v3-ladder-stage-top {
+  align-self: start;
+}
+
+.home-v3-ladder-stage-bottom {
+  align-self: end;
+  color: var(--v3-red);
+}
+
+.home-v3-ladder-stage-dot {
+  background: var(--v3-navy);
+  border-radius: 999px;
+  height: 8px;
+  width: 8px;
+}
+
+.home-v3-ladder-stage-dot-end {
+  background: var(--v3-red);
+  box-shadow: 0 0 0 4px rgba(221, 16, 23, 0.12);
 }
 
 @media (max-width: 980px) {
@@ -2261,32 +2380,34 @@ html.lenis body {
     padding-bottom: clamp(4rem, 8vh, 6rem);
   }
 
-  .home-v3-hero-shape-1 {
-    height: 80px;
-    width: 320px;
+  .home-v3-ladder {
+    --ladder-height: clamp(380px, 48vh, 460px);
+    --ladder-dot: 32px;
+    max-width: 320px;
   }
 
-  .home-v3-hero-shape-2 {
-    height: 70px;
-    width: 280px;
+  .home-v3-ladder-stop-label {
+    font-size: 0.72rem;
   }
+}
 
-  .home-v3-hero-shape-3 {
-    height: 50px;
-    width: 200px;
-  }
-
-  .home-v3-hero-shape-4,
-  .home-v3-hero-shape-5 {
+@media (prefers-reduced-motion: reduce) {
+  .home-v3-ladder-traveler {
+    animation: none;
     display: none;
+  }
+
+  .home-v3-ladder-stop {
+    animation: none;
+    opacity: 1;
   }
 }
 
 /* ---------- orbital service constellation ---------- */
 
 .home-v3-orbital {
-  background: linear-gradient(180deg, #050a1f 0%, var(--v3-navy-deep) 55%, #050a1f 100%);
-  color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, var(--v3-paper) 60%, var(--v3-paper-2) 100%);
+  color: var(--v3-ink);
   overflow: hidden;
   padding: clamp(3.5rem, 5.5vw, 5.5rem) clamp(1rem, 4vw, 3rem) clamp(2.5rem, 4.5vw, 4rem);
   position: relative;
@@ -2294,9 +2415,9 @@ html.lenis body {
 
 .home-v3-orbital-glow {
   background:
-    radial-gradient(circle at 50% 45%, rgba(221, 16, 23, 0.22), transparent 26rem),
-    radial-gradient(circle at 20% 20%, rgba(55, 90, 158, 0.18), transparent 30rem),
-    radial-gradient(circle at 80% 80%, rgba(55, 90, 158, 0.14), transparent 28rem);
+    radial-gradient(circle at 50% 45%, rgba(221, 16, 23, 0.08), transparent 26rem),
+    radial-gradient(circle at 20% 20%, rgba(55, 90, 158, 0.08), transparent 30rem),
+    radial-gradient(circle at 80% 80%, rgba(55, 90, 158, 0.06), transparent 28rem);
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -2317,7 +2438,7 @@ html.lenis body {
 }
 
 .home-v3-orbital-header h2 {
-  color: #fff;
+  color: var(--v3-ink);
   font-size: clamp(1.9rem, 3.2vw, 2.8rem);
   font-weight: 660;
   letter-spacing: -0.012em;
@@ -2326,7 +2447,7 @@ html.lenis body {
 }
 
 .home-v3-orbital-header p {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--v3-muted);
   font-size: 1.02rem;
   line-height: 1.6;
   margin: 0 auto;
@@ -2383,7 +2504,7 @@ html.lenis body {
 }
 
 .home-v3-orbital-core-ring {
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(221, 16, 23, 0.35);
   border-radius: 999px;
   pointer-events: none;
   position: absolute;
@@ -2398,7 +2519,7 @@ html.lenis body {
 .home-v3-orbital-core-ring-b {
   animation: orbitalRingExpand 2.8s ease-out infinite;
   animation-delay: 1.4s;
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(55, 90, 158, 0.25);
   height: 220px;
   width: 220px;
 }
@@ -2438,14 +2559,14 @@ html.lenis body {
 }
 
 .home-v3-orbital-track {
-  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border: 1px dashed rgba(21, 34, 73, 0.18);
   border-radius: 999px;
   pointer-events: none;
   position: absolute;
 }
 
 .home-v3-orbital-fallback {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--v3-ink-2);
   display: grid;
   font-size: 0.85rem;
   font-weight: 700;
@@ -2459,11 +2580,11 @@ html.lenis body {
 }
 
 .home-v3-orbital-fallback a {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--v3-ink-2);
 }
 
 .home-v3-orbital-fallback a:hover {
-  color: #fff;
+  color: var(--v3-red);
 }
 
 .home-v3-orbital-node {
@@ -2474,7 +2595,7 @@ html.lenis body {
 }
 
 .home-v3-orbital-node-aura {
-  background: radial-gradient(circle, rgba(221, 16, 23, 0.35) 0%, rgba(221, 16, 23, 0) 70%);
+  background: radial-gradient(circle, rgba(221, 16, 23, 0.28) 0%, rgba(221, 16, 23, 0) 70%);
   border-radius: 999px;
   height: 64px;
   left: -12px;
@@ -2503,10 +2624,11 @@ html.lenis body {
 
 .home-v3-orbital-node-button {
   align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: #ffffff;
+  border: 1px solid rgba(21, 34, 73, 0.22);
   border-radius: 999px;
-  color: #fff;
+  box-shadow: 0 4px 14px -6px rgba(21, 34, 73, 0.18);
+  color: var(--v3-navy);
   cursor: pointer;
   display: flex;
   font: inherit;
@@ -2524,37 +2646,39 @@ html.lenis body {
 
 .home-v3-orbital-node-button:hover,
 .home-v3-orbital-node-button:focus-visible {
-  background: rgba(221, 16, 23, 0.15);
-  border-color: var(--v3-red-soft);
+  background: rgba(221, 16, 23, 0.08);
+  border-color: var(--v3-red);
+  color: var(--v3-red);
   outline: none;
 }
 
 .home-v3-orbital-node-button.is-related {
   animation: orbitalNodeBorder 1.6s ease-in-out infinite;
-  background: rgba(255, 255, 255, 0.5);
-  color: var(--v3-navy);
+  background: rgba(221, 16, 23, 0.1);
+  border-color: var(--v3-red);
+  color: var(--v3-red);
 }
 
 @keyframes orbitalNodeBorder {
   0%,
   100% {
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(221, 16, 23, 0.45);
   }
   50% {
-    border-color: rgba(255, 255, 255, 1);
+    border-color: rgba(221, 16, 23, 1);
   }
 }
 
 .home-v3-orbital-node-button.is-expanded {
-  background: #fff;
-  border-color: #fff;
-  box-shadow: 0 0 32px rgba(255, 255, 255, 0.35);
-  color: var(--v3-navy);
+  background: var(--v3-navy);
+  border-color: var(--v3-navy);
+  box-shadow: 0 12px 30px -10px rgba(21, 34, 73, 0.45);
+  color: #fff;
   transform: scale(1.4);
 }
 
 .home-v3-orbital-node-label {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--v3-ink-2);
   font-size: 0.66rem;
   font-weight: 760;
   left: 50%;
@@ -2572,19 +2696,18 @@ html.lenis body {
 }
 
 .home-v3-orbital-node-label.is-expanded {
-  color: #fff;
+  color: var(--v3-navy);
   transform: translateX(-50%) scale(1.15);
 }
 
 .home-v3-orbital-card {
-  backdrop-filter: blur(14px);
-  background: rgba(8, 15, 38, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #ffffff;
+  border: 1px solid var(--v3-line);
   border-radius: 14px;
   box-shadow:
-    0 24px 60px -22px rgba(0, 0, 0, 0.7),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-  color: #fff;
+    0 24px 60px -22px rgba(21, 34, 73, 0.25),
+    0 4px 14px -6px rgba(21, 34, 73, 0.1);
+  color: var(--v3-ink);
   display: grid;
   gap: 0.85rem;
   left: 50%;
@@ -2597,7 +2720,7 @@ html.lenis body {
 }
 
 .home-v3-orbital-card-tether {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55));
+  background: linear-gradient(180deg, rgba(21, 34, 73, 0), rgba(21, 34, 73, 0.45));
   height: 16px;
   left: 50%;
   position: absolute;
