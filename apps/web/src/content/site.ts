@@ -57,7 +57,6 @@ export type ProcessDossier = {
   fileBadge: string;           // 'File 042-2026 · In progress'
   projectName: string;         // 'Anonymised mandate' or similar — italic serif
   engagementType: string;      // 'Sell-side · Primary fundraise'
-  partnerLabel: string;        // 'Lead: V. S. Rathore, Partner'
   /** Per-service dossier title. May contain `<em>...</em>` markers for
    *  italic-red emphasis. Example: "From <em>mandate</em>, to <em>wire</em>." */
   headline?: string;
@@ -380,7 +379,6 @@ export const services: Service[] = [
       fileBadge: 'File 042 · 2026 — illustrative',
       projectName: 'Anonymised mandate',
       engagementType: 'Sell-side · Primary fundraise',
-      partnerLabel: 'Lead: V. S. Rathore, Partner',
       headline: 'From <em>mandate</em>, to <em>wire</em>.',
       phases: [
         {
@@ -577,7 +575,6 @@ export const services: Service[] = [
       fileBadge: 'File 071 · 2026 — illustrative',
       projectName: 'Anonymised M&A mandate',
       engagementType: 'Buy-side · Strategic acquisition',
-      partnerLabel: 'Lead: V. S. Rathore, Partner',
       headline: 'From <em>scope</em>, to <em>signed deal</em>.',
       phases: [
         {
@@ -829,7 +826,6 @@ export const services: Service[] = [
       fileBadge: 'File 112 · 2026 — illustrative',
       projectName: 'Anonymised internal audit mandate',
       engagementType: 'Risk-based internal audit · annual plan',
-      partnerLabel: 'Lead: V. S. Rathore, Partner',
       headline: 'From <em>risk universe</em>, to <em>action tracker</em>.',
       phases: [
         {
@@ -1073,7 +1069,6 @@ export const services: Service[] = [
       fileBadge: 'File 184 · 2026 — illustrative',
       projectName: 'Anonymised tax engagement',
       engagementType: 'Direct tax · assessment & advisory',
-      partnerLabel: 'Lead: V. S. Rathore, Partner',
       headline: 'From <em>position</em>, to <em>assessment closed</em>.',
       phases: [
         {
@@ -1320,7 +1315,6 @@ export const services: Service[] = [
       fileBadge: 'File 233 · 2026 — illustrative',
       projectName: 'Anonymised audit engagement',
       engagementType: 'Statutory audit · Ind AS',
-      partnerLabel: 'Lead: V. S. Rathore, Partner',
       headline: 'From <em>planning</em>, to <em>audit signed</em>.',
       phases: [
         {
@@ -1565,7 +1559,6 @@ export const services: Service[] = [
       fileBadge: 'File 295 · 2026 — illustrative',
       projectName: 'Anonymised valuation mandate',
       engagementType: 'Business valuation · transaction',
-      partnerLabel: 'Lead: V. S. Rathore, Partner',
       headline: 'From <em>scope</em>, to <em>report issued</em>.',
       phases: [
         {
@@ -1812,7 +1805,6 @@ export const services: Service[] = [
       fileBadge: 'File 318 · 2026 — illustrative',
       projectName: 'Anonymised finance-outsourcing mandate',
       engagementType: 'Books + vCFO · monthly cadence',
-      partnerLabel: 'Lead: V. S. Rathore, Partner',
       headline: 'From <em>diagnose</em>, to <em>steady state</em>.',
       phases: [
         {
@@ -2059,7 +2051,6 @@ export const services: Service[] = [
       fileBadge: 'File 402 · 2026 — illustrative',
       projectName: 'Anonymised secretarial mandate',
       engagementType: 'Annual ROC + meetings retainer',
-      partnerLabel: 'Lead: V. S. Rathore, Partner',
       headline: 'From <em>health check</em>, to <em>quarterly clean</em>.',
       phases: [
         {
@@ -2306,7 +2297,6 @@ export const services: Service[] = [
       fileBadge: 'File 506 · 2026 — illustrative',
       projectName: 'Anonymised AIF setup',
       engagementType: 'Category I AIF · SEBI registration',
-      partnerLabel: 'Lead: V. S. Rathore, Partner',
       headline: 'From <em>structure</em>, to <em>first close</em>.',
       phases: [
         {
