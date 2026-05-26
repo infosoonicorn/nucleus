@@ -17,12 +17,19 @@ type JourneyEntry = {
   yearIsCont?: boolean;           // hide year visually when it duplicates the row above
   isToday?: boolean;              // pulsing red dot for the last entry
   isFounded?: boolean;            // render the Nucleus logo banner above the bubble
-  partner: {
+  partner?: {
     slug: string;                 // /team/{slug}.jpg
     name: string;                 // includes CA/CS honorific
     micro?: string;               // optional contextual subline
   };
-  pills: Pill[];                  // capabilities this person brought / deepened
+  milestone?: {                   // firm milestone instead of a partner row
+    key: string;                  // unique key (slug-like)
+    logoSrc: string;              // logo path under /public
+    logoAlt: string;
+    title: string;                // headline (e.g. 'Soonicorn Ventures launches.')
+    micro?: string;               // optional subline
+  };
+  pills: Pill[];                  // capabilities this person / milestone brought
 };
 
 const ENTRIES: JourneyEntry[] = [
@@ -72,6 +79,18 @@ const ENTRIES: JourneyEntry[] = [
   },
   {
     year: '2022',
+    milestone: {
+      key: 'soonicorn-ventures',
+      logoSrc: '/brand/soonicorn-ventures.png',
+      logoAlt: 'Soonicorn Ventures',
+      title: 'Soonicorn Ventures launches — M&A Advisory enters the firm.',
+      micro: 'Dedicated buy-side, sell-side and restructuring practice.',
+    },
+    pills: ['M&A Advisory'],
+  },
+  {
+    year: '2022',
+    yearIsCont: true,
     partner: { slug: 'rajat-singla', name: 'CA Rajat Singla' },
     pills: ['Tax & Regulatory'],
   },
@@ -129,7 +148,7 @@ export function AboutJourney() {
 
           {ENTRIES.map((entry, i) => (
             <motion.div
-              key={`${entry.year}-${entry.partner.slug}`}
+              key={`${entry.year}-${entry.partner?.slug ?? entry.milestone?.key ?? i}`}
               className={`about-journey-entry${entry.isToday ? ' is-today' : ''}${entry.isFounded ? ' is-founded' : ''}`}
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -175,26 +194,49 @@ export function AboutJourney() {
                   </div>
                 ) : null}
 
-                <div className="about-journey-person">
-                  <span className="about-journey-avatar">
-                    <Image
-                      src={`/team/${entry.partner.slug}.jpg`}
-                      alt=""
-                      width={38}
-                      height={38}
-                    />
-                  </span>
-                  <span className="about-journey-person-text">
-                    <span className="about-journey-person-name">
-                      {entry.partner.name}
+                {entry.partner ? (
+                  <div className="about-journey-person">
+                    <span className="about-journey-avatar">
+                      <Image
+                        src={`/team/${entry.partner.slug}.jpg`}
+                        alt=""
+                        width={38}
+                        height={38}
+                      />
                     </span>
-                    {entry.partner.micro ? (
-                      <span className="about-journey-person-micro">
-                        {entry.partner.micro}
+                    <span className="about-journey-person-text">
+                      <span className="about-journey-person-name">
+                        {entry.partner.name}
                       </span>
-                    ) : null}
-                  </span>
-                </div>
+                      {entry.partner.micro ? (
+                        <span className="about-journey-person-micro">
+                          {entry.partner.micro}
+                        </span>
+                      ) : null}
+                    </span>
+                  </div>
+                ) : entry.milestone ? (
+                  <div className="about-journey-person about-journey-milestone">
+                    <span className="about-journey-avatar about-journey-milestone-mark">
+                      <Image
+                        src={entry.milestone.logoSrc}
+                        alt={entry.milestone.logoAlt}
+                        width={38}
+                        height={38}
+                      />
+                    </span>
+                    <span className="about-journey-person-text">
+                      <span className="about-journey-person-name">
+                        {entry.milestone.title}
+                      </span>
+                      {entry.milestone.micro ? (
+                        <span className="about-journey-person-micro">
+                          {entry.milestone.micro}
+                        </span>
+                      ) : null}
+                    </span>
+                  </div>
+                ) : null}
 
                 <div className="about-journey-pills">
                   {entry.pills.map((pill) => (

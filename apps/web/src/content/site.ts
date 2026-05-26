@@ -524,6 +524,7 @@ export const services: Service[] = [
           'Buyer mapping',
           'Data-room build',
           'Bid evaluation',
+          'Negotiation support',
         ],
       },
       {
@@ -534,6 +535,7 @@ export const services: Service[] = [
           'Group simplification',
           'Demerger schemes',
           'Slump-sale structuring',
+          'Separation of real estate from business',
           'Holding-company moves',
         ],
       },
@@ -577,6 +579,7 @@ export const services: Service[] = [
         bullets: [
           'Founder exit structuring',
           'Family-business handover',
+          'Family trust structuring',
           'Holdco & estate design',
           'Leadership transition',
         ],

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Pause, Play } from 'lucide-react';
 
@@ -145,7 +145,6 @@ const MANDATES: Mandate[] = [
 ];
 
 const AUTOPLAY_MS = 9000;
-const RESUME_AFTER_USER_MS = 12000;
 
 type Props = Readonly<{
   ordinal: string;
@@ -155,7 +154,6 @@ export function MAMandateVisualizer({ ordinal }: Props) {
   const reduceMotion = useReducedMotion();
   const [active, setActive] = useState<'buy' | 'sell'>('buy');
   const [playing, setPlaying] = useState(true);
-  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const advance = useCallback(() => {
     setActive((k) => (k === 'buy' ? 'sell' : 'buy'));
@@ -167,15 +165,9 @@ export function MAMandateVisualizer({ ordinal }: Props) {
     return () => window.clearInterval(id);
   }, [reduceMotion, playing, advance]);
 
-  useEffect(() => () => {
-    if (resumeTimer.current) clearTimeout(resumeTimer.current);
-  }, []);
-
   function userPick(next: 'buy' | 'sell') {
     setActive(next);
     setPlaying(false);
-    if (resumeTimer.current) clearTimeout(resumeTimer.current);
-    resumeTimer.current = setTimeout(() => setPlaying(true), RESUME_AFTER_USER_MS);
   }
 
   const mandate = MANDATES.find((m) => m.key === active)!;

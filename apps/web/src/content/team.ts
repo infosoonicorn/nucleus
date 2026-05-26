@@ -174,9 +174,10 @@ export const team: TeamMember[] = [
     shortBio:
       'Leads internal audit and risk management. Specialises in banking, finance and NBFC sectors — audits, risk assessments, and process optimisation.',
     fullBio: [
-      'Ashish leads the Internal Audit and Risk Management division at Nucleus. He is a seasoned professional with deep expertise in internal audit, risk management, and process re-engineering within the banking, finance, and Non-Banking Financial Company (NBFC) sectors.',
-      'He has successfully led audits, risk assessments, and process optimisation projects that help organisations manage risk, enhance operational efficiency, and maintain regulatory compliance. With a keen eye for identifying system vulnerabilities and inefficiencies, he designs tailored solutions that strengthen internal controls and drive long-term business growth.',
-      'His work spans a diverse range of clients, from large banks to emerging NBFCs, ensuring each institution can navigate complex risk environments with confidence.',
+      'Ashish leads the Internal Audit and Risk Management division at Nucleus Advisors, bringing extensive experience in internal audit, risk management, process improvement, and operational excellence across diverse industries.',
+      'He has successfully led internal audits, risk assessments, compliance reviews, and process optimisation assignments for organisations ranging from growing enterprises to large established businesses. His expertise lies in identifying operational gaps, strengthening internal controls, improving efficiency, and helping businesses build robust and scalable processes.',
+      'With a practical and business-oriented approach, Ashish works closely with management teams to design tailored solutions that not only mitigate risks but also enhance productivity, transparency, and long-term growth. His ability to understand business operations in depth enables organisations to navigate complex challenges with confidence while maintaining strong governance and compliance standards.',
+      'Under his leadership, Nucleus Advisors has built a reputation for delivering insightful, value-driven internal audit solutions that help businesses across industries improve performance, reduce risks, and achieve sustainable growth.',
     ].join('\n\n'),
     serviceSlugs: ['risk-advisory'],
     linkedinUrl: 'https://www.linkedin.com/in/caashishgupta/',

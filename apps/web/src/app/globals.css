@@ -14725,6 +14725,20 @@ a.series-banner-part-link:hover { color: var(--service-accent-red, #dd1017); }
   transform: translateY(-1px);
 }
 
+/* Milestone variant: show full logo (no circular crop) on a soft chip */
+.about-journey-milestone-mark {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 4px 6px;
+  width: 56px;
+}
+.about-journey-milestone-mark :is(img, picture) {
+  object-fit: contain;
+}
+.about-journey-milestone .about-journey-person-name {
+  font-weight: 600;
+}
+
 .about-journey-person-name {
   color: var(--v3-ink, #0c1024);
   display: block;
