@@ -2875,7 +2875,10 @@ html.lenis body {
   }
 
   .home-v3-orbital-node-label {
-    font-size: 0.65rem;
+    font-size: 0.58rem;
+    max-width: 78px;
+    letter-spacing: 0.05em;
+    top: 44px;
   }
 }
 
@@ -6832,6 +6835,29 @@ html.lenis body {
   .service-v1-leadmagnet-form { flex-direction: column; }
   .service-v1-fundraise-dot-name { display: none; }
   .service-v1-fundraise-panel-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  /* Soonicorn orbital plate — shrink to fit narrow viewports.
+     Satellites are positioned at JS-baked pixel radii (100/150 from
+     centre), so the visual diameter is ~330px. Use transform: scale on
+     the stage (with negative margin to recover the visual size in
+     layout) so the orb fits inside the plate without overflowing. */
+  .service-v1-soonicorn-plate { padding: 20px 14px; min-height: 360px; }
+  .service-v1-soonicorn-plate-top { flex-wrap: wrap; gap: 8px; }
+  .service-v1-soonicorn-orbits { overflow: visible; }
+  .service-v1-soonicorn-stage {
+    transform: scale(0.72);
+    transform-origin: center;
+    /* (1 - 0.72) * 280 / 2 = 39.2 — pull layout box back by that much
+       so the scaled visual sits flush. Width box stays 280px so it can
+       overflow into the plate's horizontal padding without scrolling. */
+    margin: -40px auto;
+  }
+  .service-v1-soonicorn-plate-foot {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 0.85em;
+  }
+  .service-v1-soonicorn-plate-eyebrow { font-size: 0.6rem; }
 }
 
 /* Reduced motion — defense in depth alongside the JS useReducedMotion path. */
