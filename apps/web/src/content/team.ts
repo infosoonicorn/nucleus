@@ -287,6 +287,12 @@ export const team: TeamMember[] = [
     expertise: ['GST', 'Direct Tax', 'Controllership', 'Debt Sourcing'],
     experienceYears: 3,
     qualifications: ['Chartered Accountant'],
+    shortBio:
+      'Leads GST, Direct Tax, Controllership and Debt Sourcing at Nucleus. GST advisory and litigation, tax assessments, MIS reporting, and working-capital / term-loan facilitation.',
+    fullBio: [
+      'Rajat Singla is a forward-thinking Chartered Accountant and Partner at Nucleus Advisors, leading the firm’s GST, Direct Tax, Controllership, and Debt Sourcing practice areas. He specialises in GST advisory, litigation, refunds, compliance management, departmental representations, and resolution of GST notices, while also providing strategic guidance in Income Tax, TDS, tax audits, assessments, and regulatory compliance for businesses and individuals.',
+      'With a strong focus on practical and result-oriented solutions, Rajat also advises clients on financial controllership, MIS reporting, process optimisation, and business financial management. In addition, he assists businesses in debt sourcing, including working capital and term loan facilitation, helping clients achieve financial stability and growth. Known for his analytical approach and client-centric mindset, he is committed to delivering reliable, efficient, and value-driven professional services.',
+    ].join('\n\n'),
     serviceSlugs: ['tax-regulatory', 'finance-outsourcing'],
     linkedinUrl: 'https://www.linkedin.com/in/ca-rajat-singla-3374b61a6/',
     email: 'rajat@nucleusadvisors.in',
