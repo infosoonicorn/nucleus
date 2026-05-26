@@ -10151,18 +10151,25 @@ main.service-v1 > div > section {
 }
 .resource-modal-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 30px;
-  height: 30px;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
   display: inline-grid;
   place-items: center;
-  background: transparent;
-  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(20, 24, 40, 0.08);
   border-radius: 999px;
-  color: rgba(20, 24, 40, 0.55);
+  color: rgba(20, 24, 40, 0.7);
   cursor: pointer;
+  z-index: 10;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.06);
   transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.resource-modal-close > * {
+  /* SVG / path children shouldn't intercept the click target. */
+  pointer-events: none;
 }
 .resource-modal-close:hover {
   background: rgba(20, 24, 40, 0.06);
