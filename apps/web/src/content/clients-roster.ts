@@ -524,8 +524,8 @@ export const CLIENTS: ClientRecord[] = [
     industry: "Other Manufacturing",
     industrySlug: "other-manufacturing",
     group: "advisory",
-    services: ["ma-advisory"],
-    rawServiceLabels: ["M&A Advisory"],
+    services: ["ma-advisory", "finance-outsourcing", "tax-regulatory"],
+    rawServiceLabels: ["M&A Advisory", "vCFO", "GST"],
   },
   {
     slug: "roam-group",
@@ -534,8 +534,8 @@ export const CLIENTS: ClientRecord[] = [
     industry: "Other Manufacturing",
     industrySlug: "other-manufacturing",
     group: "advisory",
-    services: ["ma-advisory"],
-    rawServiceLabels: ["M&A Advisory"],
+    services: ["ma-advisory", "tax-regulatory"],
+    rawServiceLabels: ["M&A Advisory", "GST"],
   },
   {
     slug: "felix",

@@ -83,10 +83,10 @@ const ENTRIES: JourneyEntry[] = [
       key: 'soonicorn-ventures',
       logoSrc: '/brand/soonicorn-ventures.png',
       logoAlt: 'Soonicorn Ventures',
-      title: 'Soonicorn Ventures launches — M&A Advisory enters the firm.',
-      micro: 'Dedicated buy-side, sell-side and restructuring practice.',
+      title: 'Soonicorn Ventures launches — the investing arm of the firm.',
+      micro: 'Brings M&A Advisory to Nucleus — buy-side, sell-side and restructuring.',
     },
-    pills: ['M&A Advisory'],
+    pills: ['Investing', 'M&A Advisory'],
   },
   {
     year: '2022',
