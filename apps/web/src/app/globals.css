@@ -1507,8 +1507,7 @@ body {
 }
 
 .check-list svg,
-.signal-stack svg,
- {
+.signal-stack svg {
   color: var(--site-red);
   flex: 0 0 auto;
 }

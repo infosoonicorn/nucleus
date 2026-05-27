@@ -44,7 +44,7 @@ export function Process({ serviceTitle, ordinal, title, phases, dossier, service
 
   const usedPhases = phases ?? GENERIC_PHASES;
   return (
-    <section className="service-v1-section service-v1-section-alt">
+    <section className="service-v1-section service-v1-section-alt" data-section-ordinal={ordinal}>
       <SectionHeader
         eyebrow="Process"
         title={title ?? `A clear engagement path for ${serviceTitle}.`}
@@ -130,7 +130,10 @@ function DossierProcess({
   const fillPct = ((active + 1) / stagesLen) * 100;
 
   return (
-    <section className="service-v1-section service-v1-section-alt service-v1-dossier">
+    <section
+      className="service-v1-section service-v1-section-alt service-v1-dossier"
+      data-section-ordinal={ordinal}
+    >
       <header className="service-v1-dossier-head">
         <div>
           <p className="service-v1-dossier-eyebrow">

@@ -59,6 +59,7 @@ export function SoonicornCallout({
     <section
       className="service-v1-section service-v1-section-alt service-v1-soonicorn"
       aria-labelledby="soonicorn-title"
+      data-section-ordinal={ordinal}
     >
       {cross.reviewerStatus !== 'approved' && isDev ? (
         <p className="service-v1-soonicorn-devbanner">

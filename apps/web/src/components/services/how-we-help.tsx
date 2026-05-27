@@ -34,7 +34,7 @@ export function HowWeHelp({ ordinal, flat, detailed }: HowWeHelpProps) {
   // Fallback for services without detailed content — original list-grid.
   if (!detailed || detailed.length < 2) {
     return (
-      <section className="service-v1-section">
+      <section className="service-v1-section" data-section-ordinal={ordinal}>
         <SectionHeader eyebrow="How we help" title="Structured advisory, practical execution." />
         <div className="service-v1-list-grid">
           {flat.map((item) => (
@@ -46,7 +46,7 @@ export function HowWeHelp({ ordinal, flat, detailed }: HowWeHelpProps) {
   }
 
   return (
-    <section className="service-v1-section service-v1-help">
+    <section className="service-v1-section service-v1-help" data-section-ordinal={ordinal}>
       <header className="service-v1-help-header">
         <p className="service-v1-help-eyebrow">
           <span aria-hidden="true" className="service-v1-help-eyebrow-rule" />

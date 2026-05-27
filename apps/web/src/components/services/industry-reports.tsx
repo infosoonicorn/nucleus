@@ -27,7 +27,7 @@ export function IndustryReports({ ordinal, serviceSlug }: IndustryReportsProps) 
   const hasMore = all.length > PREVIEW_COUNT;
 
   return (
-    <section className="service-v1-section service-v1-reports">
+    <section className="service-v1-section service-v1-reports" data-section-ordinal={ordinal}>
       <SectionHeader
         eyebrow="Industry reports"
         title="Research and data we publish alongside the work."

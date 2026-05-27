@@ -17,6 +17,7 @@ export function TrackRecordBand({ ordinal, metrics }: Props) {
     <section
       className="service-v1-section client-logos-section"
       aria-labelledby="track-record-eyebrow"
+      data-section-ordinal={ordinal}
     >
       <header className="client-logos-head">
         <p id="track-record-eyebrow" className="client-logos-eyebrow">

@@ -173,7 +173,11 @@ export function MAMandateVisualizer({ ordinal }: Props) {
   const mandate = MANDATES.find((m) => m.key === active)!;
 
   return (
-    <section className="service-v1-section ma-mandate" aria-labelledby="ma-mandate-heading">
+    <section
+      className="service-v1-section ma-mandate"
+      aria-labelledby="ma-mandate-heading"
+      data-section-ordinal={ordinal}
+    >
       <header className="ma-mandate-head">
         <p className="ma-mandate-eyebrow">
           <span aria-hidden="true" className="ma-mandate-eyebrow-bar" />

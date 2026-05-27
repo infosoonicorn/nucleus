@@ -49,7 +49,6 @@ export type ServiceHeroProps = Readonly<{
  * Respects prefers-reduced-motion.
  */
 export function ServiceHero({
-  ordinal,
   title,
   slug,
   displayHeadline,

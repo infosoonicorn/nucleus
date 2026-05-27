@@ -26,7 +26,11 @@ export function ClientLogos({ ordinal, clients, metrics }: Props) {
   // Duplicate the list so the marquee loops seamlessly. aria-hidden on
   // the duplicate so screen readers don't announce every logo twice.
   return (
-    <section className="service-v1-section client-logos-section" aria-labelledby="client-logos-eyebrow">
+    <section
+      className="service-v1-section client-logos-section"
+      aria-labelledby="client-logos-eyebrow"
+      data-section-ordinal={ordinal}
+    >
       <header className="client-logos-head">
         <p id="client-logos-eyebrow" className="client-logos-eyebrow">
           <span className="client-logos-eyebrow-bar" aria-hidden="true" />

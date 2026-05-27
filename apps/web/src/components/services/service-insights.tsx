@@ -22,7 +22,7 @@ export function ServiceInsights({
 
   const ord = ordinal ?? service.ordinal;
   return (
-    <section className="service-v1-section service-v1-articles">
+    <section className="service-v1-section service-v1-articles" data-section-ordinal={ord}>
       <header className="service-v1-articles-header">
         <p className="service-v1-articles-eyebrow">
           <span aria-hidden="true" className="service-v1-articles-eyebrow-bar" />

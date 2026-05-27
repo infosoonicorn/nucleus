@@ -8,7 +8,6 @@ import {
   useInView,
   useMotionValue,
   useReducedMotion,
-  useScroll,
   useSpring,
   useTransform,
   type MotionValue,
@@ -267,7 +266,6 @@ function CountUp({
 
   useEffect(() => {
     if (!run || reduceMotion) {
-      if (reduceMotion) setDisplay(end);
       return;
     }
     const controls = animate(mv, end, {
@@ -278,7 +276,7 @@ function CountUp({
     return () => controls.stop();
   }, [run, end, reduceMotion, mv]);
 
-  return <span className="tabular-nums">{display}</span>;
+  return <span className="tabular-nums">{reduceMotion ? end : display}</span>;
 }
 
 // ----- philosophy quote -----

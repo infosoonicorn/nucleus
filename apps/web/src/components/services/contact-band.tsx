@@ -42,6 +42,7 @@ export function ContactBand({
   return (
     <motion.section
       className="contact-band"
+      data-section-ordinal={ordinal}
       initial={reduceMotion ? false : { opacity: 0, y: 24 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}

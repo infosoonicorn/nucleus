@@ -260,7 +260,7 @@ export function FundraiseStages({ ordinal = '01' }: FundraiseStagesProps = {}) {
 
 function FundraiseHeader({ ordinal }: Readonly<{ ordinal: string }>) {
   return (
-    <header className="service-v1-fundraise-header">
+    <header className="service-v1-fundraise-header" data-section-ordinal={ordinal}>
       <p className="service-v1-fundraise-eyebrow">
         <span aria-hidden="true" className="service-v1-fundraise-eyebrow-rule" />
         <span>Fundraise</span>

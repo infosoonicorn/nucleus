@@ -80,7 +80,11 @@ export function Faq({ ordinal, serviceTitle, faq }: FaqProps) {
   const updated = new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long' });
 
   return (
-    <section className="service-v1-section service-v1-faq" aria-labelledby="ib-faq-heading">
+    <section
+      className="service-v1-section service-v1-faq"
+      aria-labelledby="ib-faq-heading"
+      data-section-ordinal={ordinal}
+    >
       <header className="service-v1-faq-head">
         <div>
           <p className="service-v1-faq-eyebrow">

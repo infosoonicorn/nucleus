@@ -67,7 +67,11 @@ export function ResourceDeck({ ordinal, serviceSlug, resources: allResources }: 
   if (resources.length === 0) return null;
 
   return (
-    <section className="service-v1-section resource-deck-section" aria-labelledby="resource-deck-h">
+    <section
+      className="service-v1-section resource-deck-section"
+      aria-labelledby="resource-deck-h"
+      data-section-ordinal={ordinal}
+    >
       <header className="resource-deck-head">
         <div>
           <p className="resource-deck-eyebrow">
