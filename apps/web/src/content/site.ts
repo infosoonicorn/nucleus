@@ -962,7 +962,7 @@ export const services: Service[] = [
       { value: 8,  suffix: ' wk', label: 'Avg engagement length' },
     ],
     ordinal: '03',
-    heroLive: 'Risk-based audits · IFC / ICFR · mid-market India',
+    heroLive: 'Risk-based audits · IFC / ICFR · process re-engineering',
     whenToEngage: [
       {
         if: 'Audit committee wants a formal internal audit calendar across business units this year.',
@@ -1005,6 +1005,7 @@ export const services: Service[] = [
       'International tax and treaty advisory.',
       'Transfer pricing advisory and documentation.',
       'GST registration, filings, audits, refunds and advisory.',
+      'Foreign remittance certifications — Form 146 (new Income Tax) / Form 15CB (old Income Tax).',
       'Tax assessments and opinions.',
       'Statutory compliance.',
       'Regulatory coordination for company matters.',
@@ -1053,6 +1054,17 @@ export const services: Service[] = [
           'Refund applications',
           'GST audits',
           'Notice & appeal representation',
+        ],
+      },
+      {
+        title: 'Foreign remittance certifications',
+        summary: 'Form 146 (new IT Act) · Form 15CB (old IT Act) · 15CA coordination',
+        body: 'CA certifications for outbound foreign remittances — Form 146 under the new Income-tax Act and Form 15CB under the old Act — with treaty analysis, withholding determination and 15CA filing coordination with the remitting bank.',
+        bullets: [
+          'Form 146 / 15CB certification',
+          'DTAA & withholding analysis',
+          '15CA filing coordination',
+          'AD-bank documentation',
         ],
       },
       {
@@ -1206,7 +1218,7 @@ export const services: Service[] = [
       { value: 10,  suffix: '+', label: 'Cross-border tax matters' },
     ],
     ordinal: '04',
-    heroLive: 'Direct + indirect tax · transfer pricing · cross-border ready',
+    heroLive: 'Direct + indirect tax · transfer pricing · international tax',
     whenToEngage: [
       {
         if: 'Cross-border transaction on the table and tax structure can swing the post-tax outcome.',
