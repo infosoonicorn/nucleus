@@ -350,6 +350,18 @@ export const team: TeamMember[] = [
     email: 'legal@nucleusadvisors.in',
     linkedinUrl: 'https://www.linkedin.com/in/astha-kumar-a5a961173/',
   },
+  {
+    slug: 'nirmit-gupta',
+    name: 'CA Nirmit Gupta',
+    role: 'Manager — Audit',
+    group: 'executive',
+    seniority: 'senior',
+    initials: 'NG',
+    headshotSrc: '/team/nirmit-gupta.jpg',
+    expertise: ['Statutory Audit', 'Internal Audit', 'IFC & Process Re-engineering'],
+    qualifications: ['Chartered Accountant', 'MBA', 'LLB', 'M.Com'],
+    serviceSlugs: ['assurance', 'risk-advisory'],
+  },
 ];
 
 const SENIORITY_ORDER: Record<TeamMember['seniority'], number> = {

@@ -125,7 +125,7 @@ const SLUG_NAME_OVERRIDES: Record<string, string> = {
   stellar: 'Stellar',
   ezspend: 'EZspend',
   easypolicy: 'EasyPolicy',
-  xyzo: 'Oxyzo',
+  oxyzo: 'Oxyzo',
   // fundraising
   indrones: 'inDrones',
   'skylark-drones': 'Skylark Drones',
@@ -140,7 +140,7 @@ const SLUG_NAME_OVERRIDES: Record<string, string> = {
   sustvest: 'SustVest',
   'scrap-uncle': 'ScrapUncle',
   ecoratings: 'EcoRatings',
-  'sharaksha-ecosolutions': 'Sharaksha Ecosolutions',
+  'dharaksha-ecosolutions': 'Dharaksha Ecosolutions',
   'skilancer-solar': 'Skilancer Solar',
   regrip: 'ReGrip',
   finaleap: 'Finaleap',
@@ -154,11 +154,11 @@ const SLUG_NAME_OVERRIDES: Record<string, string> = {
   'power-gummies': 'Power Gummies',
   'burger-singh': 'Burger Singh',
   burgerama: 'Burgerama',
-  'supply-unknown': 'Supply (TBC)',
+  supply6: 'Supply6',
   'sapio-analytics': 'Sapio Analytics',
   'dave-ai': 'Dave AI',
   mobigarage: 'MobiGarage',
-  'nayam-cloud': 'Nayam (TBC)',
+  'nayam-cloud': 'Oditly',
   pickmywork: 'PickMyWork',
   limechat: 'LimeChat',
   kredily: 'Kredily',
@@ -181,9 +181,10 @@ const SLUG_NAME_OVERRIDES: Record<string, string> = {
   'social-hardware': 'Social Hardware',
   // unknowns
   'unknown-circle-crane': 'New Swan',
-  'unknown-psu-emblem': 'Delhi Transco Limited',
+  'delhi-transco': 'Delhi Transco Limited',
+  ipgcl: 'IPGCL',
   'unknown-sphere': 'Pragati Power Corporation Limited',
-  'unknown-auto-wrench': 'Unknown — to confirm',
+  careasy: 'CarEasy',
 };
 
 function prettyName(slug: string): string {

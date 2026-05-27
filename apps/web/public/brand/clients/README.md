@@ -50,10 +50,11 @@ These were extracted but the brand name / service-line assignment is uncertain.
 Please confirm or move into the correct folder.
 
 - `automobiles-tools/unknown-circle-crane.png` — small blue circular emblem (looks like an auto-parts firm). Need brand name.
-- `energy-power/unknown-psu-emblem.png` — Indian PSU-style circular emblem with Hindi text.
+- `energy-power/delhi-transco.png` — Delhi Transco Limited (identified + slug renamed 2026-05-27).
+- `energy-power/ipgcl.png` — IPGCL (new entry added 2026-05-27).
 - `non-profits/unknown-sphere.png` — black wireframe sphere logo, sat in middle column with "PPE Verification / Transfer Pricing" label (could actually be heavy-industry, not non-profit).
-- `transaction-advisory/unknown-auto-wrench.png` — red car + wrench line-icon. Could be an automotive deals client.
-- `fundraising/d2c-fmcg/supply-unknown.png` — small black "supply" text logo, position-bucketed into D2C FMCG.
+- `transaction-advisory/careasy.png` — CarEasy (identified 2026-05-27).
+- `fundraising/d2c-fmcg/supply6.png` — Supply6 (identified via SV portfolio cross-reference 2026-05-27).
 
 ## Service-line reassignment notes
 
