@@ -3,7 +3,7 @@
 import { useRef, useState, type KeyboardEvent } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Camera, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { offices } from '@/content/offices';
 
 const PANEL_TRANSITION = {
@@ -155,37 +155,24 @@ export function AboutOffices() {
                 </div>
               </div>
 
-              <ul
-                className="about-offices-photos"
-                aria-label={`${active.city} office photographs`}
-              >
-                {Array.from({ length: 3 }).map((_, i) => {
-                  const photo = active.photos?.[i];
-                  return (
-                    <li
-                      key={i}
-                      className={`about-offices-photo${
-                        photo ? '' : ' is-placeholder'
-                      }`}
-                    >
-                      {photo ? (
-                        <Image
-                          src={photo.src}
-                          alt={photo.alt}
-                          fill
-                          sizes="(max-width: 760px) 33vw, 220px"
-                          className="about-offices-photo-img"
-                        />
-                      ) : (
-                        <div className="about-offices-photo-empty">
-                          <Camera size={20} aria-hidden="true" />
-                          <span>Photo · {active.city}</span>
-                        </div>
-                      )}
+              {active.photos && active.photos.length > 0 ? (
+                <ul
+                  className="about-offices-photos"
+                  aria-label={`${active.city} office photographs`}
+                >
+                  {active.photos.slice(0, 3).map((photo, i) => (
+                    <li key={i} className="about-offices-photo">
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 760px) 33vw, 220px"
+                        className="about-offices-photo-img"
+                      />
                     </li>
-                  );
-                })}
-              </ul>
+                  ))}
+                </ul>
+              ) : null}
             </motion.div>
           </AnimatePresence>
         </div>

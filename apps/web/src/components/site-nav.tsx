@@ -312,6 +312,14 @@ export function SiteNav({ latestArticle = null }: { latestArticle?: NavLatestArt
             onFocus={() => activate('insights')}
             onClick={() => setOpen(open === 'insights' ? null : 'insights')}
           />
+          <Link
+            href="/resources"
+            className={`site-nav-link${isActive('/resources') ? ' is-active' : ''}`}
+            onMouseEnter={() => activate(null)}
+          >
+            <span>Resources</span>
+            <span className="site-nav-link-ink" aria-hidden="true" />
+          </Link>
         </nav>
 
         <div className="site-nav-actions">
@@ -403,6 +411,12 @@ export function SiteNav({ latestArticle = null }: { latestArticle?: NavLatestArt
                   title: 'Insights',
                   blurb: 'Articles, signals and sector notes.',
                   icon: Sparkles,
+                },
+                {
+                  href: '/resources',
+                  title: 'Resources',
+                  blurb: 'Tools, calculators and reference dashboards.',
+                  icon: BookOpen,
                 },
                 {
                   href: '/contact',

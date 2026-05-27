@@ -48,29 +48,53 @@ export const offices: Office[] = [
     state: 'Haryana',
     isHq: true,
     mapsQuery: 'Nucleus Advisors, Gurugram, Haryana, India',
+    address: [
+      '401, Suncity Trade Tower',
+      'Sector 21',
+      'Gurugram 122016',
+    ],
   },
   {
     slug: 'jaipur',
     city: 'Jaipur',
     state: 'Rajasthan',
-    mapsQuery: 'Jaipur, Rajasthan, India',
+    mapsQuery: 'Ridhiraj World Business Centre, Ajmer Road, Jaipur 302019',
+    address: [
+      'A4, 8th Floor',
+      'Ridhiraj World Business Centre',
+      'Ajmer Road, Jaipur 302019',
+    ],
   },
   {
     slug: 'bhatinda',
     city: 'Bhatinda',
     state: 'Punjab',
-    mapsQuery: 'Bhatinda, Punjab, India',
+    mapsQuery: '29B Grain Market, Bathinda, Punjab, India',
+    address: [
+      '29B, Opposite HDFC Bank',
+      'Grain Market',
+      'Bathinda, Punjab',
+    ],
   },
   {
     slug: 'faridabad',
     city: 'Faridabad',
     state: 'Haryana',
-    mapsQuery: 'Faridabad, Haryana, India',
+    mapsQuery: 'Geetanjali Virmani Faridabad',
+    address: [
+      '3A/47, NIT Faridabad',
+      'Haryana 121001',
+    ],
   },
   {
     slug: 'bengaluru',
     city: 'Bengaluru',
     state: 'Karnataka',
-    mapsQuery: 'Bengaluru, Karnataka, India',
+    mapsQuery: '43 Residency Road, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560025',
+    address: [
+      '43, Residency Road',
+      'Shanthala Nagar, Ashok Nagar',
+      'Bengaluru, Karnataka 560025',
+    ],
   },
 ];

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useId, useState } from 'react';
+import { useCallback, useEffect, useId } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
@@ -41,12 +41,6 @@ export function TeamProfileModal({
   onClose,
 }: Readonly<{ member: TeamMember; open: boolean; onClose: () => void }>) {
   const titleId = useId();
-  const [mounted, setMounted] = useState(false);
-
-  // Portal target only exists after mount (SSR-safe).
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // ESC + body-scroll lock while the modal is open.
   useEffect(() => {
@@ -80,7 +74,9 @@ export function TeamProfileModal({
 
   const handleClose = useCallback(() => onClose(), [onClose]);
 
-  if (!mounted) return null;
+  // Portal target only exists in the browser (SSR-safe — render nothing
+  // during the server pass; client takes over on hydration).
+  if (typeof document === 'undefined') return null;
 
   return createPortal(
     <AnimatePresence>
