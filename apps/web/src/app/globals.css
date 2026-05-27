@@ -2865,19 +2865,81 @@ html.lenis body {
 }
 
 @media (max-width: 640px) {
+  .home-v3-orbital {
+    padding-inline: 0.85rem;
+  }
+
+  .home-v3-orbital-core {
+    height: 128px;
+    width: 128px;
+  }
+
+  .home-v3-orbital-core-ring-a {
+    height: 154px;
+    width: 154px;
+  }
+
+  .home-v3-orbital-core-ring-b {
+    height: 184px;
+    width: 184px;
+  }
+
+  .home-v3-orbital-core-inner {
+    height: 78px;
+    padding: 12px;
+    width: 78px;
+  }
+
   .home-v3-orbital-card {
     width: 240px;
   }
 
   .home-v3-orbital-stage {
-    height: clamp(520px, 88vh, 640px);
+    height: clamp(540px, 86vh, 620px);
+    max-width: 390px;
+  }
+
+  .home-v3-orbital-fallback {
+    display: none;
   }
 
   .home-v3-orbital-node-label {
-    font-size: 0.58rem;
-    max-width: 78px;
+    font-size: 0.56rem;
+    font-weight: 780;
     letter-spacing: 0.05em;
-    top: 44px;
+    line-height: 1.2;
+    max-width: 76px;
+    top: 48px;
+  }
+
+  .home-v3-orbital-node-label[data-label-side='top'] {
+    bottom: 48px;
+    top: auto;
+  }
+
+  .home-v3-orbital-node-label[data-label-side='left'] {
+    left: auto;
+    max-width: 92px;
+    right: 50px;
+    text-align: right;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .home-v3-orbital-node-label[data-label-side='right'] {
+    left: 50px;
+    max-width: 92px;
+    text-align: left;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .home-v3-orbital-node-label.is-expanded[data-label-side='left'] {
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  .home-v3-orbital-node-label.is-expanded[data-label-side='right'] {
+    transform: translateY(-50%) scale(1.08);
   }
 }
 

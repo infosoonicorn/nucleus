@@ -62,7 +62,7 @@ export function HomeOrbitalServices() {
     reduceMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const adjust = () => {
       const w = window.innerWidth;
-      if (w < 520) setRadius(120);
+      if (w < 520) setRadius(160);
       else if (w < 780) setRadius(160);
       else setRadius(220);
     };
@@ -179,6 +179,8 @@ export function HomeOrbitalServices() {
             const isRel = isRelated(item.id);
             const isPulsing = pulse[item.id];
             const Icon = item.icon;
+            const labelSide =
+              pos.y < -30 ? 'top' : pos.y > 30 ? 'bottom' : pos.x < 0 ? 'left' : 'right';
 
             return (
               <div
@@ -210,6 +212,7 @@ export function HomeOrbitalServices() {
                 </button>
                 <span
                   className={`home-v3-orbital-node-label ${isExpanded ? 'is-expanded' : ''}`}
+                  data-label-side={labelSide}
                 >
                   {item.title}
                 </span>
