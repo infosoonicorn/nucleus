@@ -84,9 +84,21 @@ const ENTRIES: JourneyEntry[] = [
       logoSrc: '/brand/soonicorn-ventures.png',
       logoAlt: 'Soonicorn Ventures',
       title: 'Soonicorn Ventures launches — the investing arm of the firm.',
-      micro: 'Brings M&A Advisory to Nucleus — buy-side, sell-side and restructuring.',
+      micro: 'Seed and pre-Series A capital, alongside the advisory practice.',
     },
-    pills: ['Investing', 'M&A Advisory'],
+    pills: ['Investing'],
+  },
+  {
+    year: '2022',
+    yearIsCont: true,
+    milestone: {
+      key: 'ma-advisory-added',
+      logoSrc: '/brand/nucleus-mark.png',
+      logoAlt: 'Nucleus Advisors',
+      title: 'M&A Advisory enters the firm.',
+      micro: 'Buy-side, sell-side, restructuring and succession mandates.',
+    },
+    pills: ['M&A Advisory'],
   },
   {
     year: '2022',
